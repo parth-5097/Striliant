@@ -1,0 +1,261 @@
+<div class="row row-space-class">
+  <div class="col-12 p-0">
+    <div class="comn-hdr-bg-top text-center">
+      <h1>Kukadia Corporation(Canada)</h1>
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb justify-content-center">
+          <li class="breadcrumb-item"><a routerLink="/home">Home</a></li>
+          <li class="breadcrumb-item active" aria-current="page">Our Story / Kukadia Corporation</li>
+        </ol>
+      </nav>
+    </div>
+  </div>
+</div>
+<div class="row inr-row-space">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-5">
+        <div class="fnd-text-left">
+          <div class="left-image-text">
+            <img src="assets/images/canada-flag.svg" alt="">
+            <span class="">Kukadia Corporation</span>
+          </div>
+          <div class="pl-5">
+            <img src="assets/images/our-story-image.png" class="img-fluid" alt="">
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-7 mt-3 mt-lg-0">
+        <div class="fnd-text-right">
+          <span class="text-span-2">A Little Our Story…</span>
+          <p>
+            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
+            industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and
+            scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into
+            electronic typesetting, remaining essentially unchanged.
+          </p>
+          <p>
+            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
+            industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and
+            scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into
+            electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release
+            of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software
+            like Aldus PageMaker including versions of Lorem Ipsum.
+          </p>
+          <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
+            industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and
+            scrambled.</p>
+          <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
+            industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and
+            scrambled.</p>
+        </div>
+      </div>
+      <div class="col-12 mt-5">
+        <div class="fnd-text-right">
+          <p>
+            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
+            industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and
+            scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into
+            electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release
+            of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software
+            like Aldus PageMaker including versions of Lorem Ipsum.
+          </p>
+          <p>
+            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
+            industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and
+            scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into
+            electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release
+            of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software
+            like Aldus PageMaker including versions of Lorem Ipsum.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row inr-row-space bg-light-row">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-12">
+        <div class="comn-title-shap text-center">
+          <h2>Our Products</h2>
+          <div class="comn-title-shap-imgs d-flex align-items-center justify-content-center">
+            <img src="assets/images/icon/left-title-shap.svg" alt=""/>
+            <span class="mx-2"><img src="assets/images/icon/title-shap-logo.svg" alt=""/></span>
+            <img src="assets/images/icon/right-title-shap.svg" alt=""/>
+          </div>
+        </div>
+      </div>
+      <div class="col-12">
+        <div class="custom-tabs-class">
+          <ul class="nav mb-5 justify-content-center">
+            <li class="nav-item">
+              <a class="nav-link" [ngClass]="{'active': slick == 1}" (click)="slicktogle(1)">
+                <img src="assets/images/natural-earth-mined.svg" alt="">Natural/Earth-Mined
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" [ngClass]="{'active': slick == 2}" (click)="slicktogle(2)">
+                <img src="assets/images/lab-grown.svg" alt="">Lab-Grown
+              </a>
+            </li>
+          </ul>
+          <div class="custom-tabs-content">
+            <div class="custom-tabs-content-inr" *ngIf="slick == 1">
+              <div class="our-products-slider">
+                <ngx-slick-carousel class="carousel" #prodnatModal="slick-carousel" [config]="prodnatslider">
+                  <div ngxSlickItem class="our-products-item">
+                    <div class="row align-items-center">
+                      <div class="col-md-7 order-1 order-md-0 mt-3 mt-md-0">
+                        <div class="prd-text-left">
+                          <h3>Certified Diamonds</h3>
+                          <p>Kukadia Group Deals With Certified Diamonds That Have Been Verified For Quality, Allowing
+                            Customers To Purchase With Confidence.
+                            100% Real. 100% Ethical. Fantastic Value. Choose A Diamond Are Well Polished And Perfected
+                            Into The Shimmering Marvel</p>
+                          <div class="btn-comn-div pt-3">
+                            <a routerLink="/" class="btn-comn"><span>contact US</span></a>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-5">
+                        <div class="prd-text-right">
+                          <img src="assets/images/certified-diamonds-image.png" class="img-fluid" alt="">
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div ngxSlickItem class="our-products-item">
+                    <div class="row align-items-center">
+                      <div class="col-md-7 order-1 order-md-0 mt-3 mt-md-0">
+                        <div class="prd-text-left">
+                          <h3>Non-Certified Diamonds</h3>
+                          <p>Kukadia Group Deals With Certified Diamonds That Have Been Verified For Quality, Allowing
+                            Customers To Purchase With Confidence.
+                            100% Real. 100% Ethical. Fantastic Value. Choose A Diamond Are Well Polished And Perfected
+                            Into The Shimmering Marvel</p>
+                          <div class="btn-comn-div pt-3">
+                            <a routerLink="/" class="btn-comn"><span>contact US</span></a>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-5">
+                        <div class="prd-text-right">
+                          <img src="assets/images/non-certified-diamonds.png" class="img-fluid" alt="">
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div ngxSlickItem class="our-products-item">
+                    <div class="row align-items-center">
+                      <div class="col-md-7 order-1 order-md-0 mt-3 mt-md-0">
+                        <div class="prd-text-left">
+                          <h3>Fancy Diamonds</h3>
+                          <p>Kukadia Group Deals With Certified Diamonds That Have Been Verified For Quality, Allowing
+                            Customers To Purchase With Confidence.
+                            100% Real. 100% Ethical. Fantastic Value. Choose A Diamond Are Well Polished And Perfected
+                            Into The Shimmering Marvel</p>
+                          <div class="btn-comn-div pt-3">
+                            <a routerLink="/" class="btn-comn"><span>contact US</span></a>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-5">
+                        <div class="prd-text-right">
+                          <img src="assets/images/fancy-diamonds.png" class="img-fluid" alt="">
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </ngx-slick-carousel>
+              </div>
+            </div>
+            <div class="custom-tabs-content-inr" *ngIf="slick == 2">
+              <div class="our-products-slider">
+                <ngx-slick-carousel class="carousel" #prodlabModal="slick-carousel" [config]="prodlabslider">
+                  <div ngxSlickItem class="our-products-item">
+                    <div class="row align-items-center">
+                      <div class="col-md-7 order-1 order-md-0 mt-3 mt-md-0">
+                        <div class="prd-text-left">
+                          <h3>Certified Diamonds</h3>
+                          <p>Kukadia Group Deals With Certified Diamonds That Have Been Verified For Quality, Allowing
+                            Customers To Purchase With Confidence.
+                            100% Real. 100% Ethical. Fantastic Value. Choose A Diamond Are Well Polished And Perfected
+                            Into The Shimmering Marvel</p>
+                          <div class="btn-comn-div pt-3">
+                            <a routerLink="/" class="btn-comn"><span>contact US</span></a>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-5">
+                        <div class="prd-text-right">
+                          <img src="assets/images/certified-diamonds-image.png" class="img-fluid" alt="">
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div ngxSlickItem class="our-products-item">
+                    <div class="row align-items-center">
+                      <div class="col-md-7 order-1 order-md-0 mt-3 mt-md-0">
+                        <div class="prd-text-left">
+                          <h3>Non-Certified Diamonds</h3>
+                          <p>Kukadia Group Deals With Certified Diamonds That Have Been Verified For Quality, Allowing
+                            Customers To Purchase With Confidence.
+                            100% Real. 100% Ethical. Fantastic Value. Choose A Diamond Are Well Polished And Perfected
+                            Into The Shimmering Marvel</p>
+                          <div class="btn-comn-div pt-3">
+                            <a routerLink="/" class="btn-comn"><span>contact US</span></a>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-5">
+                        <div class="prd-text-right">
+                          <img src="assets/images/non-certified-diamonds.png" class="img-fluid" alt="">
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </ngx-slick-carousel>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row inr-row-space postion-reletive">
+  <div class="container">
+    <div class="row justify-content-center mr-0">
+      <div class="col-12 pr-0">
+        <div class="text-cenetr d-flex align-items-center justify-content-center mb-5">
+          <img src="assets/images/icon/kukadia-corporation.svg" alt="">
+          <span class="ml-3">
+              <img src="assets/images/canada-flag.svg" alt="">
+            </span>
+        </div>
+      </div>
+      <div class="col-md-4 pr-0 mb-4 mb-md-0">
+        <div class="text-center ct-us-div">
+          <img src="assets/images/icon/emial-icon.svg" alt="">
+          <span>E-mail</span>
+          <p>info@kukadia.co</p>
+        </div>
+      </div>
+      <div class="col-md-4 pr-0 mb-4 mb-md-0">
+        <div class="text-center ct-us-div">
+          <img src="assets/images/icon/adress-icon.svg" alt="">
+          <span>Address</span>
+          <p>A-301 Kamla Estate,Nr. Savani Estate, Kohinoor Road, Mini Bazaar, Varachha, Surat-395006</p>
+        </div>
+      </div>
+      <div class="col-md-4 pr-0">
+        <div class="text-center ct-us-div">
+          <img src="assets/images/icon/cell-phone-icon.svg" alt="">
+          <span>Phone</span>
+          <p>+91 8980880555</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

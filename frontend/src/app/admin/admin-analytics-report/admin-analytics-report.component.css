@@ -1,0 +1,136 @@
+.rpt-list-box-hdr p {
+  color: #232323;
+  font-size: 16px;
+  font-weight: 500;
+  margin: 10px 0;
+}
+
+.list-dash-title span {
+  color: var(--color-dark);
+  font-size: 20px;
+  text-transform: capitalize;
+  font-weight: 500;
+}
+
+.list-dash-title img {
+  margin-right: 10px;
+  width: 14px;
+}
+
+.rpt-list-box-hdr h3 {
+  color: #232323;
+  font-size: 17px;
+  text-transform: capitalize;
+  font-weight: 400;
+}
+
+.rpt-list-box-hdr h1 {
+  color: var(--thm-color);
+  font-size: 24px;
+  font-weight: 500;
+}
+
+.rpt-list-box-hdr {
+  border-bottom: 0.6px solid #cbd5dc;
+  padding-bottom: 10px;
+  margin-bottom: 15px;
+}
+
+.rpt-list-box-body h4 {
+  color: var(--color-dark);
+  font-size: 18px;
+  text-transform: capitalize;
+  font-weight: 500;
+}
+
+.rpt-list-box-body-links-inr a {
+  color: var(--thm-color);
+  display: inline-block;
+  font-weight: 400;
+  font-size: 16px;
+}
+
+.rpt-list-box-body-links-inr {
+  padding: 10px 0;
+  border-bottom: 1px solid #cbd5dc;
+}
+
+.show-all-btn-div .btn {
+  color: var(--thm-color);
+  display: inline-block;
+  font-weight: 500;
+  font-size: 18px;
+  border: 0;
+  box-shadow: none;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  outline: none;
+  border-radius: 0;
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+}
+
+.show-all-btn-div .btn i {
+  color: var(--thm-color);
+  font-size: 20px;
+  margin-left: 10px;
+}
+
+.admin-panel-content .dash-box-white {
+  height: 100%;
+}
+
+.custom-link {
+  color: var(--thm-color);
+}
+
+.modal-cust-small .modal-content {
+  border: 0;
+  border-radius: 0;
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+}
+
+.modal-cust-small .modal-header {
+  border-radius: 0;
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  -ms-flex-align: center;
+  align-items: center;
+  background: var(--thm-color-light);
+}
+
+.modal-cust-small .modal-title {
+  color: var(--thm-color);
+  font-weight: 600;
+  text-transform: capitalize;
+}
+
+.modal-cust-small .close {
+  opacity: 1 !important;
+  font-size: unset;
+}
+
+.modal-cust-small .modal-header img {
+  width: 25px;
+}
+
+.slrt-modal p {
+  color: var(--color-dark);
+  font-size: 14px;
+  font-weight: 400;
+  text-transform: capitalize;
+}
+
+.dash-label {
+  display: block;
+  font-weight: 600;
+  color: var(--color-dark);
+  font-size: 16px;
+}
+
+@media (max-width: 767px) {
+  .admin-panel-content .dash-box-white {
+    height: 100%;
+  }
+}

@@ -1,0 +1,21 @@
+.tabs-section-text p {
+  letter-spacing: 0.035em;
+  font-size: 15px;
+  color: var(--color-dark);
+  line-height: 24px;
+}
+
+.inr-step-class span {
+  display: block;
+  letter-spacing: 0.035em;
+  font-size: 16px;
+  text-transform: capitalize;
+  color: var(--color-dark);
+  margin-bottom: 5px;
+  font-family: Philosopher;
+  font-weight: 700;
+}
+
+.inr-step-class ul li .d-flex.align-items-start {
+  padding-left: 25px;
+}

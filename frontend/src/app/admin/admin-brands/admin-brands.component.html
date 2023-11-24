@@ -1,0 +1,62 @@
+<div class="dash-wrapper admin-panel-content">
+  <app-admin-header></app-admin-header>
+  <app-admin-sidebar></app-admin-sidebar>
+  <main class="content-wrapper-section">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-12">
+          <div class="inr-title-comn d-flex align-items-center">
+            <h3>Brands</h3>
+            <div class="inr-title-btn ml-auto mt-0">
+              <a routerLink="/admin/brands/add-brands" class="btn btn-inr-top m-0">Add Brand</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-12">
+          <div class="dash-box-white">
+            <div class="table-responsive">
+              <table datatable [dtOptions]='dtOptions' class="display">
+                <thead>
+                <tr>
+                  <th>Picture</th>
+                  <th>Title</th>
+                  <th>Date</th>
+                  <th class="no-search-filter">Status</th>
+                  <th class="no-search-filter">Action</th>
+                </tr>
+                </thead>
+                <tbody *ngIf="getlist?.length>0">
+                <tr *ngFor="let item of getlist">
+                  <td><img src="{{environment+''+item.profile}}" alt="" width="100px" height="100px"></td>
+                  <td>{{item.title}}</td>
+                  <td>{{item.created_at | date}}</td>
+                  <td>
+                    <div class="custom-control custom-switch">
+                      <input type="checkbox" class="custom-control-input" id="customSwitch_{{item.brandId}}" (click)="change_status(item.brandId)" [checked]="item.status == 1"/>
+                      <label class="custom-control-label" for="customSwitch_{{item.brandId}}">Active</label>
+                    </div>
+                  </td>
+                  <td>
+                    <a [routerLink]="['/admin/brands/edit-brands',item.brandId]">
+                      <img src="assets/images/icon/edit-icon-table.svg" class="mx-2 table-img-inr" alt="" />
+                    </a>
+                    <a  (click)="delete_brands(item)">
+                      <img src="assets/images/icon/delete-icon.svg" class="mx-2 table-img-inr" alt="" />
+                    </a>
+                  </td>
+                </tr>
+                </tbody>
+                <tbody *ngIf="getlist?.length == 0">
+                <tr>
+                  <td colspan="5" class="no-data-available">No data!</td>
+                </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="overlay toggle-icon-main"></div>
+  </main>
+</div>

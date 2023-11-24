@@ -1,0 +1,80 @@
+<Particles id="admin-login-particles-js" [options]="particlesOptions"></Particles>
+<div class="container-fluid h-100-cust">
+  <div class="row h-100-cust align-items-center">
+    <div class="col-12">
+      <div class="full-section-main">
+        <div class="height-aut-fix align-items-center">
+          <div class="full-section-inr">
+            <div class="full-section-logo text-center">
+              <img src="assets/images/logo/logo-kukadia-white.svg" alt="" />
+            </div>
+            <div class="custom-div-ctr">
+              <div class="log-right-fix">
+                <div class="log-right-top text-center">
+                  <h1>admin Login</h1>
+                </div>
+                <div class="log-right-btm">
+                  <form class="row" [formGroup]="AddForm" (ngSubmit)="onSubmit()">
+                    <div class="col-12">
+                      <div class="form-group">
+                        <label>Username<span>*</span></label>
+                        <input type="text" formControlName="username" class="form-control input-style" placeholder="Enter your user name" [ngClass]="{ 'is-invalid': submitted && fval.username.errors }" />
+                        <div *ngIf="submitted && fval.username.errors" class="invalid-feedback">
+                          <div *ngIf="fval.username.errors.required">
+                            Username is required
+                          </div>
+                          <div *ngIf="fval.username.errors.pattern">
+                            Space not included in Username
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-12">
+                      <div class="form-group">
+                        <label>Password<span>*</span></label>
+                        <input type="password" formControlName="password" class="form-control input-style" placeholder="Enter your password" [ngClass]="{ 'is-invalid': submitted && fval.password.errors }"/>
+                        <div *ngIf="submitted && fval.password.errors" class="invalid-feedback">
+                          <div *ngIf="fval.password.errors.required">
+                            Password is required
+                          </div>
+                          <div *ngIf="fval.password.errors.minlength">Password must be at least 6 characters</div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-12">
+                      <label>Captcha<span>*</span></label>
+                      <div class="input-group mb-3">
+                        <input type="text" formControlName="captcha" class="form-control input-style" placeholder="Enter captcha" [ngClass]="{ 'is-invalid': submitted && fval.captcha.errors }" />
+                        <div class="input-group-append">
+                          <span class="input-group-text">{{randomcaptcha}}</span>
+                        </div>
+                        <div *ngIf="submitted && fval.captcha.errors" class="invalid-feedback">
+                          <div *ngIf="fval.captcha.errors.required">
+                            Captcha is required
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-12">
+                      <div class="form-group row">
+                        <div class="col-sm-6 filter-check-new">
+                        </div>
+                        <div class="col-sm-6 text-sm-right text-center mt-sm-0 mt-2">
+                          <a routerLink="/admin/forgot-password" class="frt-link">Forgot Password?</a>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-12">
+                      <div class="btn-class text-center py-md-5 py-3">
+                        <button type="submit" class="btn btn-dash"><span>Login</span></button>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

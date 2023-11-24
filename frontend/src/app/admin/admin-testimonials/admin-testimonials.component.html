@@ -1,0 +1,66 @@
+<div class="dash-wrapper admin-panel-content">
+  <app-admin-header></app-admin-header>
+  <app-admin-sidebar></app-admin-sidebar>
+  <main class="content-wrapper-section">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-12">
+          <div class="inr-title-comn d-flex align-items-center">
+            <h3>Testimonials</h3>
+            <div class="inr-title-btn ml-auto mt-0">
+              <a routerLink="/admin/testimonials/add-testimonials" class="btn btn-inr-top m-0">Add Testimonial</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-12">
+          <div class="dash-box-white">
+            <div class="table-responsive">
+              <table datatable [dtOptions]='dtOptions' class="display">
+                <thead>
+                <tr>
+                  <th>Picture</th>
+                  <th>Name</th>
+                  <th>Title</th>
+                  <th>Description</th>
+                  <th>Date</th>
+                  <th class="no-search-filter">Status</th>
+                  <th class="no-search-filter">Action</th>
+                </tr>
+                </thead>
+                <tbody *ngIf="getlist?.length>0">
+                <tr *ngFor="let item of getlist">
+                  <td><img src="{{environment+''+item.profile}}" alt="" width="100px" height="100px"></td>
+                  <td>{{item.name}}</td>
+                  <td>{{item.title}}</td>
+                  <td class="fix-wdth-dis">{{item.description}}</td>
+                  <td>{{item.created_at | date}}</td>
+                  <td>
+                    <div class="custom-control custom-switch">
+                      <input type="checkbox" class="custom-control-input" id="customSwitch_{{item.testimonialsId}}" (click)="change_status(item.testimonialsId)" [checked]="item.status == 1"/>
+                      <label class="custom-control-label" for="customSwitch_{{item.testimonialsId}}">Active</label>
+                    </div>
+                  </td>
+                  <td>
+                    <a [routerLink]="['/admin/testimonials/edit-testimonials',item.testimonialsId]">
+                      <img src="assets/images/icon/edit-icon-table.svg" class="mx-2 table-img-inr" alt="" />
+                    </a>
+                    <a  (click)="delete_testimonials(item)">
+                      <img src="assets/images/icon/delete-icon.svg" class="mx-2 table-img-inr" alt="" />
+                    </a>
+                  </td>
+                </tr>
+                </tbody>
+                <tbody *ngIf="getlist?.length == 0">
+                <tr>
+                  <td colspan="7" class="no-data-available">No data!</td>
+                </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="overlay toggle-icon-main"></div>
+  </main>
+</div>

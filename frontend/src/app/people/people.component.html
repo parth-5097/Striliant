@@ -1,0 +1,346 @@
+<div class="dash-wrapper">
+  <app-header></app-header>
+  <app-sidebar></app-sidebar>
+  <main class="content-wrapper-section">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-12">
+          <div class="inr-title-comn d-lg-flex align-items-center">
+            <h3>People</h3>
+            <div class="sprt-menu-top mx-auto cust-tabs-inr mt-3 mt-lg-0">
+              <ul class="nav nav-pills justify-content-center" id="pills-tab" role="tablist">
+                <li class="nav-item" role="presentation">
+                  <a class="nav-link active" id="pills-Contacts-tab" data-toggle="pill" href="#pills-Contacts" role="tab" aria-controls="pills-Contacts" aria-selected="true">My Contacts</a>
+                </li>
+                <li class="nav-item" role="presentation">
+                  <a class="nav-link" id="pills-Directory-tab" data-toggle="pill" href="#pills-Directory" role="tab" aria-controls="pills-Directory" aria-selected="false">
+                    Member Directory
+                  </a>
+                </li>
+                <li class="nav-item" role="presentation">
+                  <a class="nav-link" id="pills-Items-tab" data-toggle="pill" href="#pills-Items" role="tab" aria-controls="pills-Items" aria-selected="false">
+                    Items Shared
+                  </a>
+                </li>
+                <li class="nav-item" role="presentation">
+                  <a class="nav-link" id="pills-Leads-tab" data-toggle="pill" href="#pills-Leads" role="tab" aria-controls="pills-Leads" aria-selected="false">
+                    Leads
+                  </a>
+                </li>
+                <li class="nav-item" role="presentation">
+                  <a class="nav-link" id="pills-Lists-tab" data-toggle="pill" href="#pills-Lists" role="tab" aria-controls="pills-Lists" aria-selected="false">
+                    Lists
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="col-12">
+          <div class="tab-content" id="pills-tabContent">
+            <div class="tab-pane fade show active" id="pills-Contacts" role="tabpanel" aria-labelledby="pills-Contacts-tab">
+              <div class="row mr-0">
+                <div class="col-xl-4 col-lg-4 pr-0">
+                  <div class="dash-box-white h-100">
+                    <div class="pel-main-section">
+                      <div class="d-flex align-items-center pel-main-section-hdr mb-3">
+                        <img src="assets/images/icon/info-icon.svg" alt="" />
+                        <span>20/20emails left</span>
+                      </div>
+                      <div class="pel-main-section-body">
+                        <a href="" class="mb-3">
+                          All Contacts
+                        </a>
+                        <button type="submit" class="btn btn-new-tag">Create a new tag</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-xl-8 col-lg-8 mt-lg-3 mt-3 mt-xl-0 pr-0">
+                  <div class="dash-box-white h-100">
+                    <div class="comn-white-box-table">
+                      <div class="table-filter-div position-static mb-3 d-md-flex d-block">
+                        <div class="news-section-hdr-src-box mr-md-5 mb-3 mb-md-0">
+                          <div class="input-group">
+                            <input type="text" class="form-control" placeholder="Search a Contact Name........" />
+                            <div class="input-group-append">
+                                                        <span class="input-group-text">
+                                                            <button type="button">
+                                                                <img src="assets/images/icon/search-icon.svg" alt="" />
+                                                            </button>
+                                                        </span>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="table-filter-btn-main d-flex align-items-center ml-auto justify-content-center">
+                          <button type="button" class="table-filter-btn w-auto px-3 py-4">
+                            <img src="assets/images/icon/megaphone.svg" alt="" />
+                            <span class="ml-2">New Email Campaign</span>
+                          </button>
+                          <div class="dropdown">
+                            <button type="button" class="table-filter-btn py-4 px-4 ml-2" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                              <img src="assets/images/icon/add-user.svg" alt="" />
+                            </button>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                              <a class="dropdown-item" href="#" data-toggle="modal" data-target="#new-contact-modal">Create New Contact</a>
+                              <a class="dropdown-item" href="#" data-toggle="modal" data-target="#Import-modal">Import from CSV File</a>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <table id="people-list" class="display">
+                        <thead>
+                        <tr>
+                          <th>Name</th>
+                          <th>Company</th>
+                          <th>Telephone</th>
+                          <th>Next Follow Up</th>
+                          <th>Email</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                          <td>John</td>
+                          <td>Gem Diamond</td>
+                          <td>991456321</td>
+                          <td>Lorem ipsum is a dummy text.</td>
+                          <td>Johndoe12@gmail.com</td>
+                        </tr>
+                        <tr>
+                          <td>John</td>
+                          <td>Gem Diamond</td>
+                          <td>991456321</td>
+                          <td>Lorem ipsum is a dummy text.</td>
+                          <td>Johndoe12@gmail.com</td>
+                        </tr>
+                        <tr>
+                          <td>John</td>
+                          <td>Gem Diamond</td>
+                          <td>991456321</td>
+                          <td>Lorem ipsum is a dummy text.</td>
+                          <td>Johndoe12@gmail.com</td>
+                        </tr>
+                        <tr>
+                          <td>John</td>
+                          <td>Gem Diamond</td>
+                          <td>991456321</td>
+                          <td>Lorem ipsum is a dummy text.</td>
+                          <td>Johndoe12@gmail.com</td>
+                        </tr>
+                        <tr>
+                          <td>John</td>
+                          <td>Gem Diamond</td>
+                          <td>991456321</td>
+                          <td>Lorem ipsum is a dummy text.</td>
+                          <td>Johndoe12@gmail.com</td>
+                        </tr>
+                        <tr>
+                          <td>John</td>
+                          <td>Gem Diamond</td>
+                          <td>991456321</td>
+                          <td>Lorem ipsum is a dummy text.</td>
+                          <td>Johndoe12@gmail.com</td>
+                        </tr>
+                        <tr>
+                          <td>John</td>
+                          <td>Gem Diamond</td>
+                          <td>991456321</td>
+                          <td>Lorem ipsum is a dummy text.</td>
+                          <td>Johndoe12@gmail.com</td>
+                        </tr>
+                        <tr>
+                          <td>John</td>
+                          <td>Gem Diamond</td>
+                          <td>991456321</td>
+                          <td>Lorem ipsum is a dummy text.</td>
+                          <td>Johndoe12@gmail.com</td>
+                        </tr>
+                        <tr>
+                          <td>John</td>
+                          <td>Gem Diamond</td>
+                          <td>991456321</td>
+                          <td>Lorem ipsum is a dummy text.</td>
+                          <td>Johndoe12@gmail.com</td>
+                        </tr>
+                        <tr>
+                          <td>John</td>
+                          <td>Gem Diamond</td>
+                          <td>991456321</td>
+                          <td>Lorem ipsum is a dummy text.</td>
+                          <td>Johndoe12@gmail.com</td>
+                        </tr>
+                        <tr>
+                          <td>John</td>
+                          <td>Gem Diamond</td>
+                          <td>991456321</td>
+                          <td>Lorem ipsum is a dummy text.</td>
+                          <td>Johndoe12@gmail.com</td>
+                        </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="tab-pane fade" id="pills-Directory" role="tabpanel" aria-labelledby="pills-Directory-tab">
+              2
+            </div>
+            <div class="tab-pane fade" id="pills-Items" role="tabpanel" aria-labelledby="pills-Items-tab">
+              3
+            </div>
+            <div class="tab-pane fade" id="pills-Leads" role="tabpanel" aria-labelledby="pills-Leads-tab">
+              4
+            </div>
+            <div class="tab-pane fade" id="pills-Lists" role="tabpanel" aria-labelledby="pills-Lists-tab">
+              5
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="overlay toggle-icon-main"></div>
+  </main>
+
+  <div class="modal fade" id="new-contact-modal" tabindex="-1" aria-labelledby="new-contact-modal" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content">
+        <div class="modal-header align-items-center">
+          <h5 class="modal-title">New Contact</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body p-4">
+          <form class="filter-src-row p-0 border-0 row">
+            <div class="col-md-6">
+              <div class="form-group">
+                <label>First Name <span>*</span></label>
+                <input type="text" class="form-control input-style" name="" placeholder="" />
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <label>Last Name</label>
+                <input type="text" class="form-control input-style" name="" placeholder="" />
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <label>Email </label>
+                <input type="email" class="form-control input-style" name="" placeholder="" />
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <label>Phone Number</label>
+                <div class="row mr-0">
+                  <div class="col-3 pr-0">
+                    <input type="tel" class="form-control input-style" name="" placeholder="" />
+                  </div>
+                  <div class="col-9 pr-0">
+                    <input type="text" class="form-control input-style" name="" placeholder="" />
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <label>WhatsApp</label>
+                <div class="row mr-0">
+                  <div class="col-3 pr-0">
+                    <input type="tel" class="form-control input-style" name="" placeholder="" />
+                  </div>
+                  <div class="col-9 pr-0">
+                    <input type="text" class="form-control input-style" name="" placeholder="" />
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <label>Fax</label>
+                <div class="row mr-0">
+                  <div class="col-3 pr-0">
+                    <input type="tel" class="form-control input-style" name="" placeholder="" />
+                  </div>
+                  <div class="col-9 pr-0">
+                    <input type="text" class="form-control input-style" name="" placeholder="" />
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <label>Job Title</label>
+                <input type="text" class="form-control input-style" name="" placeholder="" />
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <label>Company Name</label>
+                <input type="text" class="form-control input-style" name="" placeholder="" />
+              </div>
+            </div>
+            <div class="col-md-12">
+              <div class="form-group">
+                <label>Address</label>
+                <input type="text" class="form-control input-style" name="" placeholder="" id="phone" />
+              </div>
+            </div>
+            <div class="col-12">
+              <div class="form-group mb-0 text-center py-3">
+                <button type="button" class="btn btn-cancel" data-dismiss="modal">cancel</button>
+                <button type="button" class="btn btn-save">save</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="Import-modal" tabindex="-1" aria-labelledby="Import-modal" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content">
+        <div class="modal-header align-items-center">
+          <h5 class="modal-title">Import Contacts from CSV File</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form class="row">
+            <div class="col-12">
+              <div class="mdl-info">
+                <p>Import your contact list from an existing file</p>
+                <div class="file-area mb-3">
+                  <input type="file" name="images" id="images" required="required" multiple="multiple" />
+                  <div class="file-dummy">
+                    <div class="success">Great, your files are selected. Keep on.</div>
+                    <div class="default">Please select some files</div>
+                  </div>
+                </div>
+                <span>If needed, please first download our <a href="">CSV template</a></span>
+                <div class="cust-checkbox-new text-center my-2">
+                  <label class="cust-chk-bx">
+                    <input type="checkbox" />
+                    <span class="cust-chkmark"></span>
+                    Update an existing contact’s information based on their email address
+                  </label>
+                  <a href="">Learn More</a>
+                </div>
+              </div>
+            </div>
+            <div class="col-12">
+              <div class="form-group mb-0 text-center py-3 pt-0">
+                <button type="button" class="btn btn-cancel" data-dismiss="modal">cancel</button>
+                <button type="button" class="btn btn-save">Import</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

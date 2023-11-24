@@ -1,0 +1,131 @@
+<header class="header-fixed">
+  <div class="row header-navigation-wrappar">
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <div class="navigation-top text-center">
+            <p>Real is rare. rare Lasts Forever.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row header-menu">
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <div class="header-main">
+            <div class="header-logo">
+              <a routerLink="/home">
+                <img src="assets/images/logo/logo.svg" alt="">
+              </a>
+            </div>
+            <div class="header-menu-links-inr">
+              <ul class="">
+                <li>
+                  <a routerLinkActive="active" routerLink="/home">Home</a>
+                </li>
+                <li class="dropdown-hover">
+                  <a
+                    [ngClass]="(CurrentUrl == '/company-profile' || CurrentUrl == '/founders-message' || CurrentUrl == '/our-team' || CurrentUrl == '/brands-entity') ? 'active' : ''">About
+                    Us
+                    <i class="fa fa-caret-down" aria-hidden="true"></i>
+                  </a>
+                  <div class="dropdown-main-div">
+                    <ul>
+                      <li>
+                        <a routerLinkActive="active" routerLink="/company-profile">Company Profile</a>
+                      </li>
+                      <li>
+                        <a routerLinkActive="active" routerLink="/founders-message">Founder’s Message</a>
+                      </li>
+                      <li>
+                        <a routerLinkActive="active" routerLink="/our-team">Our Team</a>
+                      </li>
+                    </ul>
+                  </div>
+                </li>
+                <li class="dropdown-hover postion-unset-class">
+                  <a routerLinkActive="active" data-toggle="collapse" class="" aria-expanded="false"
+                     href="#brands-entity">our Brands
+                    <i class="fa fa-caret-down" aria-hidden="true"></i>
+                  </a>
+                  <div class="sub-menu-main collapse" id="brands-entity">
+                    <div class="p-xl-3 w-100">
+                      <div class="row">
+                        <div class="col-lg-6 p-0-class">
+                          <div class="inr-submenu-dropdown">
+                            <ul id="hoverable-megamenu">
+                              <li>
+                                <a href="javascript:void(0)" (mouseover)="this.changeImg = 1">Diamonds</a>
+                              </li>
+                              <li>
+                                <a href="javascript:void(0)" (mouseover)="this.changeImg = 2">Jewelry
+                                </a>
+                              </li>
+                              <li>
+                                <a href="javascript:void(0)" (mouseover)="this.changeImg = 3">Textile
+                                </a>
+                              </li>
+                            </ul>
+                            <a routerLink="/brands-entity" class="btm-link">Brands Entity</a>
+                          </div>
+                        </div>
+                        <div class="col-lg-6">
+                          <div class="mt-3 mt-lg-0 images-tans-class">
+                            <img src="assets/images/diamonds-drop-image.png" alt="" *ngIf="changeImg == 1">
+                            <img src="assets/images/jewelry-drop-image.png" alt="" *ngIf="changeImg == 2">
+                            <img src="assets/images/textile-drop-image.png" alt="" *ngIf="changeImg == 3">
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </li>
+                <li class="dropdown-hover">
+                  <a
+                    [ngClass]="(CurrentUrl == '/our-story') ? 'active' : ''">our story
+                    <i class="fa fa-caret-down" aria-hidden="true"></i>
+                  </a>
+                  <div class="dropdown-main-div">
+                    <ul>
+                      <li>
+                        <a routerLinkActive="active" routerLink="/our-story">Kukadia Corporation</a>
+                      </li>
+                    </ul>
+                  </div>
+                </li>
+                <li>
+                  <a routerLinkActive="active" routerLink="/grading">K’s Grading</a>
+                </li>
+                <li *ngIf="blogActive == 1">
+                  <a routerLinkActive="active" routerLink="/blog">blog</a>
+                </li>
+                <li>
+                  <a routerLinkActive="active" routerLink="/contact-us">Contact Us</a>
+                </li>
+                <li>
+                  <a routerLinkActive="active" routerLink="/login" class="btn">LOGIN</a>
+                </li>
+                <li>
+                  <a routerLinkActive="active" routerLink="/register" class="btn">REGISTER</a>
+                </li>
+              </ul>
+            </div>
+            <div class="menu-togle-new">
+              <div class="hamburger-menu-cust">
+                <a href="javascript:void(0)">
+                  <div class="hamburger">
+                    <span class="line"></span>
+                    <span class="line"></span>
+                    <span class="line"></span>
+                  </div>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>

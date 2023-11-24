@@ -1,0 +1,85 @@
+<div class="dash-wrapper admin-panel-content">
+  <app-admin-header></app-admin-header>
+  <app-admin-sidebar></app-admin-sidebar>
+  <main class="content-wrapper-section">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-12">
+          <div class="inr-title-comn">
+            <h3>Reports</h3>
+          </div>
+        </div>
+        <div class="col-12">
+          <div class="dash-box-white">
+            <form [formGroup]="AddForm" (ngSubmit)="onSubmit()">
+              <div class="customer-inr-sec">
+                <div class="row mt-4">
+                  <div class="col-md-6 form-group">
+                    <select class="custom-select form-control input-style" formControlName="folder"
+                            [ngClass]="{ 'is-invalid': submitted && fval.folder.errors }">
+                      <option selected="" value="">Select Folder.....</option>
+                      <option value="GIA">GIA</option>
+                      <option value="AGS">AGS</option>
+                      <option value="CGL">CGL</option>
+                      <option value="DCLA">DCLA</option>
+                      <option value="GCAL">GCAL</option>
+                      <option value="GSI">GSI</option>
+                      <option value="HRD">HRD</option>
+                      <option value="IGI">IGI</option>
+                      <option value="NGTC">NGTC</option>
+                      <option value="PGS">PGS</option>
+                      <option value="VGR">VGR</option>
+                      <option value="RDC">RDC</option>
+                      <option value="RDR">RDR</option>
+                      <option value="GHI">GHI</option>
+                      <option value="DBGIS">DBGIS</option>
+                      <option value="SGL">SGL</option>
+                    </select>
+                    <div *ngIf="submitted && fval.folder.errors" class="invalid-feedback">
+                      <div *ngIf="fval.folder.errors.required">
+                        Folder is required
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-6 form-group">
+                    <input type="file" class="form-control input-style" (change)="onFileChange($event)"
+                           formControlName="upload_file" placeholder="Upload File"
+                           [ngClass]="{ 'is-invalid': submitted && fval.upload_file.errors }" accept="application/pdf"
+                           multiple/>
+                    <div *ngIf="submitted && fval.upload_file.errors" class="invalid-feedback">
+                      <div *ngIf="fval.upload_file.errors.required">
+                        Upload File is required
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-12 form-group">
+                    <div class="row" *ngIf="images.length>0">
+                      <div class="col-12">
+                        <ul class="pdf-list-file">
+                          <li *ngFor='let img of images;let indexOfelement=index;'>
+                            <a href="javascript:void(0)" class="image-area d-flex align-items-center position-relative">
+                              <img src="assets/images/icon/pdf-file.svg" alt="">
+                              <span class="mx-2">{{img.name}}</span>
+                              <div class="close-top-icon" (click)="removeimgefromarray(indexOfelement)">
+                                <img src="assets/images/icon/close-icon.svg" alt="">
+                              </div>
+                            </a>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="btn-btm-inr-tabs text-center mt-sm-5 mt-3">
+                <button type="submit" class="btn btn-inr-top mr-sm-4 mr-2">Submit</button>
+                <button type="reset" class="btn  btn-reset" routerLink="/admin/upload-reports">Cancel</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="overlay toggle-icon-main"></div>
+  </main>
+</div>

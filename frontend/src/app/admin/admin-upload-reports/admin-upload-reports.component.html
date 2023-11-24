@@ -1,0 +1,42 @@
+<div class="dash-wrapper admin-panel-content">
+  <app-admin-header></app-admin-header>
+  <app-admin-sidebar></app-admin-sidebar>
+  <main class="content-wrapper-section">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-12">
+          <div class="inr-title-comn d-flex align-items-center">
+            <h3>Upload Reports</h3>
+            <div class="inr-title-btn ml-auto mt-0">
+              <a routerLink="/admin/upload-reports/add-reports" class="btn btn-inr-top m-0">Add Reports</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-12">
+          <div class="dash-box-white">
+            <table class="display">
+              <thead>
+              <tr>
+                <th class="no-search-filter">Folder Name</th>
+              </tr>
+              </thead>
+              <tbody *ngIf="folderList?.length>0">
+              <tr *ngFor="let item of folderList">
+                <td>
+                  <a [routerLink]="['/admin/upload-reports/report-details',item]">{{item}}</a>
+                </td>
+              </tr>
+              </tbody>
+              <tbody *ngIf="folderList?.length == 0">
+              <tr>
+                <td colspan="1" class="no-data-available">No data available!</td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="overlay toggle-icon-main"></div>
+  </main>
+</div>

@@ -1,0 +1,16 @@
+@media(max-width: 991px){
+  .abt-sec-text {
+    padding-bottom: 100px;
+  }
+}
+
+@media(max-width: 767px){
+  .abt-sec-text {
+    padding-bottom: 50px;
+  }
+
+  .ring-shap-pos {
+    top: -30px;
+  }
+}
+

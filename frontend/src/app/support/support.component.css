@@ -1,0 +1,304 @@
+.sprt-menu-top ul li a {
+  background: #ffffff;
+  border: 0.5px solid #cbd5dc;
+  color: var(--color-dark);
+  font-weight: 500;
+  display: inline-block;
+  padding: 5px 15px 7px 15px;
+  font-size: 14px;
+  transition: all 0.3s;
+  -webkit-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  -o-transition: all 0.3s;
+  -ms-transition: all 0.3s;
+  text-transform: capitalize;
+}
+
+.sprt-menu-top ul li a:hover {
+  background: var(--thm-color);
+  color: var(--color-white);
+}
+
+.sprt-menu-top ul li a.active {
+  background: var(--thm-color);
+  color: var(--color-white);
+}
+
+.sprt-menu-top ul li:first-child a {
+  border-radius: 6px 0px 0px 6px;
+  -webkit-border-radius: 6px 0px 0px 6px;
+  -moz-border-radius: 6px 0px 0px 6px;
+  border-right: 0;
+
+}
+
+.sprt-menu-top ul li:last-child a {
+  border-radius: 0px 6px 6px 0px;
+  -webkit-border-radius: 0px 6px 6px 0px;
+  -moz-border-radius: 0px 6px 6px 0px;
+  border-left: 0;
+}
+
+.sprt-top-text p {
+  color: #232323;
+  margin-bottom: 0;
+  font-weight: 500;
+  font-size: 14px;
+}
+
+.sprt-top-text span a {
+  color: var(--thm-color);
+  font-weight: 500;
+  border-left: 1px solid rgba(112, 112, 112, 0.14);
+  padding-left: 15px;
+  margin-left: 50px;
+  display: inline-block;
+  text-decoration: underline;
+}
+
+.support-white-bx .dash-location-tabs-inr .nav-link {
+  font-weight: 500;
+  text-transform: uppercase;
+  font-size: 14px;
+  color: var(--color-dark);
+  background: transparent;
+  border: 0 !important;
+}
+
+.support-white-bx .dash-location-tabs-inr .nav-link.active {
+  color: var(--thm-color);
+  background: transparent;
+  text-decoration: underline;
+}
+
+.spt-btm-box-main-icon p {
+  margin-bottom: 0;
+  color: #3c3d3c;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.spt-btm-box-main-icon {
+  background: #f8f8f8;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 50%;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  width: 80px;
+  height: 80px;
+  text-align: center;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.spt-btm-box-main-icon img {
+  width: 30px;
+}
+
+.spt-btm-box-main p {
+  margin: 15px 0 0 0;
+  font-weight: 500;
+  color: #3c3d3c;
+}
+
+.spt-btm-box-main {
+  padding: 0 30px;
+}
+
+.bdr-right {
+  position: relative;
+}
+
+.bdr-right:before {
+  position: absolute;
+  content: "";
+  background: rgba(112, 112, 112, 0.14);
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  height: 100%;
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+.chat-icon-right-btn {
+  background: var(--thm-color);
+  color: var(--color-white);
+  padding: 10px 25px;
+  font-size: 15px;
+  border-radius: 5px;
+  font-weight: 500;
+  text-transform: capitalize;
+  cursor: pointer;
+}
+
+.news-section-tabs-new .nav-link {
+  color: var(--color-dark);
+  background: transparent;
+  border-radius: 0;
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  text-transform: capitalize;
+  font-size: 13px;
+  padding: 10px 16px;
+  font-weight: 600;
+  border: 1px solid #cbd5dc;
+  border-left: 0;
+}
+
+.news-section-tabs-new .nav-link.active {
+  background: var(--thm-color);
+  color: var(--color-white);
+}
+
+.news-section-tabs-new .nav-item:first-child a {
+  border-radius: 5px 0px 0px 5px;
+  -webkit-border-radius: 5px 0px 0px 5px;
+  -moz-border-radius: 5px 0px 0px 5px;
+  border-right: 0;
+  border-left: 0.429602px solid #cbd5dc;
+}
+
+.news-section-tabs-new .nav-item:last-child a {
+  border-radius: 0px 5px 5px 0px;
+  -webkit-border-radius: 0px 5px 5px 0px;
+  -moz-border-radius: 0px 5px 5px 0px;
+  border-left: 0 !important;
+}
+
+.support-white-bx {
+  position: relative;
+}
+
+.pos-new-class {
+  position: absolute;
+  bottom: 30%;
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
+  z-index: 1;
+}
+
+.support-white-bx-class-new {
+  background: #ffffff;
+  box-shadow: 0px 3.43681px 31.7905px rgba(0, 0, 0, 0.08);
+  -webkit-box-shadow: 0px 3.43681px 31.7905px rgba(0, 0, 0, 0.08);
+  -moz-box-shadow: 0px 3.43681px 31.7905px rgba(0, 0, 0, 0.08);
+  padding: 20px 35px 35px 35px;
+  padding-top: 100px;
+  margin-left: 70px;
+  margin-right: 70px;
+  margin-top: -150px;
+  position: relative;
+}
+
+.spt-btm-box-main:hover .spt-btm-box-main-icon {
+  background-color: var(--thm-color);
+}
+
+.spt-btm-box-main:hover .spt-btm-box-main-icon img {
+  filter: brightness(0) invert(1);
+  -webkit-filter: brightness(0) invert(1);
+  -moz-filter: brightness(0) invert(1);
+}
+
+@media (max-width: 1199px) {
+  .sprt-top-text span a {
+    margin-left: 0;
+  }
+
+  .spt-btm-box-main {
+    padding: 0 0;
+  }
+
+  .support-white-bx {
+    padding: 35px 5px;
+  }
+}
+
+@media (max-width: 991px) {
+  .support-white-bx-class-new {
+    margin-left: 0;
+    margin-right: 0;
+  }
+}
+
+@media (max-width: 767px) {
+  .spt-btm-box-main {
+    margin-bottom: 2em;
+  }
+
+  .dash-comn-tabs ul {
+    justify-content: center;
+  }
+
+  .sprt-top-text span a {
+    margin: 10px 0;
+    padding: 0 0 0 10px;
+  }
+
+  .chat-icon-right-btn {
+    display: inline-flex !important;
+  }
+
+  .support-white-bx .dash-location-tabs .nav-link {
+    border: 0 !important;
+  }
+
+  .support-white-bx .dash-location-tabs .nav-link.active {
+    border-radius: 5px !important;
+  }
+
+  .support-white-bx-class-new {
+    padding: 20px;
+    margin-top: 0;
+  }
+
+  .pos-new-class {
+    position: unset;
+  }
+}
+
+@media (max-width: 575px) {
+  .sprt-menu-top {
+    margin-top: 15px;
+  }
+
+  .sprt-menu-top ul li {
+    -ms-flex-preferred-size: 0;
+    flex-basis: 0;
+    -ms-flex-positive: 1;
+    flex-grow: 1;
+    max-width: 100%;
+    text-align: center;
+  }
+
+  .sprt-menu-top ul li a {
+    display: block;
+    padding: 10px 5px;
+    font-size: 12px;
+  }
+
+  .dash-comn-tabs .nav-link {
+    font-size: 13px;
+    padding: 10px 5px;
+  }
+
+  .support-white-bx .dash-location-tabs-inr .nav-link {
+    padding: 10px;
+  }
+
+  .news-section-tabs-new ul {
+    overflow-x: auto;
+    white-space: nowrap;
+    display: block;
+  }
+
+  .news-section-tabs-new ul li {
+    display: inline-block;
+  }
+}

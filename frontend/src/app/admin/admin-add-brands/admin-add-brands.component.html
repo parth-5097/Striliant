@@ -1,0 +1,49 @@
+<div class="dash-wrapper admin-panel-content">
+  <app-admin-header></app-admin-header>
+  <app-admin-sidebar></app-admin-sidebar>
+  <main class="content-wrapper-section">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-12">
+          <div class="inr-title-comn">
+            <h3>{{title}} Brand</h3>
+          </div>
+        </div>
+        <div class="col-12">
+          <div class="dash-box-white">
+            <form [formGroup]="AddForm" (ngSubmit)="onSubmit()">
+              <div class="customer-inr-sec">
+                <div class="row mt-4">
+                  <div class="col-md-12 form-group">
+                    <input type="text" formControlName="title" class="form-control input-style-admin" placeholder="Title" [ngClass]="{ 'is-invalid': submitted && fval.title.errors }"/>
+                    <div *ngIf="submitted && fval.title.errors" class="invalid-feedback">
+                      <div *ngIf="fval.title.errors.required">
+                        Title is required
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-12 form-group">
+                    <input type="file" (change)="upload_photo($event)" formControlName="image" class="form-control input-style-admin" [ngClass]="{ 'is-invalid': submitted && fval.image.errors }"/>
+                    <div *ngIf="submitted && fval.image.errors" class="invalid-feedback">
+                      <div *ngIf="fval.image.errors.required">
+                        Image is required
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-12 form-group" *ngIf="brand_img">
+                    <img src="{{brand_img}}" class="img-fluid fix-image-class-admin" alt="" />
+                  </div>
+                </div>
+              </div>
+              <div class="btn-btm-inr-tabs text-center mt-sm-5 mt-3">
+                <button type="submit" class="btn btn-inr-top mr-sm-4  mr-2">Submit</button>
+                <button type="reset" class="btn btn-reset" routerLink="/admin/brands">Cancel</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="overlay toggle-icon-main"></div>
+  </main>
+</div>

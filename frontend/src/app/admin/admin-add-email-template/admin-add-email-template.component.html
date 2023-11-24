@@ -1,0 +1,67 @@
+<div class="dash-wrapper admin-panel-content">
+  <app-admin-header></app-admin-header>
+  <app-admin-sidebar></app-admin-sidebar>
+  <main class="content-wrapper-section">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-12">
+          <div class="inr-title-comn">
+            <h3>{{title}} Templates</h3>
+          </div>
+        </div>
+        <div class="col-12">
+          <div class="dash-box-white">
+            <form [formGroup]="AddForm" (ngSubmit)="onSubmit()">
+              <div class="customer-inr-sec">
+                <div class="row mt-4">
+                  <div class="col-md-12 form-group">
+                    <input type="text" formControlName="email_name" class="form-control input-style-admin" placeholder="Email Title" [ngClass]="{ 'is-invalid': submitted && fval.email_name.errors }"/>
+                    <div *ngIf="submitted && fval.email_name.errors" class="invalid-feedback">
+                      <div *ngIf="fval.email_name.errors.required">
+                        Title is required
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-12 form-group">
+                    <input type="text" formControlName="email_subject" class="form-control input-style-admin" placeholder="Email Subject" [ngClass]="{ 'is-invalid': submitted && fval.email_subject.errors }"/>
+                    <div *ngIf="submitted && fval.email_subject.errors" class="invalid-feedback">
+                      <div *ngIf="fval.email_subject.errors.required">
+                        Subject is required
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-12 form-group">
+<!--                    <textarea-->
+<!--                      class="form-control input-style-admin h-auto"-->
+<!--                      rows="6"-->
+<!--                      formControlName="email_content"-->
+<!--                      placeholder="Email Content"-->
+<!--                      [ngClass]="{ 'is-invalid': submitted && fval.email_content.errors }"-->
+<!--                    ></textarea>-->
+                    <ckeditor
+                      formControlName="email_content"
+                      name="myckeditor"
+                      [config]="ckeConfig"
+                      [ngClass]="{ 'is-invalid': submitted && fval.email_content.errors }"
+                      debounce="500">
+                    </ckeditor>
+                    <div *ngIf="submitted && fval.email_content.errors" class="invalid-feedback">
+                      <div *ngIf="fval.email_content.errors.required">
+                        Content is required
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="btn-btm-inr-tabs text-center mt-sm-5 mt-3">
+                <button type="submit" class="btn btn-inr-top mr-sm-4 mr-2">Submit</button>
+                <button type="reset" class="btn btn-reset" routerLink="/admin/email-templates">Cancel</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="overlay toggle-icon-main"></div>
+  </main>
+</div>

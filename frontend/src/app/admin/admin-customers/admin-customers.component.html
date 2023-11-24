@@ -1,0 +1,313 @@
+<div class="dash-wrapper admin-panel-content">
+  <app-admin-header></app-admin-header>
+  <app-admin-sidebar></app-admin-sidebar>
+  <main class="content-wrapper-section">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-12">
+          <div class="inr-title-comn d-sm-flex align-items-center">
+            <h3>customers</h3>
+            <div class="inr-title-btn ml-auto">
+              <button (click)="export_csv()" type="button" class="btn btn btn-reset mr-sm-2">Export</button>
+              <a routerLink="/admin/customers/add-customer" class="btn btn-inr-top">Add customer</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-12">
+          <div class="dash-box-white">
+            <ul class="nav nav-pills news-section-tabs-new" role="tablist">
+              <li class="nav-item" role="presentation">
+                <a class="nav-link active" [ngClass]="{'active': step==1}" (click)="check_step(1)" aria-selected="true">All Customers</a>
+              </li>
+              <li class="nav-item" role="presentation">
+                <a class="nav-link border-left" [ngClass]="{'active': step==2}" (click)="check_step(2)" aria-selected="false">
+                  Abandoned checkouts
+                </a>
+              </li>
+              <li class="nav-item" role="presentation">
+                <a class="nav-link" [ngClass]="{'active': step==3}" (click)="check_step(3)" aria-selected="false">
+                  Email subscribers
+                </a>
+              </li>
+            </ul>
+<!--            <div class="my-4 row align-items-center">-->
+<!--              <div class="col-xl-5 col-lg-4 col-md-3">-->
+<!--                <div class="input-group">-->
+<!--                  <input type="text" value="" class="form-control input-style border-right-0" placeholder="Filter customers...." />-->
+<!--                  <div class="input-group-prepend">-->
+<!--                    <span class="input-group-text border-right">-->
+<!--                        <img src="assets/images/icon/search-icon.svg" alt="" />-->
+<!--                    </span>-->
+<!--                  </div>-->
+<!--                </div>-->
+<!--              </div>-->
+<!--              <div class="col-xl-7 col-lg-8 col-md-9 mt-3 mt-md-0">-->
+<!--                <ul class="d-sm-flex custom-row-colmn">-->
+<!--                  <li class="col">-->
+<!--                    <select class="custom-select form-control input-style-admin">-->
+<!--                      <option selected="">Email subscription status</option>-->
+<!--                      <option value="1">Subscribed</option>-->
+<!--                      <option value="2">Pending confirmation</option>-->
+<!--                      <option value="3">Not subscribed</option>-->
+<!--                      <option value="4">Clear</option>-->
+<!--                    </select>-->
+<!--                  </li>-->
+<!--                  <li class="col">-->
+<!--                    <select class="custom-select form-control input-style-admin">-->
+<!--                      <option selected="">Customer account status</option>-->
+<!--                      <option value="1">1</option>-->
+<!--                      <option value="2">2</option>-->
+<!--                      <option value="3">3</option>-->
+<!--                    </select>-->
+<!--                  </li>-->
+<!--                  <li class="col fix-colmn">-->
+<!--                    <div class="savd-icon-div2 text-center">-->
+<!--                      <a href="javascript:void(0)" data-toggle="modal" data-target="#filters-modal">-->
+<!--                        <img src="assets/images/icon/filter-icon.svg" class="mr-1" alt="" />-->
+<!--                      </a>-->
+<!--                    </div>-->
+<!--                  </li>-->
+<!--                  <li class="col fix-colmn-star">-->
+<!--                    <div class="savd-icon-div">-->
+<!--                      <a href="" class="d-flex align-items-center">-->
+<!--                        <img src="assets/images/icon/star-icon.svg" class="mr-1" alt="" />-->
+<!--                        <span>Saved</span>-->
+<!--                      </a>-->
+<!--                    </div>-->
+<!--                  </li>-->
+<!--                </ul>-->
+<!--              </div>-->
+<!--            </div>-->
+            <div class="tab-content my-4">
+              <div class="tab-pane fade" [ngClass]="{'active show': step==1}" >
+                <table datatable [dtOptions]='dtOptions' class="display customers-list">
+                  <thead>
+                    <tr>
+                      <th class="no-search-filter">Action</th>
+                      <th class="no-search-filter">Status</th>
+                      <th>First Name</th>
+                      <th>Last Name</th>
+                      <th>Username</th>
+                      <th>Mobile No.</th>
+                      <th>Email Address</th>
+                      <th>Address</th>
+                      <th>Company Name</th>
+                      <th>Designation</th>
+                      <th>Business Type</th>
+                      <th>Sales Manager</th>
+                    </tr>
+                  </thead>
+                  <tbody *ngIf="getlist?.length>0">
+                    <tr *ngFor="let item of getlist">
+                      <td>
+                        <a [routerLink]="['/admin/customers/edit-customer',item.userId]">
+                          <img src="assets/images/icon/edit-icon-table.svg" class="mx-2 table-img-inr" alt="" />
+                        </a>
+                        <a (click)="delete_customer(item)">
+                          <img src="assets/images/icon/delete-icon.svg" class="mx-2 table-img-inr" alt="" />
+                        </a>
+<!--                        <a (click)="chat_customer(item.userId)">-->
+<!--                          <img src="assets/images/icon/chat-icon.svg" class="mx-2 table-img-inr" alt="" />-->
+<!--                        </a>-->
+                      </td>
+                      <td>
+                        <div class="custom-control custom-switch">
+                          <input type="checkbox" class="custom-control-input" id="customSwitch_{{item.userId}}" (click)="change_status(item.userId)" [checked]="item.isActive == 1"/>
+                          <label class="custom-control-label" for="customSwitch_{{item.userId}}">Active</label>
+                        </div>
+                      </td>
+                      <td>{{item.firstname}}</td>
+                      <td>{{item.lastname}}</td>
+                      <td>{{item.username}}</td>
+                      <td>{{item.mobile}}</td>
+                      <td>{{item.email}}</td>
+                      <td>{{item.address}}</td>
+                      <td>{{item.company_name}}</td>
+                      <td>{{item.designation}}</td>
+                      <td>{{item.business_type}}</td>
+                      <td>
+                        <select (change)="select_manager($event.target.value,item.userId)" [(ngModel)]="item.adminId">
+                          <option value=""></option>
+                          <option *ngFor="let admin of AdminData" value="{{admin.adminId}}">{{admin.firstname}} {{admin.lastname}}</option>
+                        </select>
+                      </td>
+                    </tr>
+                  </tbody>
+                  <tbody *ngIf="getlist?.length == 0">
+                    <tr>
+                      <td colspan="12" class="no-data-available">No data!</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <div class="tab-pane fade" [ngClass]="{'active show': step==2}">
+                <table datatable [dtOptions]='dtOptions2' class="display abandonedcheckout-list">
+                  <thead>
+                    <tr>
+                      <th>Name</th>
+                      <th class="no-search-filter">Total</th>
+                    </tr>
+                  </thead>
+                  <tbody *ngIf="checkoutlist?.length>0">
+                    <tr *ngFor="let item of checkoutlist">
+                      <td>
+                        <a [routerLink]="['/admin/customers/cart-list',item.cartId]">{{item.firstname}} {{item.lastname}}</a>
+                      </td>
+                      <td>{{item.totalProducts}}</td>
+                    </tr>
+                  </tbody>
+                  <tbody *ngIf="checkoutlist?.length == 0">
+                  <tr>
+                    <td colspan="2" class="no-data-available">No data!</td>
+                  </tr>
+                  </tbody>
+                </table>
+              </div>
+              <div class="tab-pane fade" [ngClass]="{'active show': step==3}">
+                <table datatable [dtOptions]='dtOptions1' class="display subscribers-list">
+                  <thead>
+                    <tr>
+                      <th>Email Address</th>
+                      <th>Date</th>
+                      <th class="no-search-filter">Action</th>
+                    </tr>
+                  </thead>
+                  <tbody *ngIf="subscribersgetlist?.length>0">
+                    <tr *ngFor="let item of subscribersgetlist">
+                      <td>{{item.subscriber_email}}</td>
+                      <td>{{item.created_at | date}}</td>
+                      <td>
+                        <a  (click)="delete_subscriber(item)">
+                          <img src="assets/images/icon/delete-icon.svg" class="mx-2 table-img-inr" alt="" />
+                        </a>
+                      </td>
+                    </tr>
+                  </tbody>
+                  <tbody *ngIf="subscribersgetlist?.length == 0">
+                    <tr>
+                      <td colspan="3" class="no-data-available">No data!</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="overlay toggle-icon-main"></div>
+  </main>
+
+  <div class="modal filter-modal-cust fade" id="filters-modal" tabindex="-1" aria-labelledby="filters-modal" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-cust-small">
+      <div class="modal-content">
+        <div class="modal-header align-items-center">
+          <h5 class="modal-title">more filters</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <img src="assets/images/icon/modal-close-icon.svg" alt="" />
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="filter-body-div">
+            <div class="filter-body-div-top">
+              <div class="dash-colps-main">
+                <div class="dash-colps-main-hdr" data-toggle="collapse" href="#filters1" role="button" aria-expanded="true" aria-controls="filters1">
+                  email subscription status
+                  <i class="fa fa-angle-down" aria-hidden="true"></i>
+                </div>
+                <div class="dash-colps-main-body collapse show" id="filters1">
+                  bkjnlnlkn
+                </div>
+              </div>
+              <div class="dash-colps-main">
+                <div class="dash-colps-main-hdr" data-toggle="collapse" href="#filters2" role="button" aria-expanded="false" aria-controls="filters2">
+                  tagged with
+                  <i class="fa fa-angle-down" aria-hidden="true"></i>
+                </div>
+                <div class="dash-colps-main-body collapse" id="filters2">
+                  bkjnlnlkn
+                </div>
+              </div>
+              <div class="dash-colps-main">
+                <div class="dash-colps-main-hdr" data-toggle="collapse" href="#filters3" role="button" aria-expanded="false" aria-controls="filters3">
+                  customer account status
+                  <i class="fa fa-angle-down" aria-hidden="true"></i>
+                </div>
+                <div class="dash-colps-main-body collapse" id="filters3">
+                  bkjnlnlkn
+                </div>
+              </div>
+              <div class="dash-colps-main">
+                <div class="dash-colps-main-hdr" data-toggle="collapse" href="#filters4" role="button" aria-expanded="false" aria-controls="filters4">
+                  customer language
+                  <i class="fa fa-angle-down" aria-hidden="true"></i>
+                </div>
+                <div class="dash-colps-main-body collapse" id="filters4">
+                  bkjnlnlkn
+                </div>
+              </div>
+              <div class="dash-colps-main">
+                <div class="dash-colps-main-hdr" data-toggle="collapse" href="#filters5" role="button" aria-expanded="false" aria-controls="filters5">
+                  amount spent
+                  <i class="fa fa-angle-down" aria-hidden="true"></i>
+                </div>
+                <div class="dash-colps-main-body collapse" id="filters5">
+                  bkjnlnlkn
+                </div>
+              </div>
+              <div class="dash-colps-main">
+                <div class="dash-colps-main-hdr" data-toggle="collapse" href="#filters6" role="button" aria-expanded="false" aria-controls="filters6">
+                  number of orders
+                  <i class="fa fa-angle-down" aria-hidden="true"></i>
+                </div>
+                <div class="dash-colps-main-body collapse" id="filters6">
+                  bkjnlnlkn
+                </div>
+              </div>
+              <div class="dash-colps-main">
+                <div class="dash-colps-main-hdr" data-toggle="collapse" href="#filters7" role="button" aria-expanded="false" aria-controls="filters7">
+                  date of order
+                  <i class="fa fa-angle-down" aria-hidden="true"></i>
+                </div>
+                <div class="dash-colps-main-body collapse" id="filters7">
+                  bkjnlnlkn
+                </div>
+              </div>
+              <div class="dash-colps-main">
+                <div class="dash-colps-main-hdr" data-toggle="collapse" href="#filters8" role="button" aria-expanded="false" aria-controls="filters8">
+                  date added as customer
+                  <i class="fa fa-angle-down" aria-hidden="true"></i>
+                </div>
+                <div class="dash-colps-main-body collapse" id="filters8">
+                  bkjnlnlkn
+                </div>
+              </div>
+              <div class="dash-colps-main">
+                <div class="dash-colps-main-hdr" data-toggle="collapse" href="#filters9" role="button" aria-expanded="false" aria-controls="filters9">
+                  abandoned checkout
+                  <i class="fa fa-angle-down" aria-hidden="true"></i>
+                </div>
+                <div class="dash-colps-main-body collapse" id="filters9">
+                  bkjnlnlkn
+                </div>
+              </div>
+              <div class="dash-colps-main">
+                <div class="dash-colps-main-hdr" data-toggle="collapse" href="#filters10" role="button" aria-expanded="false" aria-controls="filters10">
+                  location
+                  <i class="fa fa-angle-down" aria-hidden="true"></i>
+                </div>
+                <div class="dash-colps-main-body collapse" id="filters10">
+                  bkjnlnlkn
+                </div>
+              </div>
+            </div>
+            <div class="filter-body-div-btm d-flex align-items-center justify-content-between">
+              <button type="reset" class="btn btn-inr-top mr-sm-2">clear all filters</button>
+              <button type="button" class="btn btn-reset ml-auto">done</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

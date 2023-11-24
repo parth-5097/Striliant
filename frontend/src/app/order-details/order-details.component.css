@@ -1,0 +1,20 @@
+.dtls-pge-main-inr {
+  border-bottom: 1px solid rgba(196, 196, 196, 0.5);
+  padding: 17px 0;
+}
+
+.dtls-pge-main-inr ul li {
+  color: var(--thm-color);
+  font-size: 14px;
+  font-weight: 700;
+  width: 180px;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.dtls-pge-main-inr ul li:last-child {
+  color: var(--color-dark);
+  font-size: 14px;
+  font-weight: 400;
+  width: calc(100% - 185px);
+}

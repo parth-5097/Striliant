@@ -1,0 +1,2328 @@
+<div class="dash-wrapper">
+  <app-header></app-header>
+  <app-sidebar></app-sidebar>
+  <main class="content-wrapper-section">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-12">
+          <div class="inr-title-comn d-sm-flex align-items-center">
+            <h3>Jewelry</h3>
+            <div class="sprt-menu-top mx-auto">
+              <ul class="nav nav-pills justify-content-center" role="tablist">
+                <li class="nav-item" role="presentation">
+                  <a class="nav-link active" [ngClass]="{'active': step==1}" (click)="step=1" aria-selected="true">Search</a>
+                </li>
+                <li class="nav-item" role="presentation">
+                  <a class="nav-link" [ngClass]="{'active': step==2}" (click)="step=2" aria-selected="false">
+                    Manage My Jewelry
+                  </a>
+                </li>
+                <li class="nav-item" role="presentation">
+                  <a class="nav-link" [ngClass]="{'active': step==3}" (click)="check_edit(3)" aria-selected="false">Upload Jewelry</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="col-12">
+          <div class="dash-box-white">
+            <div class="tab-content">
+              <div class="tab-pane fade" [ngClass]="{'active show': step==1}">
+                <div class="row align-items-center">
+                  <div class="col-12">
+                    <div class="d-sm-flex align-items-center justify-content-sm-between justify-content-center">
+<!--                      <div class="jwl-top text-md-left text-center">-->
+<!--                        <h6>29,120 Items</h6>-->
+<!--                      </div>-->
+                      <div class="news-section-hdr-right mt-3 mt-sm-0">
+                        <ul class="d-flex align-items-center justify-content-md-end justify-content-center">
+                          <li>
+                            <span>View Mode :</span>
+                          </li>
+                          <li>
+                            <button type="button" value="grid" class="btn-grid active">grid</button>
+                          </li>
+                          <li>
+                            <button type="button" value="list" class="btn-list">list</button>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="row align-items-center my-3">
+                  <div class="col-md-6">
+                    <div class="dash-right-src d-md-flex align-items-center">
+                      <ul class="d-sm-flex align-items-center mt-3 mt-md-0 justify-content-center">
+                        <li>
+                          <div class="dropmenu-custom-main">
+                            <a href="javascript:void(0)" id="jewelry-load-search">
+                              Load Saved Searches
+                              <i class="fa fa-angle-down" aria-hidden="true"></i>
+                            </a>
+                            <div class="dropmenu-custom first-dropdown-jewelry">
+                              <label>Select Saved Search</label>
+                              <select class="custom-select form-control input-style">
+                                <option selected="">Select</option>
+                                <option value="1">One</option>
+                                <option value="2">Two</option>
+                                <option value="3">Three</option>
+                              </select>
+                              <button type="button" class="btn load-btn">load</button>
+                            </div>
+                          </div>
+                        </li>
+                        <li>
+                          <div class="dropmenu-custom-main">
+                            <a href="javascript:void(0)" id="jewelry-save-search">
+                              Save Search
+                              <i class="fa fa-angle-down" aria-hidden="true"></i>
+                            </a>
+                            <div class="dropmenu-custom second-dropdown-jewelry">
+                              <label>Saved Search Name</label>
+                              <input type="text" name="" class="form-control input-style" placeholder="" />
+                              <button type="button" class="btn load-btn">save</button>
+                            </div>
+                          </div>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="dash-right-src d-md-flex align-items-center justify-content-md-end">
+                      <ul class="d-sm-flex align-items-center mt-3 mt-md-0 justify-content-center">
+                        <li>
+                          <div class="dropmenu-custom-main">
+                            <a href="javascript:void(0)" id="jewelry-show-result">
+                              Show 20 Results
+                              <i class="fa fa-angle-down" aria-hidden="true"></i>
+                            </a>
+                            <div class="dropmenu-custom third-dropdown-jewelry">
+                              <ul class="dropmenu-custom-ul">
+                                <li><b>Newest To Oldest</b></li>
+                                <li>Oldest to Newest</li>
+                                <li>Price: High to Low</li>
+                                <li>Price: Low to High</li>
+                              </ul>
+                            </div>
+                          </div>
+                        </li>
+                        <li>
+                          <div class="dropmenu-custom-main">
+                            <a href="javascript:void(0)" id="jewelry-sort-by">
+                              Sort By
+                              <i class="fa fa-angle-down" aria-hidden="true"></i>
+                            </a>
+                            <div class="dropmenu-custom four-dropdown-jewelry">
+                              <ul class="dropmenu-custom-ul">
+                                <li>Show 20 Results</li>
+                                <li>Show 60 Results</li>
+                                <li>Show 100 Results</li>
+                                <li>Show 200 Results</li>
+                              </ul>
+                            </div>
+                          </div>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-lg-4 col-md-5">
+                    <div class="dash-box-white p-3">
+                      <div class="jwly-filter-main-section">
+                        <div class="jwly-filter-hdr d-flex align-items-center justify-content-between mb-3">
+                          <h1>Filter</h1>
+                          <a (click)="searchreset()">Clear All</a>
+                        </div>
+                        <div class="jwly-filter-body">
+                          <div class="dash-colps-main">
+                            <div class="dash-colps-main-hdr" data-toggle="collapse" href="#Free-Search" role="button" aria-expanded="true" aria-controls="Free-Search">
+                              Free Search
+                              <i class="fa fa-angle-down" aria-hidden="true"></i>
+                            </div>
+                            <div class="dash-colps-main-body collapse show" id="Free-Search">
+                              <div class="dash-colps-inr-main">
+                                <div class="input-group">
+                                  <div class="input-group-prepend">
+                                    <span class="input-group-text border-left">
+                                        <img src="assets/images/icon/search-icon.svg" alt="" />
+                                    </span>
+                                  </div>
+                                  <input type="text" [(ngModel)]="search_data['search_text']" class="form-control input-style border-left-0" placeholder="Search" (change)="searchselect($event.target.value,'search_text')"/>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="dash-colps-main">
+                            <div class="dash-colps-main-hdr" data-toggle="collapse" href="#Jewelry-Type" role="button" aria-expanded="false" aria-controls="Jewelry-Type">
+                              Jewelry Type
+                              <i class="fa fa-angle-down" aria-hidden="true"></i>
+                            </div>
+                            <div class="dash-colps-main-body collapse" id="Jewelry-Type">
+                              <div class="dash-colps-inr-main">
+                                <div class="filter-check-new">
+                                  <ul>
+                                    <li>
+                                      <div class="cust-checkbox-new">
+                                        <label class="cust-chk-bx">
+                                          <input type="checkbox" [ngClass]="{'active': search_data['jewelry_type'].includes('Bracelets')}" (click)="searchselect('Bracelets','jewelry_type')" [checked]="search_data['jewelry_type'].includes('Bracelets')" />
+                                          <span class="cust-chkmark"></span>
+                                          Bracelets
+                                        </label>
+                                      </div>
+                                    </li>
+                                    <li>
+                                      <div class="cust-checkbox-new">
+                                        <label class="cust-chk-bx">
+                                          <input type="checkbox" [ngClass]="{'active': search_data['jewelry_type'].includes('Brooches & Pins')}" (click)="searchselect('Brooches & Pins','jewelry_type')" [checked]="search_data['jewelry_type'].includes('Brooches & Pins')" />
+                                          <span class="cust-chkmark"></span>
+                                          Brooches & Pins
+                                        </label>
+                                      </div>
+                                    </li>
+                                    <li>
+                                      <div class="cust-checkbox-new">
+                                        <label class="cust-chk-bx">
+                                          <input type="checkbox" [ngClass]="{'active': search_data['jewelry_type'].includes('Pendants & Charms')}" (click)="searchselect('Pendants & Charms','jewelry_type')" [checked]="search_data['jewelry_type'].includes('Pendants & Charms')"/>
+                                          <span class="cust-chkmark"></span>
+                                          Pendants & Charms
+                                        </label>
+                                      </div>
+                                    </li>
+                                    <li>
+                                      <div class="cust-checkbox-new">
+                                        <label class="cust-chk-bx">
+                                          <input type="checkbox" [ngClass]="{'active': search_data['jewelry_type'].includes('Cuff Links')}" (click)="searchselect('Cuff Links','jewelry_type')" [checked]="search_data['jewelry_type'].includes('Cuff Links')"/>
+                                          <span class="cust-chkmark"></span>
+                                          Cuff Links
+                                        </label>
+                                      </div>
+                                    </li>
+                                    <li>
+                                      <div class="cust-checkbox-new">
+                                        <label class="cust-chk-bx">
+                                          <input type="checkbox" [ngClass]="{'active': search_data['jewelry_type'].includes('Earrings')}" (click)="searchselect('Earrings','jewelry_type')" [checked]="search_data['jewelry_type'].includes('Earrings')"/>
+                                          <span class="cust-chkmark"></span>
+                                          Earrings
+                                        </label>
+                                      </div>
+                                    </li>
+                                    <li>
+                                      <div class="cust-checkbox-new">
+                                        <label class="cust-chk-bx">
+                                          <input type="checkbox" [ngClass]="{'active': search_data['jewelry_type'].includes('Necklaces')}" (click)="searchselect('Necklaces','jewelry_type')" [checked]="search_data['jewelry_type'].includes('Necklaces')"/>
+                                          <span class="cust-chkmark"></span>
+                                          Necklaces
+                                        </label>
+                                      </div>
+                                    </li>
+                                    <li>
+                                      <div class="cust-checkbox-new">
+                                        <label class="cust-chk-bx">
+                                          <input type="checkbox" [ngClass]="{'active': search_data['jewelry_type'].includes('Rings')}" (click)="searchselect('Rings','jewelry_type')" [checked]="search_data['jewelry_type'].includes('Rings')"/>
+                                          <span class="cust-chkmark"></span>
+                                          Rings
+                                        </label>
+                                      </div>
+                                    </li>
+                                    <li>
+                                      <div class="cust-checkbox-new">
+                                        <label class="cust-chk-bx">
+                                          <input type="checkbox" [ngClass]="{'active': search_data['jewelry_type'].includes('Watches')}" (click)="searchselect('Watches','jewelry_type')" [checked]="search_data['jewelry_type'].includes('Watches')"/>
+                                          <span class="cust-chkmark"></span>
+                                          Watches
+                                        </label>
+                                      </div>
+                                    </li>
+                                    <li>
+                                      <div class="cust-checkbox-new">
+                                        <label class="cust-chk-bx">
+                                          <input type="checkbox" [ngClass]="{'active': search_data['jewelry_type'].includes('Other')}" (click)="searchselect('Other','jewelry_type')" [checked]="search_data['jewelry_type'].includes('Other')"/>
+                                          <span class="cust-chkmark"></span>
+                                          Other
+                                        </label>
+                                      </div>
+                                    </li>
+                                  </ul>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="dash-colps-main">
+                            <div class="dash-colps-main-hdr" data-toggle="collapse" href="#Price" role="button" aria-expanded="false" aria-controls="Price">
+                              Price
+                              <i class="fa fa-angle-down" aria-hidden="true"></i>
+                            </div>
+                            <div class="dash-colps-main-body collapse" id="Price">
+                              <div class="dash-colps-inr-main"></div>
+                            </div>
+                          </div>
+                          <div class="dash-colps-main">
+                            <div class="dash-colps-main-hdr" data-toggle="collapse" href="#Collection" role="button" aria-expanded="false" aria-controls="Collection">
+                              Collection
+                              <i class="fa fa-angle-down" aria-hidden="true"></i>
+                            </div>
+                            <div class="dash-colps-main-body collapse" id="Collection">
+                              <div class="dash-colps-inr-main">
+                                <div class="filter-check-new">
+                                  <ul>
+                                    <li>
+                                      <div class="cust-checkbox-new">
+                                        <label class="cust-chk-bx">
+                                          <input type="checkbox" [ngClass]="{'active': search_data['jewelry_collection'].includes('Engagement')}" (click)="searchselect('Engagement','jewelry_collection')" [checked]="search_data['jewelry_collection'].includes('Engagement')"/>
+                                          <span class="cust-chkmark"></span>
+                                          Engagement
+                                        </label>
+                                      </div>
+                                    </li>
+                                    <li>
+                                      <div class="cust-checkbox-new">
+                                        <label class="cust-chk-bx">
+                                          <input type="checkbox" [ngClass]="{'active': search_data['jewelry_collection'].includes('General')}" (click)="searchselect('General','jewelry_collection')" [checked]="search_data['jewelry_collection'].includes('General')"/>
+                                          <span class="cust-chkmark"></span>
+                                          General
+                                        </label>
+                                      </div>
+                                    </li>
+                                    <li>
+                                      <div class="cust-checkbox-new">
+                                        <label class="cust-chk-bx">
+                                          <input type="checkbox" [ngClass]="{'active': search_data['jewelry_collection'].includes('Mens')}" (click)="searchselect('Mens','jewelry_collection')" [checked]="search_data['jewelry_collection'].includes('Mens')"/>
+                                          <span class="cust-chkmark"></span>
+                                          Men's
+                                        </label>
+                                      </div>
+                                    </li>
+                                    <li>
+                                      <div class="cust-checkbox-new">
+                                        <label class="cust-chk-bx">
+                                          <input type="checkbox" [ngClass]="{'active': search_data['jewelry_collection'].includes('Wedding')}" (click)="searchselect('Wedding','jewelry_collection')" [checked]="search_data['jewelry_collection'].includes('Wedding')"/>
+                                          <span class="cust-chkmark"></span>
+                                          Wedding
+                                        </label>
+                                      </div>
+                                    </li>
+                                    <li>
+                                      <div class="cust-checkbox-new">
+                                        <label class="cust-chk-bx">
+                                          <input type="checkbox" [ngClass]="{'active': search_data['jewelry_collection'].includes('Religious')}" (click)="searchselect('Religious','jewelry_collection')" [checked]="search_data['jewelry_collection'].includes('Religious')"/>
+                                          <span class="cust-chkmark"></span>
+                                          Religious
+                                        </label>
+                                      </div>
+                                    </li>
+                                    <li>
+                                      <div class="cust-checkbox-new">
+                                        <label class="cust-chk-bx">
+                                          <input type="checkbox" [ngClass]="{'active': search_data['jewelry_collection'].includes('Youth')}" (click)="searchselect('Youth','jewelry_collection')" [checked]="search_data['jewelry_collection'].includes('Youth')"/>
+                                          <span class="cust-chkmark"></span>
+                                          Youth
+                                        </label>
+                                      </div>
+                                    </li>
+                                    <li>
+                                      <div class="cust-checkbox-new">
+                                        <label class="cust-chk-bx">
+                                          <input type="checkbox" [ngClass]="{'active': search_data['jewelry_collection'].includes('Other')}" (click)="searchselect('Other','jewelry_collection')" [checked]="search_data['jewelry_collection'].includes('Other')"/>
+                                          <span class="cust-chkmark"></span>
+                                          Other
+                                        </label>
+                                      </div>
+                                    </li>
+                                  </ul>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="dash-colps-main">
+                            <div class="dash-colps-main-hdr" data-toggle="collapse" href="#Material" role="button" aria-expanded="false" aria-controls="Material">
+                              Material
+                              <i class="fa fa-angle-down" aria-hidden="true"></i>
+                            </div>
+                            <div class="dash-colps-main-body collapse" id="Material">
+                              <div class="dash-colps-inr-main">
+                                <div class="filter-check-new">
+                                  <ul>
+                                    <li>
+                                      <div class="cust-checkbox-new">
+                                        <label class="cust-chk-bx">
+                                          <input type="checkbox" [ngClass]="{'active': search_data['jewelry_material'].includes('Aluminum')}" (click)="searchselect('Aluminum','jewelry_material')" [checked]="search_data['jewelry_material'].includes('Aluminum')"/>
+                                          <span class="cust-chkmark"></span>
+                                          Aluminum
+                                        </label>
+                                      </div>
+                                    </li>
+                                    <li>
+                                      <div class="cust-checkbox-new">
+                                        <label class="cust-chk-bx">
+                                          <input type="checkbox" [ngClass]="{'active': search_data['jewelry_material'].includes('Black Silver')}" (click)="searchselect('Black Silver','jewelry_material')" [checked]="search_data['jewelry_material'].includes('Black Silver')"/>
+                                          <span class="cust-chkmark"></span>
+                                          Black Silver
+                                        </label>
+                                      </div>
+                                    </li>
+                                    <li>
+                                      <div class="cust-checkbox-new">
+                                        <label class="cust-chk-bx">
+                                          <input type="checkbox" [ngClass]="{'active': search_data['jewelry_material'].includes('Brass')}" (click)="searchselect('Brass','jewelry_material')" [checked]="search_data['jewelry_material'].includes('Brass')"/>
+                                          <span class="cust-chkmark"></span>
+                                          Brass
+                                        </label>
+                                      </div>
+                                    </li>
+                                    <li>
+                                      <div class="cust-checkbox-new">
+                                        <label class="cust-chk-bx">
+                                          <input type="checkbox" [ngClass]="{'active': search_data['jewelry_material'].includes('Bronze')}" (click)="searchselect('Bronze','jewelry_material')" [checked]="search_data['jewelry_material'].includes('Bronze')"/>
+                                          <span class="cust-chkmark"></span>
+                                          Bronze
+                                        </label>
+                                      </div>
+                                    </li>
+                                    <li>
+                                      <div class="cust-checkbox-new">
+                                        <label class="cust-chk-bx">
+                                          <input type="checkbox" [ngClass]="{'active': search_data['jewelry_material'].includes('Cobalt')}" (click)="searchselect('Cobalt','jewelry_material')" [checked]="search_data['jewelry_material'].includes('Cobalt')"/>
+                                          <span class="cust-chkmark"></span>
+                                          Cobalt
+                                        </label>
+                                      </div>
+                                    </li>
+                                    <li>
+                                      <div class="cust-checkbox-new">
+                                        <label class="cust-chk-bx">
+                                          <input type="checkbox" [ngClass]="{'active': search_data['jewelry_material'].includes('Copper')}" (click)="searchselect('Copper','jewelry_material')" [checked]="search_data['jewelry_material'].includes('Copper')"/>
+                                          <span class="cust-chkmark"></span>
+                                          Copper
+                                        </label>
+                                      </div>
+                                    </li>
+                                    <li>
+                                      <div class="cust-checkbox-new">
+                                        <label class="cust-chk-bx">
+                                          <input type="checkbox" [ngClass]="{'active': search_data['jewelry_material'].includes('Rose Gold')}" (click)="searchselect('Rose Gold','jewelry_material')" [checked]="search_data['jewelry_material'].includes('Rose Gold')"/>
+                                          <span class="cust-chkmark"></span>
+                                          Rose Gold
+                                        </label>
+                                      </div>
+                                    </li>
+                                    <li>
+                                      <div class="cust-checkbox-new">
+                                        <label class="cust-chk-bx">
+                                          <input type="checkbox" [ngClass]="{'active': search_data['jewelry_material'].includes('White Gold')}" (click)="searchselect('White Gold','jewelry_material')" [checked]="search_data['jewelry_material'].includes('White Gold')"/>
+                                          <span class="cust-chkmark"></span>
+                                          White Gold
+                                        </label>
+                                      </div>
+                                    </li>
+                                    <li>
+                                      <div class="cust-checkbox-new">
+                                        <label class="cust-chk-bx">
+                                          <input type="checkbox" [ngClass]="{'active': search_data['jewelry_material'].includes('Yellow Gold')}" (click)="searchselect('Yellow Gold','jewelry_material')" [checked]="search_data['jewelry_material'].includes('Yellow Gold')"/>
+                                          <span class="cust-chkmark"></span>
+                                          Yellow Gold
+                                        </label>
+                                      </div>
+                                    </li>
+                                    <li>
+                                      <div class="cust-checkbox-new">
+                                        <label class="cust-chk-bx">
+                                          <input type="checkbox" [ngClass]="{'active': search_data['jewelry_material'].includes('Gold')}" (click)="searchselect('Gold','jewelry_material')" [checked]="search_data['jewelry_material'].includes('Gold')"/>
+                                          <span class="cust-chkmark"></span>
+                                          Gold
+                                        </label>
+                                      </div>
+                                    </li>
+                                    <li>
+                                      <div class="cust-checkbox-new">
+                                        <label class="cust-chk-bx">
+                                          <input type="checkbox" [ngClass]="{'active': search_data['jewelry_material'].includes('Gold-Filled')}" (click)="searchselect('Gold-Filled','jewelry_material')" [checked]="search_data['jewelry_material'].includes('Gold-Filled')"/>
+                                          <span class="cust-chkmark"></span>
+                                          Gold-Filled
+                                        </label>
+                                      </div>
+                                    </li>
+                                    <li>
+                                      <div class="cust-checkbox-new">
+                                        <label class="cust-chk-bx">
+                                          <input type="checkbox" [ngClass]="{'active': search_data['jewelry_material'].includes('Iron')}" (click)="searchselect('Iron','jewelry_material')" [checked]="search_data['jewelry_material'].includes('Iron')"/>
+                                          <span class="cust-chkmark"></span>
+                                          Iron
+                                        </label>
+                                      </div>
+                                    </li>
+                                    <li>
+                                      <div class="cust-checkbox-new">
+                                        <label class="cust-chk-bx">
+                                          <input type="checkbox" [ngClass]="{'active': search_data['jewelry_material'].includes('Nickel')}" (click)="searchselect('Nickel','jewelry_material')" [checked]="search_data['jewelry_material'].includes('Nickel')"/>
+                                          <span class="cust-chkmark"></span>
+                                          Nickel
+                                        </label>
+                                      </div>
+                                    </li>
+                                    <li>
+                                      <div class="cust-checkbox-new">
+                                        <label class="cust-chk-bx">
+                                          <input type="checkbox" [ngClass]="{'active': search_data['jewelry_material'].includes('Palladium')}" (click)="searchselect('Palladium','jewelry_material')" [checked]="search_data['jewelry_material'].includes('Palladium')"/>
+                                          <span class="cust-chkmark"></span>
+                                          Palladium
+                                        </label>
+                                      </div>
+                                    </li>
+                                    <li>
+                                      <div class="cust-checkbox-new">
+                                        <label class="cust-chk-bx">
+                                          <input type="checkbox" [ngClass]="{'active': search_data['jewelry_material'].includes('Platinum')}" (click)="searchselect('Platinum','jewelry_material')" [checked]="search_data['jewelry_material'].includes('Platinum')"/>
+                                          <span class="cust-chkmark"></span>
+                                          Platinum
+                                        </label>
+                                      </div>
+                                    </li>
+                                    <li>
+                                      <div class="cust-checkbox-new">
+                                        <label class="cust-chk-bx">
+                                          <input type="checkbox" [ngClass]="{'active': search_data['jewelry_material'].includes('Rhodium')}" (click)="searchselect('Rhodium','jewelry_material')" [checked]="search_data['jewelry_material'].includes('Rhodium')"/>
+                                          <span class="cust-chkmark"></span>
+                                          Rhodium
+                                        </label>
+                                      </div>
+                                    </li>
+                                    <li>
+                                      <div class="cust-checkbox-new">
+                                        <label class="cust-chk-bx">
+                                          <input type="checkbox" [ngClass]="{'active': search_data['jewelry_material'].includes('Silver')}" (click)="searchselect('Silver','jewelry_material')" [checked]="search_data['jewelry_material'].includes('Silver')"/>
+                                          <span class="cust-chkmark"></span>
+                                          Silver
+                                        </label>
+                                      </div>
+                                    </li>
+                                    <li>
+                                      <div class="cust-checkbox-new">
+                                        <label class="cust-chk-bx">
+                                          <input type="checkbox" [ngClass]="{'active': search_data['jewelry_material'].includes('Silver Plate')}" (click)="searchselect('Silver Plate','jewelry_material')" [checked]="search_data['jewelry_material'].includes('Silver Plate')"/>
+                                          <span class="cust-chkmark"></span>
+                                          Silver Plate
+                                        </label>
+                                      </div>
+                                    </li>
+                                    <li>
+                                      <div class="cust-checkbox-new">
+                                        <label class="cust-chk-bx">
+                                          <input type="checkbox" [ngClass]="{'active': search_data['jewelry_material'].includes('Steel')}" (click)="searchselect('Steel','jewelry_material')" [checked]="search_data['jewelry_material'].includes('Steel')"/>
+                                          <span class="cust-chkmark"></span>
+                                          Steel
+                                        </label>
+                                      </div>
+                                    </li>
+                                    <li>
+                                      <div class="cust-checkbox-new">
+                                        <label class="cust-chk-bx">
+                                          <input type="checkbox" [ngClass]="{'active': search_data['jewelry_material'].includes('Sterling')}" (click)="searchselect('Sterling','jewelry_material')" [checked]="search_data['jewelry_material'].includes('Sterling')"/>
+                                          <span class="cust-chkmark"></span>
+                                          Sterling
+                                        </label>
+                                      </div>
+                                    </li>
+                                    <li>
+                                      <div class="cust-checkbox-new">
+                                        <label class="cust-chk-bx">
+                                          <input type="checkbox" [ngClass]="{'active': search_data['jewelry_material'].includes('Tantalum')}" (click)="searchselect('Tantalum','jewelry_material')" [checked]="search_data['jewelry_material'].includes('Tantalum')"/>
+                                          <span class="cust-chkmark"></span>
+                                          Tantalum
+                                        </label>
+                                      </div>
+                                    </li>
+                                    <li>
+                                      <div class="cust-checkbox-new">
+                                        <label class="cust-chk-bx">
+                                          <input type="checkbox" [ngClass]="{'active': search_data['jewelry_material'].includes('Titanium')}" (click)="searchselect('Titanium','jewelry_material')" [checked]="search_data['jewelry_material'].includes('Titanium')"/>
+                                          <span class="cust-chkmark"></span>
+                                          Titanium
+                                        </label>
+                                      </div>
+                                    </li>
+                                    <li>
+                                      <div class="cust-checkbox-new">
+                                        <label class="cust-chk-bx">
+                                          <input type="checkbox" [ngClass]="{'active': search_data['jewelry_material'].includes('Tungsten')}" (click)="searchselect('Tungsten','jewelry_material')" [checked]="search_data['jewelry_material'].includes('Tungsten')"/>
+                                          <span class="cust-chkmark"></span>
+                                          Tungsten
+                                        </label>
+                                      </div>
+                                    </li>
+                                    <li>
+                                      <div class="cust-checkbox-new">
+                                        <label class="cust-chk-bx">
+                                          <input type="checkbox" [ngClass]="{'active': search_data['jewelry_material'].includes('Other')}" (click)="searchselect('Other','jewelry_material')" [checked]="search_data['jewelry_material'].includes('Other')"/>
+                                          <span class="cust-chkmark"></span>
+                                          Other
+                                        </label>
+                                      </div>
+                                    </li>
+                                  </ul>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="dash-colps-main">
+                            <div class="dash-colps-main-hdr" data-toggle="collapse" href="#Stone-Type" role="button" aria-expanded="false" aria-controls="Stone-Type">
+                              Stone Type
+                              <i class="fa fa-angle-down" aria-hidden="true"></i>
+                            </div>
+                            <div class="dash-colps-main-body collapse" id="Stone-Type">
+                              <div class="dash-colps-inr-main">
+                                <div class="filter-check-new">
+                                  <ul>
+                                    <li>
+                                      <div class="cust-checkbox-new">
+                                        <label class="cust-chk-bx">
+                                          <input type="checkbox" [ngClass]="{'active': search_data['jewelry_stone_type'].includes('Diamond')}" (click)="searchselect('Diamond','jewelry_stone_type')" [checked]="search_data['jewelry_stone_type'].includes('Diamond')" />
+                                          <span class="cust-chkmark"></span>
+                                          Diamond
+                                        </label>
+                                      </div>
+                                    </li>
+                                    <li>
+                                      <div class="cust-checkbox-new">
+                                        <label class="cust-chk-bx">
+                                          <input type="checkbox" [ngClass]="{'active': search_data['jewelry_stone_type'].includes('Abalone Shell')}" (click)="searchselect('Abalone Shell','jewelry_stone_type')" [checked]="search_data['jewelry_stone_type'].includes('Abalone Shell')"/>
+                                          <span class="cust-chkmark"></span>
+                                          Abalone Shell
+                                        </label>
+                                      </div>
+                                    </li>
+                                    <li>
+                                      <div class="cust-checkbox-new">
+                                        <label class="cust-chk-bx">
+                                          <input type="checkbox" [ngClass]="{'active': search_data['jewelry_stone_type'].includes('Agate')}" (click)="searchselect('Agate','jewelry_stone_type')" [checked]="search_data['jewelry_stone_type'].includes('Agate')"/>
+                                          <span class="cust-chkmark"></span>
+                                          Agate
+                                        </label>
+                                      </div>
+                                    </li>
+                                    <li>
+                                      <div class="cust-checkbox-new">
+                                        <label class="cust-chk-bx">
+                                          <input type="checkbox" [ngClass]="{'active': search_data['jewelry_stone_type'].includes('Alexandrite')}" (click)="searchselect('Alexandrite','jewelry_stone_type')" [checked]="search_data['jewelry_stone_type'].includes('Alexandrite')"/>
+                                          <span class="cust-chkmark"></span>
+                                          Alexandrite
+                                        </label>
+                                      </div>
+                                    </li>
+                                    <li>
+                                      <div class="cust-checkbox-new">
+                                        <label class="cust-chk-bx">
+                                          <input type="checkbox" [ngClass]="{'active': search_data['jewelry_stone_type'].includes('Amber')}" (click)="searchselect('Amber','jewelry_stone_type')" [checked]="search_data['jewelry_stone_type'].includes('Amber')"/>
+                                          <span class="cust-chkmark"></span>
+                                          Amber
+                                        </label>
+                                      </div>
+                                    </li>
+                                    <li>
+                                      <div class="cust-checkbox-new">
+                                        <label class="cust-chk-bx">
+                                          <input type="checkbox" [ngClass]="{'active': search_data['jewelry_stone_type'].includes('Amethyst')}" (click)="searchselect('Amethyst','jewelry_stone_type')" [checked]="search_data['jewelry_stone_type'].includes('Amethyst')"/>
+                                          <span class="cust-chkmark"></span>
+                                          Amethyst
+                                        </label>
+                                      </div>
+                                    </li>
+                                    <li>
+                                      <div class="cust-checkbox-new">
+                                        <label class="cust-chk-bx">
+                                          <input type="checkbox" [ngClass]="{'active': search_data['jewelry_stone_type'].includes('Ametrine')}" (click)="searchselect('Ametrine','jewelry_stone_type')" [checked]="search_data['jewelry_stone_type'].includes('Ametrine')"/>
+                                          <span class="cust-chkmark"></span>
+                                          Ametrine
+                                        </label>
+                                      </div>
+                                    </li>
+                                    <li>
+                                      <div class="cust-checkbox-new">
+                                        <label class="cust-chk-bx">
+                                          <input type="checkbox" [ngClass]="{'active': search_data['jewelry_stone_type'].includes('Ammonite Triplet')}" (click)="searchselect('Ammonite Triplet','jewelry_stone_type')" [checked]="search_data['jewelry_stone_type'].includes('Ammonite Triplet')"/>
+                                          <span class="cust-chkmark"></span>
+                                          Ammonite Triplet
+                                        </label>
+                                      </div>
+                                    </li>
+                                    <li>
+                                      <div class="cust-checkbox-new">
+                                        <label class="cust-chk-bx">
+                                          <input type="checkbox" [ngClass]="{'active': search_data['jewelry_stone_type'].includes('Apatite')}" (click)="searchselect('Apatite','jewelry_stone_type')" [checked]="search_data['jewelry_stone_type'].includes('Apatite')"/>
+                                          <span class="cust-chkmark"></span>
+                                          Apatite
+                                        </label>
+                                      </div>
+                                    </li>
+                                    <li>
+                                      <div class="cust-checkbox-new">
+                                        <label class="cust-chk-bx">
+                                          <input type="checkbox" [ngClass]="{'active': search_data['jewelry_stone_type'].includes('Aqua')}" (click)="searchselect('Aqua','jewelry_stone_type')" [checked]="search_data['jewelry_stone_type'].includes('Aqua')"/>
+                                          <span class="cust-chkmark"></span>
+                                          Aqua
+                                        </label>
+                                      </div>
+                                    </li>
+                                    <li>
+                                      <div class="cust-checkbox-new">
+                                        <label class="cust-chk-bx">
+                                          <input type="checkbox" [ngClass]="{'active': search_data['jewelry_stone_type'].includes('Aquamarine')}" (click)="searchselect('Aquamarine','jewelry_stone_type')" [checked]="search_data['jewelry_stone_type'].includes('Aquamarine')"/>
+                                          <span class="cust-chkmark"></span>
+                                          Aquamarine
+                                        </label>
+                                      </div>
+                                    </li>
+                                    <li>
+                                      <div class="cust-checkbox-new">
+                                        <label class="cust-chk-bx">
+                                          <input type="checkbox" [ngClass]="{'active': search_data['jewelry_stone_type'].includes('Aventurine')}" (click)="searchselect('Aventurine','jewelry_stone_type')" [checked]="search_data['jewelry_stone_type'].includes('Aventurine')"/>
+                                          <span class="cust-chkmark"></span>
+                                          Aventurine
+                                        </label>
+                                      </div>
+                                    </li>
+                                    <li>
+                                      <div class="cust-checkbox-new">
+                                        <label class="cust-chk-bx">
+                                          <input type="checkbox" [ngClass]="{'active': search_data['jewelry_stone_type'].includes('Bloodstone')}" (click)="searchselect('Bloodstone','jewelry_stone_type')" [checked]="search_data['jewelry_stone_type'].includes('Bloodstone')"/>
+                                          <span class="cust-chkmark"></span>
+                                          Bloodstone
+                                        </label>
+                                      </div>
+                                    </li>
+                                    <li>
+                                      <div class="cust-checkbox-new">
+                                        <label class="cust-chk-bx">
+                                          <input type="checkbox" [ngClass]="{'active': search_data['jewelry_stone_type'].includes('Blue Topaz')}" (click)="searchselect('Blue Topaz','jewelry_stone_type')" [checked]="search_data['jewelry_stone_type'].includes('Blue Topaz')"/>
+                                          <span class="cust-chkmark"></span>
+                                          Blue Topaz
+                                        </label>
+                                      </div>
+                                    </li>
+                                    <li>
+                                      <div class="cust-checkbox-new">
+                                        <label class="cust-chk-bx">
+                                          <input type="checkbox" [ngClass]="{'active': search_data['jewelry_stone_type'].includes('Cameo')}" (click)="searchselect('Cameo','jewelry_stone_type')" [checked]="search_data['jewelry_stone_type'].includes('Cameo')"/>
+                                          <span class="cust-chkmark"></span>
+                                          Cameo
+                                        </label>
+                                      </div>
+                                    </li>
+                                    <li>
+                                      <div class="cust-checkbox-new">
+                                        <label class="cust-chk-bx">
+                                          <input type="checkbox" [ngClass]="{'active': search_data['jewelry_stone_type'].includes('Carnelian')}" (click)="searchselect('Carnelian','jewelry_stone_type')" [checked]="search_data['jewelry_stone_type'].includes('Carnelian')"/>
+                                          <span class="cust-chkmark"></span>
+                                          Carnelian
+                                        </label>
+                                      </div>
+                                    </li>
+                                    <li>
+                                      <div class="cust-checkbox-new">
+                                        <label class="cust-chk-bx">
+                                          <input type="checkbox" [ngClass]="{'active': search_data['jewelry_stone_type'].includes('Citirine')}" (click)="searchselect('Citirine','jewelry_stone_type')" [checked]="search_data['jewelry_stone_type'].includes('Citirine')"/>
+                                          <span class="cust-chkmark"></span>
+                                          Citirine
+                                        </label>
+                                      </div>
+                                    </li>
+                                    <li>
+                                      <div class="cust-checkbox-new">
+                                        <label class="cust-chk-bx">
+                                          <input type="checkbox" [ngClass]="{'active': search_data['jewelry_stone_type'].includes('Coral')}" (click)="searchselect('Coral','jewelry_stone_type')" [checked]="search_data['jewelry_stone_type'].includes('Coral')"/>
+                                          <span class="cust-chkmark"></span>
+                                          Coral
+                                        </label>
+                                      </div>
+                                    </li>
+                                    <li>
+                                      <div class="cust-checkbox-new">
+                                        <label class="cust-chk-bx">
+                                          <input type="checkbox" [ngClass]="{'active': search_data['jewelry_stone_type'].includes('Corundum')}" (click)="searchselect('Corundum','jewelry_stone_type')" [checked]="search_data['jewelry_stone_type'].includes('Corundum')"/>
+                                          <span class="cust-chkmark"></span>
+                                          Corundum
+                                        </label>
+                                      </div>
+                                    </li>
+                                    <li>
+                                      <div class="cust-checkbox-new">
+                                        <label class="cust-chk-bx">
+                                          <input type="checkbox" [ngClass]="{'active': search_data['jewelry_stone_type'].includes('Emerald')}" (click)="searchselect('Emerald','jewelry_stone_type')" [checked]="search_data['jewelry_stone_type'].includes('Emerald')"/>
+                                          <span class="cust-chkmark"></span>
+                                          Emerald
+                                        </label>
+                                      </div>
+                                    </li>
+                                    <li>
+                                      <div class="cust-checkbox-new">
+                                        <label class="cust-chk-bx">
+                                          <input type="checkbox" [ngClass]="{'active': search_data['jewelry_stone_type'].includes('Garnet')}" (click)="searchselect('Garnet','jewelry_stone_type')" [checked]="search_data['jewelry_stone_type'].includes('Garnet')"/>
+                                          <span class="cust-chkmark"></span>
+                                          Garnet
+                                        </label>
+                                      </div>
+                                    </li>
+                                    <li>
+                                      <div class="cust-checkbox-new">
+                                        <label class="cust-chk-bx">
+                                          <input type="checkbox" [ngClass]="{'active': search_data['jewelry_stone_type'].includes('Jadeite')}" (click)="searchselect('Jadeite','jewelry_stone_type')" [checked]="search_data['jewelry_stone_type'].includes('Jadeite')"/>
+                                          <span class="cust-chkmark"></span>
+                                          Jadeite
+                                        </label>
+                                      </div>
+                                    </li>
+                                    <li>
+                                      <div class="cust-checkbox-new">
+                                        <label class="cust-chk-bx">
+                                          <input type="checkbox" [ngClass]="{'active': search_data['jewelry_stone_type'].includes('Lapis')}" (click)="searchselect('Lapis','jewelry_stone_type')" [checked]="search_data['jewelry_stone_type'].includes('Lapis')"/>
+                                          <span class="cust-chkmark"></span>
+                                          Lapis
+                                        </label>
+                                      </div>
+                                    </li>
+                                    <li>
+                                      <div class="cust-checkbox-new">
+                                        <label class="cust-chk-bx">
+                                          <input type="checkbox" [ngClass]="{'active': search_data['jewelry_stone_type'].includes('Larimar')}" (click)="searchselect('Larimar','jewelry_stone_type')" [checked]="search_data['jewelry_stone_type'].includes('Larimar')"/>
+                                          <span class="cust-chkmark"></span>
+                                          Larimar
+                                        </label>
+                                      </div>
+                                    </li>
+                                    <li>
+                                      <div class="cust-checkbox-new">
+                                        <label class="cust-chk-bx">
+                                          <input type="checkbox" [ngClass]="{'active': search_data['jewelry_stone_type'].includes('Lolite')}" (click)="searchselect('Lolite','jewelry_stone_type')" [checked]="search_data['jewelry_stone_type'].includes('Lolite')"/>
+                                          <span class="cust-chkmark"></span>
+                                          Lolite
+                                        </label>
+                                      </div>
+                                    </li>
+                                    <li>
+                                      <div class="cust-checkbox-new">
+                                        <label class="cust-chk-bx">
+                                          <input type="checkbox" [ngClass]="{'active': search_data['jewelry_stone_type'].includes('London Blue Topaz')}" (click)="searchselect('London Blue Topaz','jewelry_stone_type')" [checked]="search_data['jewelry_stone_type'].includes('London Blue Topaz')"/>
+                                          <span class="cust-chkmark"></span>
+                                          London Blue Topaz
+                                        </label>
+                                      </div>
+                                    </li>
+                                    <li>
+                                      <div class="cust-checkbox-new">
+                                        <label class="cust-chk-bx">
+                                          <input type="checkbox" [ngClass]="{'active': search_data['jewelry_stone_type'].includes('Malachite')}" (click)="searchselect('Malachite','jewelry_stone_type')" [checked]="search_data['jewelry_stone_type'].includes('Malachite')"/>
+                                          <span class="cust-chkmark"></span>
+                                          Malachite
+                                        </label>
+                                      </div>
+                                    </li>
+                                    <li>
+                                      <div class="cust-checkbox-new">
+                                        <label class="cust-chk-bx">
+                                          <input type="checkbox" [ngClass]="{'active': search_data['jewelry_stone_type'].includes('Moissanite')}" (click)="searchselect('Moissanite','jewelry_stone_type')" [checked]="search_data['jewelry_stone_type'].includes('Moissanite')"/>
+                                          <span class="cust-chkmark"></span>
+                                          Moissanite
+                                        </label>
+                                      </div>
+                                    </li>
+                                    <li>
+                                      <div class="cust-checkbox-new">
+                                        <label class="cust-chk-bx">
+                                          <input type="checkbox" [ngClass]="{'active': search_data['jewelry_stone_type'].includes('Moonstone')}" (click)="searchselect('Moonstone','jewelry_stone_type')" [checked]="search_data['jewelry_stone_type'].includes('Moonstone')"/>
+                                          <span class="cust-chkmark"></span>
+                                          Moonstone
+                                        </label>
+                                      </div>
+                                    </li>
+                                    <li>
+                                      <div class="cust-checkbox-new">
+                                        <label class="cust-chk-bx">
+                                          <input type="checkbox" [ngClass]="{'active': search_data['jewelry_stone_type'].includes('Morganite')}" (click)="searchselect('Morganite','jewelry_stone_type')" [checked]="search_data['jewelry_stone_type'].includes('Morganite')"/>
+                                          <span class="cust-chkmark"></span>
+                                          Morganite
+                                        </label>
+                                      </div>
+                                    </li>
+                                    <li>
+                                      <div class="cust-checkbox-new">
+                                        <label class="cust-chk-bx">
+                                          <input type="checkbox" [ngClass]="{'active': search_data['jewelry_stone_type'].includes('Mother of Pearl')}" (click)="searchselect('Mother of Pearl','jewelry_stone_type')" [checked]="search_data['jewelry_stone_type'].includes('Mother of Pearl')"/>
+                                          <span class="cust-chkmark"></span>
+                                          Mother of Pearl
+                                        </label>
+                                      </div>
+                                    </li>
+                                    <li>
+                                      <div class="cust-checkbox-new">
+                                        <label class="cust-chk-bx">
+                                          <input type="checkbox" [ngClass]="{'active': search_data['jewelry_stone_type'].includes('Multi-Gemstone')}" (click)="searchselect('Multi-Gemstone','jewelry_stone_type')" [checked]="search_data['jewelry_stone_type'].includes('Multi-Gemstone')"/>
+                                          <span class="cust-chkmark"></span>
+                                          Multi-Gemstone
+                                        </label>
+                                      </div>
+                                    </li>
+                                    <li>
+                                      <div class="cust-checkbox-new">
+                                        <label class="cust-chk-bx">
+                                          <input type="checkbox" [ngClass]="{'active': search_data['jewelry_stone_type'].includes('Onyx')}" (click)="searchselect('Onyx','jewelry_stone_type')" [checked]="search_data['jewelry_stone_type'].includes('Onyx')"/>
+                                          <span class="cust-chkmark"></span>
+                                          Onyx
+                                        </label>
+                                      </div>
+                                    </li>
+                                    <li>
+                                      <div class="cust-checkbox-new">
+                                        <label class="cust-chk-bx">
+                                          <input type="checkbox" [ngClass]="{'active': search_data['jewelry_stone_type'].includes('Opal')}" (click)="searchselect('Opal','jewelry_stone_type')" [checked]="search_data['jewelry_stone_type'].includes('Opal')"/>
+                                          <span class="cust-chkmark"></span>
+                                          Opal
+                                        </label>
+                                      </div>
+                                    </li>
+                                    <li>
+                                      <div class="cust-checkbox-new">
+                                        <label class="cust-chk-bx">
+                                          <input type="checkbox" [ngClass]="{'active': search_data['jewelry_stone_type'].includes('Orthoclase')}" (click)="searchselect('Orthoclase','jewelry_stone_type')" [checked]="search_data['jewelry_stone_type'].includes('Orthoclase')"/>
+                                          <span class="cust-chkmark"></span>
+                                          Orthoclase
+                                        </label>
+                                      </div>
+                                    </li>
+                                    <li>
+                                      <div class="cust-checkbox-new">
+                                        <label class="cust-chk-bx">
+                                          <input type="checkbox" [ngClass]="{'active': search_data['jewelry_stone_type'].includes('Pearl')}" (click)="searchselect('Pearl','jewelry_stone_type')" [checked]="search_data['jewelry_stone_type'].includes('Pearl')"/>
+                                          <span class="cust-chkmark"></span>
+                                          Pearl
+                                        </label>
+                                      </div>
+                                    </li>
+                                    <li>
+                                      <div class="cust-checkbox-new">
+                                        <label class="cust-chk-bx">
+                                          <input type="checkbox" [ngClass]="{'active': search_data['jewelry_stone_type'].includes('Peridot')}" (click)="searchselect('Peridot','jewelry_stone_type')" [checked]="search_data['jewelry_stone_type'].includes('Peridot')"/>
+                                          <span class="cust-chkmark"></span>
+                                          Peridot
+                                        </label>
+                                      </div>
+                                    </li>
+                                    <li>
+                                      <div class="cust-checkbox-new">
+                                        <label class="cust-chk-bx">
+                                          <input type="checkbox" [ngClass]="{'active': search_data['jewelry_stone_type'].includes('Quartz')}" (click)="searchselect('Quartz','jewelry_stone_type')" [checked]="search_data['jewelry_stone_type'].includes('Quartz')"/>
+                                          <span class="cust-chkmark"></span>
+                                          Quartz
+                                        </label>
+                                      </div>
+                                    </li>
+                                    <li>
+                                      <div class="cust-checkbox-new">
+                                        <label class="cust-chk-bx">
+                                          <input type="checkbox" [ngClass]="{'active': search_data['jewelry_stone_type'].includes('Rubellite')}" (click)="searchselect('Rubellite','jewelry_stone_type')" [checked]="search_data['jewelry_stone_type'].includes('Rubellite')"/>
+                                          <span class="cust-chkmark"></span>
+                                          Rubellite
+                                        </label>
+                                      </div>
+                                    </li>
+                                    <li>
+                                      <div class="cust-checkbox-new">
+                                        <label class="cust-chk-bx">
+                                          <input type="checkbox" [ngClass]="{'active': search_data['jewelry_stone_type'].includes('Ruby')}" (click)="searchselect('Ruby','jewelry_stone_type')" [checked]="search_data['jewelry_stone_type'].includes('Ruby')"/>
+                                          <span class="cust-chkmark"></span>
+                                          Ruby
+                                        </label>
+                                      </div>
+                                    </li>
+                                    <li>
+                                      <div class="cust-checkbox-new">
+                                        <label class="cust-chk-bx">
+                                          <input type="checkbox" [ngClass]="{'active': search_data['jewelry_stone_type'].includes('Russian Jadeite')}" (click)="searchselect('Russian Jadeite','jewelry_stone_type')" [checked]="search_data['jewelry_stone_type'].includes('Russian Jadeite')"/>
+                                          <span class="cust-chkmark"></span>
+                                          Russian Jadeite
+                                        </label>
+                                      </div>
+                                    </li>
+                                    <li>
+                                      <div class="cust-checkbox-new">
+                                        <label class="cust-chk-bx">
+                                          <input type="checkbox" [ngClass]="{'active': search_data['jewelry_stone_type'].includes('Sapphire')}" (click)="searchselect('Sapphire','jewelry_stone_type')" [checked]="search_data['jewelry_stone_type'].includes('Sapphire')"/>
+                                          <span class="cust-chkmark"></span>
+                                          Sapphire
+                                        </label>
+                                      </div>
+                                    </li>
+                                    <li>
+                                      <div class="cust-checkbox-new">
+                                        <label class="cust-chk-bx">
+                                          <input type="checkbox" [ngClass]="{'active': search_data['jewelry_stone_type'].includes('Serpentine')}" (click)="searchselect('Serpentine','jewelry_stone_type')" [checked]="search_data['jewelry_stone_type'].includes('Serpentine')"/>
+                                          <span class="cust-chkmark"></span>
+                                          Serpentine
+                                        </label>
+                                      </div>
+                                    </li>
+                                    <li>
+                                      <div class="cust-checkbox-new">
+                                        <label class="cust-chk-bx">
+                                          <input type="checkbox" [ngClass]="{'active': search_data['jewelry_stone_type'].includes('Sodalite')}" (click)="searchselect('Sodalite','jewelry_stone_type')" [checked]="search_data['jewelry_stone_type'].includes('Sodalite')"/>
+                                          <span class="cust-chkmark"></span>
+                                          Sodalite
+                                        </label>
+                                      </div>
+                                    </li>
+                                    <li>
+                                      <div class="cust-checkbox-new">
+                                        <label class="cust-chk-bx">
+                                          <input type="checkbox" [ngClass]="{'active': search_data['jewelry_stone_type'].includes('Spinel')}" (click)="searchselect('Spinel','jewelry_stone_type')" [checked]="search_data['jewelry_stone_type'].includes('Spinel')"/>
+                                          <span class="cust-chkmark"></span>
+                                          Spinel
+                                        </label>
+                                      </div>
+                                    </li>
+                                    <li>
+                                      <div class="cust-checkbox-new">
+                                        <label class="cust-chk-bx">
+                                          <input type="checkbox" [ngClass]="{'active': search_data['jewelry_stone_type'].includes('Tanzanite')}" (click)="searchselect('Tanzanite','jewelry_stone_type')" [checked]="search_data['jewelry_stone_type'].includes('Tanzanite')"/>
+                                          <span class="cust-chkmark"></span>
+                                          Tanzanite
+                                        </label>
+                                      </div>
+                                    </li>
+                                    <li>
+                                      <div class="cust-checkbox-new">
+                                        <label class="cust-chk-bx">
+                                          <input type="checkbox" [ngClass]="{'active': search_data['jewelry_stone_type'].includes('Tiger Eye')}" (click)="searchselect('Tiger Eye','jewelry_stone_type')" [checked]="search_data['jewelry_stone_type'].includes('Tiger Eye')"/>
+                                          <span class="cust-chkmark"></span>
+                                          Tiger Eye
+                                        </label>
+                                      </div>
+                                    </li>
+                                    <li>
+                                      <div class="cust-checkbox-new">
+                                        <label class="cust-chk-bx">
+                                          <input type="checkbox" [ngClass]="{'active': search_data['jewelry_stone_type'].includes('Topaz')}" (click)="searchselect('Topaz','jewelry_stone_type')" [checked]="search_data['jewelry_stone_type'].includes('Topaz')"/>
+                                          <span class="cust-chkmark"></span>
+                                          Topaz
+                                        </label>
+                                      </div>
+                                    </li>
+                                    <li>
+                                      <div class="cust-checkbox-new">
+                                        <label class="cust-chk-bx">
+                                          <input type="checkbox" [ngClass]="{'active': search_data['jewelry_stone_type'].includes('Tourmaline')}" (click)="searchselect('Tourmaline','jewelry_stone_type')" [checked]="search_data['jewelry_stone_type'].includes('Tourmaline')"/>
+                                          <span class="cust-chkmark"></span>
+                                          Tourmaline
+                                        </label>
+                                      </div>
+                                    </li>
+                                    <li>
+                                      <div class="cust-checkbox-new">
+                                        <label class="cust-chk-bx">
+                                          <input type="checkbox" [ngClass]="{'active': search_data['jewelry_stone_type'].includes('Tsavorite')}" (click)="searchselect('Tsavorite','jewelry_stone_type')" [checked]="search_data['jewelry_stone_type'].includes('Tsavorite')"/>
+                                          <span class="cust-chkmark"></span>
+                                          Tsavorite
+                                        </label>
+                                      </div>
+                                    </li>
+                                    <li>
+                                      <div class="cust-checkbox-new">
+                                        <label class="cust-chk-bx">
+                                          <input type="checkbox" [ngClass]="{'active': search_data['jewelry_stone_type'].includes('Turquoise')}" (click)="searchselect('Turquoise','jewelry_stone_type')" [checked]="search_data['jewelry_stone_type'].includes('Turquoise')"/>
+                                          <span class="cust-chkmark"></span>
+                                          Turquoise
+                                        </label>
+                                      </div>
+                                    </li>
+                                    <li>
+                                      <div class="cust-checkbox-new">
+                                        <label class="cust-chk-bx">
+                                          <input type="checkbox" [ngClass]="{'active': search_data['jewelry_stone_type'].includes('Zircon')}" (click)="searchselect('Zircon','jewelry_stone_type')" [checked]="search_data['jewelry_stone_type'].includes('Zircon')"/>
+                                          <span class="cust-chkmark"></span>
+                                          Zircon
+                                        </label>
+                                      </div>
+                                    </li>
+                                    <li>
+                                      <div class="cust-checkbox-new">
+                                        <label class="cust-chk-bx">
+                                          <input type="checkbox" [ngClass]="{'active': search_data['jewelry_stone_type'].includes('Other')}" (click)="searchselect('Other','jewelry_stone_type')" [checked]="search_data['jewelry_stone_type'].includes('Other')"/>
+                                          <span class="cust-chkmark"></span>
+                                          Other
+                                        </label>
+                                      </div>
+                                    </li>
+                                  </ul>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+<!--                          <div class="dash-colps-main">-->
+<!--                            <div class="dash-colps-main-hdr" data-toggle="collapse" href="#Stone-Shape" role="button" aria-expanded="false" aria-controls="Stone-Shape">-->
+<!--                              Stone Shape-->
+<!--                              <i class="fa fa-angle-down" aria-hidden="true"></i>-->
+<!--                            </div>-->
+<!--                            <div class="dash-colps-main-body collapse" id="Stone-Shape">-->
+<!--                              <div class="dash-colps-inr-main">-->
+<!--                                <div class="filter-check-new">-->
+<!--                                  <ul>-->
+<!--                                    <li>-->
+<!--                                      <div class="cust-checkbox-new">-->
+<!--                                        <label class="cust-chk-bx">-->
+<!--                                          <input type="checkbox" [ngClass]="{'active': search_data['jewelry_stone_type'].includes('Diamond')}" (click)="searchselect('Diamond','jewelry_stone_type')" />-->
+<!--                                          <span class="cust-chkmark"></span>-->
+<!--                                          Diamond-->
+<!--                                        </label>-->
+<!--                                      </div>-->
+<!--                                    </li>-->
+<!--                                  </ul>-->
+<!--                                </div>-->
+<!--                              </div>-->
+<!--                            </div>-->
+<!--                          </div>-->
+<!--                          <div class="dash-colps-main">-->
+<!--                            <div class="dash-colps-main-hdr" data-toggle="collapse" href="#Diamond-Fancy-Color" role="button" aria-expanded="false" aria-controls="Diamond-Fancy-Color">-->
+<!--                              Diamond Fancy Color-->
+<!--                              <i class="fa fa-angle-down" aria-hidden="true"></i>-->
+<!--                            </div>-->
+<!--                            <div class="dash-colps-main-body collapse" id="Diamond-Fancy-Color">-->
+<!--                              <div class="dash-colps-inr-main"></div>-->
+<!--                            </div>-->
+<!--                          </div>-->
+<!--                          <div class="dash-colps-main">-->
+<!--                            <div class="dash-colps-main-hdr" data-toggle="collapse" href="#Diamond-White-Color" role="button" aria-expanded="false" aria-controls="Diamond-White-Color">-->
+<!--                              Diamond White Color-->
+<!--                              <i class="fa fa-angle-down" aria-hidden="true"></i>-->
+<!--                            </div>-->
+<!--                            <div class="dash-colps-main-body collapse" id="Diamond-White-Color">-->
+<!--                              <div class="dash-colps-inr-main"></div>-->
+<!--                            </div>-->
+<!--                          </div>-->
+                          <div class="dash-colps-main">
+                            <div class="dash-colps-main-hdr" data-toggle="collapse" href="#Styles" role="button" aria-expanded="false" aria-controls="Styles">
+                              Styles
+                              <i class="fa fa-angle-down" aria-hidden="true"></i>
+                            </div>
+                            <div class="dash-colps-main-body collapse" id="Styles">
+                              <div class="dash-colps-inr-main">
+                                <div class="filter-check-new">
+                                  <ul>
+                                    <li>
+                                      <div class="cust-checkbox-new">
+                                        <label class="cust-chk-bx">
+                                          <input type="checkbox" [ngClass]="{'active': search_data['jewelry_style'].includes('Antique')}" (click)="searchselect('Antique','jewelry_style')" [checked]="search_data['jewelry_style'].includes('Antique')"/>
+                                          <span class="cust-chkmark"></span>
+                                          Antique
+                                        </label>
+                                      </div>
+                                    </li>
+                                    <li>
+                                      <div class="cust-checkbox-new">
+                                        <label class="cust-chk-bx">
+                                          <input type="checkbox" [ngClass]="{'active': search_data['jewelry_style'].includes('Modern')}" (click)="searchselect('Modern','jewelry_style')" [checked]="search_data['jewelry_style'].includes('Modern')"/>
+                                          <span class="cust-chkmark"></span>
+                                          Modern
+                                        </label>
+                                      </div>
+                                    </li>
+                                    <li>
+                                      <div class="cust-checkbox-new">
+                                        <label class="cust-chk-bx">
+                                          <input type="checkbox" [ngClass]="{'active': search_data['jewelry_style'].includes('Fine')}" (click)="searchselect('Fine','jewelry_style')" [checked]="search_data['jewelry_style'].includes('Fine')"/>
+                                          <span class="cust-chkmark"></span>
+                                          Fine
+                                        </label>
+                                      </div>
+                                    </li>
+                                    <li>
+                                      <div class="cust-checkbox-new">
+                                        <label class="cust-chk-bx">
+                                          <input type="checkbox" [ngClass]="{'active': search_data['jewelry_style'].includes('Contemporary')}" (click)="searchselect('Contemporary','jewelry_style')" [checked]="search_data['jewelry_style'].includes('Contemporary')"/>
+                                          <span class="cust-chkmark"></span>
+                                          Contemporary
+                                        </label>
+                                      </div>
+                                    </li>
+                                    <li>
+                                      <div class="cust-checkbox-new">
+                                        <label class="cust-chk-bx">
+                                          <input type="checkbox" [ngClass]="{'active': search_data['jewelry_style'].includes('Art')}" (click)="searchselect('Art','jewelry_style')" [checked]="search_data['jewelry_style'].includes('Art')"/>
+                                          <span class="cust-chkmark"></span>
+                                          Art
+                                        </label>
+                                      </div>
+                                    </li>
+                                    <li>
+                                      <div class="cust-checkbox-new">
+                                        <label class="cust-chk-bx">
+                                          <input type="checkbox" [ngClass]="{'active': search_data['jewelry_style'].includes('Rare')}" (click)="searchselect('Rare','jewelry_style')" [checked]="search_data['jewelry_style'].includes('Rare')"/>
+                                          <span class="cust-chkmark"></span>
+                                          Rare
+                                        </label>
+                                      </div>
+                                    </li>
+                                  </ul>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="dash-colps-main">
+                            <div class="dash-colps-main-hdr" data-toggle="collapse" href="#Brands" role="button" aria-expanded="false" aria-controls="Brands/Designers">
+                              Brands
+                              <i class="fa fa-angle-down" aria-hidden="true"></i>
+                            </div>
+                            <div class="dash-colps-main-body collapse" id="Brands">
+                              <div class="dash-colps-inr-main">
+                                <div class="filter-check-new">
+                                  <ul>
+                                    <li>
+                                      <div class="cust-checkbox-new">
+                                        <label class="cust-chk-bx">
+                                          <input type="checkbox" [ngClass]="{'active': search_data['jewelry_brand'].includes('Baume & mercier')}" (click)="searchselect('Baume & mercier','jewelry_brand')" [checked]="search_data['jewelry_brand'].includes('Baume & mercier')"/>
+                                          <span class="cust-chkmark"></span>
+                                          Baume & mercier
+                                        </label>
+                                      </div>
+                                    </li>
+                                    <li>
+                                      <div class="cust-checkbox-new">
+                                        <label class="cust-chk-bx">
+                                          <input type="checkbox" [ngClass]="{'active': search_data['jewelry_brand'].includes('Boucheron')}" (click)="searchselect('Boucheron','jewelry_brand')" [checked]="search_data['jewelry_brand'].includes('Boucheron')"/>
+                                          <span class="cust-chkmark"></span>
+                                          Boucheron
+                                        </label>
+                                      </div>
+                                    </li>
+                                    <li>
+                                      <div class="cust-checkbox-new">
+                                        <label class="cust-chk-bx">
+                                          <input type="checkbox" [ngClass]="{'active': search_data['jewelry_brand'].includes('Breitling')}" (click)="searchselect('Breitling','jewelry_brand')" [checked]="search_data['jewelry_brand'].includes('Breitling')"/>
+                                          <span class="cust-chkmark"></span>
+                                          Breitling
+                                        </label>
+                                      </div>
+                                    </li>
+                                    <li>
+                                      <div class="cust-checkbox-new">
+                                        <label class="cust-chk-bx">
+                                          <input type="checkbox" [ngClass]="{'active': search_data['jewelry_brand'].includes('Buccellati')}" (click)="searchselect('Buccellati','jewelry_brand')" [checked]="search_data['jewelry_brand'].includes('Buccellati')"/>
+                                          <span class="cust-chkmark"></span>
+                                          Buccellati
+                                        </label>
+                                      </div>
+                                    </li>
+                                    <li>
+                                      <div class="cust-checkbox-new">
+                                        <label class="cust-chk-bx">
+                                          <input type="checkbox" [ngClass]="{'active': search_data['jewelry_brand'].includes('Cartier')}" (click)="searchselect('Cartier','jewelry_brand')" [checked]="search_data['jewelry_brand'].includes('Cartier')"/>
+                                          <span class="cust-chkmark"></span>
+                                          Cartier
+                                        </label>
+                                      </div>
+                                    </li>
+                                    <li>
+                                      <div class="cust-checkbox-new">
+                                        <label class="cust-chk-bx">
+                                          <input type="checkbox" [ngClass]="{'active': search_data['jewelry_brand'].includes('Chanel')}" (click)="searchselect('Chanel','jewelry_brand')" [checked]="search_data['jewelry_brand'].includes('Chanel')"/>
+                                          <span class="cust-chkmark"></span>
+                                          Chanel
+                                        </label>
+                                      </div>
+                                    </li>
+                                    <li>
+                                      <div class="cust-checkbox-new">
+                                        <label class="cust-chk-bx">
+                                          <input type="checkbox" [ngClass]="{'active': search_data['jewelry_brand'].includes('David webb')}" (click)="searchselect('David webb','jewelry_brand')" [checked]="search_data['jewelry_brand'].includes('David webb')"/>
+                                          <span class="cust-chkmark"></span>
+                                          David webb
+                                        </label>
+                                      </div>
+                                    </li>
+                                    <li>
+                                      <div class="cust-checkbox-new">
+                                        <label class="cust-chk-bx">
+                                          <input type="checkbox" [ngClass]="{'active': search_data['jewelry_brand'].includes('Ebel')}" (click)="searchselect('Ebel','jewelry_brand')" [checked]="search_data['jewelry_brand'].includes('Ebel')"/>
+                                          <span class="cust-chkmark"></span>
+                                          Ebel
+                                        </label>
+                                      </div>
+                                    </li>
+                                  </ul>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="dash-colps-main">
+                            <div class="dash-colps-main-hdr" data-toggle="collapse" href="#Location" role="button" aria-expanded="false" aria-controls="Location">
+                              Location
+                              <i class="fa fa-angle-down" aria-hidden="true"></i>
+                            </div>
+                            <div class="dash-colps-main-body collapse" id="Location">
+                              <div class="dash-colps-inr-main">
+                                <div class="filter-check-new">
+                                  <ul>
+                                    <li>
+                                      <div class="cust-checkbox-new">
+                                        <label class="cust-chk-bx">
+                                          <input type="checkbox" [ngClass]="{'active': search_data['jewelry_location'].includes('USA')}" (click)="searchselect('USA','jewelry_location')" [checked]="search_data['jewelry_location'].includes('USA')"/>
+                                          <span class="cust-chkmark"></span>
+                                          USA
+                                        </label>
+                                      </div>
+                                    </li>
+                                    <li>
+                                      <div class="cust-checkbox-new">
+                                        <label class="cust-chk-bx">
+                                          <input type="checkbox" [ngClass]="{'active': search_data['jewelry_location'].includes('India')}" (click)="searchselect('India','jewelry_location')" [checked]="search_data['jewelry_location'].includes('India')"/>
+                                          <span class="cust-chkmark"></span>
+                                          India
+                                        </label>
+                                      </div>
+                                    </li>
+                                    <li>
+                                      <div class="cust-checkbox-new">
+                                        <label class="cust-chk-bx">
+                                          <input type="checkbox" [ngClass]="{'active': search_data['jewelry_location'].includes('Hong Kong')}" (click)="searchselect('Hong Kong','jewelry_location')" [checked]="search_data['jewelry_location'].includes('Hong Kong')"/>
+                                          <span class="cust-chkmark"></span>
+                                          Hong Kong
+                                        </label>
+                                      </div>
+                                    </li>
+                                    <li>
+                                      <div class="cust-checkbox-new">
+                                        <label class="cust-chk-bx">
+                                          <input type="checkbox" [ngClass]="{'active': search_data['jewelry_location'].includes('China')}" (click)="searchselect('China','jewelry_location')" [checked]="search_data['jewelry_location'].includes('China')"/>
+                                          <span class="cust-chkmark"></span>
+                                          China
+                                        </label>
+                                      </div>
+                                    </li>
+                                    <li>
+                                      <div class="cust-checkbox-new">
+                                        <label class="cust-chk-bx">
+                                          <input type="checkbox" [ngClass]="{'active': search_data['jewelry_location'].includes('Italy')}" (click)="searchselect('Italy','jewelry_location')" [checked]="search_data['jewelry_location'].includes('Italy')"/>
+                                          <span class="cust-chkmark"></span>
+                                          Italy
+                                        </label>
+                                      </div>
+                                    </li>
+                                    <li>
+                                      <div class="cust-checkbox-new">
+                                        <label class="cust-chk-bx">
+                                          <input type="checkbox" [ngClass]="{'active': search_data['jewelry_location'].includes('Japan')}" (click)="searchselect('Japan','jewelry_location')" [checked]="search_data['jewelry_location'].includes('Japan')"/>
+                                          <span class="cust-chkmark"></span>
+                                          Japan
+                                        </label>
+                                      </div>
+                                    </li>
+                                    <li>
+                                      <div class="cust-checkbox-new">
+                                        <label class="cust-chk-bx">
+                                          <input type="checkbox" [ngClass]="{'active': search_data['jewelry_location'].includes('Belgium')}" (click)="searchselect('Belgium','jewelry_location')" [checked]="search_data['jewelry_location'].includes('Belgium')"/>
+                                          <span class="cust-chkmark"></span>
+                                          Belgium
+                                        </label>
+                                      </div>
+                                    </li>
+                                  </ul>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="dash-colps-main">
+                            <div class="dash-colps-main-hdr" data-toggle="collapse" href="#Condition" role="button" aria-expanded="false" aria-controls="Condition">
+                              Condition
+                              <i class="fa fa-angle-down" aria-hidden="true"></i>
+                            </div>
+                            <div class="dash-colps-main-body collapse" id="Condition">
+                              <div class="dash-colps-inr-main">
+                                <div class="filter-check-new">
+                                  <ul>
+                                    <li>
+                                      <div class="cust-checkbox-new">
+                                        <label class="cust-chk-bx">
+                                          <input type="checkbox" [ngClass]="{'active': search_data['jewelry_condition'].includes('New')}" (click)="searchselect('New','jewelry_condition')" [checked]="search_data['jewelry_condition'].includes('New')"/>
+                                          <span class="cust-chkmark"></span>
+                                          New
+                                        </label>
+                                      </div>
+                                    </li>
+                                    <li>
+                                      <div class="cust-checkbox-new">
+                                        <label class="cust-chk-bx">
+                                          <input type="checkbox" [ngClass]="{'active': search_data['jewelry_condition'].includes('Pre-Owned')}" (click)="searchselect('Pre-Owned','jewelry_condition')" [checked]="search_data['jewelry_condition'].includes('Pre-Owned')"/>
+                                          <span class="cust-chkmark"></span>
+                                          Pre-Owned
+                                        </label>
+                                      </div>
+                                    </li>
+                                  </ul>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="dash-colps-main">
+                            <div class="dash-colps-main-hdr" data-toggle="collapse" href="#State" role="button" aria-expanded="false" aria-controls="State">
+                              State
+                              <i class="fa fa-angle-down" aria-hidden="true"></i>
+                            </div>
+                            <div class="dash-colps-main-body collapse" id="State">
+                              <div class="dash-colps-inr-main">
+                                <div class="filter-check-new">
+                                  <ul>
+                                    <li>
+                                      <div class="cust-checkbox-new">
+                                        <label class="cust-chk-bx">
+                                          <input type="checkbox" [ngClass]="{'active': search_data['jewelry_state'].includes('Finished')}" (click)="searchselect('Finished','jewelry_state')" [checked]="search_data['jewelry_state'].includes('Finished')"/>
+                                          <span class="cust-chkmark"></span>
+                                          Finished
+                                        </label>
+                                      </div>
+                                    </li>
+                                    <li>
+                                      <div class="cust-checkbox-new">
+                                        <label class="cust-chk-bx">
+                                          <input type="checkbox" [ngClass]="{'active': search_data['jewelry_state'].includes('Semi-Finished')}" (click)="searchselect('Semi-Finished','jewelry_state')" [checked]="search_data['jewelry_state'].includes('Semi-Finished')"/>
+                                          <span class="cust-chkmark"></span>
+                                          Semi-Finished
+                                        </label>
+                                      </div>
+                                    </li>
+                                    <li>
+                                      <div class="cust-checkbox-new">
+                                        <label class="cust-chk-bx">
+                                          <input type="checkbox" [ngClass]="{'active': search_data['jewelry_state'].includes('Unfinished')}" (click)="searchselect('Unfinished','jewelry_state')" [checked]="search_data['jewelry_state'].includes('Unfinished')"/>
+                                          <span class="cust-chkmark"></span>
+                                          Unfinished
+                                        </label>
+                                      </div>
+                                    </li>
+                                  </ul>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+<!--                          <div class="dash-colps-main">-->
+<!--                            <div class="dash-colps-main-hdr" data-toggle="collapse" href="#Show-Only" role="button" aria-expanded="false" aria-controls="Show-Only">-->
+<!--                              Show Only-->
+<!--                              <i class="fa fa-angle-down" aria-hidden="true"></i>-->
+<!--                            </div>-->
+<!--                            <div class="dash-colps-main-body collapse" id="Show-Only">-->
+<!--                              <div class="dash-colps-inr-main"></div>-->
+<!--                            </div>-->
+<!--                          </div>-->
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-lg-8 col-md-7 mt-3 mt-md-0">
+                    <div class="row mr-0">
+                      <div class="col-xl-4 col-lg-6 pr-0 mb-3 cust-width-col">
+                        <div class="jwelry-box">
+                          <a href="" class="">
+                            <div class="jwelry-box-hdr">
+                              <img src="assets/images/jewelry.png" alt="" />
+                              <div class="whislist-div">
+                                <i class="fa fa-heart-o" aria-hidden="true"></i>
+                              </div>
+                            </div>
+                            <div class="jwelry-box-body">
+                              <h1>Tourmaline Report</h1>
+                              <div class="d-flex align-items-center justify-content-between rng-text py-2 pb-3">
+                                <span>Ring</span>
+                                <h6>$ 8900</h6>
+                              </div>
+                              <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+                              <div class="jwelry-box-btm">
+                                <img src="assets/images/jwl-pic.png" />
+                                <div class="jwelry-box-btm-text ml-2">
+                                  <h5>Chamoun's Jewelry, Inc.</h5>
+                                  <span>Newyork, USA</span>
+                                </div>
+                              </div>
+                            </div>
+                          </a>
+                        </div>
+                      </div>
+                      <div class="col-xl-4 col-lg-6 pr-0 mb-3 cust-width-col">
+                        <div class="jwelry-box">
+                          <a href="" class="">
+                            <div class="jwelry-box-hdr">
+                              <img src="assets/images/jewelry.png" alt="" />
+                              <div class="whislist-div">
+                                <i class="fa fa-heart-o" aria-hidden="true"></i>
+                              </div>
+                            </div>
+                            <div class="jwelry-box-body">
+                              <h1>Tourmaline Report</h1>
+                              <div class="d-flex align-items-center justify-content-between rng-text py-2 pb-3">
+                                <span>Ring</span>
+                                <h6>$ 8900</h6>
+                              </div>
+                              <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+                              <div class="jwelry-box-btm">
+                                <img src="assets/images/jwl-pic.png" />
+                                <div class="jwelry-box-btm-text ml-2">
+                                  <h5>Chamoun's Jewelry, Inc.</h5>
+                                  <span>Newyork, USA</span>
+                                </div>
+                              </div>
+                            </div>
+                          </a>
+                        </div>
+                      </div>
+                      <div class="col-xl-4 col-lg-6 pr-0 mb-3 cust-width-col">
+                        <div class="jwelry-box">
+                          <a href="" class="">
+                            <div class="jwelry-box-hdr">
+                              <img src="assets/images/jewelry.png" alt="" />
+                              <div class="whislist-div">
+                                <i class="fa fa-heart-o active" aria-hidden="true"></i>
+                              </div>
+                            </div>
+                            <div class="jwelry-box-body">
+                              <h1>Tourmaline Report</h1>
+                              <div class="d-flex align-items-center justify-content-between rng-text py-2 pb-3">
+                                <span>Ring</span>
+                                <h6>$ 8900</h6>
+                              </div>
+                              <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+                              <div class="jwelry-box-btm">
+                                <img src="assets/images/jwl-pic.png" />
+                                <div class="jwelry-box-btm-text ml-2">
+                                  <h5>Chamoun's Jewelry, Inc.</h5>
+                                  <span>Newyork, USA</span>
+                                </div>
+                              </div>
+                            </div>
+                          </a>
+                        </div>
+                      </div>
+                      <div class="col-xl-4 col-lg-6 pr-0 mb-3 cust-width-col">
+                        <div class="jwelry-box">
+                          <a href="" class="">
+                            <div class="jwelry-box-hdr">
+                              <img src="assets/images/jewelry.png" alt="" />
+                              <div class="whislist-div">
+                                <i class="fa fa-heart-o active" aria-hidden="true"></i>
+                              </div>
+                            </div>
+                            <div class="jwelry-box-body">
+                              <h1>Tourmaline Report</h1>
+                              <div class="d-flex align-items-center justify-content-between rng-text py-2 pb-3">
+                                <span>Ring</span>
+                                <h6>$ 8900</h6>
+                              </div>
+                              <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+                              <div class="jwelry-box-btm">
+                                <img src="assets/images/jwl-pic.png" />
+                                <div class="jwelry-box-btm-text ml-2">
+                                  <h5>Chamoun's Jewelry, Inc.</h5>
+                                  <span>Newyork, USA</span>
+                                </div>
+                              </div>
+                            </div>
+                          </a>
+                        </div>
+                      </div>
+                      <div class="col-xl-4 col-lg-6 pr-0 mb-3 cust-width-col">
+                        <div class="jwelry-box">
+                          <a href="" class="">
+                            <div class="jwelry-box-hdr">
+                              <img src="assets/images/jewelry.png" alt="" />
+                              <div class="whislist-div">
+                                <i class="fa fa-heart-o active" aria-hidden="true"></i>
+                              </div>
+                            </div>
+                            <div class="jwelry-box-body">
+                              <h1>Tourmaline Report</h1>
+                              <div class="d-flex align-items-center justify-content-between rng-text py-2 pb-3">
+                                <span>Ring</span>
+                                <h6>$ 8900</h6>
+                              </div>
+                              <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+                              <div class="jwelry-box-btm">
+                                <img src="assets/images/jwl-pic.png" />
+                                <div class="jwelry-box-btm-text ml-2">
+                                  <h5>Chamoun's Jewelry, Inc.</h5>
+                                  <span>Newyork, USA</span>
+                                </div>
+                              </div>
+                            </div>
+                          </a>
+                        </div>
+                      </div>
+                      <div class="col-xl-4 col-lg-6 pr-0 mb-3 cust-width-col">
+                        <div class="jwelry-box">
+                          <a href="" class="">
+                            <div class="jwelry-box-hdr">
+                              <img src="assets/images/jewelry.png" alt="" />
+                              <div class="whislist-div">
+                                <i class="fa fa-heart-o active" aria-hidden="true"></i>
+                              </div>
+                            </div>
+                            <div class="jwelry-box-body">
+                              <h1>Tourmaline Report</h1>
+                              <div class="d-flex align-items-center justify-content-between rng-text py-2 pb-3">
+                                <span>Ring</span>
+                                <h6>$ 8900</h6>
+                              </div>
+                              <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+                              <div class="jwelry-box-btm">
+                                <img src="assets/images/jwl-pic.png" />
+                                <div class="jwelry-box-btm-text ml-2">
+                                  <h5>Chamoun's Jewelry, Inc.</h5>
+                                  <span>Newyork, USA</span>
+                                </div>
+                              </div>
+                            </div>
+                          </a>
+                        </div>
+                      </div>
+                      <div class="col-12">
+                        <div class="text-center cust-pagination mt-4">
+                          <nav aria-label="Page navigation example">
+                            <ul class="pagination justify-content-center">
+                              <li class="page-item">
+                                <a class="page-link" href="#" aria-label="Previous">
+                                  <span aria-hidden="true">&laquo;</span>
+                                </a>
+                              </li>
+                              <li class="page-item"><a class="page-link" href="#">1</a></li>
+                              <li class="page-item"><a class="page-link" href="#">2</a></li>
+                              <li class="page-item"><a class="page-link" href="#">3</a></li>
+                              <li class="page-item">
+                                <a class="page-link" href="#" aria-label="Next">
+                                  <span aria-hidden="true">&raquo;</span>
+                                </a>
+                              </li>
+                            </ul>
+                          </nav>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="tab-pane fade" [ngClass]="{'active show': step==2}">
+                <div class="comn-white-box-table">
+                  <table datatable [dtOptions]='dtOptions' class="display">
+                    <thead>
+                    <tr>
+                      <th>
+                        <div class="cust-checkbox-new">
+                          <label class="cust-chk-bx">
+                            <input type="checkbox" />
+                            <span class="cust-chkmark"></span>
+                          </label>
+                        </div>
+                      </th>
+                      <th>ID#</th>
+                      <th>Stock#</th>
+                      <th>Date</th>
+                      <th>Title</th>
+                      <th>Price</th>
+                      <th>Quantity</th>
+                      <th>Type</th>
+                      <th>Location</th>
+                      <th>Status</th>
+                      <th>Action</th>
+                    </tr>
+                    </thead>
+                    <tbody *ngIf="jewelrylist?.length>0">
+                    <tr *ngFor="let item of jewelrylist">
+                      <td>
+                        <div class="cust-checkbox-new">
+                          <label class="cust-chk-bx">
+                            <input type="checkbox"/>
+                            <span class="cust-chkmark"></span>
+                          </label>
+                        </div>
+                      </td>
+                      <td>{{item.jewelry_id}}</td>
+                      <td>{{item.jewelry_stock_number}}</td>
+                      <td>{{item.created_at | date}}</td>
+                      <td>{{item.jewelry_title}}</td>
+                      <td>{{item.jewelry_price}}</td>
+                      <td>{{item.jewelry_quantity}}</td>
+                      <td>{{item.jewelry_type}}</td>
+                      <td>{{item.jewelry_location}}</td>
+                      <td>
+                        <div class="custom-control custom-switch">
+                          <input type="checkbox" class="custom-control-input" id="customSwitch_{{item.jewelry_id}}" (click)="change_status(item.jewelry_id)" [checked]="item.status == 1"/>
+                          <label class="custom-control-label" for="customSwitch_{{item.jewelry_id}}">Active</label>
+                        </div>
+                      </td>
+                      <td>
+                        <a (click)="edit_jewelry(item.jewelry_id)">
+                          <img src="assets/images/icon/edit-icon-table.svg" class="mx-2 table-img-inr" alt="">
+                        </a>
+                        <a (click)="delete_jewelry(item)">
+                          <img src="assets/images/icon/delete-icon.svg" class="mx-2 table-img-inr" alt="">
+                        </a>
+                      </td>
+                    </tr>
+                    </tbody>
+                    <tbody *ngIf="jewelrylist?.length == 0">
+                    <tr>
+                      <td colspan="11" class="no-data-available">No data!</td>
+                    </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+              <div class="tab-pane fade" [ngClass]="{'active show': step==3}">
+                <div class="news-section-tabs-new">
+                  <ul class="nav nav-pills cust-dash-top-tabs" role="tablist">
+                    <li class="nav-item active" role="presentation">
+                      <a class="nav-link active" id="pills-Single-tab" data-toggle="pill" href="#pills-Single" role="tab" aria-controls="pills-Single" aria-selected="true">
+                        Single
+                      </a>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                      <a class="nav-link border-left" id="pills-Multiple-tab" data-toggle="pill" href="#pills-Multiple" role="tab" aria-controls="pills-Multiple" aria-selected="false">Multiple</a>
+                    </li>
+<!--                    <li class="nav-item" role="presentation">-->
+<!--                      <a class="nav-link border-left" id="pills-Files-tab" data-toggle="pill" href="#pills-Files" role="tab" aria-controls="pills-Files" aria-selected="false">-->
+<!--                        Media Files-->
+<!--                      </a>-->
+<!--                    </li>-->
+                  </ul>
+                  <div class="tab-content mt-3">
+                    <div class="tab-pane fade active show" id="pills-Single" role="tabpanel" aria-labelledby="pills-Single-tab">
+                      <form [formGroup]="jewelryForm" (ngSubmit)="onSubmitJewelry()">
+                        <div class="dash-colps-main">
+                          <div class="dash-colps-main-hdr" data-toggle="collapse" href="#Image-video" role="button" aria-expanded="true" aria-controls="Image-video">
+                            Images & Video
+                            <i class="fa fa-angle-down" aria-hidden="true"></i>
+                          </div>
+                          <div class="dash-colps-main-body collapse show" id="Image-video">
+                            <div class="row tabs-space-ty">
+                              <div class="col-md-8">
+                                <div class="image-vid-section">
+                                  <div class="image-vid-section-hdr d-flex align-items-center justify-content-between">
+                                    <label class="video-label">Images</label>
+                                    <!--                                  <div class="vid-link">-->
+                                    <!--                                    <a href="">Select From Existing Images</a>-->
+                                    <!--                                  </div>-->
+                                  </div>
+                                  <div class="image-vid-section-body file-upload-section-body">
+                                    <ul class="row mt-2">
+                                      <li class="col-lg col-md-4 col-sm-6 mb-2 mb-lg-0">
+                                        <div class="file-upload">
+                                          <div class="file-upload-inr">
+                                            <div class="file-upload-content">
+                                              <img class="file-upload-image" src="assets/images/icon/file-upload-icon.svg" alt="your image" />
+                                            </div>
+                                            <div class="image-upload-wrap">
+                                              <input class="file-upload-input" type="file" (change)="jewelry_img($event)" accept=".png, .jpg, .jpeg" />
+                                            </div>
+                                            <div class="drag-text">
+                                              <h3>Drag Drop or Browse</h3>
+                                            </div>
+                                          </div>
+                                        </div>
+                                      </li>
+                                      <!--                                    <li class="col-lg col-md-4 col-sm-6 mb-2 mb-lg-0">-->
+                                      <!--                                      <div class="file-upload">-->
+                                      <!--                                        <div class="file-upload-inr">-->
+                                      <!--                                          <div class="file-upload-content">-->
+                                      <!--                                            <img class="file-upload-image" src="assets/images/icon/file-upload-icon.svg" alt="your image" />-->
+                                      <!--                                          </div>-->
+                                      <!--                                          <div class="image-upload-wrap">-->
+                                      <!--                                            <input class="file-upload-input" type="file" accept="image/*" />-->
+                                      <!--                                          </div>-->
+                                      <!--                                          <div class="drag-text">-->
+                                      <!--                                            <h3>Drag Drop or Browse</h3>-->
+                                      <!--                                          </div>-->
+                                      <!--                                        </div>-->
+                                      <!--                                      </div>-->
+                                      <!--                                    </li>-->
+                                      <!--                                    <li class="col-lg col-md-4 col-sm-6 mb-2 mb-lg-0">-->
+                                      <!--                                      <div class="file-upload">-->
+                                      <!--                                        <div class="file-upload-inr">-->
+                                      <!--                                          <div class="file-upload-content">-->
+                                      <!--                                            <img class="file-upload-image" src="assets/images/icon/file-upload-icon.svg" alt="your image" />-->
+                                      <!--                                          </div>-->
+                                      <!--                                          <div class="image-upload-wrap">-->
+                                      <!--                                            <input class="file-upload-input" type="file" accept="image/*" />-->
+                                      <!--                                          </div>-->
+                                      <!--                                          <div class="drag-text">-->
+                                      <!--                                            <h3>Drag Drop or Browse</h3>-->
+                                      <!--                                          </div>-->
+                                      <!--                                        </div>-->
+                                      <!--                                      </div>-->
+                                      <!--                                    </li>-->
+                                      <!--                                    <li class="col-lg col-md-4 col-sm-6 mb-2 mb-lg-0">-->
+                                      <!--                                      <div class="file-upload">-->
+                                      <!--                                        <div class="file-upload-inr">-->
+                                      <!--                                          <div class="file-upload-content">-->
+                                      <!--                                            <img class="file-upload-image" src="assets/images/icon/file-upload-icon.svg" alt="your image" />-->
+                                      <!--                                          </div>-->
+                                      <!--                                          <div class="image-upload-wrap">-->
+                                      <!--                                            <input class="file-upload-input" type="file" accept="image/*" />-->
+                                      <!--                                          </div>-->
+                                      <!--                                          <div class="drag-text">-->
+                                      <!--                                            <h3>Drag Drop or Browse</h3>-->
+                                      <!--                                          </div>-->
+                                      <!--                                        </div>-->
+                                      <!--                                      </div>-->
+                                      <!--                                    </li>-->
+                                    </ul>
+                                    <div class="row" *ngIf="images.length>0">
+                                      <div class="col-lg-3 col-md-4 col-sm-6 mt-4 mb-2 mb-lg-0" *ngFor='let url of images;let indexOfelement=index;'>
+                                        <img [src]="url" height="100%" width="100%">
+                                        <a class="remove-image" (click)="removeimgefromarray(indexOfelement)">&#215;</a>
+                                      </div>
+                                    </div>
+                                    <div class="row" *ngIf="jewelry_images.length>0">
+                                      <div class="col-lg-3 col-md-4 col-sm-6 mt-4 mb-2 mb-lg-0" *ngFor='let url of jewelry_images;let i=index;'>
+                                        <img [src]="backend_url+''+ url" height="100%" width="100%">
+                                        <a class="remove-image" (click)="deletefile(url)">&#215;</a>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="col-md-4">
+                                <label class="video-label">Video</label>
+                                <input type="text" formControlName="jewelry_video_link" class="form-control input-style" placeholder="" />
+                                <!--                              <div class="add-link">-->
+                                <!--                                <a href="">+ Add video link from YouTube, Vimeo or Picup Media</a>-->
+                                <!--                              </div>-->
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="dash-colps-main">
+                          <div class="dash-colps-main-hdr" data-toggle="collapse" href="#Information" role="button" aria-expanded="false" aria-controls="Information">
+                            General Information
+                            <i class="fa fa-angle-down" aria-hidden="true"></i>
+                          </div>
+                          <div class="dash-colps-main-body collapse" id="Information">
+                            <div class="row tabs-space-ty">
+                              <div class="col-md-6 form-group">
+                                <label class="dash-label">Item Title <span>*</span> </label>
+                                <input type="text" formControlName="jewelry_title" class="form-control input-style" placeholder="" [ngClass]="{ 'is-invalid': jewelry_submitted && f.jewelry_title.errors }"/>
+                                <div *ngIf="jewelry_submitted && f.jewelry_title.errors" class="invalid-feedback">
+                                  <div *ngIf="f.jewelry_title.errors.required">Item Title is required</div>
+                                </div>
+                              </div>
+                              <div class="col-md-6 form-group">
+                                <label class="dash-label">Stock # <span>*</span></label>
+                                <input type="text" (keypress)="isNumberKey($event)" formControlName="jewelry_stock_number" class="form-control input-style" placeholder="" [ngClass]="{ 'is-invalid': jewelry_submitted && f.jewelry_stock_number.errors }"/>
+                                <div *ngIf="jewelry_submitted && f.jewelry_stock_number.errors" class="invalid-feedback">
+                                  <div *ngIf="f.jewelry_stock_number.errors.required">Stock Number is required</div>
+                                </div>
+                              </div>
+                              <div class="col-12 form-group">
+                                <p>Include keywords that buyers would use to search for your item.</p>
+                              </div>
+                              <div class="col-12 form-group">
+                                <label class="dash-label">Description <span>*</span></label>
+                                <textarea class="form-control input-style" rows="4" formControlName="jewelry_description" [ngClass]="{ 'is-invalid': jewelry_submitted && f.jewelry_description.errors }"></textarea>
+                                <div *ngIf="jewelry_submitted && f.jewelry_description.errors" class="invalid-feedback">
+                                  <div *ngIf="f.jewelry_description.errors.required">Description is required</div>
+                                </div>
+                                <p>Start with a brief overview that describes your item's finest features.</p>
+                              </div>
+                              <div class="col-12">
+                                <div class="row align-items-center">
+                                  <div class="col-md-4 form-group">
+                                    <label class="dash-label">Price <span>*</span></label>
+                                    <input type="text" (keypress)="isNumberKey($event)" formControlName="jewelry_price" class="form-control input-style" placeholder="" [ngClass]="{ 'is-invalid': jewelry_submitted && f.jewelry_price.errors }"/>
+                                    <div *ngIf="jewelry_submitted && f.jewelry_price.errors" class="invalid-feedback">
+                                      <div *ngIf="f.jewelry_price.errors.required">Price is required</div>
+                                    </div>
+                                  </div>
+                                  <div class="col-md-1 text-center">
+                                    <label class="dash-label">/ Piece</label>
+                                  </div>
+                                  <div class="col-md-4 form-group">
+                                    <label class="dash-label">MSRP</label>
+                                    <input type="text" (keypress)="isNumberKey($event)" formControlName="jewelry_msrp" class="form-control input-style" placeholder="" />
+                                  </div>
+                                  <div class="col-12">
+                                    <div class="cust-checkbox-new filter-check-new my-3 text-left">
+                                      <label class="cust-chk-bx">
+                                        <input type="checkbox" formControlName="jewelry_memo" value="true" />
+                                        <span class="cust-chkmark"></span>
+                                        Available for Memo
+                                      </label>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="row">
+                                  <div class="col-md-4 form-group">
+                                    <label class="dash-label">Quantity (items)</label>
+                                    <input type="number" formControlName="jewelry_quantity" class="form-control input-style" placeholder="" />
+                                  </div>
+                                  <div class="col-md-4 form-group">
+                                    <label class="dash-label">Minimum order of (items)</label>
+                                    <input type="number" formControlName="jewelry_minimum_order" class="form-control input-style" placeholder="" />
+                                  </div>
+                                  <div class="col-12">
+                                    <div class="cust-checkbox-new filter-check-new my-3 text-left">
+                                      <label class="cust-chk-bx">
+                                        <input type="checkbox" value="true" formControlName="jewelry_out_of_stock"/>
+                                        <span class="cust-chkmark"></span>
+                                        Item is currently Out of Stock
+                                      </label>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="dash-colps-main">
+                          <div class="dash-colps-main-hdr" data-toggle="collapse" href="#Features" role="button" aria-expanded="false" aria-controls="Features">
+                            Features
+                            <i class="fa fa-angle-down" aria-hidden="true"></i>
+                          </div>
+                          <div class="dash-colps-main-body collapse" id="Features">
+                            <div class="row tabs-space-ty">
+                              <div class="col-md-4 form-group">
+                                <label class="dash-label">Jewelry Type <span>*</span></label>
+                                <select class="custom-select form-control input-style" formControlName="jewelry_type" [ngClass]="{ 'is-invalid': jewelry_submitted && f.jewelry_type.errors }">
+                                  <option selected="" value="">Select......</option>
+                                  <option value="Bracelets">Bracelets</option>
+                                  <option value="Brooches & Pins">Brooches & Pins</option>
+                                  <option value="Pendants & Charms">Pendants & Charms</option>
+                                  <option value="Cuff Links">Cuff Links</option>
+                                  <option value="Earrings">Earrings</option>
+                                  <option value="Necklaces">Necklaces</option>
+                                  <option value="Rings">Rings</option>
+                                  <option value="Watches">Watches</option>
+                                  <option value="Other">Other</option>
+                                </select>
+                                <div *ngIf="jewelry_submitted && f.jewelry_type.errors" class="invalid-feedback">
+                                  <div *ngIf="f.jewelry_type.errors.required">Jewelry Type is required</div>
+                                </div>
+                              </div>
+                              <div class="col-md-4 form-group">
+                                <label class="dash-label">Jewelry Condition</label>
+                                <select class="custom-select form-control input-style" formControlName="jewelry_condition" [ngClass]="{ 'is-invalid': jewelry_submitted && f.jewelry_condition.errors }">
+                                  <option selected="" value="">Select......</option>
+                                  <option value="New">New</option>
+                                  <option value="Pre-Owned">Pre-Owned</option>
+                                </select>
+                                <div *ngIf="jewelry_submitted && f.jewelry_condition.errors" class="invalid-feedback">
+                                  <div *ngIf="f.jewelry_condition.errors.required">Jewelry Condition is required</div>
+                                </div>
+                              </div>
+                              <div class="col-md-4 form-group">
+                                <label class="dash-label">Jewelry State</label>
+                                <select class="custom-select form-control input-style" formControlName="jewelry_state" [ngClass]="{ 'is-invalid': jewelry_submitted && f.jewelry_state.errors }">
+                                  <option selected="" value="">Select......</option>
+                                  <option value="Finished">Finished</option>
+                                  <option value="Semi-Finished">Semi-Finished</option>
+                                  <option value="Unfinished">Unfinished</option>
+                                </select>
+                                <div *ngIf="jewelry_submitted && f.jewelry_state.errors" class="invalid-feedback">
+                                  <div *ngIf="f.jewelry_state.errors.required">Jewelry State is required</div>
+                                </div>
+                              </div>
+                              <div class="col-md-4 form-group">
+                                <label class="dash-label">Jewelry Collection</label>
+                                <select class="custom-select form-control input-style" formControlName="jewelry_collection" [ngClass]="{ 'is-invalid': jewelry_submitted && f.jewelry_collection.errors }">
+                                  <option selected="" value="">Select......</option>
+                                  <option value="Engagement">Engagement</option>
+                                  <option value="General">General</option>
+                                  <option value="Mens">Men's</option>
+                                  <option value="Wedding">Wedding</option>
+                                  <option value="Religious">Religious</option>
+                                  <option value="Youth">Youth</option>
+                                  <option value="Other">Other</option>
+                                </select>
+                                <div *ngIf="jewelry_submitted && f.jewelry_collection.errors" class="invalid-feedback">
+                                  <div *ngIf="f.jewelry_collection.errors.required">Jewelry Collection is required</div>
+                                </div>
+                              </div>
+                              <div class="col-md-4 form-group">
+                                <label class="dash-label">Jewelry Style</label>
+                                <select class="custom-select form-control input-style" formControlName="jewelry_style" [ngClass]="{ 'is-invalid': jewelry_submitted && f.jewelry_style.errors }">
+                                  <option selected="" value="">Select......</option>
+                                  <option value="Antique">Antique</option>
+                                  <option value="Modern">Modern</option>
+                                  <option value="Fine">Fine</option>
+                                  <option value="Contemporary">Contemporary</option>
+                                  <option value="Art">Art</option>
+                                  <option value="Rare">Rare</option>
+                                </select>
+                                <div *ngIf="jewelry_submitted && f.jewelry_style.errors" class="invalid-feedback">
+                                  <div *ngIf="f.jewelry_style.errors.required">Jewelry Style is required</div>
+                                </div>
+                              </div>
+                              <div class="col-12">
+                                <div class="inr-input-div">
+                                  <h6>Material</h6>
+                                  <div class="row">
+                                    <div class="col-lg-3 col-md-4">
+                                      <label class="dash-label">Jewelry Material</label>
+                                      <select class="custom-select form-control input-style" formControlName="jewelry_material" [ngClass]="{ 'is-invalid': jewelry_submitted && f.jewelry_material.errors }">
+                                        <option selected="" value="">Select......</option>
+                                        <option value="Aluminum">Aluminum</option>
+                                        <option value="Black Silver">Black Silver</option>
+                                        <option value="Brass">Brass</option>
+                                        <option value="Bronze">Bronze</option>
+                                        <option value="Cobalt">Cobalt</option>
+                                        <option value="Copper">Copper</option>
+                                        <option value="Rose Gold">Rose Gold</option>
+                                        <option value="White Gold">White Gold</option>
+                                        <option value="Yellow Gold">Yellow Gold</option>
+                                        <option value="Gold">Gold</option>
+                                        <option value="Gold-Filled">Gold-Filled</option>
+                                        <option value="Iron">Iron</option>
+                                        <option value="Nickel">Nickel</option>
+                                        <option value="Palladium">Palladium</option>
+                                        <option value="Platinum">Platinum</option>
+                                        <option value="Rhodium">Rhodium</option>
+                                        <option value="Silver">Silver</option>
+                                        <option value="Silver Plate">Silver Plate</option>
+                                        <option value="Steel">Steel</option>
+                                        <option value="Sterling">Sterling</option>
+                                        <option value="Tantalum">Tantalum</option>
+                                        <option value="Titanium">Titanium</option>
+                                        <option value="Tungsten">Tungsten</option>
+                                        <option value="Other">Other</option>
+                                      </select>
+                                      <div *ngIf="jewelry_submitted && f.jewelry_material.errors" class="invalid-feedback">
+                                        <div *ngIf="f.jewelry_material.errors.required">Jewelry Material is required</div>
+                                      </div>
+                                    </div>
+                                    <div class="col-lg-3 col-md-4">
+                                      <label class="dash-label">Material Weight</label>
+                                      <input type="text" (keypress)="isNumberKey($event)" class="form-control input-style" formControlName="jewelry_material_weight" placeholder="" />
+                                    </div>
+                                    <div class="col-lg-3 col-md-4">
+                                      <label class="dash-label">Material Carat</label>
+                                      <select class="custom-select form-control input-style" formControlName="jewelry_material_karat">
+                                        <option selected="" value="">Select......</option>
+                                        <option value="10">10</option>
+                                        <option value="14">14</option>
+                                        <option value="18">18</option>
+                                        <option value="Other">Other</option>
+                                      </select>
+                                    </div>
+                                    <!--                                    <div class="col-12">-->
+                                    <!--                                      <div class="add-link">-->
+                                    <!--                                        <a href="">+ Add Another Material Type</a>-->
+                                    <!--                                      </div>-->
+                                    <!--                                    </div>-->
+                                  </div>
+                                </div>
+                                <div class="inr-input-div">
+                                  <h6>Stone</h6>
+                                  <div class="row">
+                                    <div class="col-lg-3 col-md-4">
+                                      <label class="dash-label">Stone Type</label>
+                                      <select class="custom-select form-control input-style" formControlName="jewelry_stone_type">
+                                        <option selected="" value="">Select......</option>
+                                        <option value="Diamond">Diamond</option>
+                                        <option value="Abalone Shell">Abalone Shell</option>
+                                        <option value="Agate">Agate</option>
+                                        <option value="Alexandrite">Alexandrite</option>
+                                        <option value="Amber">Amber</option>
+                                        <option value="Amethyst">Amethyst</option>
+                                        <option value="Ametrine">Ametrine</option>
+                                        <option value="Ammonite Triplet">Ammonite Triplet</option>
+                                        <option value="Apatite">Apatite</option>
+                                        <option value="Aqua">Aqua</option>
+                                        <option value="Aquamarine">Aquamarine</option>
+                                        <option value="Aventurine">Aventurine</option>
+                                        <option value="Bloodstone">Bloodstone</option>
+                                        <option value="Blue Topaz">Blue Topaz</option>
+                                        <option value="Cameo">Cameo</option>
+                                        <option value="Carnelian">Carnelian</option>
+                                        <option value="Citirine">Citirine</option>
+                                        <option value="Coral">Coral</option>
+                                        <option value="Corundum">Corundum</option>
+                                        <option value="Emerald">Emerald</option>
+                                        <option value="Garnet">Garnet</option>
+                                        <option value="Jadeite">Jadeite</option>
+                                        <option value="Lapis">Lapis</option>
+                                        <option value="Larimar">Larimar</option>
+                                        <option value="Lolite">Lolite</option>
+                                        <option value="London Blue Topaz">London Blue Topaz</option>
+                                        <option value="Malachite">Malachite</option>
+                                        <option value="Moissanite">Moissanite</option>
+                                        <option value="Moonstone">Moonstone</option>
+                                        <option value="Morganite">Morganite</option>
+                                        <option value="Mother of Pearl">Mother of Pearl</option>
+                                        <option value="Multi-Gemstone">Multi-Gemstone</option>
+                                        <option value="Onyx">Onyx</option>
+                                        <option value="Opal">Opal</option>
+                                        <option value="Orthoclase">Orthoclase</option>
+                                        <option value="Pearl">Pearl</option>
+                                        <option value="Peridot">Peridot</option>
+                                        <option value="Quartz">Quartz</option>
+                                        <option value="Rubellite">Rubellite</option>
+                                        <option value="Ruby">Ruby</option>
+                                        <option value="Russian Jadeite">Russian Jadeite</option>
+                                        <option value="Sapphire">Sapphire</option>
+                                        <option value="Serpentine">Serpentine</option>
+                                        <option value="Sodalite">Sodalite</option>
+                                        <option value="Spinel">Spinel</option>
+                                        <option value="Tanzanite">Tanzanite</option>
+                                        <option value="Tiger Eye">Tiger Eye</option>
+                                        <option value="Topaz">Topaz</option>
+                                        <option value="Tourmaline">Tourmaline</option>
+                                        <option value="Tsavorite">Tsavorite</option>
+                                        <option value="Turquoise">Turquoise</option>
+                                        <option value="Zircon">Zircon</option>
+                                        <option value="Other">Other</option>
+                                      </select>
+                                    </div>
+                                    <!--                                    <div class="col-12">-->
+                                    <!--                                      <div class="add-link">-->
+                                    <!--                                        <a href="">+ Add Another Material Type</a>-->
+                                    <!--                                      </div>-->
+                                    <!--                                    </div>-->
+                                  </div>
+                                </div>
+                                <div class="inr-input-div">
+                                  <h6>Brand</h6>
+                                  <div class="row">
+                                    <div class="col-md-4">
+                                      <label class="dash-label">Jewelry Brand</label>
+                                      <select class="custom-select form-control input-style" formControlName="jewelry_brand">
+                                        <option selected="" value="">Select......</option>
+                                        <option value="Baume & mercier">Baume & mercier</option>
+                                        <option value="Boucheron">Boucheron</option>
+                                        <option value="Breitling">Breitling</option>
+                                        <option value="Buccellati">Buccellati</option>
+                                        <option value="Cartier">Cartier</option>
+                                        <option value="Chanel">Chanel</option>
+                                        <option value="David webb">David webb</option>
+                                        <option value="Ebel">Ebel</option>
+                                      </select>
+                                    </div>
+                                    <div class="col-md-4">
+                                      <label class="dash-label">Jewelry Design</label>
+                                      <input type="text" class="form-control input-style" formControlName="jewelry_design" placeholder="" />
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="inr-input-div">
+                                  <h6>Location & currency</h6>
+                                  <div class="row">
+                                    <div class="col-md-4">
+                                      <label class="dash-label">Jewelry Location <span>*</span></label>
+                                      <input type="text" class="form-control input-style" formControlName="jewelry_location" placeholder="" />
+                                      <div *ngIf="jewelry_submitted && f.jewelry_location.errors" class="invalid-feedback">
+                                        <div *ngIf="f.jewelry_location.errors.required">Jewelry Location is required</div>
+                                      </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                      <label class="dash-label">Currency </label>
+                                      <select class="custom-select form-control input-style" formControlName="jewelry_currency">
+                                        <option selected="" value="USD">USD</option>
+                                      </select>
+                                    </div>
+                                    <div class="col-md-4">
+                                      <label class="dash-label">Jewelry Lab</label>
+                                      <select class="custom-select form-control input-style" formControlName="jewelry_lab">
+                                        <option selected="" value="">Select......</option>
+                                        <option value="AGA">AGA</option>
+                                        <option value="AGL">AGL</option>
+                                        <option value="AGS">AGS</option>
+                                        <option value="CGL">CGL</option>
+                                        <option value="CISGEM">CISGEM</option>
+                                        <option value="CLG">CLG</option>
+                                        <option value="DCLA">DCLA</option>
+                                        <option value="EDGL">EDGL</option>
+                                        <option value="GCAL">GCAL</option>
+                                        <option value="GIA">GIA</option>
+                                        <option value="GSI">GSI</option>
+                                        <option value="HRD">HRD</option>
+                                        <option value="IDL">IDL</option>
+                                        <option value="IGC">IGC</option>
+                                        <option value="IGI">IGI</option>
+                                        <option value="IGI BLG">IGI BLG</option>
+                                        <option value="IGI USA">IGI USA</option>
+                                        <option value="IGL">IGL</option>
+                                        <option value="IIDGR">IIDGR</option>
+                                        <option value="NGTC">NGTC</option>
+                                        <option value="None">None</option>
+                                        <option value="OWN">OWN</option>
+                                        <option value="PGS">PGS</option>
+                                        <option value="RAP">RAP</option>
+                                        <option value="RDC">RDC</option>
+                                        <option value="RDR">RDR</option>
+                                        <option value="VGR">VGR</option>
+                                        <option value="WGI">WGI</option>
+                                        <option value="Other">Other</option>
+                                      </select>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="inr-input-div">
+                                  <h6>Stock References</h6>
+                                  <div class="row">
+                                    <div class="col-md-4">
+                                      <label class="dash-label">Jewelry Certificate</label>
+                                      <input type="text" class="form-control input-style" formControlName="jewelry_certificate" placeholder="" />
+                                    </div>
+                                    <div class="col-md-4">
+                                      <label class="dash-label">Parent Stock Number</label>
+                                      <input type="text" class="form-control input-style" formControlName="jewelry_parent_stock_number" placeholder="" />
+                                    </div>
+                                    <div class="col-md-4">
+                                      <label class="dash-label">Manufacture Date</label>
+                                      <mat-form-field appearance="fill" class="mtrl-cust-datepicker">
+                                        <input placeholder="Select....." matInput [matDatepicker]="picker" formControlName="jewelry_manufacture_date">
+                                        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                                        <mat-datepicker #picker></mat-datepicker>
+                                      </mat-form-field>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="dash-colps-main">
+                          <div class="dash-colps-main-hdr" data-toggle="collapse" href="#Measurements" role="button" aria-expanded="false" aria-controls="Measurements">
+                            Measurements
+                            <i class="fa fa-angle-down" aria-hidden="true"></i>
+                          </div>
+                          <div class="dash-colps-main-body collapse" id="Measurements">
+                            <div class="row tabs-space-ty">
+                              <div class="col-md-4 form-group">
+                                <label class="dash-label">Jewelry Total Length</label>
+                                <input type="text" formControlName="jewelry_total_length" class="form-control input-style" placeholder="mm" />
+                              </div>
+                              <div class="col-md-4 form-group">
+                                <label class="dash-label">Jewelry Total Width </label>
+                                <input type="text" formControlName="jewelry_total_width_mm" class="form-control input-style" placeholder="mm" />
+                              </div>
+                              <div class="col-md-4 form-group">
+                                <label class="dash-label">Jewelry Total Weight</label>
+                                <input type="text" formControlName="jewelry_total_width_gr" class="form-control input-style" placeholder="gr" />
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="dash-colps-main">
+                          <div class="dash-colps-main-hdr" data-toggle="collapse" href="#Keywords" role="button" aria-expanded="false" aria-controls="Keywords">
+                            Keywords
+                            <i class="fa fa-angle-down" aria-hidden="true"></i>
+                          </div>
+                          <div class="dash-colps-main-body collapse" id="Keywords">
+                            <div class="row tabs-space-ty">
+                              <div class="col-12 form-group">
+                                <label class="dash-label">Tags</label>
+                                <ng-select2 class="cust-input-stl" formControlName="jewelry_tags" [data]="Tags" [options]="options1" [value]="SelectedTags"></ng-select2>
+                                <p class="text-dark">What words might someone use to search for your listings? Use all 10 tags to get found. Please, separate them with a comma.</p>
+                              </div>
+                              <div class="col-12">
+                                <div class="cust-checkbox-new filter-check-new my-3 text-center">
+                                  <label class="cust-chk-bx">
+                                    <input type="checkbox" value="true" formControlName="jewelry_upload_own_stock" />
+                                    <span class="cust-chkmark"></span>
+                                    Upload items as "Own Stock" items for your Instant Inventory
+                                  </label>
+                                </div>
+                                <div class="btn-btm-inr-tabs text-center mt-5">
+                                  <button type="reset" class="btn btn-reset mr-sm-4">Reset All</button>
+                                  <button type="submit" class="btn btn-inr-top">Save Item</button>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </form>
+                    </div>
+                    <div class="tab-pane fade" id="pills-Multiple" role="tabpanel" aria-labelledby="pills-Multiple-tab">
+                      <div class="file-upload-section">
+                        <div class="dash-colps-main-hdr">
+                          Import Listings
+                        </div>
+                        <div class="file-upload-section-body pt-5 pb-3">
+                          <div class="row">
+                            <div class="col-lg-3 col-md-4">
+                              <div class="file-upload">
+                                <div class="file-upload-inr">
+                                  <div class="file-upload-content">
+                                    <img class="file-upload-image" src="assets/images/icon/file-upload-icon.svg" alt="your image" />
+                                  </div>
+                                  <div class="image-upload-wrap">
+                                    <input class="file-upload-input" type="file" (change)="import_jewelry($event)" accept=".csv" />
+                                  </div>
+                                  <div class="drag-text">
+                                    <h3>Drag & Drop or Browse</h3>
+                                  </div>
+                                </div>
+                              </div>
+                              {{import_file_name}}
+                            </div>
+                            <div class="col-xl-5 col-lg-6 col-md-8 offset-lg-1 mt-3 mt-md-0">
+                              <form [formGroup]="ImportForm" (ngSubmit)="OnSubmitUploadImportFile()">
+                                <div class="upload-file-text">
+                                  <h1>Import multiple jewelry listings</h1>
+                                  <p><b>Note:</b> Acceptable file type: CSV. <a [href]="frontend_url +'/assets/importformat/UploadJewelry.csv'">(Download template)</a></p>
+                                  <p>For further information read our <a href="">Jewelry Manual</a></p>
+                                  <p>Click here for the instructions on how to <a href="">Upload Multiple Jewelry Items</a></p>
+                                  <p>Click here for the <a href="">Fields and Values dictionary</a></p>
+                                  <div class="cust-checkbox-new filter-check-new my-4">
+                                    <label class="cust-chk-bx">
+                                      <input type="checkbox" value="true" formControlName="jewelry_upload_own_stock" />
+                                      <span class="cust-chkmark"></span>
+                                      Upload items as "Own Stock" items for your Instant Inventory
+                                      <a href="">Learn More</a>
+                                    </label>
+                                  </div>
+                                  <button type="submit" class="btn btn-inr-top" *ngIf="import_file_name != ''">Create Listings</button>
+                                </div>
+                              </form>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+<!--                    <div class="tab-pane fade" id="pills-Files" role="tabpanel" aria-labelledby="pills-Files-tab">-->
+<!--                      <div class="file-upload-section">-->
+<!--                        <div class="dash-colps-main-hdr">-->
+<!--                          Import Listings-->
+<!--                        </div>-->
+<!--                        <div class="file-upload-section-body pt-5 pb-3">-->
+<!--                          <div class="row">-->
+<!--                            <div class="col-lg-3 col-md-4">-->
+<!--                              <div class="file-upload">-->
+<!--                                <div class="file-upload-inr">-->
+<!--                                  <div class="file-upload-content">-->
+<!--                                    <img class="file-upload-image" src="assets/images/icon/file-upload-icon.svg" alt="your image" />-->
+<!--                                  </div>-->
+<!--                                  <div class="image-upload-wrap">-->
+<!--                                    <input class="file-upload-input" type="file" onchange="readURL(this);" accept="image/*" />-->
+<!--                                  </div>-->
+<!--                                  <div class="drag-text">-->
+<!--                                    <h3>Drag & Drop or Browse</h3>-->
+<!--                                  </div>-->
+<!--                                </div>-->
+<!--                              </div>-->
+<!--                            </div>-->
+<!--                            <div class="col-xl-5 col-lg-6 col-md-8 offset-lg-1 mt-3 mt-md-0">-->
+<!--                              <div class="upload-file-text">-->
+<!--                                <h1>Upload Multiple Images</h1>-->
+<!--                                <p>Acceptable file types: JPEG, JPG, PNG or ZIP files.</p>-->
+<!--                                <p>Make sure that the images are at least 1280px wide. The maximum supported ZIP archive size is 500MB. The best photos use natural or diffused lighting, and don’t use a flash</p>-->
+<!--                                <h1>Note :</h1>-->
+<!--                                <p>Make sure that the images titles are similar to the titles in the uploaded listings file</p>-->
+<!--                              </div>-->
+<!--                            </div>-->
+<!--                          </div>-->
+<!--                        </div>-->
+<!--                      </div>-->
+<!--                    </div>-->
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="overlay toggle-icon-main"></div>
+  </main>
+</div>

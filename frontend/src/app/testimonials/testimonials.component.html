@@ -1,0 +1,40 @@
+<div class="container-fluid front-section">
+  <app-front-header></app-front-header>
+  <div class="row row-space-class">
+    <div class="col-12 p-0">
+      <div class="comn-hdr-bg-top text-center">
+        <h1>About</h1>
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb justify-content-center">
+            <li class="breadcrumb-item"><a href="index.php">Home</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Customer Testimonials</li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+  </div>
+  <div class="row inr-row-space">
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <div class="tabs-section-text">
+            <h2>Customer Testimonials</h2>
+            <div class="customer-testo mb-4" *ngFor=" let data of testimonialData">
+              <p>
+                {{data.description}}
+              </p>
+              <div class="d-sm-flex align-items-center justify-content-between customer-testo-users">
+                <div class="customer-testo-users-div">
+                  <span>{{data.name.charAt(0)}}</span>
+                  <mark class="ml-2" title="john doe">{{data.name}}</mark>
+                </div>
+                <p>{{Date(data.created_at)}}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <app-front-footer></app-front-footer>
+</div>

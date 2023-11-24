@@ -1,0 +1,130 @@
+<div class="container-fluid front-section">
+  <app-front-header *ngIf="login == false"></app-front-header>
+  <app-header *ngIf="login == true"></app-header>
+  <app-sidebar *ngIf="login == true"></app-sidebar>
+  <div class="row row-space-class">
+    <div class="col-12 p-0">
+      <div class="comn-hdr-bg-top text-center">
+        <h1>contact us</h1>
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb justify-content-center">
+            <li class="breadcrumb-item"><a routerLink="/home">Home</a></li>
+            <li class="breadcrumb-item active" aria-current="page">contact us</li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+  </div>
+  <div class="row inr-row-space">
+    <div class="container">
+      <div class="row justify-content-center mr-0">
+        <div class="col-md-4 pr-0 mb-4 mb-md-0">
+          <div class="text-center ct-us-div">
+            <img src="assets/images/icon/emial-icon.svg" alt=""/>
+            <span>E-mail</span>
+            <p>info@kukadia.co</p>
+          </div>
+        </div>
+        <div class="col-md-4 pr-0 mb-4 mb-md-0">
+          <div class="text-center ct-us-div">
+            <img src="assets/images/icon/adress-icon.svg" alt=""/>
+            <span>Address</span>
+            <p>A-301 Kamla Estate,Nr. Savani Estate, Kohinoor Road, Mini Bazaar, Varachha, Surat-395006</p>
+          </div>
+        </div>
+        <div class="col-md-4 pr-0">
+          <div class="text-center ct-us-div">
+            <img src="assets/images/icon/cell-phone-icon.svg" alt=""/>
+            <span>Phone</span>
+            <p>+91 8980880555</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row inr-row-space bg-light-row">
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <div class="comn-title-shap text-center">
+            <h2>Contact Us</h2>
+            <div class="comn-title-shap-imgs d-flex align-items-center justify-content-center">
+              <img src="assets/images/icon/left-title-shap.svg" alt=""/>
+              <span class="mx-2"><img src="assets/images/icon/title-shap-logo.svg" alt=""/></span>
+              <img src="assets/images/icon/right-title-shap.svg" alt=""/>
+            </div>
+          </div>
+        </div>
+        <div class="col-xl-6 col-lg-8 m-auto">
+          <form class="row" [formGroup]="AddForm" (ngSubmit)="onSubmit()">
+            <div class="col-md-6 form-group">
+              <input type="text" formControlName="firstname" class="form-control input-style" placeholder="First Name"
+                     [ngClass]="{ 'is-invalid': submitted && fval.firstname.errors }"/>
+              <div *ngIf="submitted && fval.firstname.errors" class="invalid-feedback">
+                <div *ngIf="fval.firstname.errors.required">
+                  First Name is required
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6 form-group">
+              <input type="text" formControlName="lastname" class="form-control input-style" placeholder="Last Name"
+                     [ngClass]="{ 'is-invalid': submitted && fval.lastname.errors }"/>
+              <div *ngIf="submitted && fval.lastname.errors" class="invalid-feedback">
+                <div *ngIf="fval.lastname.errors.required">
+                  Last Name is required
+                </div>
+              </div>
+            </div>
+            <div class="col-12 form-group">
+              <input type="email" formControlName="email" class="form-control input-style" placeholder="Email Address"
+                     [ngClass]="{ 'is-invalid': submitted && fval.email.errors }"/>
+              <div *ngIf="submitted && fval.email.errors" class="invalid-feedback">
+                <div *ngIf="fval.email.errors.required">
+                  Email Address is required
+                </div>
+                <div *ngIf="fval.email.errors.email">Email Address must be a valid email address</div>
+              </div>
+            </div>
+            <div class="col-12 form-group">
+              <textarea rows="5" formControlName="comment" class="form-control input-style"
+                        placeholder="Write your message"
+                        [ngClass]="{ 'is-invalid': submitted && fval.comment.errors }"></textarea>
+              <div *ngIf="submitted && fval.comment.errors" class="invalid-feedback">
+                <div *ngIf="fval.comment.errors.required">
+                  Message is required
+                </div>
+              </div>
+            </div>
+            <div class="col-12">
+              <div class="btn-comn-div pt-5 text-center">
+                <button type="submit" class="btn-comn"><span>submit</span></button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row inr-row-space">
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <div class="contac-us-map-div">
+            <div style="width: 100%;">
+              <iframe
+                width="100%"
+                height="500"
+                frameborder="0"
+                scrolling="no"
+                marginheight="0"
+                marginwidth="0"
+                src="https://maps.google.com/maps?width=100%25&amp;height=300&amp;hl=en&amp;q=1%20Grafton%20Street,%20Dublin,%20Ireland+(My%20Business%20Name)&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"
+              ></iframe>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <app-front-footer *ngIf="login == false"></app-front-footer>
+</div>

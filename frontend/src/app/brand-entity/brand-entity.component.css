@@ -1,0 +1,232 @@
+.logo-comn {
+  border-right: 1px solid #cbd5dc;
+  padding: 0 20px 0 0;
+}
+
+.brnd-logo-inr p {
+  font-size: 18px;
+  line-height: 30px;
+  letter-spacing: 0.06em;
+  text-transform: capitalize;
+  margin-top: 10px;
+  margin-bottom: 0;
+  font-weight: 500;
+}
+
+.brnd-logo img {
+  width: 500px;
+}
+
+.brnd-logo-inr ul li span {
+  letter-spacing: 0.03em;
+  text-transform: capitalize;
+  font-weight: 700;
+  font-size: 20px;
+  text-align: center;
+  display: block;
+  position: relative;
+  margin-bottom: 20px;
+  font-family: Philosopher;
+}
+
+.brnd-logo-inr ul li span:before {
+  position: absolute;
+  content: "";
+  background-color: #cbd5dc;
+  height: 100px;
+  width: 2px;
+  top: -100%;
+  transform: translate(0, -100%);
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.brnd-logo-inr-line:before {
+  position: absolute;
+  content: "";
+  background-color: #cbd5dc;
+  top: 27%;
+  width: 66.9%;
+  height: 2px;
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.brnd-logo-inr {
+  padding-top: 240px;
+}
+
+.team-shap img,
+.team-shap-2 img {
+  width: 450px;
+}
+
+.team-shap {
+  left: -200px;
+}
+
+.team-shap-2 {
+  bottom: 0;
+  right: -200px;
+}
+
+.ctr-span-class:after {
+  position: absolute;
+  content: "";
+  background-color: #cbd5dc;
+  height: 100px;
+  width: 2px;
+  bottom: 60px;
+  transform: translate(0, -100%);
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.logo-brand-kukadia img {
+  width: 100%;
+}
+
+.flg-section {
+  margin: 10px 0;
+}
+
+.logo-comn .flg-section img {
+  width: 35px;
+}
+
+.class-p-tag .logo-comn p {
+  font-size: 18px;
+  line-height: 30px;
+  letter-spacing: 0.06em;
+  text-transform: capitalize;
+  margin-top: 10px;
+  margin-bottom: 0;
+  font-weight: 500;
+}
+
+@media (max-width: 1199px) {
+  .team-shap img,
+  .team-shap-2 img {
+    width: 350px;
+  }
+}
+
+@media (max-width: 991px) {
+  .brands-diamond-img {
+    text-align: center;
+  }
+
+  .infra-div-text {
+    padding-top: 20px;
+  }
+
+  .logo-comn {
+    text-align: center;
+  }
+
+  .logo-comn {
+    text-align: center;
+  }
+
+  .inr-row-space {
+    padding: 30px 0;
+  }
+
+  .logo-comn p {
+    margin-left: 0;
+  }
+
+  .logo-comn img {
+    width: 130px;
+  }
+
+  .team-shap img,
+  .team-shap-2 img {
+    width: 350px;
+  }
+
+  .brnd-logo-inr .logo-comn {
+    border: 0 !important;
+  }
+
+  .flg-section {
+    text-align: center;
+  }
+}
+
+@media (max-width: 767px) {
+  .brnd-logo-inr p {
+    font-size: 14px;
+  }
+
+  .class-p-tag .logo-comn p {
+    font-size: 14px;
+  }
+
+  .logo-comn img {
+    width: 200px;
+  }
+
+  .team-shap img,
+  .team-shap-2 img {
+    width: 150px;
+  }
+
+  .brnd-logo img {
+    max-width: 250px;
+  }
+
+  .team-shap {
+    left: 0;
+  }
+
+  .team-shap-2 {
+    right: 0;
+  }
+
+  .brnd-logo-inr ul li span {
+    font-size: 20px;
+    margin-bottom: 0;
+    margin-top: 15px;
+  }
+
+  .ctr-span-class:after {
+    display: none;
+  }
+
+  .brnd-logo-inr ul li span:before {
+    display: none;
+  }
+
+  .brnd-logo-inr {
+    padding-top: 30px;
+  }
+
+  .logo-comn {
+    padding: 0;
+    border: 0;
+  }
+
+  .brnd-logo-inr-line:before {
+    top: 15px;
+  }
+
+  .team-shap {
+    display: none;
+  }
+
+  .team-shap-2 {
+    display: none;
+  }
+
+  .flg-section {
+    margin-bottom: 30px;
+  }
+}
+

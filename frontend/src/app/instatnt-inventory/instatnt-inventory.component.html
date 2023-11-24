@@ -1,0 +1,190 @@
+<div class="dash-wrapper">
+  <app-header></app-header>
+  <app-sidebar></app-sidebar>
+  <main class="content-wrapper-section">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-12">
+          <div class="inr-title-comn d-sm-flex align-items-center">
+            <h3>Instant Inventory</h3>
+            <div class="sprt-menu-top mx-auto">
+              <ul class="nav nav-pills justify-content-center" id="pills-tab" role="tablist">
+                <li class="nav-item" role="presentation">
+                  <a class="nav-link active" id="pills-Inventory-tab" data-toggle="pill" href="#pills-Inventory" role="tab" aria-controls="pills-Inventory" aria-selected="true">Instant Inventory </a>
+                </li>
+                <li class="nav-item" role="presentation">
+                  <a class="nav-link" id="pills-Inquiries-tab" data-toggle="pill" href="#pills-Inquiries" role="tab" aria-controls="pills-Inquiries" aria-selected="false">
+                    Inquiries
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="col-12">
+          <div class="dash-box-white">
+            <div class="add-ons-section">
+              <div class="tab-content" id="pills-tabContent">
+                <div class="tab-pane fade show active" id="pills-Inventory" role="tabpanel" aria-labelledby="pills-Inventory-tab">
+                  <div class="row">
+                    <div class="col-12">
+                      <div class="edit-invet-section">
+                        <div class="row">
+                          <div class="col-lg-6">
+                            <div class="d-sm-flex align-items-center ivtry-section">
+                              <img src="assets/images/invtry-img-1.png" alt="" />
+                              <div class="ml-sm-5 mt-3 mt-sm-0">
+                                <h5>Benadato Trading Company LLC</h5>
+                                <p>Diamonds</p>
+                                <span>5 Active Rules 62 Suppliers</span>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col-lg-6 mt-3 mt-md-0">
+                            <div class="text-md-right">
+                              <button type="button" class="btn-prvw mr-sm-3">
+                                <span class="mr-2">Preview</span>
+                              </button>
+                              <div class="dropdown d-inline-block">
+                                <button type="button" class="btn-inr-top" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                  <span class="mr-2">Action</span>
+                                  <img src="assets/images/icon/arrow-bottom.svg" alt="" />
+                                </button>
+                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                  <a class="dropdown-item" href="#">Delete Instant Inventory</a>
+                                  <a class="dropdown-item" href="#" data-toggle="modal" data-target="#Instant-Inventory-modal">Create New Instant Inventory</a>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-12">
+                      <div class="intanstinventory-detls-title d-flex align-items-center">
+                        <h1>Settings</h1>
+                        <div class="ml-auto">
+                          <button type="button" class="btn-inr-top">
+                            <img src="assets/images/icon/edit-icon.svg" alt="" />
+                            <span class="ml-2">Edit</span>
+                          </button>
+                        </div>
+                      </div>
+                      <form class="edit-invet-section">
+                        <ul class="row mr-0">
+                          <li class="col-xl col-md-6 mb-3 mb-xl-0 pr-0">
+                            <h6>Instant Inventory Feed Name</h6>
+                            <span>5 Active Rules 62 Suppliers</span>
+                            <input type="text" value="5 Active Rules 62 Suppliers" class="form-control input-style" />
+                          </li>
+                          <li class="col-xl col-md-6 mb-3 mb-xl-0 pr-0">
+                            <h6>Company Name</h6>
+                            <span>Benadato Trading Company LLC</span>
+                            <input type="text" value="Benadato Trading Company LLC" class="form-control input-style" />
+                          </li>
+                          <li class="col-xl col-md-6 mb-3 mb-xl-0 pr-0">
+                            <h6>Website URL</h6>
+                            <span>https://www.johnatencio.diamonds/-</span>
+                            <input type="text" value="https://www.johnatencio.diamonds/-" class="form-control input-style" />
+                          </li>
+                          <li class="col-xl col-md-6 mb-3 mb-xl-0 pr-0">
+                            <h6>Email Address</h6>
+                            <span>sales@benadato.com</span>
+                            <input type="text" value="sales@benadato.com" class="form-control input-style" />
+                          </li>
+                          <li class="col-xl col-md-6 mb-3 mb-xl-0 pr-0">
+                            <h6>Currency</h6>
+                            <span>United States Dollar</span>
+                            <input type="text" value="United States Dollar" class="form-control input-style" />
+                          </li>
+                        </ul>
+                        <div class="text-right mt-4">
+                          <button type="submit" class="btn-inr-top">
+                            <span>save</span>
+                          </button>
+                        </div>
+                      </form>
+                    </div>
+                    <div class="col-12">
+                      <div class="intanstinventory-detls-title d-flex align-items-center">
+                        <h1>Inventory</h1>
+                        <div class="ml-auto">
+                          <button type="button" class="btn-inr-top">
+                            <img src="assets/images/icon/plus-icon.svg" alt="" />
+                            <span class="ml-2">New Rule</span>
+                          </button>
+                        </div>
+                      </div>
+                      <div class="">
+                        <div class="dash-comn-tabs">
+                          <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+                            <li class="nav-item" role="presentation">
+                              <a class="nav-link active" id="pills-Rules-tab" data-toggle="pill" href="#pills-Rules" role="tab" aria-controls="pills-Rules" aria-selected="true">Rules</a>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                              <a class="nav-link" id="pills-Stock-tab" data-toggle="pill" href="#pills-Stock" role="tab" aria-controls="pills-Stock" aria-selected="false">
+                                Own Stock
+                              </a>
+                            </li>
+                          </ul>
+                          <div class="tab-content" id="pills-tabContent">
+                            <div class="tab-pane fade show active" id="pills-Rules" role="tabpanel" aria-labelledby="pills-Rules-tab">
+                              <div class="comn-white-box-table">
+                                <table id="Inventory" class="display">
+                                  <thead>
+                                  <tr>
+                                    <th>Rule Name</th>
+                                    <th>Diamond Criteria</th>
+                                    <th>Markup Type</th>
+                                    <th>Suppliers</th>
+                                    <th>Status</th>
+                                  </tr>
+                                  </thead>
+                                  <tbody>
+                                  <tr>
+                                    <td>CTS/BTC/TRD</td>
+                                    <td>Round, Pear, Princess, Marquise, Oval...</td>
+                                    <td>Price</td>
+                                    <td>4</td>
+                                    <td>
+                                      <div class="status-label">
+                                        <span class="status-completed">Completed</span>
+                                      </div>
+                                    </td>
+                                  </tr>
+                                  <tr>
+                                    <td>CTS/BTC/TRD</td>
+                                    <td>Round, Pear, Princess, Marquise, Oval...</td>
+                                    <td>Price</td>
+                                    <td>4</td>
+                                    <td>
+                                      <div class="status-label">
+                                        <span class="status-rejected">rejected</span>
+                                      </div>
+                                    </td>
+                                  </tr>
+                                  </tbody>
+                                </table>
+                              </div>
+                            </div>
+                            <div class="tab-pane fade" id="pills-Stock" role="tabpanel" aria-labelledby="pills-Stock-tab">
+                              2
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="tab-pane fade" id="pills-Inquiries" role="tabpanel" aria-labelledby="pills-Inquiries-tab">
+                  2
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="overlay toggle-icon-main"></div>
+  </main>
+</div>

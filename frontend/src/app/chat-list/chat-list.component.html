@@ -1,0 +1,482 @@
+<div class="dash-wrapper">
+  <app-header></app-header>
+  <app-sidebar></app-sidebar>
+  <main class="content-wrapper-section">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-12">
+          <div class="dash-box-white">
+            <div class="dash-comn-tabs">
+              <div class="main-chat-scrl-div">
+                <div class="row">
+                  <div
+                    class="col-xl col-xxl-3 col-lg-4 d-flex flex-column mb-lg-0 mb-3"
+                  >
+                    <div class="left-sde-chat-bg">
+                      <div class="src-box-main-chart">
+                        <h5 *ngIf="!unread_count">Messaging</h5>
+                        <h5 *ngIf="unread_count">
+                          Messaging
+                          <span class="noti-msg">{{ unread_count }}</span>
+                        </h5>
+                        <div class="input-group my-3 cust-input-class">
+                          <div class="input-group-prepend">
+                            <span class="input-group-text border-left">
+                              <img
+                                src="assets/images/search-icon-msg.svg"
+                                alt=""
+                              />
+                            </span>
+                          </div>
+                          <input
+                            type="search"
+                            [(ngModel)]="search_keyword"
+                            (input)="searchFunction($event)"
+                            class="form-control input-style border-left-0"
+                            placeholder="Search"
+                          />
+                        </div>
+                        <ul *ngIf="searchList?.length > 0">
+                          <li
+                            *ngFor="let search of searchList"
+                            (click)="
+                              loadConversation(
+                                'personal_chat_' + search.adminId,
+                                1
+                              )
+                            "
+                            class="personal_chat_{{ search.adminId }}"
+                          >
+                            {{ search.firstname }} {{ search.lastname }}
+                          </li>
+                        </ul>
+                      </div>
+                      <div class="left-sde-body mbl-section">
+                        <div
+                          class="left-sde-body-inr chat-container-wrapper-list"
+                          *ngFor="let eachchat of chatList"
+                          (click)="
+                            loadConversation(eachchat?.conversation_id, 1)
+                          "
+                          id="{{ eachchat?.conversation_id }}"
+                        >
+                          <div class="d-flex align-items-center">
+                            <div class="d-flex align-items-center lft-text-inr">
+                              <div class="lft-text-inr-imgs">
+                                <img
+                                  src="assets/images/icon/users-icon.svg"
+                                  alt=""
+                                />
+                              </div>
+                              <div class="ml-2">
+                                <h6 title="title here">
+                                  {{
+                                    eachchat?.user_data?.firstname +
+                                      " " +
+                                      eachchat?.user_data?.lastname
+                                  }}
+                                </h6>
+                                <span>{{ eachchat?.message_content }}</span>
+                                <div
+                                  *ngFor="let eachfile of eachchat?.attachments"
+                                >
+                                  <p
+                                    *ngIf="
+                                      eachchat?.last_message_send_by !=
+                                      loginUser.userId
+                                    "
+                                  >
+                                    Sent a file
+                                  </p>
+                                  <p
+                                    *ngIf="
+                                      eachchat?.last_message_send_by ==
+                                      loginUser.userId
+                                    "
+                                  >
+                                    You sent a file
+                                  </p>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="ml-auto text-right">
+                              <span class="d-block">{{ eachchat?.time }}</span>
+                              <div
+                                *ngIf="
+                                  eachchat?.last_message_send_by ==
+                                  loginUser.userId
+                                "
+                                class="message_status_image_div"
+                              >
+                                <img
+                                  *ngIf="
+                                    eachchat?.last_message_send_by ==
+                                      loginUser.userId &&
+                                    eachchat?.message_status == 1
+                                  "
+                                  src="assets/images/checkmark.svg"
+                                  alt=""
+                                />
+                                <img
+                                  *ngIf="
+                                    eachchat?.last_message_send_by ==
+                                      loginUser.userId &&
+                                    eachchat?.message_status == 2
+                                  "
+                                  src="assets/images/all-done.svg"
+                                  alt=""
+                                />
+                                <img
+                                  *ngIf="
+                                    eachchat?.last_message_send_by ==
+                                      loginUser.userId &&
+                                    eachchat?.message_status == 3
+                                  "
+                                  src="assets/images/blue_tick.svg"
+                                  alt=""
+                                />
+                              </div>
+                              <span
+                                class="noti-msg"
+                                *ngIf="
+                                  eachchat?.unread_message > 0 &&
+                                  eachchat?.last_message_send_by !=
+                                    loginUser.userId
+                                "
+                                >{{ eachchat?.unread_message }}</span
+                              >
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div
+                    class="chatdiv col-xl-5 col-lg-4 col-xxl-6 d-flex flex-column mb-lg-0 mb-3"
+                    style="display: none !important"
+                  >
+                    <div class="mb_chat_section">
+                      <div class="chat-src-box-inner">
+                        <div
+                          class="d-flex align-items-center justify-content-between"
+                        >
+                          <div class="d-flex align-items-center">
+                            <div class="mr-2 mobile_view_arrow">
+                              <img
+                                src="assets/images/icon/back-left-arrow.svg"
+                                alt="back-left-arrow"
+                                class="img-fluid"
+                              />
+                            </div>
+                            <div
+                              class="d-flex align-items-center lft-text-inr mbl_text_show"
+                            >
+                              <div class="lft-text-inr-imgs">
+                                <img
+                                  src="assets/images/icon/users-icon.svg"
+                                  alt=""
+                                />
+                              </div>
+                              <div class="ml-2">
+                                <h6 title="title here" class="text-white">
+                                  {{
+                                    chatUser?.firstname +
+                                      " " +
+                                      chatUser?.lastname
+                                  }}
+                                </h6>
+                                <span
+                                  class="text-white"
+                                  *ngIf="chatUser?.is_online"
+                                  >Online</span
+                                >
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="chat-container-wrapper loadconversationdiv">
+                        <div
+                          *ngIf="is_load_more"
+                          class="usr-more-view mb-3 text-center"
+                        >
+                          <a
+                            href="javascript:void(0)"
+                            class="loadmore_btn"
+                            (click)="handleScroll($event)"
+                            style="cursor: pointer"
+                          >
+                            <span
+                              ><i
+                                class="fa fa-arrow-up mr-2"
+                                aria-hidden="true"
+                              ></i
+                              >load More</span
+                            >
+                          </a>
+                        </div>
+                        <div *ngFor="let eachmsg of conversationMessageList">
+                          <div class="chat-bubble-main">
+                            <div
+                              *ngIf="
+                                eachmsg?.sender_user_id != loginUser.userId
+                              "
+                              class="chat-bubble incoming-chat"
+                            >
+                              <div class="chat-message">
+                                <p
+                                  *ngIf="eachmsg?.message_content"
+                                  (copy)="onCopy()"
+                                >
+                                  {{ eachmsg?.message_content }}
+                                </p>
+                                <div
+                                  *ngFor="let eachfile of eachmsg?.attachments"
+                                  class="chat-imgs-pdf"
+                                >
+                                  <a
+                                    target="_blank"
+                                    href="{{ eachfile?.file_url }}"
+                                  >
+                                    <span>{{ eachfile?.file_name }}</span>
+                                    <img
+                                      *ngIf="eachfile?.type == 'PHOTO'"
+                                      src="assets/images/image.svg"
+                                      alt=""
+                                    />
+                                    <img
+                                      *ngIf="eachfile?.type == 'VIDEO'"
+                                      src="assets/images/video.svg"
+                                      alt=""
+                                    />
+                                    <img
+                                      *ngIf="eachfile?.type == 'DOC'"
+                                      src="assets/images/file.svg"
+                                      alt=""
+                                    />
+                                  </a>
+                                </div>
+                                <span>{{ eachmsg?.time }}</span>
+                                <div class="shap-pos">
+                                  <img
+                                    src="assets/images/icon/tri-shap.svg"
+                                    alt=""
+                                  />
+                                </div>
+                              </div>
+                            </div>
+                            <div
+                              *ngIf="
+                                eachmsg?.sender_user_id == loginUser.userId
+                              "
+                              class="chat-bubble outgoing-chat"
+                            >
+                              <div class="chat-message">
+                                <p (copy)="onCopy()">
+                                  {{ eachmsg?.message_content }}
+                                </p>
+                                <div
+                                  *ngFor="let eachfile of eachmsg?.attachments"
+                                  class="text-rightspan"
+                                >
+                                  <a
+                                    target="_blank"
+                                    href="{{ eachfile?.file_url }}"
+                                  >
+                                    <span>{{ eachfile?.file_name }}</span>
+                                    <img
+                                      *ngIf="eachfile?.type == 'PHOTO'"
+                                      src="assets/images/image.svg"
+                                      alt=""
+                                    />
+                                    <img
+                                      *ngIf="eachfile?.type == 'VIDEO'"
+                                      src="assets/images/video.svg"
+                                      alt=""
+                                    />
+                                    <img
+                                      *ngIf="eachfile?.type == 'DOC'"
+                                      src="assets/images/file.svg"
+                                      alt=""
+                                    />
+                                  </a>
+                                </div>
+                                <span>{{ eachmsg?.time }}</span>
+                                <div class="shap-pos">
+                                  <img
+                                    src="assets/images/icon/tri-shap.svg"
+                                    alt=""
+                                  />
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="chat-text-field mt-auto">
+                        <div class="input-group input-grp-cls input-text-box">
+                          <div
+                            *ngIf="send_file?.fileName?.length > 0"
+                            class="show_file_1"
+                          >
+                            <p class="mb-0">{{ send_file?.fileName }}</p>
+                            <a (click)="removeFile()">
+                              <i class="fa fa-times" aria-hidden="true"></i>
+                            </a>
+                          </div>
+                          <input
+                            type="text"
+                            name="message_text"
+                            (paste)="paste_message($event)"
+                            id="message_text"
+                            class="form-control"
+                            (keyup)="keyFunc($event)"
+                            (keydown.enter)="sendMessage(message_text.value)"
+                            placeholder="Type Message here....."
+                            #message_text
+                          />
+                          <div class="input-group-append">
+                            <span class="input-group-text border-right-0 pr-0">
+                              <a
+                                href="javascript:void(0)"
+                                id="add-menu-icon"
+                                (click)="msgattachmenticonclick()"
+                              >
+                                <input
+                                  id="file-input"
+                                  type="file"
+                                  style="display: none"
+                                />
+                                <img
+                                  src="assets/images/icon/add-icon.svg"
+                                  alt=""
+                                />
+                              </a>
+                            </span>
+
+                            <div class="add-menu-icon">
+                              <ul
+                                class="add-menu-icon-inner d-flex flex-column"
+                              >
+                                <li>
+                                  <div class="upload-btn-wrapper">
+                                    <a href="javascript:void(0)">
+                                      <img
+                                        src="assets/images/icon/icon-file-menu.svg"
+                                        alt=""
+                                      />
+                                    </a>
+                                    <input
+                                      type="file"
+                                      name="myfile"
+                                      (change)="handleFileInput($event)"
+                                      #fileInput1
+                                      (click)="fileInput1.value = null"
+                                      accept="application/pdf"
+                                    />
+                                  </div>
+                                </li>
+                                <li>
+                                  <div
+                                    class="upload-btn-wrapper select_img_icon"
+                                  >
+                                    <a href="javascript:void(0)">
+                                      <img
+                                        src="assets/images/icon/image-icon.svg"
+                                        alt=""
+                                      />
+                                    </a>
+                                    <input
+                                      type="file"
+                                      name="myfile"
+                                      (change)="handleFileInput($event)"
+                                      #fileInput2
+                                      (click)="fileInput2.value = null"
+                                      accept="image/x-png,image/jpeg"
+                                    />
+                                  </div>
+                                </li>
+                                <li>
+                                  <div class="upload-btn-wrapper">
+                                    <a href="javascript:void(0)" class="btn">
+                                      <img
+                                        src="assets/images/icon/film-icon.svg"
+                                        alt=""
+                                      />
+                                    </a>
+                                    <input
+                                      type="file"
+                                      name="myfile"
+                                      (change)="handleFileInput($event)"
+                                      #fileInput3
+                                      (click)="fileInput3.value = null"
+                                      accept="video/mp4"
+                                    />
+                                  </div>
+                                </li>
+                              </ul>
+                            </div>
+
+                            <span class="input-group-text pl-0">
+                              <a
+                                href="javascript:void(0)"
+                                (click)="sendMessage(message_text.value)"
+                              >
+                                <img
+                                  src="assets/images/icon/send-icon.svg"
+                                  alt=""
+                                />
+                              </a>
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div
+                    class="userinfodiv col-xl col-lg-4 col-xxl-3 mobile_super_admin"
+                    style="display: none !important"
+                  >
+                    <div class="right-side-chat-section">
+                      <div class="right-side-chat-section-top">
+                        <div class="lft-text-inr-imgs mbl_let_section">
+                          <img src="assets/images/icon/users-icon.svg" alt="" />
+                        </div>
+                        <div class="text-center text-top py-3">
+                          <h6>
+                            {{ chatUser?.firstname + " " + chatUser?.lastname }}
+                          </h6>
+                          <span *ngIf="chatUser?.type == 1">SuperAdmin</span>
+                          <span *ngIf="chatUser?.type == 2">Admin</span>
+                        </div>
+                      </div>
+                      <div class="copy-text-section">
+                        <div
+                          class="copy-text-section-inr d-flex align-items-center justify-content-between"
+                        >
+                          <p>Mobile No.</p>
+                          <div class="d-flex align-items-center">
+                            <span>{{ chatUser?.mobileno }}</span>
+                          </div>
+                        </div>
+                        <div
+                          class="copy-text-section-inr d-flex align-items-center justify-content-between"
+                        >
+                          <div class="d-flex align-items-center">
+                            <span>{{ chatUser?.about }}</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="overlay toggle-icon-main"></div>
+  </main>
+</div>

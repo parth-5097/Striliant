@@ -1,0 +1,65 @@
+<div class="dash-wrapper admin-panel-content">
+  <app-admin-header></app-admin-header>
+  <app-admin-sidebar></app-admin-sidebar>
+  <main class="content-wrapper-section">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-12">
+          <div class="inr-title-comn d-sm-flex align-items-center justify-content-between">
+            <h3>Admin</h3>
+            <div class="inr-title-btn">
+              <button (click)="export_csv()" type="button" class="btn btn btn-reset mr-sm-2">Export</button>
+              <a routerLink="/admin/subadmin/add-subadmin" class="btn btn-inr-top">Add Admin</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-12">
+          <div class="dash-box-white">
+            <table id="admin-list" datatable [dtOptions]='dtOptions' class="display">
+              <thead>
+              <tr>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Username</th>
+                <th>Email Address</th>
+                <th>Mobile No.</th>
+                <th class="no-search-filter">Status</th>
+                <th class="no-search-filter">Action</th>
+              </tr>
+              </thead>
+              <tbody *ngIf="getlist?.length>0">
+              <tr *ngFor="let item of getlist">
+                <td>{{item.firstname}}</td>
+                <td>{{item.lastname}}</td>
+                <td>{{item.username}}</td>
+                <td>{{item.email}}</td>
+                <td>{{item.mobileno}}</td>
+                <td>
+                  <div class="custom-control custom-switch">
+                    <input type="checkbox" class="custom-control-input" id="customSwitch_{{item.adminId}}" (click)="change_status(item.adminId)" [checked]="item.isActive == 1"/>
+                    <label class="custom-control-label" for="customSwitch_{{item.adminId}}">Active</label>
+                  </div>
+                </td>
+                <td>
+                  <a [routerLink]="['/admin/subadmin/edit-subadmin',item.adminId]">
+                    <img src="assets/images/icon/edit-icon-table.svg" class="mx-2 table-img-inr" alt="" />
+                  </a>
+                  <a (click)="delete_admin(item)">
+                    <img src="assets/images/icon/delete-icon.svg" class="mx-2 table-img-inr" alt="" />
+                  </a>
+                </td>
+              </tr>
+              </tbody>
+              <tbody *ngIf="getlist?.length == 0">
+              <tr>
+                <td colspan="7" class="no-data-available">No data!</td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="overlay toggle-icon-main"></div>
+  </main>
+</div>

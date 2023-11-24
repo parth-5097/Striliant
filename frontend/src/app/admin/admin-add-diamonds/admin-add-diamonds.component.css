@@ -1,0 +1,14 @@
+.video-label {
+  font-weight: 500;
+  color: var(--color-dark);
+}
+
+.tabs-space-ty {
+  margin-right: -15px;
+  margin-left: -15px;
+}
+
+.mat-form-field{
+  width: 100% !important;
+}
+

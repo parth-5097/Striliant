@@ -1,0 +1,140 @@
+<div class="container-fluid front-section">
+  <app-front-header *ngIf="login == false"></app-front-header>
+  <app-header *ngIf="login == true"></app-header>
+  <app-sidebar *ngIf="login == true"></app-sidebar>
+  <div class="row row-space-class">
+    <div class="col-12 p-0">
+      <div class="comn-hdr-bg-top text-center">
+        <h1>Customer Care</h1>
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb justify-content-center">
+            <li class="breadcrumb-item"><a routerLink="/home">Home</a></li>
+            <li class="breadcrumb-item active" aria-current="page">FAQs</li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+  </div>
+  <div class="row inr-row-space">
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <div class="tabs-section-text">
+            <h2>FAQ</h2>
+            <div class="link-change-page row">
+              <div class="col-12 m-auto">
+                <ul class="nav nav-pills mb-5 justify-content-center" id="pills-tab" role="tablist">
+                  <li class="nav-item" role="presentation">
+                    <a class="nav-link active" id="pills-About-tab" data-toggle="pill" href="#pills-About" role="tab" aria-controls="pills-About" aria-selected="true">About Us</a>
+                  </li>
+                  <li class="nav-item" role="presentation">
+                    <a class="nav-link" id="pills-Diamond-tab" data-toggle="pill" href="#pills-Diamond" role="tab" aria-controls="pills-Diamond" aria-selected="false">Diamond</a>
+                  </li>
+                  <li class="nav-item" role="presentation">
+                    <a class="nav-link" id="pills-Certificate-tab" data-toggle="pill" href="#pills-Certificate" role="tab" aria-controls="pills-Certificate" aria-selected="false">Certificate</a>
+                  </li>
+                  <li class="nav-item" role="presentation">
+                    <a class="nav-link" id="pills-Shipping-tab" data-toggle="pill" href="#pills-Shipping" role="tab" aria-controls="pills-Shipping" aria-selected="false">Shipping</a>
+                  </li>
+                  <li class="nav-item" role="presentation">
+                    <a class="nav-link" id="pills-Payment-tab" data-toggle="pill" href="#pills-Payment" role="tab" aria-controls="pills-Payment" aria-selected="false">Payment Terms</a>
+                  </li>
+                  <li class="nav-item" role="presentation">
+                    <a class="nav-link" id="pills-Policy-tab" data-toggle="pill" href="#pills-Policy" role="tab" aria-controls="pills-Policy" aria-selected="false">Policy</a>
+                  </li>
+                </ul>
+                <div class="tab-content" id="pills-tabContent">
+                  <div class="tab-pane fade show active" id="pills-About" role="tabpanel" aria-labelledby="pills-About-tab">
+                    <div class="accordion" id="accordionExample">
+                      <div class="dash-colps-main">
+                        <div class="dash-colps-main-hdr" id="headingOne" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                          What is Lorem Ipsum
+                          <i class="fa fa-plus"></i>
+                        </div>
+
+                        <div id="collapseOne" class="collapse show dash-colps-main-body" aria-labelledby="headingOne" data-parent="#accordionExample">
+                          <div class="dash-text-btm">
+                            <p>
+                              Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a
+                              galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="dash-colps-main">
+                        <div class="dash-colps-main-hdr" id="headingTwo" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                          What is Lorem Ipsum
+                          <i class="fa fa-plus"></i>
+                        </div>
+
+                        <div id="collapseTwo" class="collapse dash-colps-main-body" aria-labelledby="headingTwo" data-parent="#accordionExample">
+                          <div class="dash-text-btm">
+                            <p>
+                              Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a
+                              galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="dash-colps-main">
+                        <div class="dash-colps-main-hdr" id="headingThree" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                          What is Lorem Ipsum
+                          <i class="fa fa-plus"></i>
+                        </div>
+
+                        <div id="collapseThree" class="collapse dash-colps-main-body" aria-labelledby="headingThree" data-parent="#accordionExample">
+                          <div class="dash-text-btm">
+                            <p>
+                              Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a
+                              galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="dash-colps-main">
+                        <div class="dash-colps-main-hdr" id="headingFour" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                          What is Lorem Ipsum
+                          <i class="fa fa-plus"></i>
+                        </div>
+
+                        <div id="collapseFour" class="collapse dash-colps-main-body" aria-labelledby="headingFour" data-parent="#accordionExample">
+                          <div class="dash-text-btm">
+                            <p>
+                              Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a
+                              galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="dash-colps-main">
+                        <div class="dash-colps-main-hdr" id="headingFive" data-toggle="collapse" data-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+                          What is Lorem Ipsum
+                          <i class="fa fa-plus"></i>
+                        </div>
+
+                        <div id="collapseFive" class="collapse dash-colps-main-body" aria-labelledby="headingFive" data-parent="#accordionExample">
+                          <div class="dash-text-btm">
+                            <p>
+                              Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a
+                              galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="tab-pane fade" id="pills-Diamond" role="tabpanel" aria-labelledby="pills-Diamond-tab">2</div>
+                  <div class="tab-pane fade" id="pills-Certificate" role="tabpanel" aria-labelledby="pills-Certificate-tab">3</div>
+                  <div class="tab-pane fade" id="pills-Shipping" role="tabpanel" aria-labelledby="pills-Shipping-tab">4</div>
+                  <div class="tab-pane fade" id="pills-Payment" role="tabpanel" aria-labelledby="pills-Payment-tab">5</div>
+                  <div class="tab-pane fade" id="pills-Policy" role="tabpanel" aria-labelledby="pills-Policy-tab">6</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <app-front-footer *ngIf="login == false"></app-front-footer>
+</div>

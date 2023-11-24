@@ -1,0 +1,613 @@
+<div class="container-fluid front-section">
+  <app-front-header></app-front-header>
+  <div class="row row-space-class">
+    <div class="col-12 p-0">
+      <div class="dash-slide-top">
+        <div class="container h-100">
+          <div class="row align-items-center h-100">
+            <div class="col-xl-6 col-md-9">
+              <div class="dash-slide-top-text">
+                <h1>Real is rare <span>rare Lasts Forever</span></h1>
+                <p>
+                  Every relationship is unique and holds some special touch, meant to last for eternity. Therefore at
+                  Kukadia Group, we deal with only real diamonds because of your rare and real bonds that will nourish
+                  your love and cherish nostalgic moments till your last breath.
+                </p>
+                <div class="btn-comn-div pt-5">
+                  <a routerLink="/contact-us" class="btn-comn"><span>CONTACT US</span></a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="diamonds-new">
+          <img src="assets/images/icon/diamonds-new.svg" alt=""/>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row inr-row-space abt-section">
+    <div class="ring-shap-pos">
+      <img src="assets/images/icon/ring-right.svg" alt=""/>
+    </div>
+    <div class="ring-shap-pos-2">
+      <img src="assets/images/icon/ring-left.svg" alt=""/>
+    </div>
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <div class="comn-title-shap text-center">
+            <h2>About Us</h2>
+            <div class="comn-title-shap-imgs d-flex align-items-center justify-content-center">
+              <img src="assets/images/icon/left-title-shap.svg" alt=""/>
+              <span class="mx-2"><img src="assets/images/icon/title-shap-logo.svg" alt=""/></span>
+              <img src="assets/images/icon/right-title-shap.svg" alt=""/>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-8 m-auto">
+          <div class="abt-sec-text">
+            <p>“KUKADIA GROUP” is established in 1978 , as recognized and a trusted supplier with strongly believe in
+              transparent business practices and ethical values.</p>
+            <p>
+              Kukadia Group is the preferred diamantaire to the world because we are embracing the change and keep on
+              introducing the unmatched bouquet of the products of the highest quality at the best competitive prices.
+              With a
+              strict commitment to purity and clarity, we have used the most advanced decision making tools backed by
+              the assurance of our world class manufacturing infrastructure, and stringent quality checking with the
+              ultimate
+              purpose of consistent innovation and deliver “The Real Experience” encompassing an eye for detail.
+            </p>
+            <div class="btn-comn-div pt-5 mb-md-0 mb-5 pb-md-0 pb-5 text-center">
+              <a routerLink="/company-profile" class="btn-comn"><span>READ MORE</span></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row inr-row-space bg-light-row">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-12">
+          <div class="comn-title-shap text-center">
+            <h2>Our Products</h2>
+            <div class="comn-title-shap-imgs d-flex align-items-center justify-content-center">
+              <img src="assets/images/icon/left-title-shap.svg" alt=""/>
+              <span class="mx-2"><img src="assets/images/icon/title-shap-logo.svg" alt=""/></span>
+              <img src="assets/images/icon/right-title-shap.svg" alt=""/>
+            </div>
+          </div>
+        </div>
+        <div class="col-12">
+          <div class="custom-tabs-class">
+            <ul class="nav mb-5 justify-content-center">
+              <li class="nav-item">
+                <a class="nav-link" [ngClass]="{'active': slick == 1}" (click)="slicktogle(1)">
+                  <img src="assets/images/natural-earth-mined.svg" alt="">Natural/Earth-Mined
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" [ngClass]="{'active': slick == 2}" (click)="slicktogle(2)">
+                  <img src="assets/images/lab-grown.svg" alt="">Lab-Grown
+                </a>
+              </li>
+            </ul>
+            <div class="custom-tabs-content">
+              <div class="custom-tabs-content-inr" *ngIf="slick == 1">
+                <div class="our-products-slider">
+                  <ngx-slick-carousel class="carousel" #prodnatModal="slick-carousel" [config]="prodnatslider">
+                    <div ngxSlickItem class="our-products-item">
+                      <div class="row align-items-center">
+                        <div class="col-md-7 order-1 order-md-0 mt-3 mt-md-0">
+                          <div class="prd-text-left">
+                            <h3>Certified Diamonds</h3>
+                            <p>Kukadia Group Deals With Certified Diamonds That Have Been Verified For Quality, Allowing
+                              Customers To Purchase With Confidence.
+                              100% Real. 100% Ethical. Fantastic Value. Choose A Diamond Are Well Polished And Perfected
+                              Into The Shimmering Marvel</p>
+                            <div class="btn-comn-div pt-3">
+                              <a routerLink="/" class="btn-comn"><span>contact US</span></a>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-md-5">
+                          <div class="prd-text-right">
+                            <img src="assets/images/certified-diamonds-image.png" class="img-fluid" alt="">
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div ngxSlickItem class="our-products-item">
+                      <div class="row align-items-center">
+                        <div class="col-md-7 order-1 order-md-0 mt-3 mt-md-0">
+                          <div class="prd-text-left">
+                            <h3>Non-Certified Diamonds</h3>
+                            <p>Kukadia Group Deals With Certified Diamonds That Have Been Verified For Quality, Allowing
+                              Customers To Purchase With Confidence.
+                              100% Real. 100% Ethical. Fantastic Value. Choose A Diamond Are Well Polished And Perfected
+                              Into The Shimmering Marvel</p>
+                            <div class="btn-comn-div pt-3">
+                              <a routerLink="/" class="btn-comn"><span>contact US</span></a>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-md-5">
+                          <div class="prd-text-right">
+                            <img src="assets/images/non-certified-diamonds.png" class="img-fluid" alt="">
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div ngxSlickItem class="our-products-item">
+                      <div class="row align-items-center">
+                        <div class="col-md-7 order-1 order-md-0 mt-3 mt-md-0">
+                          <div class="prd-text-left">
+                            <h3>Fancy Diamonds</h3>
+                            <p>Kukadia Group Deals With Certified Diamonds That Have Been Verified For Quality, Allowing
+                              Customers To Purchase With Confidence.
+                              100% Real. 100% Ethical. Fantastic Value. Choose A Diamond Are Well Polished And Perfected
+                              Into The Shimmering Marvel</p>
+                            <div class="btn-comn-div pt-3">
+                              <a routerLink="/" class="btn-comn"><span>contact US</span></a>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-md-5">
+                          <div class="prd-text-right">
+                            <img src="assets/images/fancy-diamonds.png" class="img-fluid" alt="">
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </ngx-slick-carousel>
+                </div>
+              </div>
+              <div class="custom-tabs-content-inr"*ngIf="slick == 2">
+                <div class="our-products-slider">
+                  <ngx-slick-carousel class="carousel" #prodlabModal="slick-carousel" [config]="prodlabslider">
+                    <div ngxSlickItem class="our-products-item">
+                      <div class="row align-items-center">
+                        <div class="col-md-7 order-1 order-md-0 mt-3 mt-md-0">
+                          <div class="prd-text-left">
+                            <h3>Certified Diamonds</h3>
+                            <p>Kukadia Group Deals With Certified Diamonds That Have Been Verified For Quality, Allowing
+                              Customers To Purchase With Confidence.
+                              100% Real. 100% Ethical. Fantastic Value. Choose A Diamond Are Well Polished And Perfected
+                              Into The Shimmering Marvel</p>
+                            <div class="btn-comn-div pt-3">
+                              <a routerLink="/" class="btn-comn"><span>contact US</span></a>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-md-5">
+                          <div class="prd-text-right">
+                            <img src="assets/images/certified-diamonds-image.png" class="img-fluid" alt="">
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div ngxSlickItem class="our-products-item">
+                      <div class="row align-items-center">
+                        <div class="col-md-7 order-1 order-md-0 mt-3 mt-md-0">
+                          <div class="prd-text-left">
+                            <h3>Non-Certified Diamonds</h3>
+                            <p>Kukadia Group Deals With Certified Diamonds That Have Been Verified For Quality, Allowing
+                              Customers To Purchase With Confidence.
+                              100% Real. 100% Ethical. Fantastic Value. Choose A Diamond Are Well Polished And Perfected
+                              Into The Shimmering Marvel</p>
+                            <div class="btn-comn-div pt-3">
+                              <a routerLink="/" class="btn-comn"><span>contact US</span></a>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-md-5">
+                          <div class="prd-text-right">
+                            <img src="assets/images/non-certified-diamonds.png" class="img-fluid" alt="">
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </ngx-slick-carousel>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!--        <div class="col-lg-4 col-md-6 mt-3">-->
+        <!--          <div class="prdt-section text-center">-->
+        <!--            <img src="assets/images/icon/pro-dia-1.svg" alt=""/>-->
+        <!--            <h3>CERTIFIED DIAMONDS</h3>-->
+        <!--            <p>Kukadia Group deals with certified diamonds that have been verified for quality, allowing customers to-->
+        <!--              purchase with confidence. 100% Real. 100% Ethical. Fantastic Value. Choose a diamond are well polished and-->
+        <!--              perfected into the shimmering marvel</p>-->
+        <!--          </div>-->
+        <!--        </div>-->
+        <!--        <div class="col-lg-4 col-md-6 mt-3">-->
+        <!--          <div class="prdt-section text-center">-->
+        <!--            <img src="assets/images/icon/pro-dia-2.svg" alt=""/>-->
+        <!--            <h3>NON- CERTIFIED DIAMONDS</h3>-->
+        <!--            <p>Looking for small and accent stones? We have the best collection of loose and mounted diamonds in a-->
+        <!--              smaller size that perfectly fits your requirement. With non-certified diamonds, we still count over-->
+        <!--              quality to improve your shopping experience.</p>-->
+        <!--          </div>-->
+        <!--        </div>-->
+        <!--        <div class="col-lg-4 col-md-6 mt-3">-->
+        <!--          <div class="prdt-section text-center">-->
+        <!--            <img src="assets/images/icon/pro-dia-3.svg" alt=""/>-->
+        <!--            <h3>Fancy Diamonds</h3>-->
+        <!--            <p>Bold and 100% unique fancy color diamonds are carefully vetted and sourced in an ethically conscious-->
+        <!--              manner. We worked with the most reputed suppliers to offer personalized diamonds that are exported to the-->
+        <!--              image conscious international customers.</p>-->
+        <!--          </div>-->
+        <!--        </div>-->
+      </div>
+    </div>
+  </div>
+  <div class="row inr-row-space">
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <!-- <div class="comn-title-shap text-center">
+              <h2>About Us</h2>
+              <img src="assets/images/icon/title-shap-btm.svg" alt="" />
+          </div> -->
+          <div class="comn-title-shap text-center">
+            <h2>Infrastructure</h2>
+            <div class="comn-title-shap-imgs d-flex align-items-center justify-content-center">
+              <img src="assets/images/icon/left-title-shap.svg" alt=""/>
+              <span class="mx-2"><img src="assets/images/icon/title-shap-logo.svg" alt=""/></span>
+              <img src="assets/images/icon/right-title-shap.svg" alt=""/>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <div class="infra-div-img">
+            <img src="assets/images/infra-img-1.png" alt=""/>
+          </div>
+        </div>
+        <div class="col-lg-6 mt-3 mt-lg-0">
+          <div class="infra-div-text">
+            <p>
+              Kukadia Group is a professionally run company that pays key attention to the infrastructure and amenities
+              to outgrow sustainably. We have a Solid Manufacturing Facility with a confluence of sophisticated tools
+              and machinery to craft conflict-free diamonds with the best polishing work. Our team of 950+ craftsmen is
+              extensively involved in turning every stone into a gem of its kind in compliance with international
+              standards and rules.</p>
+            <p>With state-of-the-art software and technologies, we smoothen the rough edges and take every piece of
+              diamond to a whole other level by employing cutting, bruting and automated polishing machines to the
+              production process. Thus, progress in infrastructure means progress in the diamond industry where you can
+              bring phenomenal products on the market and help miners, manufacturers, traders, retailers, and consumers
+              to obtain the best products, with the most efficiency.</p>
+            <p>At Kukadia Group, we endeavor to be the best by providing crystal clear quality that ensures customer
+              satisfaction in all aspects.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row inr-row-space">
+    <!--    <div class="grading-div-right">-->
+    <!--      <img src="assets/images/greding-shap.png" alt="" />-->
+    <!--    </div>-->
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <div class="comn-title-shap text-center">
+            <h2>Grading System</h2>
+            <div class="comn-title-shap-imgs d-flex align-items-center justify-content-center">
+              <img src="assets/images/icon/left-title-shap.svg" alt=""/>
+              <span class="mx-2"><img src="assets/images/icon/title-shap-logo.svg" alt=""/></span>
+              <img src="assets/images/icon/right-title-shap.svg" alt=""/>
+            </div>
+          </div>
+        </div>
+        <div class="col-12">
+          <div class="row align-items-xl-center">
+            <div class="col-lg-6">
+              <div class="infra-div-img infa-image-gray">
+                <img src="assets/images/greding.png" alt="" class="h-auto img-fluid"/>
+              </div>
+            </div>
+            <div class="col-lg-6 mt-3 mt-lg-0">
+              <div class="infra-div-text">
+                <p>
+                  Every diamond is the remark of your true love, bond, and commitment that makes every moment precious
+                  and special. And when it comes to expressing your emotions, you can’t settle with the ordinary. It
+                  demands
+                  uniqueness in shape, cut, clarity and designs, and to shop for the perfect jewel, you need to consider
+                  a few of the factors that present a unique impression, elegant cuts, and a mysterious glow, to give
+                  the
+                  real you.
+                </p>
+                <div class="read-more-btn-div pt-5">
+                  <a href="" class="read-more-btn">Read MOre</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row inr-row-space">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-12">
+          <div class="comn-title-shap text-center">
+            <h2>Craftsmanship</h2>
+            <div class="comn-title-shap-imgs d-flex align-items-center justify-content-center">
+              <img src="assets/images/icon/left-title-shap.svg" alt=""/>
+              <span class="mx-2"><img src="assets/images/icon/title-shap-logo.svg" alt=""/></span>
+              <img src="assets/images/icon/right-title-shap.svg" alt=""/>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6 mb-3 mb-lg-0">
+          <div class="craft-section">
+            <img src="assets/images/craft-img-1.png" alt=""/>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6 mb-3 mb-lg-0">
+          <div class="craft-section">
+            <img src="assets/images/craft-img-2.png" alt=""/>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6 mb-3 mb-lg-0">
+          <div class="craft-section">
+            <img src="assets/images/craft-img-3.png" alt=""/>
+          </div>
+        </div>
+        <div class="col-lg-6 m-auto pt-md-5 craft-section">
+          <p class="text-center">Our highly-skilled, highly professional and high-caliber craftsmen produce diamonds
+            keeping in mind 3 parameters – outstanding quality, unique cut and extraordinary shine.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row inr-row-space position-relative">
+    <div class="bg-ctr-div"></div>
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-lg-6">
+          <div class="fnd-text-left">
+            <img src="assets/images/founder-pic.png" class="img-fluid" alt=""/>
+          </div>
+        </div>
+        <div class="col-lg-6 mt-3 mt-lg-0">
+          <div class="fnd-text-right">
+            <span>Founder’s Message</span>
+            <span class="text-span-2">"Growth of an Organization and graph of its personnel will go hand in hand and will complement and reinforce each other.”</span>
+            <span class="text-span-3">- Late Founder Mr. Popat Mangukiya</span>
+            <p>
+              Establishing the foundation back in the early 70’s, he always believed that the personnel are the
+              strongest pillars of an organization and therefore, their productivity and growth must go hand in hand,
+              complimenting
+              and reinforcing each other, with a spirit of synergic effort. Because, he knew, together, we can
+              accomplish any hurdle, every hustle!
+            </p>
+            <div class="read-more-btn-div pt-5">
+              <a href="" class="read-more-btn">Read MOre</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row inr-row-space bg-light-row" *ngIf="teamActive == 1">
+    <div class="team-shap">
+      <img src="assets/images/icon/diamond-shape.svg" alt=""/>
+    </div>
+    <div class="team-shap-2">
+      <img src="assets/images/icon/diamond-shape.svg" alt=""/>
+    </div>
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-12">
+          <div class="comn-title-shap text-center">
+            <h2>Our Team</h2>
+            <div class="comn-title-shap-imgs d-flex align-items-center justify-content-center">
+              <img src="assets/images/icon/left-title-shap.svg" alt=""/>
+              <span class="mx-2"><img src="assets/images/icon/title-shap-logo.svg" alt=""/></span>
+              <img src="assets/images/icon/right-title-shap.svg" alt=""/>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6 mb-4 mb-lg-0">
+          <div class="team-section text-center">
+            <img src="assets/images/team-1.jpg" class="img-fluid" alt=""/>
+            <h3>Mr. Shyam Kukadia</h3>
+            <span>Director</span>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6 mb-4 mb-lg-0">
+          <div class="team-section text-center">
+            <img src="assets/images/team-2.jpg" class="img-fluid" alt=""/>
+            <h3>Mr. Kishan Kukadia</h3>
+            <span>Director / CEO</span>
+          </div>
+        </div>
+        <div class="col-xl-9 m-auto pt-lg-5 craft-section">
+          <p class="text-center">
+            Kukadia Group has a very strong & intellectual team, through them the company has achieved greater heights.
+            It's due to their determination & hard efforts by which Kukadia Group has marked its name in the diamond
+            industry.
+          </p>
+          <div class="read-more-btn-div pt-4 text-center">
+            <a href="" class="read-more-btn">Read MOre</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row inr-row-space" *ngIf="milestoneActive == 1">
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <div class="comn-title-shap text-center">
+            <h2>Our milestone</h2>
+            <div class="comn-title-shap-imgs d-flex align-items-center justify-content-center">
+              <img src="assets/images/icon/left-title-shap.svg" alt=""/>
+              <span class="mx-2"><img src="assets/images/icon/title-shap-logo.svg" alt=""/></span>
+              <img src="assets/images/icon/right-title-shap.svg" alt=""/>
+            </div>
+          </div>
+        </div>
+        <div class="col-12">
+          <div class="milestone-slider">
+            <ngx-slick-carousel class="carousel" #slickModal="slick-carousel" [config]="milestoneslider">
+              <div class="milestone-item text-center" ngxSlickItem *ngFor="let slide of milestoneslides">
+                <div class="milestone-diamond">
+                  <div class="milestone-dia">
+                    <img src="{{backend+''+slide.profile}}" alt="" width="320" height="316"/>
+                  </div>
+                  <div class="milestone-text">
+                    <span>{{slide.title}}</span>
+                    <p title="title here">{{slide.description}}</p>
+                  </div>
+                </div>
+              </div>
+            </ngx-slick-carousel>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row inr-row-space bg-light-row" *ngIf="testimonialsActive == 1">
+    <div class="quote-div">
+      <img src="assets/images/icon/left-qo.svg" alt=""/>
+    </div>
+    <div class="quote-div quote-div-2">
+      <img src="assets/images/icon/right-qo.svg" alt=""/>
+    </div>
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <div class="comn-title-shap text-center">
+            <h2>Testimonials</h2>
+            <div class="comn-title-shap-imgs d-flex align-items-center justify-content-center">
+              <img src="assets/images/icon/left-title-shap.svg" alt=""/>
+              <span class="mx-2"><img src="assets/images/icon/title-shap-logo.svg" alt=""/></span>
+              <img src="assets/images/icon/right-title-shap.svg" alt=""/>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 m-auto">
+          <div class="testimonials-slider">
+            <ngx-slick-carousel class="carousel" #testiModal="slick-carousel" [config]="testislider">
+              <div class="testimonials-item text-center" ngxSlickItem *ngFor="let tslide of testislides">
+                <div class="testimonials-item-fix-width">
+                  <img src="{{backend +''+ tslide.profile}}" class="img-fluid" alt=""/>
+                  <p>“{{tslide.description}}“</p>
+                  <span>- {{tslide.name}}</span>
+                  <mark>{{tslide.title}}</mark>
+                </div>
+              </div>
+            </ngx-slick-carousel>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row inr-row-space">
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <div class="comn-title-shap text-center">
+            <h2>Contact Us</h2>
+            <div class="comn-title-shap-imgs d-flex align-items-center justify-content-center">
+              <img src="assets/images/icon/left-title-shap.svg" alt=""/>
+              <span class="mx-2"><img src="assets/images/icon/title-shap-logo.svg" alt=""/></span>
+              <img src="assets/images/icon/right-title-shap.svg" alt=""/>
+            </div>
+          </div>
+        </div>
+        <div class="col-xl-6 col-lg-8 m-auto">
+          <form class="row" [formGroup]="AddForm" (ngSubmit)="onSubmit()">
+            <div class="col-md-6 form-group">
+              <input type="text" formControlName="firstname" class="form-control input-style" placeholder="First Name"
+                     [ngClass]="{ 'is-invalid': submitted && fval.firstname.errors }"/>
+              <div *ngIf="submitted && fval.firstname.errors" class="invalid-feedback">
+                <div *ngIf="fval.firstname.errors.required">
+                  First Name is required
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6 form-group">
+              <input type="text" formControlName="lastname" class="form-control input-style" placeholder="Last Name"
+                     [ngClass]="{ 'is-invalid': submitted && fval.lastname.errors }"/>
+              <div *ngIf="submitted && fval.lastname.errors" class="invalid-feedback">
+                <div *ngIf="fval.lastname.errors.required">
+                  Last Name is required
+                </div>
+              </div>
+            </div>
+            <div class="col-12 form-group">
+              <input type="email" formControlName="email" class="form-control input-style" placeholder="Email Address"
+                     [ngClass]="{ 'is-invalid': submitted && fval.email.errors }"/>
+              <div *ngIf="submitted && fval.email.errors" class="invalid-feedback">
+                <div *ngIf="fval.email.errors.required">
+                  Email Address is required
+                </div>
+                <div *ngIf="fval.email.errors.email">Email Address must be a valid email address</div>
+              </div>
+            </div>
+            <div class="col-12 form-group">
+              <textarea rows="5" formControlName="comment" class="form-control input-style"
+                        placeholder="Write your message"
+                        [ngClass]="{ 'is-invalid': submitted && fval.comment.errors }"></textarea>
+              <div *ngIf="submitted && fval.comment.errors" class="invalid-feedback">
+                <div *ngIf="fval.comment.errors.required">
+                  Message is required
+                </div>
+              </div>
+            </div>
+            <div class="col-12">
+              <div class="btn-comn-div pt-5 text-center">
+                <button type="submit" class="btn-comn"><span>submit</span></button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row inr-row-space" *ngIf="blogActive == 1">
+    <!--    <div class="team-shap blog-shap-top">-->
+    <!--      <img src="assets/images/icon/diamond-shape.svg" alt=""/>-->
+    <!--    </div>-->
+    <!--    <div class="team-shap-2 blog-shap-btm">-->
+    <!--      <img src="assets/images/icon/diamond-shape.svg" alt=""/>-->
+    <!--    </div>-->
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-12">
+          <div class="comn-title-shap text-center">
+            <h2>Blog</h2>
+            <div class="comn-title-shap-imgs d-flex align-items-center justify-content-center">
+              <img src="assets/images/icon/left-title-shap.svg" alt=""/>
+              <span class="mx-2"><img src="assets/images/icon/title-shap-logo.svg" alt=""/></span>
+              <img src="assets/images/icon/right-title-shap.svg" alt=""/>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6 mb-4 mb-lg-0" *ngFor="let blog of BlogList">
+          <div class="blog-section-inr">
+            <img src="{{backend +''+ blog['image']}}" alt=""/>
+            <span>{{blog['created_at'] | date}}</span>
+            <h3>{{blog['title']}}</h3>
+            <p>{{blog['description']}}</p>
+            <a [routerLink]="['/blog-details',blog['blogId']]" class="d-inline-flex align-items-center">
+              Read More
+              <img src="assets/images/icon/more-arrow.svg" alt=""/>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <app-front-footer></app-front-footer>
+
+</div>

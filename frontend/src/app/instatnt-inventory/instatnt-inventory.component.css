@@ -1,0 +1,126 @@
+.intanstinventory-detls-title {
+  margin: 20px 0;
+}
+
+.intanstinventory-detls-title h1 {
+  color: #232323;
+  font-size: 18px;
+  text-transform: capitalize;
+  margin-bottom: 0;
+  font-weight: 700;
+}
+
+.edit-invet-section {
+  border: 1px solid rgba(203, 213, 220, 0.8);
+  border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  padding: 20px;
+}
+
+.edit-invet-section ul li h6 {
+  font-weight: 700;
+  font-size: 14px;
+  color: var(--color-dark);
+}
+
+.edit-invet-section ul li span {
+  font-weight: 600;
+  font-size: 14px;
+  color: var(--color-dark);
+}
+
+.dash-comn-tabs .nav-link {
+  color: var(--color-dark);
+  background: transparent;
+  border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  text-transform: capitalize;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.dash-comn-tabs .nav-link.active {
+  background: var(--thm-color-light);
+  color: var(--thm-color);
+}
+
+.status-completed {
+  background: var(--thm-color-light);
+  border-radius: 4px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  color: #033603;
+  font-weight: 600;
+  text-transform: capitalize;
+  font-size: 14px;
+  padding: 8px 20px 8px 20px;
+}
+
+.status-rejected {
+  background: #ff0000;
+  border-radius: 4px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  color: var(--color-white);
+  font-weight: 600;
+  text-transform: capitalize;
+  font-size: 14px;
+  padding: 8px 20px 8px 20px;
+}
+
+.ivtry-section img {
+  border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  height: 125px;
+  object-fit: cover;
+  object-position: center;
+}
+
+.ivtry-section h5 {
+  color: var(--color-dark);
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 15px;
+}
+
+.ivtry-section p {
+  color: var(--color-dark);
+  text-transform: capitalize;
+  font-weight: 600;
+  font-size: 14px;
+  margin-bottom: 5px;
+}
+
+.ivtry-section span {
+  color: var(--color-dark);
+  text-transform: capitalize;
+  font-weight: 600;
+  font-size: 13px;
+}
+
+.btn-prvw {
+  background: #f8f8f8;
+  color: var(--color-dark) !important;
+  padding: 13px 25px;
+  font-size: 15px;
+  border-radius: 6px;
+  -webkit-border-radius: 6px;
+  -moz-border-radius: 6px;
+  font-weight: 600;
+  text-transform: capitalize;
+  cursor: pointer;
+  border: 1px solid #cbd5dc;
+  outline: none;
+  box-shadow: none !important;
+  -webkit-box-shadow: none !important;
+  -moz-box-shadow: none !important;
+}
+
+@media (max-width: 575px){
+  .btn-prvw{
+    padding: 13px 15px;
+  }
+}

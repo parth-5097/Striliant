@@ -1,0 +1,16 @@
+@media (max-width: 991px) {
+  .sprt-menu-top ul .nav-item {
+    -ms-flex-preferred-size: 0;
+    flex-basis: 0;
+    -ms-flex-positive: 1;
+    flex-grow: 1;
+    max-width: 100%;
+  }
+
+  .sprt-menu-top ul .nav-link {
+    min-width: auto;
+    width: 100%;
+    padding: 15px 5px;
+    font-size: 12px;
+  }
+}

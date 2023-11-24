@@ -1,0 +1,311 @@
+.news-section-tabs-new .nav-link {
+  color: var(--color-dark);
+  background: transparent;
+  border-radius: 0;
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  text-transform: capitalize;
+  font-size: 13px;
+  padding: 10px 20px;
+  font-weight: 600;
+  border: 1px solid #cbd5dc;
+  border-left: 0;
+}
+
+.news-section-tabs-new .nav-link.active, .news-section-tabs-new .nav-link.select {
+  background: var(--thm-color-light);
+  color: var(--thm-color);
+}
+
+.news-section-tabs-new .nav-item:first-child a {
+  border-radius: 5px 0px 0px 5px;
+  -webkit-border-radius: 5px 0px 0px 5px;
+  -moz-border-radius: 5px 0px 0px 5px;
+  border-right: 0;
+  border-left: 0.429602px solid #cbd5dc;
+}
+
+.news-section-tabs-new .nav-item:last-child a {
+  border-radius: 0px 5px 5px 0px;
+  -webkit-border-radius: 0px 5px 5px 0px;
+  -moz-border-radius: 0px 5px 5px 0px;
+  border-left: 0 !important;
+}
+
+.dash-colps-main-hdr {
+  background: #f8f8f8;
+  border-radius: 5px;
+  font-size: 16px;
+  font-weight: 700;
+  color: #232323;
+  text-transform: capitalize;
+  padding: 10px 15px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  transition: all 0.5s;
+  -o-transition: all 0.5s;
+  -moz-transition: all 0.5s;
+  -webkit-transition: all 0.5s;
+  -moz-transition: all 0.5s;
+}
+
+.dash-colps-main-hdr i {
+  color: var(--color-dark);
+  font-size: 30px;
+  transition: all 0.5s;
+  -o-transition: all 0.5s;
+  -moz-transition: all 0.5s;
+  -webkit-transition: all 0.5s;
+  -moz-transition: all 0.5s;
+}
+
+.dash-colps-main-body {
+  padding: 0 15px;
+}
+
+.dash-colps-main-hdr[aria-expanded="true"] {
+  color: var(--thm-color);
+}
+
+.dash-colps-main-hdr[aria-expanded="true"] i:before {
+  font-family: "FontAwesome";
+  content: "\f106";
+  vertical-align: middle;
+  position: absolute;
+  right: 15px;
+  top: 9px;
+}
+
+.dash-label {
+  display: block;
+  font-weight: 600;
+  color: var(--color-dark);
+  font-size: 14px;
+  margin-bottom: 0;
+}
+
+.bdr-row {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  padding: 15px 0;
+}
+
+.dash-comn-bx-style ul li {
+  background: #f8f8f8;
+  border: 1px solid #cbd5dc;
+  border-radius: 4px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  font-size: 12px;
+  text-transform: capitalize;
+  color: var(--color-dark);
+  display: inline-block;
+  text-align: center;
+  padding: 8px 10px;
+  cursor: pointer;
+  margin-right: 10px;
+  white-space: nowrap;
+}
+
+.dash-comn-bx-style ul {
+  display: flex;
+  align-items: center;
+}
+
+.dash-comn-bx-style {
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+.dash-comn-bx-style ul li.active, .dash-comn-bx-style ul li.select {
+  color: var(--color-white);
+  background: var(--thm-color);
+}
+
+.news-section-tabs-new .custom-tabs-dash .nav-link {
+  border: 0 !important;
+  background: transparent;
+  padding: 0;
+}
+
+.news-section-tabs-new .custom-tabs-dash .nav-link.active, .news-section-tabs-new .custom-tabs-dash .nav-link.select {
+  color: var(--thm-color);
+  text-decoration: underline;
+  background: transparent;
+}
+
+.shap-dash-info {
+  background: #f8f8f8;
+  border-radius: 8px;
+  -webkit-border-radius: 8px;
+  -moz-border-radius: 8px;
+  height: 75px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 75px;
+}
+
+.shap-dash-main-section ul {
+  display: flex;
+  align-items: center;
+}
+
+.shap-dash-main-section ul li {
+  display: inline-block;
+  text-align: center;
+  cursor: pointer;
+  margin-right: 15px;
+  white-space: nowrap;
+}
+
+.input-style {
+  height: 36px;
+}
+
+.shap-dash-info img {
+  width: 40px;
+  height: 40px;
+  filter: brightness(0) invert(0);
+  -webkit-filter: brightness(0) invert(0);
+  -moz-filter: brightness(0) invert(0);
+}
+
+.shap-dash-info.select img {
+  filter: brightness(0) invert(1);
+  -webkit-filter: brightness(0) invert(1);
+  -moz-filter: brightness(0) invert(1);
+}
+
+.bdr-row ul li span {
+  font-weight: 600;
+  font-size: 12px;
+}
+
+.dash-colps-main {
+  margin-bottom: 15px;
+}
+
+.dash-check-box-list ul li {
+  margin: 10px 0;
+}
+
+.dash-check-box-list .cust-chk-bx {
+  padding-left: 35px;
+}
+
+.dash-check-box-list .cust-chkmark {
+  top: 0;
+}
+
+.shap-dash-main-section {
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+.shap-dash-info.active, .shap-dash-info.select {
+  background: var(--thm-color);
+}
+
+@media screen and (min-device-width: 1200px) and (max-device-width: 1460px) {
+  .shap-dash-info {
+    height: 55px;
+    min-width: 55px;
+  }
+
+  .shap-dash-info img {
+    width: 35px;
+    height: 35px;
+  }
+
+  .shap-dash-main-section ul li {
+    margin-right: 10px;
+  }
+}
+
+@media screen and (min-device-width: 992px) and (max-device-width: 1200px) {
+  .shap-dash-info {
+    height: 50px;
+    min-width: 50px;
+  }
+
+  .shap-dash-info img {
+    width: 35px;
+    height: 35px;
+  }
+
+  .shap-dash-main-section ul li {
+    margin-right: 10px;
+  }
+}
+
+@media (max-width: 767px) {
+  .custom-tabs-dash .nav-pills {
+    margin-bottom: 0.5rem;
+  }
+
+  .dash-label {
+    margin-bottom: 0.5rem;
+  }
+
+  .shap-dash-info {
+    min-width: 55px;
+    height: 55px;
+  }
+
+  .shap-dash-info img {
+    width: 30px;
+    height: 30px;
+  }
+
+  .shap-dash-main-section ul li {
+    margin-right: 7px;
+  }
+}
+
+@media (max-width: 575px) {
+  .cust-dash-top-tabs .nav-item {
+    width: 100%;
+    text-align: center;
+  }
+
+  .cust-dash-top-tabs .nav-link {
+    font-size: 13px;
+    padding: 15px 10px;
+    white-space: nowrap;
+    width: 100%;
+    min-width: auto;
+    border-radius: 5px !important;
+    -webkit-border-radius: 5px !important;
+    -moz-border-radius: 5px !important;
+    margin: 0 0 10px 0;
+    border: 1px solid #cbd5dc !important;
+  }
+
+  .cust-dash-top-tabs .nav-item:last-child a {
+    border: 0.5px solid #cbd5dc !important;
+  }
+
+  .dash-right-src ul li {
+    padding: 5px 15px;
+  }
+
+  .dropmenu-click i {
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+}
+
+.mtrl-cust-datepicker {
+  width: 50%;
+}
+
+.filter-src-heading a {
+  color: #ffffff !important;
+}
+
+.cdk-overlay-container {
+  z-index: 2000 !important;
+}

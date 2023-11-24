@@ -1,0 +1,31 @@
+<div class="dash-wrapper admin-panel-content">
+  <app-admin-header></app-admin-header>
+  <app-admin-sidebar></app-admin-sidebar>
+  <main class="content-wrapper-section">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-12">
+          <div class="inr-title-comn">
+            <h3>Home Page Settings</h3>
+          </div>
+        </div>
+        <div class="col-12">
+          <div class="dash-box-white">
+              <div class="row mt-2 align-items-center" *ngFor="let home of HomeSettings">
+                <div class="col-fix-1">
+                    <span>{{home.name}} :</span>
+                </div>
+                <div class="col-fix-2">
+                  <div class="custom-control custom-switch">
+                    <input type="checkbox" class="custom-control-input" id="customSwitch_{{home.key}}" (click)="change_status(home.key)" [checked]="home.status == 1"/>
+                    <label class="custom-control-label" for="customSwitch_{{home.key}}">Active</label>
+                  </div>
+                </div>
+              </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="overlay toggle-icon-main"></div>
+  </main>
+</div>

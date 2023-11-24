@@ -1,0 +1,181 @@
+<div class="dash-wrapper admin-panel-content">
+  <app-admin-header></app-admin-header>
+  <app-admin-sidebar></app-admin-sidebar>
+  <main class="content-wrapper-section">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-12">
+          <div class="inr-title-comn d-lg-flex align-items-center">
+            <h3>Diamonds</h3>
+            <div class="inr-title-btn ml-auto text-lg-left text-center mt-3 mt-lg-0">
+              <button (click)="selected_remove()" *ngIf="DiamondList?.length>0" type="button" class="btn btn-inr-top mr-sm-2">Delete</button>
+              <button (click)="export_csv()" type="button" class="btn btn btn-reset mr-sm-2">Export</button>
+              <button (click)="open_model()" type="button" class="btn btn btn-reset mr-sm-2">Import</button>
+              <a routerLink="/admin/diamonds/add-diamonds" class="btn btn-inr-top">Add Diamond</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-12">
+          <div class="dash-box-white">
+            <nav>
+              <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                <a class="nav-item nav-link active" id="nav-all-tab" (click)="change_type('')" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">All</a>
+                <a class="nav-item nav-link" id="nav-natural-tab" (click)="change_type('Natural')" data-toggle="tab" href="#nav-natural" role="tab" aria-controls="nav-natural" aria-selected="false">Natural</a>
+                <a class="nav-item nav-link" id="nav-lab-tab" (click)="change_type('Lab Grown')" data-toggle="tab" href="#nav-lab" role="tab" aria-controls="nav-lab" aria-selected="false">Lab Grown</a>
+              </div>
+            </nav>
+            <div class="table-cust-main mt-3">
+              <table datatable [dtOptions]='dtOptions' class="display">
+                <thead>
+                <tr>
+                  <th class="no-search-filter">
+                    <div class="cust-checkbox-new">
+                      <label class="cust-chk-bx">
+                        <input type="checkbox" name="diamondcheck" [checked]="isMasterChecked" (click)="checkuncheckall()" />
+                        <span class="cust-chkmark"></span>
+                      </label>
+                    </div>
+                  </th>
+                  <th class="no-search-filter">Media</th>
+                  <th class="no-search-filter">Action</th>
+                  <th class="no-search-filter">Status</th>
+                  <th>Vendor ID</th>
+                  <th>Stock No</th>
+                  <th>Shape</th>
+                  <th>Cts</th>
+                  <th>Color</th>
+                  <th>Cut</th>
+                  <th>Polish</th>
+                  <th>Symmetry</th>
+                  <th>Rap Price</th>
+                  <th>Vendor Back</th>
+                  <th>Vendor Price W Back</th>
+                  <th>Vendor Subtotal</th>
+                  <th>Sale Back</th>
+                  <th>Sales Price W Back</th>
+                  <th>Sale Subtotal</th>
+                  <th>Date</th>
+                </tr>
+                </thead>
+                <tbody *ngIf="searchlist?.length>0">
+                  <tr *ngFor="let item of searchlist">
+                    <td>
+                      <div class="cust-checkbox-new">
+                        <label class="cust-chk-bx">
+                          <input type="checkbox" name="diamondcheck" [checked]="DiamondList.includes(item['diamond_id'])" value="{{item['diamond_id']}}" (change)="checkboxSelect($event.target.value)" />
+                          <span class="cust-chkmark"></span>
+                        </label>
+                      </div>
+                    </td>
+                    <td>
+                      <a [href]="photoURL(item['report_file'])" *ngIf="item['report_file'] != null" target="_blank">
+                        <img src="assets/images/icon/certificate-icon.svg" class="mr-2 table-img-inr" alt="" />
+                      </a>
+                      <a [href]="photoURL(item['diamond_img'])" *ngIf="item['diamond_img'] != null" target="_blank">
+                        <img src="assets/images/icon/image-icon.svg" class="mr-2 table-img-inr" alt="" />
+                      </a>
+                      <a [href]="photoURL(item['video_link'])" *ngIf="item['video_link'] != null" target="_blank">
+                        <img src="assets/images/icon/video-icon.svg" class="table-img-inr" alt="" />
+                      </a>
+                    </td>
+                    <td>
+                      <a (click)="featured_stone(item.diamond_id)">
+                        <img src="assets/images/icon/star-icon.svg" class="mx-2 table-img-inr" alt="" *ngIf="item.featured_stone==0" />
+                        <img src="assets/images/icon/star_1.svg" class="mx-2 table-img-inr" alt="" *ngIf="item.featured_stone==1" />
+                      </a>
+                      <a [routerLink]="['/admin/diamonds/edit-diamonds',item.diamond_id]">
+                        <img src="assets/images/icon/edit-icon-table.svg" class="mx-2 table-img-inr" alt="" />
+                      </a>
+                      <a (click)="delete_diamond(item)">
+                        <img src="assets/images/icon/delete-icon.svg" class="mx-2 table-img-inr" alt="" />
+                      </a>
+                    </td>
+                    <td>
+                      <div class="custom-control custom-switch">
+                        <input type="checkbox" class="custom-control-input" id="customSwitch_{{item.diamond_id}}" (click)="change_status(item.diamond_id)" [checked]="item.status == 1"/>
+                        <label class="custom-control-label" for="customSwitch_{{item.diamond_id}}">Active</label>
+                      </div>
+                    </td>
+                    <td>{{ item.vendor_id}}</td>
+                    <td>
+                      <a [routerLink]="['/admin/diamonds/view-diamonds',item.diamond_id]">{{ item.stock_number}}</a>
+                    </td>
+                    <td>{{ item['shape'] ? item['shape'] : "-"}}</td>
+                    <td>{{ item['size'] ? item['size']+' Ct' : "-"}}</td>
+                    <td>{{ item['color'] ? item['color'] : "-"}}</td>
+                    <td>{{ item['cut'] ? item['cut'] : "-"}}</td>
+                    <td>{{ item['polish'] ? item['polish'] : "-"}}</td>
+                    <td>{{ item['symmetry'] ? item['symmetry'] : "-"}}</td>
+                    <td>{{ item['rap_price'] | currency }}</td>
+                    <td>{{ item['vendor_back'] ? item['vendor_back']+'%' : "-"}}</td>
+                    <td>{{ item['vendor_price_back'] | currency}}</td>
+                    <td>{{ item['vendor_subtotal'] | currency}}</td>
+                    <td>{{ item['sale_back'] ? item['sale_back']+'%' : "-"}}</td>
+                    <td>{{ item['sale_price_back'] | currency}}</td>
+                    <td>{{ item['sale_subtotal'] | currency}}</td>
+                    <td>{{ item.created_at | date}}</td>
+                  </tr>
+                </tbody>
+                <tbody *ngIf="searchlist?.length == 0">
+                <tr>
+                  <td colspan="20" class="no-data-available">No data!</td>
+                </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="overlay toggle-icon-main"></div>
+  </main>
+
+  <div class="modal fade" id="import-modal" tabindex="-1" aria-labelledby="import-modal" aria-hidden="true" style="opacity: 0" [ngStyle]="{'display': show_model ? 'block' : 'none','opacity': 1,'background':'#0000004f'}">
+    <div class="modal-dialog modal-dialog-centered modal-cust-small">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Import</h5>
+          <button (click)="close_model()" type="button" class="close" aria-label="Close">
+            <img src="assets/images/icon/modal-close-icon.svg" alt="" />
+          </button>
+        </div>
+        <div class="modal-body">
+          <form class="row comn-form" [formGroup]="ImportForm" (ngSubmit)="OnSubmitUploadImportFile()">
+            <div class="col-12 form-group">
+              <label class="dash-label">Choose file</label>
+              <input type="file" (change)="import_diamonds($event)" accept=".csv" #file class="form-control input-style-admin" formControlName="import_file" [ngClass]="{ 'is-invalid': importfile_submitted && fval3.import_file.errors }"/>
+              <div *ngIf="importfile_submitted && fval3.import_file.errors" class="invalid-feedback">
+                <div *ngIf="fval3.import_file.errors.required">
+                  File is required
+                </div>
+              </div>
+            </div>
+            <div class="col-12 form-group">
+              <div class="bdr-text-col">
+                <div class="cust-radio-btn">
+                  <input type="radio" id="Replace-All" value="replace-all" formControlName="selectoption" />
+                  <label for="Replace-All">Replace All</label>
+                </div>
+                <p>Lots not included in the upload will be deleted.</p>
+              </div>
+            </div>
+            <div class="col-12 form-group">
+              <div class="bdr-text-col">
+                <div class="cust-radio-btn">
+                  <input type="radio" id="Add-Update" value="add-update" formControlName="selectoption" />
+                  <label for="Add-Update">Add & Update</label>
+                </div>
+                <p>New lots will be added and existing lots will be updated. Lots not included will remain untouched.</p>
+              </div>
+            </div>
+            <div class="col-12">
+              <div class="btn-btm-inr-tabs text-center my-3">
+                <button type="submit" class="btn btn-inr-top">Import</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,487 @@
+<div class="container-fluid h-100">
+  <div class="row align-items-center h-100-cust">
+    <div class="col-md-6 p-0">
+      <Particles id="register-particles-js" [options]="particlesOptions"></Particles>
+      <div class="log-left-section d-flex align-items-center justify-content-center">
+        <div class="diamond-gif-div">
+          <img src="assets/images/icon/diamond-shape.svg" alt="" />
+        </div>
+        <div class="log-left-mdl text-center">
+          <img src="assets/images/logo/logo-kukadia-white.svg" alt="" />
+        </div>
+        <div class="diamond-gif-div gif-div-btm">
+          <img src="assets/images/icon/diamond-shape.svg" alt="" />
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6 bg-white-div">
+      <div class="log-right-section d-flex align-items-start justify-content-center vh-100">
+        <div class="row w-100">
+          <div class="col-12">
+            <div class="log-right-top-section pb-md-5 pb-3 d-flex align-items-center justify-content-between">
+              <div class="">
+                <a routerLink="/login" class="bk-icon d-inline-flex align-items-center">
+                  <img src="assets/images/icon/back-icon.svg" alt="" />
+                  <span>Back</span>
+                </a>
+              </div>
+              <div class="ftr-lang">
+                <select class="custom-select form-control">
+                  <option selected="">ENG</option>
+                  <option value="1">GUJ</option>
+                  <option value="3">HIN</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class="col-12">
+            <div class="log-right-fix">
+              <div class="log-right-top">
+                <h1>Registration</h1>
+              </div>
+              <div class="log-right-btm">
+                <form class="row" [formGroup]="AddForm" (ngSubmit)="onSubmit()">
+                  <div class="col-12">
+                    <div class="d-inline-flex align-items-center rct-shap-top pb-4">
+                      <img src="assets/images/icon/rectangle.svg" alt="" />
+                      <span>Personal Information</span>
+                    </div>
+                    <div class="row">
+                      <div class="col-lg-6">
+                        <div class="form-group">
+                          <label>First Name<span>*</span></label>
+                          <input type="text" formControlName="firstname" class="form-control input-style" placeholder="Enter First Name" [ngClass]="{ 'is-invalid': submitted && fval.firstname.errors }"/>
+                          <div *ngIf="submitted && fval.firstname.errors" class="invalid-feedback">
+                            <div *ngIf="fval.firstname.errors.required">
+                              First Name is required
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-lg-6">
+                        <div class="form-group">
+                          <label>Last Name<span>*</span></label>
+                          <input type="text" formControlName="lastname" class="form-control input-style" placeholder="Enter Last Name" [ngClass]="{ 'is-invalid': submitted && fval.lastname.errors }" />
+                          <div *ngIf="submitted && fval.lastname.errors" class="invalid-feedback">
+                            <div *ngIf="fval.lastname.errors.required">
+                              Last Name is required
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-12">
+                        <div class="form-group">
+                          <label>Email Address<span>*</span></label>
+                          <input type="email" formControlName="email" class="form-control input-style" placeholder="Enter Email Address" [ngClass]="{ 'is-invalid': submitted && fval.email.errors }" />
+                          <div *ngIf="submitted && fval.email.errors" class="invalid-feedback">
+                            <div *ngIf="fval.email.errors.required">
+                              Email Address is required
+                            </div>
+                            <div *ngIf="fval.email.errors.email">Email Address must be a valid email address</div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-12">
+                        <div class="form-group">
+                          <label>Username<span>*</span></label>
+                          <input type="text" formControlName="username" class="form-control input-style" placeholder="Enter Username" [ngClass]="{ 'is-invalid': submitted && fval.username.errors }" />
+                          <div *ngIf="submitted && fval.username.errors" class="invalid-feedback">
+                            <div *ngIf="fval.username.errors.required">
+                              Username is required
+                            </div>
+                            <div *ngIf="fval.username.errors.pattern">
+                              Space not included in Username
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-lg-12">
+                        <div class="form-group">
+                          <label>Password<span>*</span></label>
+                          <input type="password" formControlName="password" class="form-control input-style" placeholder="Enter Password" [ngClass]="{ 'is-invalid': submitted && fval.password.errors }"/>
+                          <div *ngIf="submitted && fval.password.errors" class="invalid-feedback">
+                            <div *ngIf="fval.password.errors.required">
+                              Password is required
+                            </div>
+                            <div *ngIf="fval.password.errors.minlength">Password must be at least 6 characters</div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-lg-12">
+                        <div class="form-group">
+                          <label>Confirm Password<span>*</span></label>
+                          <input type="password" formControlName="confirm_password" class="form-control input-style" placeholder="Enter Confirm Password" [ngClass]="{ 'is-invalid': submitted && fval.confirm_password.errors }" />
+                          <div *ngIf="submitted && fval.password.errors || (fval.confirm_password.touched && fval.confirm_password.invalid)" class="invalid-feedback">
+                            <div *ngIf="fval.confirm_password.errors.required">Confirm Password is required.</div>
+                            <div *ngIf="fval.confirm_password.errors.ConfirmedValidator">Password and Confirm Password must be match.</div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-lg-6">
+                        <div class="form-group">
+                          <label>Birth Date</label>
+                          <mat-form-field appearance="fill">
+                            <input class="" placeholder="Select Birth Date" matInput [matDatepicker]="picker" formControlName="birth_date" [ngClass]="{ 'is-invalid': submitted && fval.birth_date.errors }">
+                            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                            <mat-datepicker #picker></mat-datepicker>
+                            <mat-error *ngIf="submitted && fval.birth_date.errors">Birth Date is required</mat-error>
+                          </mat-form-field>
+                        </div>
+                      </div>
+                      <div class="col-lg-6">
+                        <div class="form-group">
+                          <label>Anniversary Date</label>
+                          <mat-form-field appearance="fill">
+                            <input class="" placeholder="Select Anniversary Date" matInput [matDatepicker]="picker1" formControlName="anniversary_date" [ngClass]="{ 'is-invalid': submitted && fval.anniversary_date.errors }">
+                            <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+                            <mat-datepicker #picker1></mat-datepicker>
+                            <mat-error *ngIf="submitted && fval.anniversary_date.errors">Anniversary Date is required</mat-error>
+                          </mat-form-field>
+                        </div>
+                      </div>
+                      <div class="col-lg-6">
+                        <div class="form-group">
+                          <label>Mobile No.<span>*</span></label>
+                          <input type="text" formControlName="mobile" class="form-control input-style" placeholder="Enter Mobile No." [ngClass]="{ 'is-invalid': submitted && fval.mobile.errors }"/>
+                          <div *ngIf="(fval.mobile.invalid ) || (fval.mobile.invalid && (fval.mobile.dirty || fval.mobile.touched))" class="invalid-feedback">
+                            <div *ngIf="fval.mobile.errors.required">
+                              Mobile No is required
+                            </div>
+                            <div *ngIf="fval.mobile.errors.pattern || fval.mobile.errors.maxlength || fval.mobile.errors.minlength">Mobile number must be at least 10 numbers</div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-lg-6">
+                        <div class="form-group">
+                          <label>Telephone No.</label>
+                          <input type="text" formControlName="phone" class="form-control input-style" placeholder="Enter Telephone No." [ngClass]="{ 'is-invalid': submitted && fval.phone.errors }"/>
+                          <div *ngIf="(fval.phone.invalid ) || (fval.phone.invalid && (fval.phone.dirty || fval.phone.touched))" class="invalid-feedback">
+                            <div *ngIf="fval.phone.errors.required">
+                              Telephone No is required
+                            </div>
+                            <div *ngIf="fval.phone.errors.pattern || fval.phone.errors.maxlength || fval.phone.errors.minlength">Phone number must be at least 10 numbers</div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-12">
+                    <div class="d-inline-flex align-items-center rct-shap-top pb-4">
+                      <img src="assets/images/icon/rectangle.svg" alt="" />
+                      <span>Business Information</span>
+                    </div>
+                    <div class="row">
+                      <div class="col-lg-12">
+                        <div class="form-group">
+                          <label>Company Name<span>*</span></label>
+                          <input type="text" formControlName="company_name" class="form-control input-style" placeholder="Enter Company Name" [ngClass]="{ 'is-invalid': submitted && fval.company_name.errors }"/>
+                          <div *ngIf="submitted && fval.company_name.errors" class="invalid-feedback">
+                            <div *ngIf="fval.company_name.errors.required">
+                              Company Name is required
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-lg-12">
+                        <div class="form-group">
+                          <label>Company Logo<span>*</span></label>
+                          <input type="file" (change)="upload_logo($event)" accept=".png, .jpg, .jpeg" formControlName="company_logo" class="form-control input-style" [ngClass]="{ 'is-invalid': submitted && fval.company_logo.errors }"/>
+                          <div *ngIf="submitted && fval.company_logo.errors" class="invalid-feedback">
+                            <div *ngIf="fval.company_logo.errors.required">
+                              Company Logo is required
+                            </div>
+                          </div>
+                        </div>
+                        <div class="file-upload-content" *ngIf="logo_proof != ''">
+                          <img class="file-upload-image" src="{{logo_proof}}" alt="Company Logo" />
+                        </div>
+                      </div>
+                      <div class="col-lg-12">
+                        <div class="form-group">
+                          <label>Designation<span>*</span></label>
+                          <select class="custom-select form-control input-style" formControlName="designation" [ngClass]="{ 'is-invalid': submitted && fval.designation.errors }">
+                            <option selected="selected" value="">Select Designation</option>
+                            <option value="Accountant">Accountant</option>
+                            <option value="Accountant(S)">Accountant(S)</option>
+                            <option value="AccSHK">AccSHK</option>
+                            <option value="Accview">Accview</option>
+                            <option value="Buyer">Buyer</option>
+                            <option value="CEO">CEO</option>
+                            <option value="Computer Operator">Computer Operator</option>
+                            <option value="CUSTOMER SUPPORT">CUSTOMER SUPPORT</option>
+                            <option value="Designer">Designer</option>
+                            <option value="Director">Director</option>
+                            <option value="DOM">DOM</option>
+                            <option value="Export">Export</option>
+                            <option value="Founder">Founder</option>
+                            <option value="human resource manager">human resource manager</option>
+                            <option value="Image Video And Cert Uploader">Image Video And Cert Uploader</option>
+                            <option value="Manager">Manager</option>
+                            <option value="Others">Others</option>
+                            <option value="Owner">Owner</option>
+                            <option value="Partner">Partner</option>
+                            <option value="PRESIDENT">PRESIDENT</option>
+                            <option value="PRESIDENT AND CEO">PRESIDENT AND CEO</option>
+                            <option value="Price Data Operator Assort">Price Data Operator Assort</option>
+                            <option value="Pricing">Pricing</option>
+                            <option value="Proprietor">Proprietor</option>
+                            <option value="Purchase">Purchase</option>
+                          </select>
+                          <div *ngIf="submitted && fval.designation.errors" class="invalid-feedback">
+                            <div *ngIf="fval.designation.errors.required">
+                              Designation is required
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-lg-12">
+                        <div class="form-group">
+                          <label>Business Type<span>*</span></label>
+                          <select class="custom-select form-control input-style" formControlName="business_type" [ngClass]="{ 'is-invalid': submitted && fval.business_type.errors }">
+                            <option selected="selected" value="">Select Business Type</option>
+                            <option value="Polished Dealer">Polished Dealer</option>
+                            <option value="Jewellery Manufacturer">Jewellery Manufacturer</option>
+                            <option value="Diamond Manufacturer">Diamond Manufacturer</option>
+                            <option value="Retailer">Retailer</option>
+                            <option value="Consumer">Consumer</option>
+                            <option value="Other">Other</option>
+                          </select>
+                          <div *ngIf="submitted && fval.business_type.errors" class="invalid-feedback">
+                            <div *ngIf="fval.business_type.errors.required">
+                              Business Type is required
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-lg-6">
+                        <div class="form-group">
+                          <label>Country<span>*</span></label>
+                          <input type="text" formControlName="country" class="form-control input-style" placeholder="Country" [ngClass]="{ 'is-invalid': submitted && fval.country.errors }"/>
+                          <div *ngIf="submitted && fval.country.errors" class="invalid-feedback">
+                            <div *ngIf="fval.country.errors.required">
+                              Country is required
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-lg-6">
+                        <div class="form-group">
+                          <label>State<span>*</span></label>
+                          <input type="text" formControlName="state" class="form-control input-style" placeholder="State" [ngClass]="{ 'is-invalid': submitted && fval.state.errors }"/>
+                          <div *ngIf="submitted && fval.state.errors" class="invalid-feedback">
+                            <div *ngIf="fval.state.errors.required">
+                              State is required
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-lg-6">
+                        <div class="form-group">
+                          <label>City<span>*</span></label>
+                          <input type="text" formControlName="city" class="form-control input-style" placeholder="City" [ngClass]="{ 'is-invalid': submitted && fval.city.errors }"/>
+                          <div *ngIf="submitted && fval.city.errors" class="invalid-feedback">
+                            <div *ngIf="fval.city.errors.required">
+                              City is required
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-lg-6">
+                        <div class="form-group">
+                          <label>Zip Code<span>*</span></label>
+                          <input type="number" formControlName="zipcode" class="form-control input-style" placeholder="Zip Code" [ngClass]="{ 'is-invalid': submitted && fval.zipcode.errors }"/>
+                          <div *ngIf="submitted && fval.zipcode.errors" class="invalid-feedback">
+                            <div *ngIf="fval.zipcode.errors.required">
+                              Zip Code is required
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-lg-12">
+                        <div class="form-group">
+                          <label>Address<span>*</span></label>
+                          <textarea type="text" formControlName="address" class="form-control input-style" placeholder="" [ngClass]="{ 'is-invalid': submitted && fval.address.errors }"></textarea>
+                          <div *ngIf="submitted && fval.address.errors" class="invalid-feedback">
+                            <div *ngIf="fval.address.errors.required">
+                              Address is required
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-lg-12">
+                        <div class="form-group">
+                          <label>Fax</label>
+                          <input type="text" formControlName="fax" class="form-control input-style" placeholder="" [ngClass]="{ 'is-invalid': submitted && fval.fax.errors }"/>
+                          <div *ngIf="submitted && fval.fax.errors" class="invalid-feedback">
+                            <div *ngIf="fval.fax.errors.required">
+                              Fax is required
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-lg-12">
+                        <div class="form-group">
+                          <label>How Do You Know Us ?<span>*</span></label>
+                          <select class="custom-select form-control input-style" formControlName="any_reference" [ngClass]="{ 'is-invalid': submitted && fval.any_reference.errors }">
+                            <option selected="selected" value="">Select Reference</option>
+                            <option value="Sales Person">Sales Person</option>
+                            <option value="Third Party Reference">Third Party Reference</option>
+                            <option value="RapNet">RapNet</option>
+                            <option value="VDB App">VDB App</option>
+                            <option value="LinkedIn">LinkedIn</option>
+                            <option value="WhatsApp">WhatsApp</option>
+                            <option value="Facebook">Facebook</option>
+                            <option value="Instagram">Instagram</option>
+                            <option value="Google">Google</option>
+                            <option value="WeChat">WeChat</option>
+                            <option value="Twitter">Twitter</option>
+                            <option value="QQ">QQ</option>
+                            <option value="News">News</option>
+                            <option value="Visit">Visit</option>
+                            <option value="Walk In">Walk In</option>
+                            <option value="Other">Other</option>
+                            <option value="HK Blog">HK Blog</option>
+                            <option value="Market Diamonds">Market Diamonds</option>
+                          </select>
+                          <div *ngIf="submitted && fval.any_reference.errors" class="invalid-feedback">
+                            <div *ngIf="fval.any_reference.errors.required">
+                              Reference is required
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-12">
+                    <div class="d-inline-flex align-items-center rct-shap-top pb-4">
+                      <img src="assets/images/icon/rectangle.svg" alt="" />
+                      <span>Terms and Documentations</span>
+                    </div>
+                    <div class="row">
+                      <div class="col-12">
+                        <div class="form-group">
+                          <label>Photo Identity Proof</label>
+                          <div class="file-upload">
+                            <div class="image-upload-wrap" *ngIf="photo_proof == ''">
+                              <input class="file-upload-input file-upload-input-photo" (change)="upload_photo($event)" type="file" accept="image/*,.pdf" />
+                              <div class="drag-text">
+                                <h3>Drag & Drop image here or browse for an image to upload</h3>
+                              </div>
+                            </div>
+                            <div class="file-upload-content" *ngIf="photo_proof != ''">
+                              <img class="file-upload-image" src="{{photo_proof}}" alt="Photo Identity Proof" *ngIf="photo_pdfviewer == false" />
+                              <ul class="pdf-list-file" *ngIf="photo_pdfviewer == true">
+                                <li>
+                                  <a href="javascript:void(0)" class="image-area d-flex align-items-center position-relative">
+                                    <img src="assets/images/icon/pdf-file.svg" alt="">
+                                    <span class="mx-2">{{photo_proof}}</span>
+                                  </a>
+                                </li>
+                              </ul>
+                            </div>
+                            <div class="text-center pb-4">
+                              <button class="file-upload-btn btn" type="button" onclick="$('.file-upload-input-photo').trigger( 'click' )">Upload Image</button>
+                            </div>
+                          </div>
+                          <p class="p-text-tag">Passport, Driving Licence (Scan and upload only .jpg , .jpeg , .png and .pdf files)</p>
+                        </div>
+                      </div>
+                      <div class="col-12">
+                        <div class="form-group">
+                          <label>Business Identity Proof</label>
+                          <div class="file-upload">
+                            <div class="image-upload-wrap" *ngIf="business_proof == ''">
+                              <input class="file-upload-input file-upload-input-business" (change)="upload_business($event)" type="file" accept="image/*,.pdf" />
+                              <div class="drag-text">
+                                <h3>Drag & Drop image here or browse for an image to upload</h3>
+                              </div>
+                            </div>
+                            <div class="file-upload-content" *ngIf="business_proof != ''">
+                              <img class="file-upload-image" src="{{business_proof}}" alt="Business Identity Proof" *ngIf="business_pdfviewer == false" />
+                              <ul class="pdf-list-file" *ngIf="business_pdfviewer == true">
+                                <li>
+                                  <a href="javascript:void(0)" class="image-area d-flex align-items-center position-relative">
+                                    <img src="assets/images/icon/pdf-file.svg" alt="">
+                                    <span class="mx-2">{{business_proof}}</span>
+                                  </a>
+                                </li>
+                              </ul>
+                            </div>
+                            <div class="text-center pb-4">
+                              <button class="file-upload-btn btn" type="button" onclick="$('.file-upload-input-business').trigger( 'click' )">Upload Image</button>
+                            </div>
+                          </div>
+                          <p class="p-text-tag">Business Card (scan and upload only .jpg, .jpeg, .png and .pdf files)</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-12">
+                    <div class="d-inline-flex align-items-center rct-shap-top pb-4">
+                      <img src="assets/images/icon/rectangle.svg" alt="" />
+                      <span>Do You Agree ?</span>
+                    </div>
+                    <div class="row mr-0">
+                      <div class="col-lg-6 pr-0">
+                        <button type="button" class="btn btn-guest btn-full">
+                          <img src="assets/images/icon/download-icon.svg" alt="" />
+                          <span class="ml-2">KYC Form</span>
+                        </button>
+                      </div>
+                      <div class="col-lg-6 pr-0">
+                        <button type="button" class="btn btn-guest ml-auto btn-full">
+                          <img src="assets/images/icon/download-icon.svg" alt="" />
+                          <span class="ml-2">KYC Undertaking</span>
+                        </button>
+                      </div>
+                      <div class="col-12">
+                        <ul class="filter-check-new my-4">
+                          <li>
+                            <div class="cust-checkbox-new">
+                              <label class="cust-chk-bx">
+                                <input type="checkbox" id="accept_terms" formControlName="accept_terms" [ngClass]="{ 'is-invalid': submitted && fval.accept_terms.errors }" />
+                                <span class="cust-chkmark"></span>
+                                I have read and agree to the <a routerLink="/terms-and-condition">Terms & Conditions</a><span>*</span>
+                                <div *ngIf="submitted && fval.accept_terms.errors" class="invalid-feedback">
+                                  <div *ngIf="fval.accept_terms.errors.required">
+                                    Please accept Terms & Conditions is required
+                                  </div>
+                                </div>
+                              </label>
+                            </div>
+                          </li>
+                          <li>
+                            <div class="cust-checkbox-new">
+                              <label class="cust-chk-bx">
+                                <input type="checkbox" id="accept_newsletter" formControlName="accept_newsletter" [ngClass]="{ 'is-invalid': submitted && fval.accept_newsletter.errors }" />
+                                <span class="cust-chkmark"></span>
+                                Newsletter / Promotional Letter / Stock Update Required.
+                                <div *ngIf="submitted && fval.accept_newsletter.errors" class="invalid-feedback">
+                                  <div *ngIf="fval.accept_newsletter.errors.required">
+                                    Please Newsletter / Promotional Letter / Stock Update is required.
+                                  </div>
+                                </div>
+                              </label>
+                            </div>
+                          </li>
+                        </ul>
+                      </div>
+                      <div class="col-12">
+                        <div class="btn-class text-center py-md-5 py-3">
+                          <button type="submit" class="btn btn-dash"><span>Register</span></button>
+                        </div>
+                        <div class="text-center bk-link mb-4">
+                          <p>Back To <a routerLink="/login">Login</a></p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,1651 @@
+<div class="dash-wrapper">
+  <app-header></app-header>
+  <app-sidebar></app-sidebar>
+  <main class="content-wrapper-section">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-12">
+          <div class="inr-title-comn d-sm-flex align-items-center">
+            <h3>Requests</h3>
+            <div class="sprt-menu-top mx-auto cust-tabs-inr cust-scrol">
+              <ul class="nav nav-pills justify-content-center" role="tablist">
+<!--                <li class="nav-item" role="presentation">-->
+<!--                  <a class="nav-link active" [ngClass]="{'active': step==1}" (click)="checkStep(1)" aria-selected="true">All Requests</a>-->
+<!--                </li>-->
+                <li class="nav-item" role="presentation">
+                  <a class="nav-link" [ngClass]="{'active': step==2}" (click)="checkStep(2)" aria-selected="false">
+                    My Requests
+                  </a>
+                </li>
+                <li class="nav-item" role="presentation">
+                  <a class="nav-link" [ngClass]="{'active': step==3}" (click)="checkStep(3)" aria-selected="false">
+                    Add Requests
+                  </a>
+                </li>
+<!--                <li class="nav-item" role="presentation">-->
+<!--                  <a class="nav-link" [ngClass]="{'active': step==4}" (click)="step=4" aria-selected="false">-->
+<!--                    Chat Box-->
+<!--                  </a>-->
+<!--                </li>-->
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="col-12">
+          <div class="dash-box-white">
+            <div class="tab-content">
+             <!-- <div class="tab-pane fade" [ngClass]="{'active show': step==1}">
+                <div class="comn-white-box-table">
+                  <div class="table-filter-div">
+                    <div class="table-filter-btn-main ml-sm-4 ml-1">
+                      <button type="button" (click)="check_filter()" class="table-filter-btn filter-Btn">
+                        <img src="assets/images/icon/filter.svg" alt="" />
+                      </button>
+                    </div>
+                  </div>
+                  <table datatable [dtOptions]='dtOptions1' class="display all-requests">
+                    <thead>
+                    <tr>
+                      <th>Buyer</th>
+                      <th>Shape</th>
+                      <th>Size</th>
+                      <th>Color</th>
+                      <th>Clarity</th>
+                      <th>Price</th>
+                      <th>Buyer Location</th>
+                      <th>Created</th>
+                      <th>Expires</th>
+                      <th>Status</th>
+                    </tr>
+                    </thead>
+                    <tbody *ngIf="Allsearchlist?.length>0">
+                      <tr *ngFor="let item of Allsearchlist">
+                        <td>{{item.firstname.toUpperCase()}} {{item.lastname.toUpperCase()}}</td>
+                        <td>{{ item['shape_advanced'] ? item['shape_advanced'] : "-"}}</td>
+                        <td>{{ item['size_general_from'] ? item.size_general_from +'-'+item.size_general_to : '-'}}</td>
+                        <td>{{ item['color_fancy'] ? item['color_fancy'] : "-"}}</td>
+                        <td>{{ item['clarity'] ? item['clarity'] : "-"}}</td>
+                        <td>{{item.price_total_from}}-{{item.price_total_to}}</td>
+                        <td>{{ item['location'] ? item['location'] : "-"}}</td>
+                        <td>{{item.created_at | date}}</td>
+                        <td>
+                          <div *ngIf="item['expiration_date']">{{item.expiration_date | date}}</div>
+                          <div *ngIf="item['expiration_date'] == null">-</div>
+                        </td>
+                        <td>
+                          <span *ngIf="item.status == 1">Active</span>
+                          <span *ngIf="item.status == 0">Deactive</span>
+                        </td>
+                      </tr>
+                    </tbody>
+                    <tbody *ngIf="Allsearchlist?.length == 0">
+                    <tr>
+                      <td colspan="10" class="no-data-available">No data!</td>
+                    </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>-->
+              <div class="tab-pane fade" [ngClass]="{'active show': step==2}">
+                <div class="comn-white-box-table">
+                  <table datatable [dtOptions]='dtOptions' class="display my-requests">
+                    <thead>
+                    <tr>
+                      <th>Buyer</th>
+                      <th>Shape</th>
+                      <th>Size</th>
+                      <th>Color</th>
+                      <th>Clarity</th>
+                      <th>Price</th>
+                      <th>Buyer Location</th>
+                      <th>Created</th>
+                      <th>Expires</th>
+                      <th>Stance</th>
+                      <th>Status</th>
+                      <th>Action</th>
+                    </tr>
+                    </thead>
+                    <tbody *ngIf="searchlist?.length>0">
+                      <tr *ngFor="let item of searchlist">
+                        <td>
+                          <a [routerLink]="['/buy-requests/view-requests',item.buy_requests_id]">{{item.firstname.toUpperCase()}} {{item.lastname.toUpperCase()}}</a>
+                        </td>
+                        <td>
+                          <div *ngIf="item.shape_advanced != ''">{{item.shape_advanced}}</div>
+                          <div *ngIf="item.shape_advanced == ''">{{item.shape_basic}}</div>
+                        </td>
+                        <td>
+                          <div *ngIf="item.size_specific != ''">{{item.size_specific}}</div>
+                          <div *ngIf="item.size_specific == ''">{{item.size_general_from}}-{{item.size_general_to}}</div>
+                        </td>
+                        <td>{{ item['color_fancy'] ? item['color_fancy'] : "-"}}</td>
+                        <td>{{ item['clarity'] ? item['clarity'] : "-"}}</td>
+                        <td>{{item.price_total_from}}-{{item.price_total_to}}</td>
+                        <td>{{ item['location'] ? item['location'] : "-"}}</td>
+                        <td>{{item.created_at | date}}</td>
+                        <td>
+                          <div *ngIf="item['expiration_date']">{{item.expiration_date | date}}</div>
+                          <div *ngIf="item['expiration_date'] == null">-</div>
+                        </td>
+                        <td>
+                          <div *ngIf="item['stance'] == 1">Viewed</div>
+                          <div *ngIf="item['stance'] == 2">In Review</div>
+                          <div *ngIf="item['stance'] == 3">Accepted</div>
+                          <div *ngIf="item['stance'] == 4">Rejected</div>
+                          <div *ngIf="item['stance'] == 0">Open</div>
+                        </td>
+                        <td>
+                          <div class="custom-control custom-switch">
+                            <input type="checkbox" class="custom-control-input" id="customSwitch_{{item.buy_requests_id}}" (click)="change_status(item.buy_requests_id)" [checked]="item.status == 1"/>
+                            <label class="custom-control-label" for="customSwitch_{{item.buy_requests_id}}">Active</label>
+                          </div>
+                        </td>
+                        <td>
+                          <a href="javascript:void(0)" (click)="chatMessage()">
+                            <img src="assets/images/icon/chat-icon.svg" class="mx-2 table-img-inr" alt="" />
+                          </a>
+                          <a (click)="edit_requests(item.buy_requests_id)">
+                            <img src="assets/images/icon/edit-icon-table.svg" class="mx-2 table-img-inr" alt="">
+                          </a>
+                          <a (click)="delete_requests(item)">
+                            <img src="assets/images/icon/delete-icon.svg" class="mx-2 table-img-inr" alt="">
+                          </a>
+                        </td>
+                      </tr>
+                    </tbody>
+                    <tbody *ngIf="searchlist?.length == 0">
+                      <tr>
+                        <td colspan="11" class="no-data-available">No data!</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+              <div class="tab-pane fade" [ngClass]="{'active show': step==3}">
+                  <div class="news-section-tabs-new">
+                    <div class="dash-colps-main">
+                      <div class="dash-colps-main-hdr" data-toggle="collapse" href="#Basic" role="button" aria-expanded="true" aria-controls="Basic"> Basic <i class="fa fa-angle-down" aria-hidden="true"></i>
+                      </div>
+                      <div class="dash-colps-main-body collapse show" id="Basic">
+                        <div class="row bdr-row align-items-center">
+                          <div class="col-xxl-2 col-md-3">
+                            <label class="dash-label">Shapes </label>
+<!--                            <div class="custom-tabs-dash">-->
+<!--                              <ul class="nav nav-pills mt-2" role="tablist">-->
+<!--&lt;!&ndash;                                <li class="nav-item" role="presentation">&ndash;&gt;-->
+<!--&lt;!&ndash;                                  <a class="nav-link" id="pills-Basic2-tab" data-toggle="pill" href="#pills-Basic2" role="tab" aria-controls="pills-Basic2" aria-selected="true">Basic</a>&ndash;&gt;-->
+<!--&lt;!&ndash;                                </li>&ndash;&gt;-->
+<!--&lt;!&ndash;                                <li class="px-3">|</li>&ndash;&gt;-->
+<!--                                <li>-->
+<!--                                  <a class="nav-link active" id="pills-Advanced-tab" data-toggle="pill" href="#pills-Advanced" role="tab" aria-controls="pills-Advanced" aria-selected="true">-->
+<!--                                    Advanced-->
+<!--                                  </a>-->
+<!--                                </li>-->
+<!--                              </ul>-->
+<!--                            </div>-->
+                          </div>
+                          <div class="col-xxl-10 col-md-9">
+                            <div class="custom-tabs-dash-right">
+                              <div class="tab-content">
+                                <div class="tab-pane fade" id="pills-Basic2" role="tabpanel" aria-labelledby="pills-Basic2-tab">
+                                  <select class="custom-select form-control input-style" (change)="searchselect($event.target.value,'shape_basic')">
+                                    <option value="" [selected]="search_data['shape_basic'] == ''">Select Shapes</option>
+                                    <option value="1" [selected]="search_data['shape_basic'] == '1'">One</option>
+                                    <option value="2" [selected]="search_data['shape_basic'] == '2'">Two</option>
+                                    <option value="3" [selected]="search_data['shape_basic'] == '3'">Three</option>
+                                  </select>
+                                </div>
+                                <div class="tab-pane fade show active" id="pills-Advanced" role="tabpanel" aria-labelledby="pills-Advanced-tab">
+                                  <div class="shap-dash-main-section">
+                                    <ul>
+                                      <li>
+                                        <div placement="top" tooltip="Round" class="shap-dash-info" [ngClass]="{'select': search_data['shape_advanced'].includes('RD')}" (click)="searchselect('RD','shape_advanced')">
+                                          <img src="assets/images/icon/shap-1.svg" alt="" />
+                                        </div>
+                                      </li>
+                                      <li>
+                                        <div placement="top" tooltip="Pear" class="shap-dash-info" [ngClass]="{'select': search_data['shape_advanced'].includes('PR')}" (click)="searchselect('PR','shape_advanced')">
+                                          <img src="assets/images/icon/shap-2.svg" alt="" />
+                                        </div>
+                                      </li>
+                                      <li>
+                                        <div placement="top" tooltip="Asscher" class="shap-dash-info" [ngClass]="{'select': search_data['shape_advanced'].includes('AC')}" (click)="searchselect('AC','shape_advanced')">
+                                          <img src="assets/images/icon/shap-3.svg" alt="" />
+                                        </div>
+                                      </li>
+                                      <li>
+                                        <div placement="top" tooltip="Cushion" class="shap-dash-info" [ngClass]="{'select': search_data['shape_advanced'].includes('CU')}" (click)="searchselect('CU','shape_advanced')">
+                                          <img src="assets/images/icon/shap-4.svg" alt="" />
+                                        </div>
+                                      </li>
+                                      <li>
+                                        <div placement="top" tooltip="Marquise" class="shap-dash-info" [ngClass]="{'select': search_data['shape_advanced'].includes('MQ')}" (click)="searchselect('MQ','shape_advanced')">
+                                          <img src="assets/images/icon/shap-5.svg" alt="" />
+                                        </div>
+                                      </li>
+                                      <li>
+                                        <div placement="top" tooltip="Emerald" class="shap-dash-info" [ngClass]="{'select': search_data['shape_advanced'].includes('EM')}" (click)="searchselect('EM','shape_advanced')">
+                                          <img src="assets/images/icon/shap-6.svg" alt="" />
+                                        </div>
+                                      </li>
+                                      <li>
+                                        <div placement="top" tooltip="Heart" class="shap-dash-info" [ngClass]="{'select': search_data['shape_advanced'].includes('HT')}" (click)="searchselect('HT','shape_advanced')">
+                                          <img src="assets/images/icon/shap-7.svg" alt="" />
+                                        </div>
+                                      </li>
+                                      <li>
+                                        <div placement="top" tooltip="Princess" class="shap-dash-info" [ngClass]="{'select': search_data['shape_advanced'].includes('PS')}" (click)="searchselect('PS','shape_advanced')">
+                                          <img src="assets/images/icon/shap-8.svg" alt="" />
+                                        </div>
+                                      </li>
+                                      <li>
+                                        <div placement="top" tooltip="Radiant" class="shap-dash-info" [ngClass]="{'select': search_data['shape_advanced'].includes('RA')}" (click)="searchselect('RA','shape_advanced')">
+                                          <img src="assets/images/icon/shap-9.svg" alt="" />
+                                        </div>
+                                      </li>
+                                      <li>
+                                        <div placement="top" tooltip="Oval" class="shap-dash-info" [ngClass]="{'select': search_data['shape_advanced'].includes('OV')}" (click)="searchselect('OV','shape_advanced')">
+                                          <img src="assets/images/icon/shap-10.svg" alt="" />
+                                        </div>
+                                      </li>
+                                      <li>
+                                        <div placement="top" tooltip="European cut" class="shap-dash-info" [ngClass]="{'select': search_data['shape_advanced'].includes('EU')}" (click)="searchselect('EU','shape_advanced')">
+                                          <img src="assets/images/icon/shap-11.svg" alt="" />
+                                        </div>
+                                      </li>
+                                    </ul>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="row bdr-row align-items-center">
+                          <div class="col-xxl-2 col-md-3">
+                            <label class="dash-label">Carat</label>
+<!--                            <div class="custom-tabs-dash">-->
+<!--                              <ul class="nav nav-pills mt-2" role="tablist">-->
+<!--                                <li class="nav-item" role="presentation">-->
+<!--                                  <a class="nav-link active" id="pills-General-tab" data-toggle="pill" href="#pills-General" role="tab" aria-controls="pills-General" aria-selected="true">General</a>-->
+<!--                                </li>-->
+<!--&lt;!&ndash;                                <li class="px-3">|</li>&ndash;&gt;-->
+<!--&lt;!&ndash;                                <li>&ndash;&gt;-->
+<!--&lt;!&ndash;                                  <a class="nav-link" id="pills-Specific-tab" data-toggle="pill" href="#pills-Specific" role="tab" aria-controls="pills-Specific" aria-selected="true"> Specific</a>&ndash;&gt;-->
+<!--&lt;!&ndash;                                </li>&ndash;&gt;-->
+<!--                              </ul>-->
+<!--                            </div>-->
+                          </div>
+                          <div class="col-xxl-10 col-md-9">
+                            <div class="custom-tabs-dash-right">
+                              <div class="tab-content">
+                                <div class="tab-pane fade show active" id="pills-General" role="tabpanel" aria-labelledby="pills-General-tab">
+                                  <ul class="row mr-0">
+                                    <li class="col pr-0">
+                                      <input type="text" (keypress)="isNumberKey($event)" [(ngModel)]="search_data['size_general_from']" class="form-control input-style" placeholder="From" />
+                                    </li>
+                                    <li class="col pr-0">
+                                      <input type="text" (keypress)="isNumberKey($event)" [(ngModel)]="search_data['size_general_to']" class="form-control input-style" placeholder="To" />
+                                    </li>
+                                  </ul>
+                                </div>
+                                <div class="tab-pane fade" id="pills-Specific" role="tabpanel" aria-labelledby="pills-Specific-tab">
+                                  <div class="dash-comn-bx-style do-nicescroll">
+                                    <ul>
+                                      <li [ngClass]="{'select': search_data['size_specific'].includes('0.30 - 0.39')}" (click)="searchselect('0.30 - 0.39','size_specific')">0.30 - 0.39</li>
+                                      <li [ngClass]="{'select': search_data['size_specific'].includes('0.40 - 0.49')}" (click)="searchselect('0.40 - 0.49','size_specific')">0.40 - 0.49</li>
+                                      <li [ngClass]="{'select': search_data['size_specific'].includes('0.50 - 0.69')}" (click)="searchselect('0.50 - 0.69','size_specific')">0.50 - 0.69</li>
+                                      <li [ngClass]="{'select': search_data['size_specific'].includes('0.70 - 0.89')}" (click)="searchselect('0.70 - 0.89','size_specific')">0.70 - 0.89</li>
+                                      <li [ngClass]="{'select': search_data['size_specific'].includes('0.90 - 0.99')}" (click)="searchselect('0.90 - 0.99','size_specific')">0.90 - 0.99</li>
+                                      <li [ngClass]="{'select': search_data['size_specific'].includes('1.00 - 1.49')}" (click)="searchselect('1.00 - 1.49','size_specific')">1.00 - 1.49</li>
+                                      <li [ngClass]="{'select': search_data['size_specific'].includes('1.50 - 1.99')}" (click)="searchselect('1.50 - 1.99','size_specific')">1.50 - 1.99</li>
+                                      <li [ngClass]="{'select': search_data['size_specific'].includes('2.00 - 2.99')}" (click)="searchselect('2.00 - 2.99','size_specific')">2.00 - 2.99</li>
+                                      <li [ngClass]="{'select': search_data['size_specific'].includes('3.00 - 3.99')}" (click)="searchselect('3.00 - 3.99','size_specific')">3.00 - 3.99</li>
+                                      <li [ngClass]="{'select': search_data['size_specific'].includes('4.00 - 4.99')}" (click)="searchselect('4.00 - 4.99','size_specific')">4.00 - 4.99</li>
+                                      <li [ngClass]="{'select': search_data['size_specific'].includes('5.00 - 5.99')}" (click)="searchselect('5.00 - 5.99','size_specific')">5.00 - 5.99</li>
+                                      <li [ngClass]="{'select': search_data['size_specific'].includes('10.00 - 10.99')}" (click)="searchselect('10.00 - 10.99','size_specific')">10.00 - 10.99</li>
+                                    </ul>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="row bdr-row align-items-center">
+                          <div class="col-xxl-2 col-md-3">
+                            <label class="dash-label">Color</label>
+<!--                            <div class="custom-tabs-dash">-->
+<!--                              <ul class="nav nav-pills mt-2" role="tablist">-->
+<!--                                <li class="nav-item" role="presentation">-->
+<!--                                  <a class="nav-link active" id="pills-Fancy-tab" data-toggle="pill" href="#pills-Fancy" role="tab" aria-controls="pills-Fancy" aria-selected="true">Fancy</a>-->
+<!--                                </li>-->
+<!--&lt;!&ndash;                                <li class="px-3">|</li>&ndash;&gt;-->
+<!--&lt;!&ndash;                                <li>&ndash;&gt;-->
+<!--&lt;!&ndash;                                  <a class="nav-link active" id="pills-White-tab" data-toggle="pill" href="#pills-White" role="tab" aria-controls="pills-White" aria-selected="false"> White</a>&ndash;&gt;-->
+<!--&lt;!&ndash;                                </li>&ndash;&gt;-->
+<!--                              </ul>-->
+<!--                            </div>-->
+                          </div>
+                          <div class="col-xxl-10 col-md-9">
+                            <div class="custom-tabs-dash-right">
+                              <div class="tab-content">
+                                <div class="tab-pane fade" id="pills-White" role="tabpanel" aria-labelledby="pills-White-tab">
+                                  <div class="row">
+                                    <div class="col-md-6">
+                                      <ul class="row align-items-center">
+                                        <li class="col-3">
+                                          <span>Intensity</span>
+                                        </li>
+                                        <li class="col">
+                                          <select class="custom-select form-control input-style" (change)="searchselect($event.target.value,'color_white_intensity_from')">
+                                            <option [selected]="search_data['color_white_intensity_from'] == ''">From</option>
+                                            <option value="Faint" [selected]="search_data['color_white_intensity_from'] == 'Faint'">Faint</option>
+                                            <option value="Very Light" [selected]="search_data['color_white_intensity_from'] == 'Very Light'">Very Light</option>
+                                            <option value="Light" [selected]="search_data['color_white_intensity_from'] == 'Light'">Light</option>
+                                            <option value="Fancy" [selected]="search_data['color_white_intensity_from'] == 'Fancy'">Fancy</option>
+                                            <option value="Fancy Light" [selected]="search_data['color_white_intensity_from'] == 'Fancy Light'">Fancy Light</option>
+                                            <option value="Fancy Dark" [selected]="search_data['color_white_intensity_from'] == 'Fancy Dark'">Fancy Dark</option>
+                                            <option value="Fancy Deep" [selected]="search_data['color_white_intensity_from'] == 'Fancy Deep'">Fancy Deep</option>
+                                          </select>
+                                        </li>
+                                        <li class="col">
+                                          <select class="custom-select form-control input-style" (change)="searchselect($event.target.value,'color_white_intensity_to')">
+                                            <option value="" [selected]="search_data['color_white_intensity_to'] == ''">To</option>
+                                            <option value="Faint" [selected]="search_data['color_white_intensity_to'] == 'Faint'">Faint</option>
+                                            <option value="Very Light" [selected]="search_data['color_white_intensity_to'] == 'Very Light'">Very Light</option>
+                                            <option value="Light" [selected]="search_data['color_white_intensity_to'] == 'Light'">Light</option>
+                                            <option value="Fancy" [selected]="search_data['color_white_intensity_to'] == 'Fancy'">Fancy</option>
+                                            <option value="Fancy Light" [selected]="search_data['color_white_intensity_to'] == 'Fancy Light'">Fancy Light</option>
+                                            <option value="Fancy Dark" [selected]="search_data['color_white_intensity_to'] == 'Fancy Dark'">Fancy Dark</option>
+                                            <option value="Fancy Deep" [selected]="search_data['color_white_intensity_to'] == 'Fancy Deep'">Fancy Deep</option>
+                                          </select>
+                                        </li>
+                                      </ul>
+                                    </div>
+                                    <div class="col-md-6">
+                                      <ul class="row mt-3 mt-md-0">
+                                        <li class="col">
+                                          <select class="custom-select form-control input-style" (change)="searchselect($event.target.value,'color_white_overtone')">
+                                            <option value="" [selected]="search_data['color_white_overtone'] == ''">Select Overtone</option>
+                                            <option value="Yellow" [selected]="search_data['color_white_overtone'] == 'Yellow'">Yellow</option>
+                                            <option value="Yellowish" [selected]="search_data['color_white_overtone'] == 'Yellowish'">Yellowish</option>
+                                            <option value="Pink" [selected]="search_data['color_white_overtone'] == 'Pink'">Pink</option>
+                                            <option value="Pinkish" [selected]="search_data['color_white_overtone'] == 'Pinkish'">Pinkish</option>
+                                            <option value="Blue" [selected]="search_data['color_white_overtone'] == 'Blue'">Blue</option>
+                                            <option value="Bluish" [selected]="search_data['color_white_overtone'] == 'Bluish'">Bluish</option>
+                                            <option value="Red" [selected]="search_data['color_white_overtone'] == 'Red'">Red</option>
+                                            <option value="Redish" [selected]="search_data['color_white_overtone'] == 'Redish'">Redish</option>
+                                            <option value="Green" [selected]="search_data['color_white_overtone'] == 'Green'">Green</option>
+                                            <option value="Greenish" [selected]="search_data['color_white_overtone'] == 'Greenish'">Greenish</option>
+                                            <option value="Purple" [selected]="search_data['color_white_overtone'] == 'Purple'">Purple</option>
+                                            <option value="Purplish" [selected]="search_data['color_white_overtone'] == 'Purplish'">Purplish</option>
+                                          </select>
+                                        </li>
+                                        <li class="col">
+                                          <select class="custom-select form-control input-style" (change)="searchselect($event.target.value,'color_white_color')">
+                                            <option value="" [selected]="search_data['color_white_color'] == ''">Select Color</option>
+                                            <option value="Yellow" [selected]="search_data['color_white_color'] == 'Yellow'">Yellow</option>
+                                            <option value="Pink" [selected]="search_data['color_white_color'] == 'Pink'">Pink</option>
+                                            <option value="Blue" [selected]="search_data['color_white_color'] == 'Blue'">Blue</option>
+                                            <option value="Red" [selected]="search_data['color_white_color'] == 'Red'">Red</option>
+                                            <option value="Green" [selected]="search_data['color_white_color'] == 'Green'">Green</option>
+                                            <option value="Purple" [selected]="search_data['color_white_color'] == 'Purple'">Purple</option>
+                                          </select>
+                                        </li>
+                                      </ul>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="tab-pane fade show active" id="pills-Fancy" role="tabpanel" aria-labelledby="pills-Fancy-tab">
+                                  <div class="dash-comn-bx-style">
+                                    <ul>
+                                      <li [ngClass]="{'select': search_data['color_fancy'].includes('D')}" (click)="searchselect('D','color_fancy')">D</li>
+                                      <li [ngClass]="{'select': search_data['color_fancy'].includes('E')}" (click)="searchselect('E','color_fancy')">E</li>
+                                      <li [ngClass]="{'select': search_data['color_fancy'].includes('F')}" (click)="searchselect('F','color_fancy')">F</li>
+                                      <li [ngClass]="{'select': search_data['color_fancy'].includes('G')}" (click)="searchselect('G','color_fancy')">G</li>
+                                      <li [ngClass]="{'select': search_data['color_fancy'].includes('H')}" (click)="searchselect('H','color_fancy')">H</li>
+                                      <li [ngClass]="{'select': search_data['color_fancy'].includes('I')}" (click)="searchselect('I','color_fancy')">I</li>
+                                      <li [ngClass]="{'select': search_data['color_fancy'].includes('J')}" (click)="searchselect('J','color_fancy')">J</li>
+                                      <li [ngClass]="{'select': search_data['color_fancy'].includes('K')}" (click)="searchselect('K','color_fancy')">K</li>
+                                      <li [ngClass]="{'select': search_data['color_fancy'].includes('L')}" (click)="searchselect('L','color_fancy')">L</li>
+                                      <li [ngClass]="{'select': search_data['color_fancy'].includes('M')}" (click)="searchselect('M','color_fancy')">M</li>
+                                      <li [ngClass]="{'select': search_data['color_fancy'].includes('N')}" (click)="searchselect('N','color_fancy')">N</li>
+                                      <li [ngClass]="{'select': search_data['color_fancy'].includes('O')}" (click)="searchselect('O','color_fancy')">O</li>
+                                      <li [ngClass]="{'select': search_data['color_fancy'].includes('P')}" (click)="searchselect('P','color_fancy')">P</li>
+                                      <li [ngClass]="{'select': search_data['color_fancy'].includes('Q')}" (click)="searchselect('Q','color_fancy')">Q</li>
+                                      <li [ngClass]="{'select': search_data['color_fancy'].includes('R')}" (click)="searchselect('R','color_fancy')">R</li>
+                                      <li [ngClass]="{'select': search_data['color_fancy'].includes('S')}" (click)="searchselect('S','color_fancy')">S</li>
+                                      <li [ngClass]="{'select': search_data['color_fancy'].includes('T')}" (click)="searchselect('T','color_fancy')">T</li>
+                                      <li [ngClass]="{'select': search_data['color_fancy'].includes('U')}" (click)="searchselect('U','color_fancy')">U</li>
+                                      <li [ngClass]="{'select': search_data['color_fancy'].includes('V')}" (click)="searchselect('V','color_fancy')">V</li>
+                                      <li [ngClass]="{'select': search_data['color_fancy'].includes('W')}" (click)="searchselect('W','color_fancy')">W</li>
+                                      <li [ngClass]="{'select': search_data['color_fancy'].includes('X')}" (click)="searchselect('X','color_fancy')">X</li>
+                                      <li [ngClass]="{'select': search_data['color_fancy'].includes('Y')}" (click)="searchselect('Y','color_fancy')">Y</li>
+                                      <li [ngClass]="{'select': search_data['color_fancy'].includes('Z')}" (click)="searchselect('Z','color_fancy')">Z</li>
+                                    </ul>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="row bdr-row align-items-center">
+                          <div class="col-xxl-2 col-md-3">
+                            <label class="dash-label">Clarity</label>
+                          </div>
+                          <div class="col-xxl-10 col-md-9">
+                            <div class="dash-comn-bx-style">
+                              <ul>
+                                <li [ngClass]="{'select': search_data['clarity'].includes('FL')}" (click)="searchselect('FL','clarity')">FL</li>
+                                <li [ngClass]="{'select': search_data['clarity'].includes('IF')}" (click)="searchselect('IF','clarity')">IF</li>
+                                <li [ngClass]="{'select': search_data['clarity'].includes('VVS1')}" (click)="searchselect('VVS1','clarity')">VVS1</li>
+                                <li [ngClass]="{'select': search_data['clarity'].includes('VVS2')}" (click)="searchselect('VVS2','clarity')">VVS2</li>
+                                <li [ngClass]="{'select': search_data['clarity'].includes('VS1')}" (click)="searchselect('VS1','clarity')">VS1</li>
+                                <li [ngClass]="{'select': search_data['clarity'].includes('VS2')}" (click)="searchselect('VS2','clarity')">VS2</li>
+                                <li [ngClass]="{'select': search_data['clarity'].includes('SI1')}" (click)="searchselect('SI1','clarity')">SI1</li>
+                                <li [ngClass]="{'select': search_data['clarity'].includes('SI2')}" (click)="searchselect('SI2','clarity')">SI2</li>
+                                <li [ngClass]="{'select': search_data['clarity'].includes('SI3')}" (click)="searchselect('SI3','clarity')">SI3</li>
+                                <li [ngClass]="{'select': search_data['clarity'].includes('I1')}" (click)="searchselect('I1','clarity')">I1</li>
+                                <li [ngClass]="{'select': search_data['clarity'].includes('I2')}" (click)="searchselect('I2','clarity')">I2</li>
+                                <li [ngClass]="{'select': search_data['clarity'].includes('I3')}" (click)="searchselect('I3','clarity')">I3</li>
+                              </ul>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="row bdr-row align-items-center">
+                          <div class="col-xxl-2 col-md-3">
+                            <label class="dash-label">Inclusions</label>
+                          </div>
+                          <div class="col-xxl-10 col-md-9">
+                            <div class="row">
+                              <div class="col-xl-6 mb-3">
+                                <ul class="row align-items-center mt-3 mt-md-0">
+                                  <li class="col-sm-3">
+                                    <span>Eye Clean</span>
+                                  </li>
+                                  <li class="col">
+                                    <select class="custom-select form-control input-style" (change)="searchselect($event.target.value,'inclusions_eye_clean')">
+                                      <option value="" [selected]="search_data['inclusions_eye_clean'] == ''">Select....</option>
+                                      <option value="Yes" [selected]="search_data['inclusions_eye_clean'] == 'Yes'">Yes</option>
+                                      <option value="No" [selected]="search_data['inclusions_eye_clean'] == 'No'">No</option>
+                                      <option value="Boderline" [selected]="search_data['inclusions_eye_clean'] == 'Boderline'">Boderline</option>
+                                    </select>
+                                  </li>
+                                </ul>
+                              </div>
+                              <div class="col-xl-6 mb-3">
+                                <ul class="row align-items-center mt-3 mt-md-0">
+                                  <li class="col-sm-3">
+                                    <span>Milky</span>
+                                  </li>
+                                  <li class="col">
+                                    <select class="custom-select form-control input-style" (change)="searchselect($event.target.value,'inclusions_milky_from')">
+                                      <option value="" [selected]="search_data['inclusions_milky_from'] == ''">From</option>
+                                      <option value="NON" [selected]="search_data['inclusions_milky_from'] == 'NON'">None</option>
+                                      <option value="M1" [selected]="search_data['inclusions_milky_from'] == 'M1'">Light</option>
+                                      <option value="M2" [selected]="search_data['inclusions_milky_from'] == 'M2'">Medium</option>
+                                      <option value="M3" [selected]="search_data['inclusions_milky_from'] == 'M3'">Heavy</option>
+                                    </select>
+                                  </li>
+                                  <li class="col">
+                                    <select class="custom-select form-control input-style" (change)="searchselect($event.target.value,'inclusions_milky_to')">
+                                      <option value="" [selected]="search_data['inclusions_milky_to'] == ''">To</option>
+                                      <option value="NON" [selected]="search_data['inclusions_milky_to'] == 'NON'">None</option>
+                                      <option value="M1" [selected]="search_data['inclusions_milky_to'] == 'M1'">Light</option>
+                                      <option value="M2" [selected]="search_data['inclusions_milky_to'] == 'M2'">Medium</option>
+                                      <option value="M3" [selected]="search_data['inclusions_milky_to'] == 'M3'">Heavy</option>
+                                    </select>
+                                  </li>
+                                </ul>
+                              </div>
+                              <div class="col-xl-6 mb-3">
+                                <ul class="row align-items-center mt-3 mt-md-0">
+                                  <li class="col-sm-3">
+                                    <span>Open Inclusions</span>
+                                  </li>
+                                  <li class="col">
+                                    <ng-select2 class="cust-input-stl" (change)="searchselect($event.target.value,'open_inclusions')" [data]="Open_Inclusions" [options]="options"></ng-select2>
+                                  </li>
+                                </ul>
+                              </div>
+                              <div class="col-xl-6 mb-3">
+                                <ul class="row align-items-center mt-3 mt-md-0">
+                                  <li class="col-sm-3">
+                                    <span>White Inclusions</span>
+                                  </li>
+                                  <li class="col">
+                                    <ng-select2 class="cust-input-stl" (change)="searchselect($event.target.value,'white_inclusions')" [data]="White_Inclusions" [options]="options"></ng-select2>
+                                  </li>
+                                </ul>
+                              </div>
+                              <div class="col-xl-6 mb-3">
+                                <ul class="row align-items-center mt-3 mt-md-0">
+                                  <li class="col-sm-3">
+                                    <span>Black Inclusions</span>
+                                  </li>
+                                  <li class="col">
+                                    <ng-select2 class="cust-input-stl" (change)="searchselect($event.target.value,'black_inclusions')" [data]="Black_Inclusions" [options]="options"></ng-select2>
+                                  </li>
+                                </ul>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="row bdr-row align-items-center">
+                          <div class="col-xxl-2 col-md-3">
+                            <label class="dash-label">Shade</label>
+                          </div>
+                          <div class="col-xxl-10 col-md-9">
+                            <ul class="row align-items-center">
+                              <li class="col-sm-6">
+                                <select class="custom-select form-control input-style" (change)="searchselect($event.target.value,'shades')">
+                                  <option [selected]="search_data['shades'] == ''" value="" >Select...</option>
+                                  <option [selected]="search_data['shades'] == 'NON'" value="NON">None</option>
+                                  <option [selected]="search_data['shades'] == 'White'" value="White">White</option>
+                                  <option [selected]="search_data['shades'] == 'Yellow'" value="Yellow">Yellow</option>
+                                  <option [selected]="search_data['shades'] == 'Brown'" value="Brown">Brown</option>
+                                  <option [selected]="search_data['shades'] == 'Green'" value="Green">Green</option>
+                                  <option [selected]="search_data['shades'] == 'Grey'" value="Grey">Grey</option>
+                                  <option [selected]="search_data['shades'] == 'Black'" value="Black">Black</option>
+                                  <option [selected]="search_data['shades'] == 'Pink'" value="Pink">Pink</option>
+                                  <option [selected]="search_data['shades'] == 'Blue'" value="Blue">Blue</option>
+                                  <option [selected]="search_data['shades'] == 'Mixed'" value="Mixed">Mixed</option>
+                                  <option [selected]="search_data['shades'] == 'Faint Brown'" value="Faint Brown">Faint Brown</option>
+                                  <option [selected]="search_data['shades'] == 'Faint Green'" value="Faint Green">Faint Green</option>
+                                  <option [selected]="search_data['shades'] == 'Other'" value="Other">Other</option>
+                                </select>
+                              </li>
+                            </ul>
+                          </div>
+                        </div>
+                        <div class="row bdr-row align-items-center">
+                          <div class="col-xxl-2 col-md-3">
+                            <label class="dash-label">Finish</label>
+                            <div class="custom-tabs-dash">
+                              <ul class="nav nav-pills mt-2" role="tablist">
+                                <li class="nav-item" role="presentation">
+                                  <a class="nav-link active" id="pills-Finish-General-tab" data-toggle="pill" href="#pills-Finish-General" role="tab" aria-controls="pills-Finish-General" aria-selected="true">
+                                    General
+                                  </a>
+                                </li>
+                                <li class="px-3">|</li>
+                                <li>
+                                  <a class="nav-link" id="pills-Finish-Specific-tab" data-toggle="pill" href="#pills-Finish-Specific" role="tab" aria-controls="pills-Finish-Specific" aria-selected="true">
+                                    Specific
+                                  </a>
+                                </li>
+                              </ul>
+                            </div>
+                          </div>
+                          <div class="col-xxl-10 col-md-9">
+                            <div class="custom-tabs-dash-right">
+                              <div class="tab-content">
+                                <div class="tab-pane fade show active" id="pills-Finish-General" role="tabpanel" aria-labelledby="pills-Finish-General-tab">
+                                  <div class="row">
+                                    <div class="col-xl-4 col-lg-6">
+                                      <ul class="row align-items-center mt-3 mt-md-0">
+                                        <li class="col-sm-3">
+                                          <span>Cut</span>
+                                        </li>
+                                        <li class="col">
+                                          <select class="custom-select form-control input-style" (change)="searchselect($event.target.value,'finish_general_cut_from')">
+                                            <option value="" [selected]="search_data['finish_general_cut_from'] == ''">From</option>
+                                            <option value="ID" [selected]="search_data['finish_general_cut_from'] == 'ID'">Idel</option>
+                                            <option value="EX" [selected]="search_data['finish_general_cut_from'] == 'EX'">Excellent</option>
+                                            <option value="VG" [selected]="search_data['finish_general_cut_from'] == 'VG'">Very Good</option>
+                                            <option value="GD" [selected]="search_data['finish_general_cut_from'] == 'GD'">Good</option>
+                                            <option value="FA" [selected]="search_data['finish_general_cut_from'] == 'FA'">Fair</option>
+                                            <option value="PO" [selected]="search_data['finish_general_cut_from'] == 'PO'">Poor</option>
+                                          </select>
+                                        </li>
+                                        <li class="col">
+                                          <select class="custom-select form-control input-style" (change)="searchselect($event.target.value,'finish_general_cut_to')">
+                                            <option value="" [selected]="search_data['finish_general_cut_to'] == ''">To</option>
+                                            <option value="ID" [selected]="search_data['finish_general_cut_to'] == 'ID'">Idel</option>
+                                            <option value="EX" [selected]="search_data['finish_general_cut_to'] == 'EX'">Excellent</option>
+                                            <option value="VG" [selected]="search_data['finish_general_cut_to'] == 'VG'">Very Good</option>
+                                            <option value="GD" [selected]="search_data['finish_general_cut_to'] == 'GD'">Good</option>
+                                            <option value="FA" [selected]="search_data['finish_general_cut_to'] == 'FA'">Fair</option>
+                                            <option value="PO" [selected]="search_data['finish_general_cut_to'] == 'PO'">Poor</option>
+                                          </select>
+                                        </li>
+                                      </ul>
+                                    </div>
+                                    <div class="col-xl-4 col-lg-6 mt-2 mt-xl-0">
+                                      <ul class="row align-items-center mt-3 mt-md-0">
+                                        <li class="col-sm-3">
+                                          <span>Polish</span>
+                                        </li>
+                                        <li class="col">
+                                          <select class="custom-select form-control input-style" (change)="searchselect($event.target.value,'finish_general_polish_from')">
+                                            <option value="" [selected]="search_data['finish_general_polish_from'] == ''">From</option>
+                                            <option value="ID" [selected]="search_data['finish_general_polish_from'] == 'ID'">Idel</option>
+                                            <option value="EX" [selected]="search_data['finish_general_polish_from'] == 'EX'">Excellent</option>
+                                            <option value="VG" [selected]="search_data['finish_general_polish_from'] == 'VG'">Very Good</option>
+                                            <option value="GD" [selected]="search_data['finish_general_polish_from'] == 'GD'">Good</option>
+                                            <option value="FA" [selected]="search_data['finish_general_polish_from'] == 'FA'">Fair</option>
+                                            <option value="PO" [selected]="search_data['finish_general_polish_from'] == 'PO'">Poor</option>
+                                          </select>
+                                        </li>
+                                        <li class="col">
+                                          <select class="custom-select form-control input-style" (change)="searchselect($event.target.value,'finish_general_polish_to')">
+                                            <option value="" [selected]="search_data['finish_general_polish_to'] == ''">To</option>
+                                            <option value="ID" [selected]="search_data['finish_general_polish_to'] == 'ID'">Idel</option>
+                                            <option value="EX" [selected]="search_data['finish_general_polish_to'] == 'EX'">Excellent</option>
+                                            <option value="VG" [selected]="search_data['finish_general_polish_to'] == 'VG'">Very Good</option>
+                                            <option value="GD" [selected]="search_data['finish_general_polish_to'] == 'GD'">Good</option>
+                                            <option value="FA" [selected]="search_data['finish_general_polish_to'] == 'FA'">Fair</option>
+                                            <option value="PO" [selected]="search_data['finish_general_polish_to'] == 'PO'">Poor</option>
+                                          </select>
+                                        </li>
+                                      </ul>
+                                    </div>
+                                    <div class="col-xl-4 col-lg-6 mt-2 mt-xl-0">
+                                      <ul class="row align-items-center mt-3 mt-md-0">
+                                        <li class="col-sm-3">
+                                          <span>Symmetry</span>
+                                        </li>
+                                        <li class="col">
+                                          <select class="custom-select form-control input-style" (change)="searchselect($event.target.value,'finish_general_symmetry_from')">
+                                            <option value="" [selected]="search_data['finish_general_symmetry_from'] == ''">From</option>
+                                            <option value="ID" [selected]="search_data['finish_general_symmetry_from'] == 'ID'">Idel</option>
+                                            <option value="EX" [selected]="search_data['finish_general_symmetry_from'] == 'EX'">Excellent</option>
+                                            <option value="VG" [selected]="search_data['finish_general_symmetry_from'] == 'VG'">Very Good</option>
+                                            <option value="GD" [selected]="search_data['finish_general_symmetry_from'] == 'GD'">Good</option>
+                                            <option value="FA" [selected]="search_data['finish_general_symmetry_from'] == 'FA'">Fair</option>
+                                            <option value="PO" [selected]="search_data['finish_general_symmetry_from'] == 'PO'">Poor</option>
+                                          </select>
+                                        </li>
+                                        <li class="col">
+                                          <select class="custom-select form-control input-style" (change)="searchselect($event.target.value,'finish_general_symmetry_to')">
+                                            <option value="" [selected]="search_data['finish_general_symmetry_to'] == ''">To</option>
+                                            <option value="ID" [selected]="search_data['finish_general_symmetry_to'] == 'ID'">Idel</option>
+                                            <option value="EX" [selected]="search_data['finish_general_symmetry_to'] == 'EX'">Excellent</option>
+                                            <option value="VG" [selected]="search_data['finish_general_symmetry_to'] == 'VG'">Very Good</option>
+                                            <option value="GD" [selected]="search_data['finish_general_symmetry_to'] == 'GD'">Good</option>
+                                            <option value="FA" [selected]="search_data['finish_general_symmetry_to'] == 'FA'">Fair</option>
+                                            <option value="PO" [selected]="search_data['finish_general_symmetry_to'] == 'PO'">Poor</option>
+                                          </select>
+                                        </li>
+                                      </ul>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="tab-pane fade" id="pills-Finish-Specific" role="tabpanel" aria-labelledby="pills-Finish-Specific-tab">
+                                  <div class="dash-comn-bx-style">
+                                    <ul>
+                                      <li [ngClass]="{'select': search_data['finish_specific'].includes('3X')}" (click)="searchselect('3X','finish_specific')">3X</li>
+                                      <li [ngClass]="{'select': search_data['finish_specific'].includes('EX-')}" (click)="searchselect('EX-','finish_specific')">EX-</li>
+                                      <li [ngClass]="{'select': search_data['finish_specific'].includes('VG+')}" (click)="searchselect('VG+','finish_specific')">VG+</li>
+                                      <li [ngClass]="{'select': search_data['finish_specific'].includes('VG-')}" (click)="searchselect('VG-','finish_specific')">VG-</li>
+                                    </ul>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="row bdr-row align-items-center">
+                          <div class="col-xxl-2 col-md-3">
+                            <label class="dash-label">Fluorescence Intensity</label>
+                          </div>
+                          <div class="col-xxl-10 col-md-9">
+                            <div class="dash-comn-bx-style">
+                              <ul>
+                                <li [ngClass]="{'select': search_data['fluorescence_intensity'].includes('NON')}" (click)="searchselect('NON','fluorescence_intensity')">None</li>
+                                <li [ngClass]="{'select': search_data['fluorescence_intensity'].includes('VSL')}" (click)="searchselect('VSL','fluorescence_intensity')">Very Slight</li>
+                                <li [ngClass]="{'select': search_data['fluorescence_intensity'].includes('FA')}" (click)="searchselect('FA','fluorescence_intensity')">Faint</li>
+                                <li [ngClass]="{'select': search_data['fluorescence_intensity'].includes('SL')}" (click)="searchselect('SL','fluorescence_intensity')">Slight</li>
+                                <li [ngClass]="{'select': search_data['fluorescence_intensity'].includes('ME')}" (click)="searchselect('ME','fluorescence_intensity')">Medium</li>
+                                <li [ngClass]="{'select': search_data['fluorescence_intensity'].includes('ST')}" (click)="searchselect('ST','fluorescence_intensity')">Strong</li>
+                                <li [ngClass]="{'select': search_data['fluorescence_intensity'].includes('VST')}" (click)="searchselect('VST','fluorescence_intensity')">Very Strong</li>
+                              </ul>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="row bdr-row align-items-center">
+                          <div class="col-xxl-2 col-md-3">
+                            <label class="dash-label">Grading Report</label>
+                          </div>
+                          <div class="col-xxl-10 col-md-9">
+                            <div class="dash-comn-bx-style">
+                              <ul>
+                                <li [ngClass]="{'select': search_data['grading_report'].includes('NON')}" (click)="searchselect('NON','grading_report')">None</li>
+                                <li [ngClass]="{'select': search_data['grading_report'].includes('GIA')}" (click)="searchselect('GIA','grading_report')">GIA</li>
+                                <li [ngClass]="{'select': search_data['grading_report'].includes('RAP')}" (click)="searchselect('RAP','grading_report')">RAP</li>
+                                <li [ngClass]="{'select': search_data['grading_report'].includes('AGS')}" (click)="searchselect('AGS','grading_report')">AGS</li>
+                                <li [ngClass]="{'select': search_data['grading_report'].includes('HRD')}" (click)="searchselect('HRD','grading_report')">HRD</li>
+                                <li [ngClass]="{'select': search_data['grading_report'].includes('IGI')}" (click)="searchselect('IGI','grading_report')">IGI</li>
+                                <li [ngClass]="{'select': search_data['grading_report'].includes('RDC')}" (click)="searchselect('RDC','grading_report')">RDC</li>
+                                <li [ngClass]="{'select': search_data['grading_report'].includes('CGL')}" (click)="searchselect('CGL','grading_report')">CGL</li>
+                                <li [ngClass]="{'select': search_data['grading_report'].includes('DCLA')}" (click)="searchselect('DCLA','grading_report')">DCLA</li>
+                                <li [ngClass]="{'select': search_data['grading_report'].includes('GCAL')}" (click)="searchselect('GCAL','grading_report')">GCAL</li>
+                                <li [ngClass]="{'select': search_data['grading_report'].includes('GHI')}" (click)="searchselect('GHI','grading_report')">GHI</li>
+                              </ul>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="row bdr-row align-items-center">
+                          <div class="col-xxl-2 col-md-3">
+                            <label class="dash-label">Location</label>
+                          </div>
+                          <div class="col-md-9">
+                            <ul class="row align-items-center">
+                              <li class="col-md-2">
+                                <span>Enter Location(s)</span>
+                              </li>
+                              <li class="col">
+                                <ng-select2
+                                  class="cust-input-stl"
+                                  [data]="locationData"
+                                  [options]="options1"
+                                  placeholder="Location"
+                                  [(ngModel)]="search_data['location']"
+                                  (ngModelChange)="searchselect($event,'location')">
+                                </ng-select2>
+                              </li>
+                            </ul>
+                          </div>
+                        </div>
+                        <div class="row bdr-row align-items-center">
+                          <div class="col-xxl-2 col-md-3">
+                            <label class="dash-label d-flex align-items-center">
+                              Spec
+                              <a href="javascript(void);" data-toggle="modal" data-target="#Spec-modal">
+                                <img src="assets/images/icon/question.svg" class="ml-2" alt="" />
+                              </a>
+                            </label>
+                          </div>
+                          <div class="col-xxl-10 col-md-9">
+                            <div class="dash-comn-bx-style">
+                              <ul>
+                                <li [ngClass]="{'select': search_data['specification'].includes('A1')}" (click)="searchselect('A1','specification')">A1</li>
+                                <li [ngClass]="{'select': search_data['specification'].includes('A2')}" (click)="searchselect('A2','specification')">A2</li>
+                                <li [ngClass]="{'select': search_data['specification'].includes('A3')}" (click)="searchselect('A3','specification')">A3</li>
+                                <li [ngClass]="{'select': search_data['specification'].includes('A4')}" (click)="searchselect('A4','specification')">A4</li>
+                                <li [ngClass]="{'select': search_data['specification'].includes('A5')}" (click)="searchselect('A5','specification')">A5</li>
+                                <li [ngClass]="{'select': search_data['specification'].includes('B1')}" (click)="searchselect('B1','specification')">B1</li>
+                                <li [ngClass]="{'select': search_data['specification'].includes('B2')}" (click)="searchselect('B2','specification')">B2</li>
+                                <li [ngClass]="{'select': search_data['specification'].includes('B3')}" (click)="searchselect('B3','specification')">B3</li>
+                                <li [ngClass]="{'select': search_data['specification'].includes('B4')}" (click)="searchselect('B4','specification')">B4</li>
+                                <li [ngClass]="{'select': search_data['specification'].includes('B5')}" (click)="searchselect('B5','specification')">B5</li>
+                                <li [ngClass]="{'select': search_data['specification'].includes('C1')}" (click)="searchselect('C1','specification')">C1</li>
+                                <li [ngClass]="{'select': search_data['specification'].includes('C2')}" (click)="searchselect('C2','specification')">C2</li>
+                                <li [ngClass]="{'select': search_data['specification'].includes('C3')}" (click)="searchselect('C3','specification')">C3</li>
+                                <li [ngClass]="{'select': search_data['specification'].includes('C4')}" (click)="searchselect('C4','specification')">C4</li>
+                                <li [ngClass]="{'select': search_data['specification'].includes('C5')}" (click)="searchselect('C5','specification')">C5</li>
+                              </ul>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="dash-colps-main">
+                      <div class="dash-colps-main-hdr" data-toggle="collapse" href="#Preferences" role="button" aria-expanded="false" aria-controls="Preferences">
+                        Preferences
+                        <i class="fa fa-angle-down" aria-hidden="true"></i>
+                      </div>
+                      <div class="dash-colps-main-body collapse" id="Preferences">
+                        <div class="row bdr-row align-items-center">
+                          <div class="col-xxl-2 col-md-3">
+                            <label class="dash-label">Price</label>
+                          </div>
+                          <div class="col-xxl-10 col-md-9">
+                            <div class="row">
+                              <div class="col-md-4">
+                                <ul class="row align-items-center mt-3 mt-md-0">
+                                  <li class="col-3">
+                                    <span>$/CT</span>
+                                  </li>
+                                  <li class="col">
+                                    <input type="text" (keypress)="isNumberKey($event)" [(ngModel)]="search_data['price_ct_from']" class="form-control input-style" placeholder="From" />
+                                  </li>
+                                  <li class="col">
+                                    <input type="text" (keypress)="isNumberKey($event)" [(ngModel)]="search_data['price_ct_to']" class="form-control input-style" placeholder="To" />
+                                  </li>
+                                </ul>
+                              </div>
+                              <div class="col-md-4">
+                                <ul class="row align-items-center mt-3 mt-md-0">
+                                  <li class="col-3">
+                                    <span>Total</span>
+                                  </li>
+                                  <li class="col">
+                                    <input type="text" (keypress)="isNumberKey($event)" [(ngModel)]="search_data['price_total_from']" class="form-control input-style" placeholder="From" />
+                                  </li>
+                                  <li class="col">
+                                    <input type="text" (keypress)="isNumberKey($event)" [(ngModel)]="search_data['price_total_to']" class="form-control input-style" placeholder="To" />
+                                  </li>
+                                </ul>
+                              </div>
+                              <div class="col-md-4">
+                                <ul class="row align-items-center mt-3 mt-md-0">
+                                  <li class="col-3">
+                                    <span>Rap%</span>
+                                  </li>
+                                  <li class="col">
+                                    <input type="text" (keypress)="isNumberKey($event)" [(ngModel)]="search_data['price_rap_from']" class="form-control input-style" placeholder="From" />
+                                  </li>
+                                  <li class="col">
+                                    <input type="text" (keypress)="isNumberKey($event)" [(ngModel)]="search_data['price_rap_to']" class="form-control input-style" placeholder="To" />
+                                  </li>
+                                </ul>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="row bdr-row align-items-center">
+                          <div class="col-xxl-2 col-md-3">
+                            <label class="dash-label">Availability</label>
+                          </div>
+                          <div class="col-xxl-10 col-md-9">
+                            <div class="dash-comn-bx-style">
+                              <ul>
+                                <li [ngClass]="{'select': search_data['show_only'].includes('Not Available')}" (click)="searchselect('Not Available','show_only')">Not Available</li>
+                                <li [ngClass]="{'select': search_data['show_only'].includes('Subject to Prior Sale')}" (click)="searchselect('Subject to Prior Sale','show_only')">Subject to Prior Sale</li>
+                                <li [ngClass]="{'select': search_data['show_only'].includes('Out on Memo')}" (click)="searchselect('Out on Memo','show_only')">Out on Memo</li>
+                                <li [ngClass]="{'select': search_data['show_only'].includes('Guaranteed Availability')}" (click)="searchselect('Guaranteed Availability','show_only')">Guaranteed Availability</li>
+                              </ul>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="dash-colps-main">
+                      <div class="dash-colps-main-hdr" data-toggle="collapse" href="#Measurements" role="button" aria-expanded="false" aria-controls="Measurements">
+                        Measurements
+                        <i class="fa fa-angle-down" aria-hidden="true"></i>
+                      </div>
+                      <div class="dash-colps-main-body collapse" id="Measurements">
+                        <div class="row bdr-row align-items-center">
+                          <div class="col-xxl-2 col-md-3">
+                            <label class="dash-label">Percentage</label>
+                          </div>
+                          <div class="col-md-9">
+                            <div class="row">
+                              <div class="col-md-6">
+                                <ul class="row align-items-center mt-3 mt-md-0">
+                                  <li class="col-3">
+                                    <span>Depth %</span>
+                                  </li>
+                                  <li class="col">
+                                    <input type="text" (keypress)="isNumberKey($event)" [(ngModel)]="search_data['per_depth_from']" class="form-control input-style" placeholder="From" />
+                                  </li>
+                                  <li class="col">
+                                    <input type="text" (keypress)="isNumberKey($event)" [(ngModel)]="search_data['per_depth_to']" class="form-control input-style" placeholder="To" />
+                                  </li>
+                                </ul>
+                              </div>
+                              <div class="col-md-6">
+                                <ul class="row align-items-center mt-3 mt-md-0">
+                                  <li class="col-3">
+                                    <span>Table %</span>
+                                  </li>
+                                  <li class="col">
+                                    <input type="text" (keypress)="isNumberKey($event)" [(ngModel)]="search_data['per_table_from']" class="form-control input-style" placeholder="From" />
+                                  </li>
+                                  <li class="col">
+                                    <input type="text" (keypress)="isNumberKey($event)" [(ngModel)]="search_data['per_table_to']" class="form-control input-style" placeholder="To" />
+                                  </li>
+                                </ul>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="row bdr-row align-items-center">
+                          <div class="col-xxl-2 col-md-3">
+                            <label class="dash-label">Metric</label>
+                          </div>
+                          <div class="col-xxl-10 col-md-9">
+                            <div class="row">
+                              <div class="col-md-4">
+                                <ul class="row align-items-center mt-3 mt-md-0">
+                                  <li class="col-3">
+                                    <span>Length</span>
+                                  </li>
+                                  <li class="col">
+                                    <input type="text" (keypress)="isNumberKey($event)" [(ngModel)]="search_data['metric_length_from']" class="form-control input-style" placeholder="From" />
+                                  </li>
+                                  <li class="col">
+                                    <input type="text" (keypress)="isNumberKey($event)" [(ngModel)]="search_data['metric_length_to']" class="form-control input-style" placeholder="To" />
+                                  </li>
+                                </ul>
+                              </div>
+                              <div class="col-md-4">
+                                <ul class="row align-items-center mt-3 mt-md-0">
+                                  <li class="col-3">
+                                    <span>Width</span>
+                                  </li>
+                                  <li class="col">
+                                    <input type="text" (keypress)="isNumberKey($event)" [(ngModel)]="search_data['metric_width_from']" class="form-control input-style" placeholder="From" />
+                                  </li>
+                                  <li class="col">
+                                    <input type="text" (keypress)="isNumberKey($event)" [(ngModel)]="search_data['metric_width_to']" class="form-control input-style" placeholder="To" />
+                                  </li>
+                                </ul>
+                              </div>
+                              <div class="col-md-4">
+                                <ul class="row align-items-center mt-3 mt-md-0">
+                                  <li class="col-3">
+                                    <span>Depth</span>
+                                  </li>
+                                  <li class="col">
+                                    <input type="text" (keypress)="isNumberKey($event)" [(ngModel)]="search_data['metric_depth_from']" class="form-control input-style" placeholder="From" />
+                                  </li>
+                                  <li class="col">
+                                    <input type="text" (keypress)="isNumberKey($event)" [(ngModel)]="search_data['metric_depth_to']" class="form-control input-style" placeholder="To" />
+                                  </li>
+                                </ul>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="row bdr-row align-items-center">
+                          <div class="col-xxl-2 col-md-3">
+                            <label class="dash-label">Ratio</label>
+                          </div>
+                          <div class="col-xxl-10 col-md-9">
+                            <ul class="row align-items-center">
+                              <li class="col">
+                                <input type="text" (keypress)="isNumberKey($event)" [(ngModel)]="search_data['ratio_from']" class="form-control input-style" placeholder="From" />
+                              </li>
+                              <li class="col">
+                                <input type="text" (keypress)="isNumberKey($event)" [(ngModel)]="search_data['ratio_to']" class="form-control input-style" placeholder="To" />
+                              </li>
+                              <li class="col-md col-12 mt-2 mt-md-0">
+                                <select class="custom-select form-control input-style" (change)="searchselect($event.target.value,'preset_ratio')">
+                                  <option value="" [selected]="search_data['preset_ratio'] == ''">Select Preset Ratio</option>
+                                  <option value="Square" [selected]="search_data['preset_ratio'] == 'Square'">Square</option>
+                                  <option value="Rectangle" [selected]="search_data['preset_ratio'] == 'Rectangle'">Rectangle</option>
+                                </select>
+                              </li>
+                            </ul>
+                          </div>
+                        </div>
+                        <div class="row bdr-row align-items-center">
+                          <div class="col-xxl-2 col-md-3">
+                            <label class="dash-label">Crown</label>
+                          </div>
+                          <div class="col-xxl-10 col-md-9">
+                            <div class="row">
+                              <div class="col-md-6">
+                                <ul class="row align-items-center mt-3 mt-md-0">
+                                  <li class="col-3">
+                                    <span>Height %</span>
+                                  </li>
+                                  <li class="col">
+                                    <input type="text" (keypress)="isNumberKey($event)" [(ngModel)]="search_data['crown_height_from']" class="form-control input-style" placeholder="From" />
+                                  </li>
+                                  <li class="col">
+                                    <input type="text" (keypress)="isNumberKey($event)" [(ngModel)]="search_data['crown_height_to']" class="form-control input-style" placeholder="To" />
+                                  </li>
+                                </ul>
+                              </div>
+                              <div class="col-md-6">
+                                <ul class="row align-items-center mt-3 mt-md-0">
+                                  <li class="col-3">
+                                    <span>Angle</span>
+                                  </li>
+                                  <li class="col">
+                                    <input type="text" (keypress)="isNumberKey($event)" [(ngModel)]="search_data['crown_angle_from']" class="form-control input-style" placeholder="From" />
+                                  </li>
+                                  <li class="col">
+                                    <input type="text" (keypress)="isNumberKey($event)" [(ngModel)]="search_data['crown_angle_to']" class="form-control input-style" placeholder="To" />
+                                  </li>
+                                </ul>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="row bdr-row align-items-center">
+                          <div class="col-xxl-2 col-md-3">
+                            <label class="dash-label">Pavilion</label>
+                          </div>
+                          <div class="col-xxl-10 col-md-9">
+                            <div class="row">
+                              <div class="col-md-6">
+                                <ul class="row align-items-center mt-3 mt-md-0">
+                                  <li class="col-3">
+                                    <span>Depth %</span>
+                                  </li>
+                                  <li class="col">
+                                    <input type="text" (keypress)="isNumberKey($event)" [(ngModel)]="search_data['pavilion_depth_from']" class="form-control input-style" placeholder="From" />
+                                  </li>
+                                  <li class="col">
+                                    <input type="text" (keypress)="isNumberKey($event)" [(ngModel)]="search_data['pavilion_depth_to']" class="form-control input-style" placeholder="To" />
+                                  </li>
+                                </ul>
+                              </div>
+                              <div class="col-md-6">
+                                <ul class="row align-items-center mt-3 mt-md-0">
+                                  <li class="col-3">
+                                    <span>Angle</span>
+                                  </li>
+                                  <li class="col">
+                                    <input type="text" (keypress)="isNumberKey($event)" [(ngModel)]="search_data['pavilion_angle_from']" class="form-control input-style" placeholder="From" />
+                                  </li>
+                                  <li class="col">
+                                    <input type="text" (keypress)="isNumberKey($event)" [(ngModel)]="search_data['pavilion_angle_to']" class="form-control input-style" placeholder="To" />
+                                  </li>
+                                </ul>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="row bdr-row align-items-center">
+                          <div class="col-xxl-2 col-md-3">
+                            <label class="dash-label">Girdle</label>
+                          </div>
+                          <div class="col-xxl-10 col-md-9">
+                            <div class="dash-comn-bx-style">
+                              <ul>
+                                <li [ngClass]="{'select': search_data['girdle'].includes('NON')}" (click)="searchselect('NON','girdle')">None</li>
+                                <li [ngClass]="{'select': search_data['girdle'].includes('ETN')}" (click)="searchselect('ETN','girdle')">Extr. Thin</li>
+                                <li [ngClass]="{'select': search_data['girdle'].includes('VTN')}" (click)="searchselect('VTN','girdle')">Very Thin</li>
+                                <li [ngClass]="{'select': search_data['girdle'].includes('THN')}" (click)="searchselect('THN','girdle')">Thin</li>
+                                <li [ngClass]="{'select': search_data['girdle'].includes('STN')}" (click)="searchselect('STN','girdle')">Slightly Thin</li>
+                                <li [ngClass]="{'select': search_data['girdle'].includes('MED')}" (click)="searchselect('MED','girdle')">Medium</li>
+                                <li [ngClass]="{'select': search_data['girdle'].includes('STK')}" (click)="searchselect('STK','girdle')">Slightly Thick</li>
+                                <li [ngClass]="{'select': search_data['girdle'].includes('THK')}" (click)="searchselect('THK','girdle')">Thick</li>
+                                <li [ngClass]="{'select': search_data['girdle'].includes('VTK')}" (click)="searchselect('VTK','girdle')">Very Thick</li>
+                                <li [ngClass]="{'select': search_data['girdle'].includes('ETK')}" (click)="searchselect('ETK','girdle')">Extr. Thick</li>
+                              </ul>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="row bdr-row align-items-center">
+                          <div class="col-xxl-2 col-md-3">
+                            <label class="dash-label">Culet Size</label>
+                          </div>
+                          <div class="col-xxl-10 col-md-9">
+                            <div class="dash-comn-bx-style">
+                              <ul>
+                                <li [ngClass]="{'select': search_data['culet_size'].includes('NON')}" (click)="searchselect('NON','culet_size')">None</li>
+                                <li [ngClass]="{'select': search_data['culet_size'].includes('VS')}" (click)="searchselect('VS','culet_size')">Very Small</li>
+                                <li [ngClass]="{'select': search_data['culet_size'].includes('S')}" (click)="searchselect('S','culet_size')">Small</li>
+                                <li [ngClass]="{'select': search_data['culet_size'].includes('M')}" (click)="searchselect('M','culet_size')">Medium</li>
+                                <li [ngClass]="{'select': search_data['culet_size'].includes('SL')}" (click)="searchselect('SL','culet_size')">Slightly Large</li>
+                                <li [ngClass]="{'select': search_data['culet_size'].includes('L')}" (click)="searchselect('L','culet_size')">Large</li>
+                                <li [ngClass]="{'select': search_data['culet_size'].includes('VL')}" (click)="searchselect('VL','culet_size')">Very Large</li>
+                                <li [ngClass]="{'select': search_data['culet_size'].includes('EL')}" (click)="searchselect('EL','culet_size')">Extremely Large</li>
+                              </ul>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="row bdr-row align-items-center">
+                          <div class="col-xxl-2 col-md-3">
+                            <label class="dash-label">Culet Condition</label>
+                          </div>
+                          <div class="col-xxl-10 col-md-9">
+                            <div class="dash-comn-bx-style">
+                              <ul>
+                                <li [ngClass]="{'select': search_data['culet_condition'].includes('NON')}" (click)="searchselect('NON','culet_condition')">None</li>
+                                <li [ngClass]="{'select': search_data['culet_condition'].includes('Pointed')}" (click)="searchselect('Pointed','culet_condition')">Pointed</li>
+                                <li [ngClass]="{'select': search_data['culet_condition'].includes('Chipped')}" (click)="searchselect('Chipped','culet_condition')">Chipped</li>
+                                <li [ngClass]="{'select': search_data['culet_condition'].includes('Abraded')}" (click)="searchselect('Abraded','culet_condition')">Abraded</li>
+                              </ul>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="dash-colps-main">
+                      <div class="dash-colps-main-hdr" data-toggle="collapse" href="#Treatment" role="button" aria-expanded="false" aria-controls="Treatment">
+                        Treatment
+                        <i class="fa fa-angle-down" aria-hidden="true"></i>
+                      </div>
+                      <div class="dash-colps-main-body collapse" id="Treatment">
+                        <div class="row bdr-row align-items-center">
+                          <div class="col-xxl-2 col-md-3">
+                            <label class="dash-label">Display Type</label>
+                          </div>
+                          <div class="col-xxl-10 col-md-9">
+                            <ul class="row align-items-center">
+                              <li class="col-md-4 my-1 my-md-0">
+                                <div class="cust-radio-btn">
+                                  <input type="radio" id="no-treatment" value="no-treatment" name="treatment" [ngClass]="{'select': search_data['treatment'] == 'no-treated'}" [checked]="search_data['treatment'] == 'no-treatment'" (click)="searchselect('no-treatment','treatment')" />
+                                  <label for="no-treatment">No treatment</label>
+                                </div>
+                              </li>
+                              <li class="col-md-4 my-1 my-md-0">
+                                <div class="cust-radio-btn">
+                                  <input type="radio" id="only-treated" value="only-trebtn btn-inr-top mb-3 mb-sm-0ated" name="treatment" [ngClass]="{'select': search_data['treatment'] == 'only-treated'}" [checked]="search_data['treatment'] == 'only-treated'" (click)="searchselect('only-treated','treatment')" />
+                                  <label for="only-treated">Show only treated</label>
+                                </div>
+                              </li>
+                              <li class="col-md-4 my-1 my-md-0">
+                                <div class="cust-radio-btn">
+                                  <input type="radio" id="include-treated" value="include-treated" name="treatment" [ngClass]="{'select': search_data['treatment'] == 'include-treated'}" [checked]="search_data['treatment'] == 'include-treated'" (click)="searchselect('include-treated','treatment')" />
+                                  <label for="include-treated">Include treated diamonds in results</label>
+                                </div>
+                              </li>
+                            </ul>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="dash-colps-main">
+                      <div class="dash-colps-main-hdr" data-toggle="collapse" href="#Key-Symbols" role="button" aria-expanded="false" aria-controls="Key-Symbols">
+                        Key to Symbols
+                        <i class="fa fa-angle-down" aria-hidden="true"></i>
+                      </div>
+                      <div class="dash-colps-main-body collapse" id="Key-Symbols">
+                        <div class="row bdr-row align-items-center">
+                          <div class="col-xxl-2 col-md-3">
+                            <label class="dash-label">Display Type</label>
+                          </div>
+                          <div class="col-xxl-10 col-md-9">
+                            <div class="dash-check-box-list">
+                              <div class="">
+                                <ul>
+                                  <li class="d-sm-inline-block">
+                                    <div class="cust-radio-btn">
+                                      <input type="radio" id="contains" [checked]="search_data['symbols'] == 'contains'" value="contains" name="symbols" [ngClass]="{'select': search_data['symbols'] == 'contains'}" (click)="searchselect('contains','symbols')" />
+                                      <label for="contains">Contains</label>
+                                    </div>
+                                  </li>
+                                  <li class="d-sm-inline-block ml-sm-3">
+                                    <div class="cust-radio-btn">
+                                      <input type="radio" id="not-contains" [checked]="search_data['symbols'] == 'not-contains'" value="not-contains" name="symbols" [ngClass]="{'select': search_data['symbols'] == 'not-contains'}" (click)="searchselect('not-contains','symbols')" />
+                                      <label for="not-contains">Does not contain</label>
+                                    </div>
+                                  </li>
+                                </ul>
+                              </div>
+                              <ul class="row">
+                                <li class="col-sm-4">
+                                  <div class="cust-checkbox-new">
+                                    <label class="cust-chk-bx">
+                                      <input type="checkbox" [checked]="search_data['symbol_checkbox'].includes('Bearding')" value="Bearding" name="symbol_checkbox" [ngClass]="{'select': search_data['symbol_checkbox'].includes('Bearding')}" (click)="searchselect('Bearding','symbol_checkbox')"/>
+                                      <span class="cust-chkmark"></span>
+                                      Bearding
+                                    </label>
+                                  </div>
+                                </li>
+                                <li class="col-sm-4">
+                                  <div class="cust-checkbox-new">
+                                    <label class="cust-chk-bx">
+                                      <input type="checkbox" [checked]="search_data['symbol_checkbox'].includes('Brown patch')" value="Brown patch" name="symbol_checkbox" [ngClass]="{'select': search_data['symbol_checkbox'].includes('Brown patch')}" (click)="searchselect('Brown patch','symbol_checkbox')"/>
+                                      <span class="cust-chkmark"></span>
+                                      Brown patch of color
+                                    </label>
+                                  </div>
+                                </li>
+                                <li class="col-sm-4">
+                                  <div class="cust-checkbox-new">
+                                    <label class="cust-chk-bx">
+                                      <input type="checkbox" [checked]="search_data['symbol_checkbox'].includes('Bruise')" value="Bruise" name="symbol_checkbox" [ngClass]="{'select': search_data['symbol_checkbox'].includes('Bruise')}" (click)="searchselect('Bruise','symbol_checkbox')"/>
+                                      <span class="cust-chkmark"></span>
+                                      Bruise
+                                    </label>
+                                  </div>
+                                </li>
+                                <li class="col-sm-4">
+                                  <div class="cust-checkbox-new">
+                                    <label class="cust-chk-bx">
+                                      <input type="checkbox" [checked]="search_data['symbol_checkbox'].includes('Cavity')" value="Cavity" name="symbol_checkbox" [ngClass]="{'select': search_data['symbol_checkbox'].includes('Cavity')}" (click)="searchselect('Cavity','symbol_checkbox')"/>
+                                      <span class="cust-chkmark"></span>
+                                      Cavity
+                                    </label>
+                                  </div>
+                                </li>
+                                <li class="col-sm-4">
+                                  <div class="cust-checkbox-new">
+                                    <label class="cust-chk-bx">
+                                      <input type="checkbox" [checked]="search_data['symbol_checkbox'].includes('Chip')" value="Chip" name="symbol_checkbox" [ngClass]="{'select': search_data['symbol_checkbox'].includes('Chip')}" (click)="searchselect('Chip','symbol_checkbox')"/>
+                                      <span class="cust-chkmark"></span>
+                                      Chip
+                                    </label>
+                                  </div>
+                                </li>
+                                <li class="col-sm-4">
+                                  <div class="cust-checkbox-new">
+                                    <label class="cust-chk-bx">
+                                      <input type="checkbox" [checked]="search_data['symbol_checkbox'].includes('Cleavage')" value="Cleavage" name="symbol_checkbox" [ngClass]="{'select': search_data['symbol_checkbox'].includes('Cleavage')}" (click)="searchselect('Cleavage','symbol_checkbox')"/>
+                                      <span class="cust-chkmark"></span>
+                                      Cleavage
+                                    </label>
+                                  </div>
+                                </li>
+                                <li class="col-sm-4">
+                                  <div class="cust-checkbox-new">
+                                    <label class="cust-chk-bx">
+                                      <input type="checkbox" [checked]="search_data['symbol_checkbox'].includes('Cloud')" value="Cloud" name="symbol_checkbox" [ngClass]="{'select': search_data['symbol_checkbox'].includes('Cloud')}" (click)="searchselect('Cloud','symbol_checkbox')"/>
+                                      <span class="cust-chkmark"></span>
+                                      Cloud
+                                    </label>
+                                  </div>
+                                </li>
+                                <li class="col-sm-4">
+                                  <div class="cust-checkbox-new">
+                                    <label class="cust-chk-bx">
+                                      <input type="checkbox" [checked]="search_data['symbol_checkbox'].includes('Crystal')" value="Crystal" name="symbol_checkbox" [ngClass]="{'select': search_data['symbol_checkbox'].includes('Crystal')}" (click)="searchselect('Crystal','symbol_checkbox')"/>
+                                      <span class="cust-chkmark"></span>
+                                      Crystal
+                                    </label>
+                                  </div>
+                                </li>
+                                <li class="col-sm-4">
+                                  <div class="cust-checkbox-new">
+                                    <label class="cust-chk-bx">
+                                      <input type="checkbox" [checked]="search_data['symbol_checkbox'].includes('Crystal Surface')" value="Crystal Surface" name="symbol_checkbox" [ngClass]="{'select': search_data['symbol_checkbox'].includes('Crystal Surface')}" (click)="searchselect('Crystal Surface','symbol_checkbox')"/>
+                                      <span class="cust-chkmark"></span>
+                                      Crystal Surface
+                                    </label>
+                                  </div>
+                                </li>
+                                <li class="col-sm-4">
+                                  <div class="cust-checkbox-new">
+                                    <label class="cust-chk-bx">
+                                      <input type="checkbox" [checked]="search_data['symbol_checkbox'].includes('Etch Channel')" value="Etch Channel" name="symbol_checkbox" [ngClass]="{'select': search_data['symbol_checkbox'].includes('Etch Channel')}" (click)="searchselect('Etch Channel','symbol_checkbox')"/>
+                                      <span class="cust-chkmark"></span>
+                                      Etch Channel
+                                    </label>
+                                  </div>
+                                </li>
+                                <li class="col-sm-4">
+                                  <div class="cust-checkbox-new">
+                                    <label class="cust-chk-bx">
+                                      <input type="checkbox" [checked]="search_data['symbol_checkbox'].includes('Extra Facet')" value="Extra Facet" name="symbol_checkbox" [ngClass]="{'select': search_data['symbol_checkbox'].includes('Extra Facet')}" (click)="searchselect('Extra Facet','symbol_checkbox')"/>
+                                      <span class="cust-chkmark"></span>
+                                      Extra Facet
+                                    </label>
+                                  </div>
+                                </li>
+                                <li class="col-sm-4">
+                                  <div class="cust-checkbox-new">
+                                    <label class="cust-chk-bx">
+                                      <input type="checkbox" [checked]="search_data['symbol_checkbox'].includes('Feather')" value="Feather" name="symbol_checkbox" [ngClass]="{'select': search_data['symbol_checkbox'].includes('Feather')}" (click)="searchselect('Feather','symbol_checkbox')"/>
+                                      <span class="cust-chkmark"></span>
+                                      Feather
+                                    </label>
+                                  </div>
+                                </li>
+                                <li class="col-sm-4">
+                                  <div class="cust-checkbox-new">
+                                    <label class="cust-chk-bx">
+                                      <input type="checkbox" [checked]="search_data['symbol_checkbox'].includes('Flux Remnant')" value="Flux Remnant" name="symbol_checkbox" [ngClass]="{'select': search_data['symbol_checkbox'].includes('Flux Remnant')}" (click)="searchselect('Flux Remnant','symbol_checkbox')"/>
+                                      <span class="cust-chkmark"></span>
+                                      Flux Remnant
+                                    </label>
+                                  </div>
+                                </li>
+                                <li class="col-sm-4">
+                                  <div class="cust-checkbox-new">
+                                    <label class="cust-chk-bx">
+                                      <input type="checkbox" [checked]="search_data['symbol_checkbox'].includes('Indented Natural')" value="Indented Natural" name="symbol_checkbox" [ngClass]="{'select': search_data['symbol_checkbox'].includes('Indented Natural')}" (click)="searchselect('Indented Natural','symbol_checkbox')"/>
+                                      <span class="cust-chkmark"></span>
+                                      Indented Natural
+                                    </label>
+                                  </div>
+                                </li>
+                                <li class="col-sm-4">
+                                  <div class="cust-checkbox-new">
+                                    <label class="cust-chk-bx">
+                                      <input type="checkbox" [checked]="search_data['symbol_checkbox'].includes('Internal Graining')" value="Internal Graining" name="symbol_checkbox" [ngClass]="{'select': search_data['symbol_checkbox'].includes('Internal Graining')}" (click)="searchselect('Internal Graining','symbol_checkbox')"/>
+                                      <span class="cust-chkmark"></span>
+                                      Internal Graining
+                                    </label>
+                                  </div>
+                                </li>
+                                <li class="col-sm-4">
+                                  <div class="cust-checkbox-new">
+                                    <label class="cust-chk-bx">
+                                      <input type="checkbox" [checked]="search_data['symbol_checkbox'].includes('Internal Inscription')" value="Internal Inscription" name="symbol_checkbox" [ngClass]="{'select': search_data['symbol_checkbox'].includes('Internal Inscription')}" (click)="searchselect('Internal Inscription','symbol_checkbox')"/>
+                                      <span class="cust-chkmark"></span>
+                                      Internal Inscription
+                                    </label>
+                                  </div>
+                                </li>
+                                <li class="col-sm-4">
+                                  <div class="cust-checkbox-new">
+                                    <label class="cust-chk-bx">
+                                      <input type="checkbox" [checked]="search_data['symbol_checkbox'].includes('Internal Laser Drilling')" value="Internal Laser Drilling" name="symbol_checkbox" [ngClass]="{'select': search_data['symbol_checkbox'].includes('Internal Laser Drilling')}" (click)="searchselect('Internal Laser Drilling','symbol_checkbox')"/>
+                                      <span class="cust-chkmark"></span>
+                                      Internal Laser Drilling
+                                    </label>
+                                  </div>
+                                </li>
+                                <li class="col-sm-4">
+                                  <div class="cust-checkbox-new">
+                                    <label class="cust-chk-bx">
+                                      <input type="checkbox" [checked]="search_data['symbol_checkbox'].includes('Knot')" value="Knot" name="symbol_checkbox" [ngClass]="{'select': search_data['symbol_checkbox'].includes('Knot')}" (click)="searchselect('Knot','symbol_checkbox')"/>
+                                      <span class="cust-chkmark"></span>
+                                      Knot
+                                    </label>
+                                  </div>
+                                </li>
+                                <li class="col-sm-4">
+                                  <div class="cust-checkbox-new">
+                                    <label class="cust-chk-bx">
+                                      <input type="checkbox" [checked]="search_data['symbol_checkbox'].includes('Laser Drill Hole')" value="Laser Drill Hole" name="symbol_checkbox" [ngClass]="{'select': search_data['symbol_checkbox'].includes('Laser Drill Hole')}" (click)="searchselect('Laser Drill Hole','symbol_checkbox')"/>
+                                      <span class="cust-chkmark"></span>
+                                      Laser Drill Hole
+                                    </label>
+                                  </div>
+                                </li>
+                                <li class="col-sm-4">
+                                  <div class="cust-checkbox-new">
+                                    <label class="cust-chk-bx">
+                                      <input type="checkbox" [checked]="search_data['symbol_checkbox'].includes('Manufacturing Remnant')" value="Manufacturing Remnant" name="symbol_checkbox" [ngClass]="{'select': search_data['symbol_checkbox'].includes('Manufacturing Remnant')}" (click)="searchselect('Manufacturing Remnant','symbol_checkbox')"/>
+                                      <span class="cust-chkmark"></span>
+                                      Manufacturing Remnant
+                                    </label>
+                                  </div>
+                                </li>
+                                <li class="col-sm-4">
+                                  <div class="cust-checkbox-new">
+                                    <label class="cust-chk-bx">
+                                      <input type="checkbox" [checked]="search_data['symbol_checkbox'].includes('Minor Details of Polish')" value="Minor Details of Polish" name="symbol_checkbox" [ngClass]="{'select': search_data['symbol_checkbox'].includes('Minor Details of Polish')}" (click)="searchselect('Minor Details of Polish','symbol_checkbox')"/>
+                                      <span class="cust-chkmark"></span>
+                                      Minor Details of Polish
+                                    </label>
+                                  </div>
+                                </li>
+                                <li class="col-sm-4">
+                                  <div class="cust-checkbox-new">
+                                    <label class="cust-chk-bx">
+                                      <input type="checkbox" [checked]="search_data['symbol_checkbox'].includes('Natural')" value="Natural" name="symbol_checkbox" [ngClass]="{'select': search_data['symbol_checkbox'].includes('Natural')}" (click)="searchselect('Natural','symbol_checkbox')"/>
+                                      <span class="cust-chkmark"></span>
+                                      Natural
+                                    </label>
+                                  </div>
+                                </li>
+                                <li class="col-sm-4">
+                                  <div class="cust-checkbox-new">
+                                    <label class="cust-chk-bx">
+                                      <input type="checkbox" [checked]="search_data['symbol_checkbox'].includes('No Inclusion')" value="No Inclusion" name="symbol_checkbox" [ngClass]="{'select': search_data['symbol_checkbox'].includes('No Inclusion')}" (click)="searchselect('No Inclusion','symbol_checkbox')"/>
+                                      <span class="cust-chkmark"></span>
+                                      No Inclusion
+                                    </label>
+                                  </div>
+                                </li>
+                                <li class="col-sm-4">
+                                  <div class="cust-checkbox-new">
+                                    <label class="cust-chk-bx">
+                                      <input type="checkbox" [checked]="search_data['symbol_checkbox'].includes('Pinpoint')" value="Pinpoint" name="symbol_checkbox" [ngClass]="{'select': search_data['symbol_checkbox'].includes('Pinpoint')}" (click)="searchselect('Pinpoint','symbol_checkbox')"/>
+                                      <span class="cust-chkmark"></span>
+                                      Pinpoint
+                                    </label>
+                                  </div>
+                                </li>
+                                <li class="col-sm-4">
+                                  <div class="cust-checkbox-new">
+                                    <label class="cust-chk-bx">
+                                      <input type="checkbox" [checked]="search_data['symbol_checkbox'].includes('Reflecting Surface Graining')" value="Reflecting Surface Graining" name="symbol_checkbox" [ngClass]="{'select': search_data['symbol_checkbox'].includes('Reflecting Surface Graining')}" (click)="searchselect('Reflecting Surface Graining','symbol_checkbox')"/>
+                                      <span class="cust-chkmark"></span>
+                                      Reflecting Surface Graining
+                                    </label>
+                                  </div>
+                                </li>
+                                <li class="col-sm-4">
+                                  <div class="cust-checkbox-new">
+                                    <label class="cust-chk-bx">
+                                      <input type="checkbox" [checked]="search_data['symbol_checkbox'].includes('Surface Graining')" value="Surface Graining" name="symbol_checkbox" [ngClass]="{'select': search_data['symbol_checkbox'].includes('Surface Graining')}" (click)="searchselect('Surface Graining','symbol_checkbox')"/>
+                                      <span class="cust-chkmark"></span>
+                                      Surface Graining
+                                    </label>
+                                  </div>
+                                </li>
+                                <li class="col-sm-4">
+                                  <div class="cust-checkbox-new">
+                                    <label class="cust-chk-bx">
+                                      <input type="checkbox" [checked]="search_data['symbol_checkbox'].includes('winning Wisp')" value="Twinning Wisp" name="symbol_checkbox" [ngClass]="{'select': search_data['symbol_checkbox'].includes('Twinning Wisp')}" (click)="searchselect('Twinning Wisp','symbol_checkbox')"/>
+                                      <span class="cust-chkmark"></span>
+                                      Twinning Wisp
+                                    </label>
+                                  </div>
+                                </li>
+                              </ul>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="request-div-setting">
+                    <div class="row m-0">
+                      <div class="col-lg-4 col-12 mb-3 mb-lg-0">
+                        <div class="request-div-setting-inr">
+                          <label class="dash-label">Notification Settings</label>
+                          <div class="custom-control custom-switch">
+                            <input type="checkbox" value="true" class="custom-control-input" id="customSwitch1" [checked]="search_data['notify_daily']==true" [ngClass]="{'select': search_data['notify_daily']==true}" (click)="searchselect($event.target.value,'notify_daily')"/>
+                            <label class="custom-control-label" for="customSwitch1">Notify Daily</label>
+                          </div>
+                          <div class="custom-control custom-switch mt-1">
+                            <input type="checkbox" value="true" class="custom-control-input" id="customSwitch2" [checked]="search_data['notify_immediately']==true" [ngClass]="{'select': search_data['notify_immediately']==true}" (click)="searchselect($event.target.value,'notify_immediately')"/>
+                            <label class="custom-control-label" for="customSwitch2">Notify Immediately</label>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-lg-4 col-md-6 mb-3 mb-md-0">
+                        <div class="request-div-setting-inr">
+                          <label class="dash-label">Expiration Date</label>
+                          <mat-form-field appearance="fill" class="mtrl-cust-datepicker">
+                            <input placeholder="Select....." matInput [matDatepicker]="picker" [(ngModel)]="search_data['expiration_date']">
+                            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                            <mat-datepicker #picker></mat-datepicker>
+                          </mat-form-field>
+                        </div>
+                      </div>
+                      <div class="col-lg-4 col-md-6 mb-3 mb-md-0">
+                        <div class="request-div-setting-inr">
+                          <label class="dash-label">Comments</label>
+                          <textarea class="form-control input-style" rows="2" [(ngModel)]="search_data['comment']" ></textarea>
+  <!--                        <div *ngIf="request_submitted && f.comment.errors" class="invalid-feedback">-->
+  <!--                          <div *ngIf="f.comment.errors.required">Comments is required</div>-->
+  <!--                        </div>-->
+                        </div>
+                      </div>
+                      <div class="col-12 mt-5 mb-3 text-center">
+                        <button type="button" (click)="postrequests()" class="btn btn-inr-top mb-3 mb-sm-0">Post Buy Request</button>
+                        <button type="button" (click)="searchreset()" class="btn btn-reset ml-sm-4 ml-2 mb-3 mb-sm-0">Reset</button>
+                    </div>
+                    </div>
+                  </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="overlay toggle-icon-main"></div>
+  </main>
+
+  <div class="filter-src-main" [ngStyle]="{'display': filter_popup ? 'block' : 'none'}">
+    <div class="filter-src-heading">
+      <h5>All Filters</h5>
+      <a (click)="searchfilterreset()" style="cursor: pointer">Reset</a>
+      <div class="filter-src-close" (click)="close_filter()">
+        <img src="assets/images/icon/close-icon.svg" alt="" />
+      </div>
+    </div>
+    <div class="filter-src-inner">
+      <div class="form-group filter-src-row">
+        <label>Shape</label>
+        <select class="custom-select form-control input-style" (change)="searchselectfilter($event.target.value,'shape')">
+          <option value="" [selected]="search_data_filter['shape'] == ''">Select.....</option>
+          <option value="Round" [selected]="search_data_filter['shape'] == 'Round'">Round</option>
+          <option value="Pear" [selected]="search_data_filter['shape'] == 'Pear'">Pear</option>
+          <option value="Asscher" [selected]="search_data_filter['shape'] == 'Asscher'">Asscher</option>
+          <option value="Radiant" [selected]="search_data_filter['shape'] == 'Radiant'">Radiant</option>
+          <option value="Oval" [selected]="search_data_filter['shape'] == 'Oval'">Oval</option>
+          <option value="Emerald" [selected]="search_data_filter['shape'] == 'Emerald'">Emerald</option>
+          <option value="Heart" [selected]="search_data_filter['shape'] == 'Heart'">Heart</option>
+          <option value="Princess" [selected]="search_data_filter['shape'] == 'Princess'">Princess</option>
+          <option value="Cushion" [selected]="search_data_filter['shape'] == 'Cushion'">Cushion</option>
+          <option value="European Cut" [selected]="search_data_filter['shape'] == 'European Cut'">European Cut</option>
+        </select>
+      </div>
+      <div class="form-group filter-src-row">
+        <label>Size</label>
+        <div class="row">
+          <div class="col">
+            <input type="text" (keypress)="isNumberKey($event)" [(ngModel)]="search_data_filter['size_from']" class="form-control input-style" placeholder="From" />
+          </div>
+          <div class="col">
+            <input type="text" (keypress)="isNumberKey($event)" [(ngModel)]="search_data_filter['size_to']" class="form-control input-style" placeholder="To" />
+          </div>
+        </div>
+      </div>
+      <div class="form-group filter-src-row">
+        <label>Clarity</label>
+        <div class="row">
+          <div class="col">
+            <select class="custom-select form-control input-style" (change)="searchselectfilter($event.target.value,'clarity_from')">
+              <option value="" [selected]="search_data_filter['clarity_from'] == ''">From</option>
+              <option value="FL" [selected]="search_data_filter['clarity_from'] == 'FL'">FL</option>
+              <option value="IF" [selected]="search_data_filter['clarity_from'] == 'IF'">IF</option>
+              <option value="VVS1" [selected]="search_data_filter['clarity_from'] == 'VVS1'">VVS1</option>
+              <option value="VVS2" [selected]="search_data_filter['clarity_from'] == 'VVS2'">VVS2</option>
+              <option value="VS1" [selected]="search_data_filter['clarity_from'] == 'VS1'">VS1</option>
+              <option value="VS2" [selected]="search_data_filter['clarity_from'] == 'VS2'">VS2</option>
+              <option value="SI1" [selected]="search_data_filter['clarity_from'] == 'SI1'">SI1</option>
+              <option value="SI2" [selected]="search_data_filter['clarity_from'] == 'SI2'">SI2</option>
+              <option value="SI3" [selected]="search_data_filter['clarity_from'] == 'SI3'">SI3</option>
+              <option value="I1" [selected]="search_data_filter['clarity_from'] == 'I1'">I1</option>
+              <option value="I2" [selected]="search_data_filter['clarity_from'] == 'I2'">I2</option>
+              <option value="I3" [selected]="search_data_filter['clarity_from'] == 'I3'">I3</option>
+            </select>
+          </div>
+          <div class="col">
+            <select class="custom-select form-control input-style" (change)="searchselectfilter($event.target.value,'clarity_to')">
+              <option value="" [selected]="search_data_filter['clarity_to'] == ''">To</option>
+              <option value="FL" [selected]="search_data_filter['clarity_to'] == 'FL'">FL</option>
+              <option value="IF" [selected]="search_data_filter['clarity_to'] == 'IF'">IF</option>
+              <option value="VVS1" [selected]="search_data_filter['clarity_to'] == 'VVS1'">VVS1</option>
+              <option value="VVS2" [selected]="search_data_filter['clarity_to'] == 'VVS2'">VVS2</option>
+              <option value="VS1" [selected]="search_data_filter['clarity_to'] == 'VS1'">VS1</option>
+              <option value="VS2" [selected]="search_data_filter['clarity_to'] == 'VS2'">VS2</option>
+              <option value="SI1" [selected]="search_data_filter['clarity_to'] == 'SI1'">SI1</option>
+              <option value="SI2" [selected]="search_data_filter['clarity_to'] == 'SI2'">SI2</option>
+              <option value="SI3" [selected]="search_data_filter['clarity_to'] == 'SI3'">SI3</option>
+              <option value="I1" [selected]="search_data_filter['clarity_to'] == 'I1'">I1</option>
+              <option value="I2" [selected]="search_data_filter['clarity_to'] == 'I2'">I2</option>
+              <option value="I3" [selected]="search_data_filter['clarity_to'] == 'I3'">I3</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div class="form-group filter-src-row">
+        <label>Cut</label>
+        <div class="row">
+          <div class="col">
+            <select class="custom-select form-control input-style" (change)="searchselectfilter($event.target.value,'cut_from')">
+              <option value="" [selected]="search_data_filter['cut_from'] == ''">From</option>
+              <option value="Any" [selected]="search_data_filter['cut_from'] == 'Any'">Any</option>
+              <option value="Ideal" [selected]="search_data_filter['cut_from'] == 'Ideal'">Ideal</option>
+              <option value="Excellent" [selected]="search_data_filter['cut_from'] == 'Excellent'">Excellent</option>
+              <option value="Very Good" [selected]="search_data_filter['cut_from'] == 'Very Good'">Very Good</option>
+              <option value="Good" [selected]="search_data_filter['cut_from'] == 'Good'">Good</option>
+              <option value="Fair" [selected]="search_data_filter['cut_from'] == 'Fair'">Fair</option>
+              <option value="Poor" [selected]="search_data_filter['cut_from'] == 'Poor'">Poor</option>
+            </select>
+          </div>
+          <div class="col">
+            <select class="custom-select form-control input-style" (change)="searchselectfilter($event.target.value,'cut_to')">
+              <option value="" [selected]="search_data_filter['cut_to'] == ''">To</option>
+              <option value="Any" [selected]="search_data_filter['cut_to'] == 'Any'">Any</option>
+              <option value="Ideal" [selected]="search_data_filter['cut_to'] == 'Ideal'">Ideal</option>
+              <option value="Excellent" [selected]="search_data_filter['cut_to'] == 'Excellent'">Excellent</option>
+              <option value="Very Good" [selected]="search_data_filter['cut_to'] == 'Very Good'">Very Good</option>
+              <option value="Good" [selected]="search_data_filter['cut_to'] == 'Good'">Good</option>
+              <option value="Fair" [selected]="search_data_filter['cut_to'] == 'Fair'">Fair</option>
+              <option value="Poor" [selected]="search_data_filter['cut_to'] == 'Poor'">Poor</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div class="form-group filter-src-row">
+        <label>Polish</label>
+        <div class="row">
+          <div class="col">
+            <select class="custom-select form-control input-style" (change)="searchselectfilter($event.target.value,'polish_from')">
+              <option value="" [selected]="search_data_filter['polish_from'] == ''">From</option>
+              <option value="Any" [selected]="search_data_filter['polish_from'] == 'Any'">Any</option>
+              <option value="Ideal" [selected]="search_data_filter['polish_from'] == 'Ideal'">Ideal</option>
+              <option value="Excellent" [selected]="search_data_filter['polish_from'] == 'Excellent'">Excellent</option>
+              <option value="Very Good" [selected]="search_data_filter['polish_from'] == 'Very Good'">Very Good</option>
+              <option value="Good" [selected]="search_data_filter['polish_from'] == 'Good'">Good</option>
+              <option value="Fair" [selected]="search_data_filter['polish_from'] == 'Fair'">Fair</option>
+              <option value="Poor" [selected]="search_data_filter['polish_from'] == 'Poor'">Poor</option>
+            </select>
+          </div>
+          <div class="col">
+            <select class="custom-select form-control input-style" (change)="searchselectfilter($event.target.value,'polish_to')">
+              <option value="" [selected]="search_data_filter['polish_to'] == ''">To</option>
+              <option value="Any" [selected]="search_data_filter['polish_to'] == 'Any'">Any</option>
+              <option value="Ideal" [selected]="search_data_filter['polish_to'] == 'Ideal'">Ideal</option>
+              <option value="Excellent" [selected]="search_data_filter['polish_to'] == 'Excellent'">Excellent</option>
+              <option value="Very Good" [selected]="search_data_filter['polish_to'] == 'Very Good'">Very Good</option>
+              <option value="Good" [selected]="search_data_filter['polish_to'] == 'Good'">Good</option>
+              <option value="Fair" [selected]="search_data_filter['polish_to'] == 'Fair'">Fair</option>
+              <option value="Poor" [selected]="search_data_filter['polish_to'] == 'Poor'">Poor</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div class="form-group filter-src-row">
+        <label>Date Created</label>
+        <div class="row">
+          <div class="col">
+            <mat-form-field appearance="fill" class="mtrl-cust-datepicker">
+              <input placeholder="From" matInput [matDatepicker]="create_date_from" (dateChange)="searchselectfilter($event.target.value,'create_date_from')">
+              <mat-datepicker-toggle matSuffix [for]="create_date_from"></mat-datepicker-toggle>
+              <mat-datepicker #create_date_from></mat-datepicker>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill" class="mtrl-cust-datepicker">
+              <input placeholder="To" matInput [matDatepicker]="create_date_to" (dateChange)="searchselectfilter($event.target.value,'create_date_to')">
+              <mat-datepicker-toggle matSuffix [for]="create_date_to"></mat-datepicker-toggle>
+              <mat-datepicker #create_date_to></mat-datepicker>
+            </mat-form-field>
+          </div>
+        </div>
+      </div>
+      <div class="form-group filter-src-row">
+        <label>Date Expires</label>
+        <div class="row">
+          <div class="col">
+            <mat-form-field appearance="fill" class="mtrl-cust-datepicker">
+              <input placeholder="From" matInput [matDatepicker]="expire_date_from" (dateChange)="searchselectfilter($event.target.value,'expire_date_from')">
+              <mat-datepicker-toggle matSuffix [for]="expire_date_from"></mat-datepicker-toggle>
+              <mat-datepicker #expire_date_from></mat-datepicker>
+            </mat-form-field>
+            <mat-form-field appearance="fill" class="mtrl-cust-datepicker">
+              <input placeholder="To" matInput [matDatepicker]="expire_date_to" (dateChange)="searchselectfilter($event.target.value,'expire_date_to')">
+              <mat-datepicker-toggle matSuffix [for]="expire_date_to"></mat-datepicker-toggle>
+              <mat-datepicker #expire_date_to></mat-datepicker>
+            </mat-form-field>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="filter-footer-fix row m-0">
+      <div class="col p-0">
+        <button type="button" (click)="searchfilter()" class="main-cl-button">Apply</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="Spec-modal" tabindex="-1" aria-labelledby="Spec-modal" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header align-items-center">
+          <h5 class="modal-title"></h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="lrn-more-mdl-left">
+            <p>
+              Rapaport Specifications classify diamonds into different quality groups for easy classification. They are for Round shape laboratory graded diamonds and are based on a combination of measurements, finish and other
+              physical diamond characteristics. The Rapaport Price List is based on RapSpec A3 and better diamonds.
+            </p>
+            <p>For more information <a href="">Click here</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

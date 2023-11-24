@@ -1,0 +1,259 @@
+<div class="dash-wrapper">
+  <app-header></app-header>
+  <app-sidebar></app-sidebar>
+  <main class="content-wrapper-section">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-12">
+          <div class="inr-title-comn d-sm-flex align-items-center">
+            <h3>News</h3>
+          </div>
+        </div>
+        <div class="col-12">
+          <div class="dash-box-white">
+            <div class="news-section-main">
+              <div class="news-section-hdr row align-items-center">
+                <div class="col-md-5">
+                  <div class="news-section-hdr-src-box">
+                    <div class="input-group">
+                      <input type="text" class="form-control" placeholder="Search a News Name........" [(ngModel)]="search" #serchnews (keyup.enter)="searchNews($event.target.value)"/>
+                      <div class="input-group-append">
+                        <span class="input-group-text">
+                          <button type="button" (click)="searchNews(serchnews.value)">
+                              <img src="assets/images/icon/search-icon.svg" alt=""/>
+                          </button>
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-7">
+                  <div class="news-section-hdr-right mt-3 mt-md-0">
+                    <ul class="d-flex align-items-center justify-content-md-end justify-content-center">
+                      <li>
+                        <span>View Mode :</span>
+                      </li>
+                      <li>
+                        <button type="button" value="grid" class="btn-grid active">grid</button>
+                      </li>
+                      <li>
+                        <button type="button" value="list" class="btn-list">list</button>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              <div class="news-section-body my-4">
+                <div class="news-section-tabs">
+                  <div class="news-section-tabs-div mb-md-5">
+                    <div class="d-flex align-items-center justify-content-center mb-3">
+                      <ul class="nav nav-pills"  role="tablist">
+                        <li class="nav-item" role="presentation">
+                          <a class="nav-link active" [ngClass]="{'active': step==1}" (click)="checkstep(1)" aria-selected="true">Latest Articles</a>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                          <a class="nav-link border-left" [ngClass]="{'active': step==2}" (click)="checkstep(2)" aria-selected="false">
+                            Mining
+                          </a>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                          <a class="nav-link" [ngClass]="{'active': step==3}" (click)="checkstep(3)" aria-selected="false">
+                            Rough Markets
+                          </a>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                          <a class="nav-link" [ngClass]="{'active': step==4}" (click)="checkstep(4)" aria-selected="false">
+                            Polished Markets
+                          </a>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                          <a class="nav-link" [ngClass]="{'active': step==5}" (click)="checkstep(5)" aria-selected="false">
+                            Manufacturing
+                          </a>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                          <a class="nav-link" [ngClass]="{'active': step==6}" (click)="checkstep(6)" aria-selected="false" aria-selected="false">
+                            Research
+                          </a>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                          <a class="nav-link" [ngClass]="{'active': step==7}" (click)="checkstep(7)" aria-selected="false">
+                            Retail
+                          </a>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                  <div class="tab-content">
+                    <div class="tab-pane fade" [ngClass]="{'active show': step==1}">
+                      <div class="row">
+                        <div class="col-xl-3 col-md-6 mb-3" *ngFor="let news of articles">
+                          <div class="add-card-box">
+                            <div class="add-card-box-img">
+                              <img src="{{news['imageURL'] == null ? 'assets/images/logo/kukadia_placeholder.png' : news['imageURL']}}" alt=""/>
+                            </div>
+                            <div class="add-card-box-text">
+                              <div class="d-flex align-items-center justify-content-between pb-3">
+                                <h6>{{news['majorTopicTitle']}}</h6>
+                                <span>{{news['datePosted'] | date}}</span>
+                              </div>
+                              <h4>{{news['title']}}</h4>
+                              <!--                              <p title="title here">{{news['article']}}</p>-->
+                            </div>
+                            <div class="lrn-more-btn-class">
+                              <a [routerLink]="['/news-details',news['articleID']]" class="lrn-more-btn">LEARN
+                                MORE</a>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="tab-pane fade" [ngClass]="{'active show': step==2}">
+                      <div class="row">
+                        <div class="col-xl-3 col-md-6 mb-3" *ngFor="let news of articles">
+                          <div class="add-card-box">
+                            <div class="add-card-box-img">
+                              <img src="{{news['imageURL'] == null ? 'assets/images/logo/kukadia_placeholder.png' : news['imageURL']}}" alt=""/>
+                            </div>
+                            <div class="add-card-box-text">
+                              <div class="d-flex align-items-center justify-content-between pb-3">
+                                <h6>{{news['majorTopicTitle']}}</h6>
+                                <span>{{news['datePosted'] | date}}</span>
+                              </div>
+                              <h4>{{news['title']}}</h4>
+                              <!--                              <p title="title here">{{news['article']}}</p>-->
+                            </div>
+                            <div class="lrn-more-btn-class mt-md-5">
+                              <a [routerLink]="['/news-details',news['articleID']]" class="lrn-more-btn">LEARN
+                                MORE</a>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="tab-pane fade" [ngClass]="{'active show': step==3}">
+                      <div class="row">
+                        <div class="col-xl-3 col-md-6 mb-3" *ngFor="let news of articles">
+                          <div class="add-card-box">
+                            <div class="add-card-box-img">
+                              <img src="{{news['imageURL'] == null ? 'assets/images/logo/kukadia_placeholder.png' : news['imageURL']}}" alt=""/>
+                            </div>
+                            <div class="add-card-box-text">
+                              <div class="d-flex align-items-center justify-content-between pb-3">
+                                <h6>{{news['majorTopicTitle']}}</h6>
+                                <span>{{news['datePosted'] | date}}</span>
+                              </div>
+                              <h4>{{news['title']}}</h4>
+                              <!--                              <p title="title here">{{news['article']}}</p>-->
+                            </div>
+                            <div class="lrn-more-btn-class mt-md-5">
+                              <a [routerLink]="['/news-details',news['articleID']]" class="lrn-more-btn">LEARN
+                                MORE</a>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="tab-pane fade" [ngClass]="{'active show': step==4}">
+                      <div class="row">
+                        <div class="col-xl-3 col-md-6 mb-3" *ngFor="let news of articles">
+                          <div class="add-card-box">
+                            <div class="add-card-box-img">
+                              <img src="{{news['imageURL'] == null ? 'assets/images/logo/kukadia_placeholder.png' : news['imageURL']}}" alt=""/>
+                            </div>
+                            <div class="add-card-box-text">
+                              <div class="d-flex align-items-center justify-content-between pb-3">
+                                <h6>{{news['majorTopicTitle']}}</h6>
+                                <span>{{news['datePosted'] | date}}</span>
+                              </div>
+                              <h4>{{news['title']}}</h4>
+                              <!--                              <p title="title here">{{news['article']}}</p>-->
+                            </div>
+                            <div class="lrn-more-btn-class mt-md-5">
+                              <a [routerLink]="['/news-details',news['articleID']]" class="lrn-more-btn">LEARN
+                                MORE</a>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="tab-pane fade" [ngClass]="{'active show': step==5}">
+                      <div class="row">
+                        <div class="col-xl-3 col-md-6 mb-3" *ngFor="let news of articles">
+                          <div class="add-card-box">
+                            <div class="add-card-box-img">
+                              <img src="{{news['imageURL'] == null ? 'assets/images/logo/kukadia_placeholder.png' : news['imageURL']}}" alt=""/>
+                            </div>
+                            <div class="add-card-box-text">
+                              <div class="d-flex align-items-center justify-content-between pb-3">
+                                <h6>{{news['majorTopicTitle']}}</h6>
+                                <span>{{news['datePosted'] | date}}</span>
+                              </div>
+                              <h4>{{news['title']}}</h4>
+                              <!--                              <p title="title here">{{news['article']}}</p>-->
+                            </div>
+                            <div class="lrn-more-btn-class mt-md-5">
+                              <a [routerLink]="['/news-details',news['articleID']]" class="lrn-more-btn">LEARN
+                                MORE</a>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="tab-pane fade" [ngClass]="{'active show': step==6}">
+                      <div class="row">
+                        <div class="col-xl-3 col-md-6 mb-3" *ngFor="let news of articles">
+                          <div class="add-card-box">
+                            <div class="add-card-box-img">
+                              <img src="{{news['imageURL'] == null ? 'assets/images/logo/kukadia_placeholder.png' : news['imageURL']}}" alt=""/>
+                            </div>
+                            <div class="add-card-box-text">
+                              <div class="d-flex align-items-center justify-content-between pb-3">
+                                <h6>{{news['majorTopicTitle']}}</h6>
+                                <span>{{news['datePosted'] | date}}</span>
+                              </div>
+                              <h4>{{news['title']}}</h4>
+                              <!--                              <p title="title here">{{news['article']}}</p>-->
+                            </div>
+                            <div class="lrn-more-btn-class mt-md-5">
+                              <a [routerLink]="['/news-details',news['articleID']]" class="lrn-more-btn">LEARN
+                                MORE</a>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="tab-pane fade" [ngClass]="{'active show': step==7}">
+                      <div class="row">
+                        <div class="col-xl-3 col-md-6 mb-3" *ngFor="let news of articles">
+                          <div class="add-card-box">
+                            <div class="add-card-box-img">
+                              <img src="{{news['imageURL'] == null ? 'assets/images/logo/kukadia_placeholder.png' : news['imageURL']}}" alt=""/>
+                            </div>
+                            <div class="add-card-box-text">
+                              <div class="d-flex align-items-center justify-content-between pb-3">
+                                <h6>{{news['majorTopicTitle']}}</h6>
+                                <span>{{news['datePosted'] | date}}</span>
+                              </div>
+                              <h4>{{news['title']}}</h4>
+                              <!--                              <p title="title here">{{news['article']}}</p>-->
+                            </div>
+                            <div class="lrn-more-btn-class mt-md-5">
+                              <a [routerLink]="['/news-details',news['articleID']]" class="lrn-more-btn">LEARN
+                                MORE</a>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="overlay toggle-icon-main"></div>
+  </main>
+</div>

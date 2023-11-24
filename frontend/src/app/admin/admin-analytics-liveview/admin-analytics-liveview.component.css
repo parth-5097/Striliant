@@ -1,0 +1,79 @@
+.admin-panel-content .inr-title-comn h3 span {
+  font-weight: 400;
+  font-size: 15px;
+}
+
+.list-dash-title img {
+  margin-right: 10px;
+  width: 12px;
+}
+
+.list-dash-title span {
+  color: var(--color-dark);
+  font-size: 16px;
+  text-transform: capitalize;
+  font-weight: 600;
+}
+
+#chartdiv {
+  width: 100%;
+  height: calc(100vh - 180px);
+  max-width: 100%;
+}
+
+.globe-data h1 {
+  margin-bottom: 0;
+  margin-top: 15px;
+  color: var(--thm-color);
+  font-size: 24px;
+  font-weight: 500;
+}
+
+.badge-div {
+  padding: 7px 10px 7px 10px;
+  background-color: #f8f8f8;
+  border: 1px solid #cbd5dc;
+  border-radius: 3px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  -webkit-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  -o-transition: all 0.3s;
+  -ms-transition: all 0.3s;
+  transition: all 0.3s;
+  font-weight: 500;
+  font-size: 12px;
+  color: var(--color-dark);
+  white-space: nowrap;
+}
+
+.admin-panel-content .dash-box-white {
+  padding: 15px;
+  height: 100%;
+}
+
+.globe-data-btm span {
+  color: var(--color-dark);
+  font-size: 14px;
+  text-transform: capitalize;
+  font-weight: 400;
+}
+
+.live-map-section {
+  position: relative;
+}
+
+.live-map-info {
+  position: absolute;
+  bottom: 0;
+  left: auto;
+  right: auto;
+  width: calc(100% - 0px);
+}
+
+@media (max-width: 991px) {
+  .live-map-info {
+    position: unset;
+    width: 100%;
+  }
+}

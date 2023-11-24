@@ -1,0 +1,133 @@
+<div class="dash-wrapper">
+  <app-header></app-header>
+  <app-sidebar></app-sidebar>
+  <main class="content-wrapper-section">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-12">
+          <div class="inr-title-comn d-md-flex align-items-center">
+            <div class="d-flex align-items-center">
+              <a routerLink="/dashboard" class="bk-icon d-inline-flex align-items-center">
+                <img src="assets/images/icon/back-icon.svg" alt="">
+              </a>
+              <h3>New Products</h3>
+            </div>
+          </div>
+        </div>
+        <div class="col-12">
+          <div class="dash-box-white">
+            <div class="tab-content">
+              <div class="comn-white-box-table" *ngIf="searching_div == true">
+                <div class="mb-4 mt-2 d-xl-flex align-items-center justify-content-center">
+                  <div class="filter-row d-sm-flex align-items-center justify-content-center">
+                    <p>Pieces: <span>{{Pieces}}</span></p>
+                    <p>Cts: <span></span>{{Cts}}</p>
+                    <p>Avg Disc: <span>{{Avg_Disc+'%'}}</span></p>
+                    <p>Total Ct/Pr: <span>{{Total_Cr | currency}}</span></p>
+                    <p>Amount: <span>{{Amount | currency}}</span></p>
+                  </div>
+                  <div class="ml-auto mt-3 mt-xl-0 text-center">
+                    <button (click)="AddToCart()" type="button" class="btn-inr-top mr-sm-2 mr-1 mb-2">
+                      Add To Cart
+                    </button>
+                    <button (click)="AddToWatchlist()" type="button" class="btn-prvw mr-sm-2 mr-1 mb-2">
+                      Add To WatchList
+                    </button>
+                    <button (click)="export_csv()" class="btn-inr-top mr-sm-2 mr-1 mb-2">
+                      Export
+                    </button>
+                  </div>
+                </div>
+                <table datatable [dtOptions]='dtOptions' class="display">
+                  <thead>
+                  <tr>
+                    <th class="no-search-filter">
+                      <div class="cust-checkbox-new">
+                        <label class="cust-chk-bx">
+                          <input type="checkbox" name="diamondcheck" [checked]="isMasterChecked" (click)="checkuncheckall()" />
+                          <span class="cust-chkmark"></span>
+                        </label>
+                      </div>
+                    </th>
+                    <th class="no-search-filter">Action</th>
+                    <th class="no-search-filter">Media</th>
+                    <th>Stock Number</th>
+                    <th>Shape</th>
+                    <th>Cts</th>
+                    <th>Color</th>
+                    <th>Cut</th>
+                    <th>Polish</th>
+                    <th>Symmetry</th>
+                    <th>Sale Back</th>
+                    <th>Sales Price W Back</th>
+                    <th>Sale Subtotal</th>
+                    <th>Date</th>
+                    <th>Status</th>
+                  </tr>
+                  </thead>
+                  <tbody *ngIf="searchlistData?.length>0">
+                  <tr *ngFor="let item of searchlistData" [class.table-success]="DiamondList.includes(item['diamond_id'])">
+                    <td>
+                      <div class="cust-checkbox-new">
+                        <label class="cust-chk-bx">
+                          <input type="checkbox" name="diamondcheck" [checked]="DiamondList.includes(item['diamond_id'])" value="{{item['diamond_id']}}" (change)="checkboxSelect($event.target.value)" />
+                          <span class="cust-chkmark"></span>
+                        </label>
+                      </div>
+                    </td>
+                    <td>
+                      <a (click)="ParticularAddToCart(item['diamond_id'])" *ngIf="!DiamondList.includes(item['diamond_id'])">
+                        <img src="assets/images/icon/cart-icon.svg" class="mx-2 table-img-inr" alt="" />
+                      </a>
+                      <a href="javascript:void(0)" *ngIf="DiamondList.includes(item['diamond_id'])">
+                        <img src="assets/images/icon/cart-icon.svg" class="mx-2 table-img-inr" alt="" />
+                      </a>
+                      <a href="javascript:void(0)" ngxClipboard [cbContent]="copyHtml(item)" (click)="chatMessage()">
+                        <img src="assets/images/icon/chat-icon.svg" class="mx-2 table-img-inr" alt="" />
+                      </a>
+                      <a (click)="ParticularAddToWatchList(item['diamond_id'])" *ngIf="!DiamondList.includes(item['diamond_id'])">
+                        <img src="assets/images/icon/alearm-icon.svg" class="mx-2 table-img-inr" alt="">
+                      </a>
+                      <a href="javascript:void(0)" *ngIf="DiamondList.includes(item['diamond_id'])">
+                        <img src="assets/images/icon/alearm-icon.svg" class="mx-2 table-img-inr" alt="" />
+                      </a>
+                    </td>
+                    <td>
+                      <a [href]="photoURL(item['diamond_img'])" target="_blank">
+                        <img src="assets/images/icon/image-icon.svg" class="mr-2 table-img-inr" alt="" />
+                      </a>
+                      <a [href]="photoURL(item['report_file'])" target="_blank">
+                        <img src="assets/images/icon/certificate-icon.svg" class="mr-2 table-img-inr" alt="" />
+                      </a>
+                      <a [href]="photoURL(item['video_link'])" target="_blank">
+                        <img src="assets/images/icon/video-icon.svg" class="table-img-inr" alt="" />
+                      </a>
+                    </td>
+                    <td><a [routerLink]="['/diamonds/view-diamonds',item.diamond_id]">{{ item.stock_number}}</a></td>
+                    <td><a [routerLink]="['/diamonds/view-diamonds',item.diamond_id]">{{ item['shape'] ? item['shape'] : "-"}}</a></td>
+                    <td><a [routerLink]="['/diamonds/view-diamonds',item.diamond_id]">{{ item['size'] ? item['size'] : "-"}}</a></td>
+                    <td><a [routerLink]="['/diamonds/view-diamonds',item.diamond_id]">{{ item['color'] ? item['color'] : "-"}}</a></td>
+                    <td><a [routerLink]="['/diamonds/view-diamonds',item.diamond_id]">{{ item['cut'] ? item['cut'] : "-"}}</a></td>
+                    <td><a [routerLink]="['/diamonds/view-diamonds',item.diamond_id]">{{ item['polish'] ? item['polish'] : "-"}}</a></td>
+                    <td><a [routerLink]="['/diamonds/view-diamonds',item.diamond_id]">{{ item['symmetry'] ? item['symmetry'] : "-"}}</a></td>
+                    <td><a [routerLink]="['/diamonds/view-diamonds',item.diamond_id]">{{ item['sale_back'] ? item['sale_back']+'%' : "-"}}</a></td>
+                    <td><a [routerLink]="['/diamonds/view-diamonds',item.diamond_id]">{{ item['sale_price_back'] | currency}}</a></td>
+                    <td><a [routerLink]="['/diamonds/view-diamonds',item.diamond_id]">{{ item['sale_subtotal'] | currency}}</a></td>
+                    <td>{{item.created_at | date}}</td>
+                    <td>{{ item['availability'] ? item['availability'] : "-"}}</td>
+                  </tr>
+                  </tbody>
+                  <tbody *ngIf="searchlistData?.length == 0">
+                  <tr>
+                    <td colspan="15" class="no-data-available">No data available!</td>
+                  </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>

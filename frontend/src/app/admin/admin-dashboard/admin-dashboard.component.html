@@ -1,0 +1,301 @@
+<div class="dash-wrapper admin-panel-content">
+  <app-admin-header></app-admin-header>
+  <app-admin-sidebar></app-admin-sidebar>
+  <main class="content-wrapper-section">
+    <div class="container-fluid">
+      <div class="row mr-0">
+        <div class="col-12 pr-0">
+          <div class="inr-title-comn">
+            <h3>Dashboard</h3>
+          </div>
+        </div>
+        <div class="col-12 pr-0 mb-3">
+          <div class="dash-box-white">
+            <div class="row mr-0 justify-content-center hvr-class">
+              <div class="col-xl-6 col-lg-6 col-sm-6 pr-0 mb-3 mb-xl-0">
+                <a routerLink="/admin/diamonds" class="dash-box-list-top">
+                  <div class="dash-box-list">
+                    <div class="dash-box-list-img">
+                      <img src="assets/images/icon/admin-dash-1.svg" alt=""/>
+                    </div>
+                    <div class="dash-box-list-text">
+                      <h3 title="title">{{new_products}}</h3>
+                      <h5>New Products</h5>
+                    </div>
+                  </div>
+                </a>
+              </div>
+              <!--              <div class="col-xl-4 col-lg-4 col-sm-6 pr-0 mb-3 mb-xl-0">-->
+              <!--                <div class="dash-box-list-top">-->
+              <!--                  <div class="dash-box-list">-->
+              <!--                    <div class="dash-box-list-img">-->
+              <!--                      <img src="assets/images/icon/admin-dash-2.svg" alt=""/>-->
+              <!--                    </div>-->
+              <!--                    <div class="dash-box-list-text">-->
+              <!--                      <h3 title="title">{{reminder}}</h3>-->
+              <!--                      <h5>Reminder</h5>-->
+              <!--                    </div>-->
+              <!--                  </div>-->
+              <!--                </div>-->
+              <!--              </div>-->
+              <div class="col-xl-6 col-lg-6 col-sm-6 pr-0 mb-3 mb-xl-0">
+                <a routerLink="/admin/buy-requests" class="dash-box-list-top">
+                  <div class="dash-box-list">
+                    <div class="dash-box-list-img">
+                      <img src="assets/images/icon/admin-dash-3.svg" alt=""/>
+                    </div>
+                    <div class="dash-box-list-text">
+                      <h3 title="title">{{enquiry}}</h3>
+                      <h5>Enquiry</h5>
+                    </div>
+                  </div>
+                </a>
+              </div>
+              <!--              <div class="col-xl-3 col-lg-4 col-sm-6 pr-0 mb-3 mb-xl-0">-->
+              <!--                <div class="dash-box-list-top">-->
+              <!--                  <div class="dash-box-list">-->
+              <!--                    <div class="dash-box-list-img">-->
+              <!--                      <img src="assets/images/icon/admin-dash-4.svg" alt="" />-->
+              <!--                    </div>-->
+              <!--                    <div class="dash-box-list-text">-->
+              <!--                      <h3 title="title">60</h3>-->
+              <!--                      <h5>Recommended</h5>-->
+              <!--                    </div>-->
+              <!--                  </div>-->
+              <!--                </div>-->
+              <!--              </div>-->
+            </div>
+          </div>
+        </div>
+        <div class="col-12 pr-0">
+          <div class="dash-box-white">
+            <div class="chart-top" *ngIf="month_1>0">
+              <div class="row align-items-center">
+                <div class="col-xl-3">
+                  <h1>Sale Snapshot</h1>
+                </div>
+                <div class="col-xl-9 mt-3 mt-xl-0">
+                  <ul class="row m-0">
+                    <li class="col-md mb-3 mb-md-0" [ngClass]="{'active': step==1}" (click)="refreshchart(1)">
+                      <h2>{{month_1 | currency}}</h2>
+                      <p>1 Month</p>
+                    </li>
+                    <li class="col-md mb-3 mb-md-0" [ngClass]="{'active': step==2}" (click)="refreshchart(2)">
+                      <h2>{{month_6 | currency}}</h2>
+                      <p>6 Months</p>
+                    </li>
+                    <li class="col-md mb-3 mb-md-0" [ngClass]="{'active': step==3}" (click)="refreshchart(3)">
+                      <h2>{{year_1 | currency}}</h2>
+                      <p>1 Year</p>
+                    </li>
+                    <li class="col-md mb-3 mb-md-0" [ngClass]="{'active': step==4}" (click)="refreshchart(4)">
+                      <h2>{{year_2 | currency}}</h2>
+                      <p>2 Year</p>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <div class="main-chart-section mt-4">
+                <div id="chart">
+                  <apx-chart
+                    [series]="chartOptions.series"
+                    [chart]="chartOptions.chart"
+                    [xaxis]="chartOptions.xaxis"
+                    [dataLabels]="chartOptions.dataLabels"
+                    [grid]="chartOptions.grid"
+                    [stroke]="chartOptions.stroke"
+                    [title]="chartOptions.title"
+                  ></apx-chart>
+                </div>
+              </div>
+            </div>
+            <div class="chart-snd">
+              <div class="chart-snd-inr mt-4">
+                <h1>Portfolio</h1>
+                <div class="chart-snd-inr-sec mt-3">
+                  <div class="d-md-flex align-items-center mb-3">
+                    <ul class="list-dash-title data-span-class-main">
+                      <li *ngFor="let port_data of portfolio_data">
+                        <div class="d-flex align-items-center data-span-class">
+                          <span>{{port_data.clarity}} : <mark>{{port_data.percentage}}% (TP:{{port_data.total_product}}/{{port_data.clarity}}:{{port_data.each_product}})</mark></span>
+                        </div>
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="main-chart-section">
+                    <div id="chart-portfolio">
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="chart-snd-inr mt-4 d-none" *ngIf="featured_stone_array?.length>0">
+                <h1>Featured Stone</h1>
+                <div class="chart-snd-inr-sec mt-3 bg-image-set-new">
+                  <div class="featured-stone-silder">
+                    <!--<ngx-slick-carousel class="carousel" #slickModal="slick-carousel" [config]="featuredstone">
+                      <div class="featured-stone-item" ngxSlickItem *ngFor="let slide of featured_stone_array">
+                        <div class="row align-items-center">
+                          <div class="col-md-5">
+                            <div class="sldir-image-div">
+                              <img src="assets/images/stone-image-1.png" align=""/>
+                            </div>
+                          </div>
+                          <div class="col-md-7">
+                            <ul class="featured-stone-div clearfix">
+                              <li>
+                                <h4>Stock_id :</h4>
+                                <span>{{slide.stock_number ? slide.stock_number : '-'}}</span>
+                              </li>
+                              <li>
+                                <h4>Cut :</h4>
+                                <span>{{slide.cut ? slide.cut : '-'}}</span>
+                              </li>
+                              <li>
+                                <h4>Polish :</h4>
+                                <span>{{slide.polish ? slide.polish : '-'}}</span>
+                              </li>
+                              <li>
+                                <h4>Color :</h4>
+                                <span>{{slide.color ? slide.color : '-'}}</span>
+                              </li>
+                              <li>
+                                <h4>Symmentry :</h4>
+                                <span>{{slide.symmetry ? slide.symmetry : '-'}}</span>
+                              </li>
+                              <li>
+                                <h4>Clarity :</h4>
+                                <span>{{slide.clarity ? slide.clarity : '-'}}</span>
+                              </li>
+                              <li>
+                                <h4>Lab :</h4>
+                                <span>{{slide.lab ? slide.lab : '-'}}</span>
+                              </li>
+                            </ul>
+                          </div>
+                        </div>
+                      </div>
+                    </ngx-slick-carousel>-->
+                  </div>
+                </div>
+              </div>
+              <div class="chart-snd-inr mt-4">
+                <h1>Featured Stone</h1>
+                <div class="bg-image-set-new">
+                  <div class="featured-stone-silder">
+                    <ngx-slick-carousel class="carousel" #slickModal="slick-carousel" [config]="featuredstone">
+                      <div class="featured-stone-item" ngxSlickItem *ngFor="let slide of featured_stone_array;">
+                        <div class="featured-stone-box">
+<!--                          <img src="assets/images/stone-image-1.png" alt="">-->
+                          <img [src]="photoURL(slide.diamond_img)" alt="">
+                          <div class="text-center sld-btm-box">
+                            <ul class="row mr-0">
+                              <li class="col pr-0">{{slide.stock_number ? slide.stock_number : '-'}}</li>
+                              <li class="col pr-0">{{slide.cut ? slide.cut : '-'}}</li>
+                              <li class="col pr-0">{{slide.symmetry ? slide.symmetry : '-'}}</li>
+                            </ul>
+                            <div class="sld-btm-box-inr">
+                              <p>{{slide.clarity ? slide.clarity : '-'}}</p>
+                              <span>{{slide.lab ? slide.lab : '-'}}</span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </ngx-slick-carousel>
+                  </div>
+                </div>
+              </div>
+              <div class="dash-inr-page-bx-main" *ngIf="Currencies?.length>0 || Metal?.length>0">
+                <div class="dash-inr-title-comn d-flex align-items-center">
+                  <h3>Financial Data</h3>
+                </div>
+                <div class="dash-inr-page-bx">
+                  <div class="dash-comn-tabs">
+                    <ul class="nav nav-pills" role="tablist">
+                      <li class="nav-item" role="presentation" *ngIf="Currencies?.length>0">
+                        <a class="nav-link active" id="pills-Currencies-tab" data-toggle="pill" href="#pills-Currencies"
+                           role="tab" aria-controls="pills-Currencies" aria-selected="true">Currencies</a>
+                      </li>
+                      <li class="nav-item" role="presentation" *ngIf="Metal?.length>0">
+                        <a class="nav-link" id="pills-Metal-tab" data-toggle="pill" href="#pills-Metal" role="tab"
+                           aria-controls="pills-Metal" aria-selected="false">Metal</a>
+                      </li>
+                    </ul>
+                    <div class="tab-content">
+                      <div class="tab-pane fade show active" id="pills-Currencies" role="tabpanel"
+                           aria-labelledby="pills-Currencies" *ngIf="Currencies?.length>0">
+                        <div class="dash-table-cust mt-3">
+                          <div class="table-responsive">
+                            <table class="table table-bordered mb-0">
+                              <thead>
+                              <tr>
+                                <th>Title</th>
+                                <th>Old Price</th>
+                                <th>Current Price</th>
+                                <th>Change</th>
+                                <th>Change%</th>
+                              </tr>
+                              </thead>
+                              <tbody>
+                              <tr *ngFor="let m of Currencies">
+                                <td>{{m.productTitle}}</td>
+                                <td>{{m.old_price | number : '1.2-2'}}</td>
+                                <td>{{m.price | number : '1.2-2'}}</td>
+                                <td [ngClass]="{'tbl-green' : m.change >= 0, 'tbl-span': m.change < 0}">
+                                  {{m.change}}
+                                  <span [ngClass]="{'up' : m.change >= 0, 'down': m.change < 0}"></span>
+                                </td>
+                                <td [ngClass]="{'tbl-green' : m.changePercent >= 0, 'tbl-span': m.changePercent < 0}">
+                                  {{m.changePercent}}%
+                                  <span [ngClass]="{'up' : m.changePercent >= 0, 'down': m.changePercent < 0}"></span>
+                                </td>
+                              </tr>
+                              </tbody>
+                            </table>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="tab-pane fade" id="pills-Metal" role="tabpanel" aria-labelledby="pills-Metal"
+                           *ngIf="Metal?.length>0">
+                        <div class="dash-table-cust mt-3">
+                          <div class="table-responsive">
+                            <table class="table table-bordered mb-0">
+                              <thead>
+                              <tr>
+                                <th>Title</th>
+                                <th>Old Price</th>
+                                <th>Current Price</th>
+                                <th>Change</th>
+                                <th>Change%</th>
+                              </tr>
+                              </thead>
+                              <tbody>
+                              <tr *ngFor="let m of Metal">
+                                <td>{{m.productTitle}}</td>
+                                <td>{{m.old_price | number : '1.2-2'}}</td>
+                                <td>{{m.price | number : '1.2-2'}}</td>
+                                <td [ngClass]="{'tbl-green' : m.change >= 0, 'tbl-span': m.change < 0}">
+                                  {{m.change}}
+                                  <span [ngClass]="{'up' : m.change >= 0, 'down': m.change < 0}"></span>
+                                </td>
+                                <td [ngClass]="{'tbl-green' : m.changePercent >= 0, 'tbl-span': m.changePercent < 0}">
+                                  {{m.changePercent}}%
+                                  <span [ngClass]="{'up' : m.changePercent >= 0, 'down': m.changePercent < 0}"></span>
+                                </td>
+                              </tr>
+                              </tbody>
+                            </table>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="overlay toggle-icon-main"></div>
+  </main>
+</div>

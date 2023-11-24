@@ -1,0 +1,241 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Kukadia</title>
+  <base href="/">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#033603"/>
+  <meta name="msapplication-navbutton-color" content="#033603"/>
+  <meta name="apple-mobile-web-app-status-bar-style" content="#033603"/>
+
+  <link rel="icon" type="image/x-icon" href="assets/images/favicon.ico">
+  <link rel="stylesheet" href="assets/css/bootstrap.min.css"/>
+  <link rel="stylesheet" href="assets/css/font-awesome.min.css"/>
+  <link rel="stylesheet" href="assets/css/style.css"/>
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@7.24.1/dist/sweetalert2.min.css"/>
+  <script src="assets/js/jquery.min.js"></script>
+<link rel="stylesheet" href="styles.42cfe28c7d5a1663823f.css"></head>
+<body>
+<app-root></app-root>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="assets/js/popper.min.js"></script>
+<script src="assets/js/moment.min.js"></script>
+<script src="assets/js/bootstrap.min.js"></script>
+<script>
+  $(function () {
+    $(window).on('unload', function () {
+      $(window).scrollTop(0);
+    });
+
+    $(window).scroll(function () {
+      if ($(this).scrollTop() > $('.header-fixed').height()) {
+        $(".header-fixed").addClass('header-sticky');
+      } else {
+        $(".header-fixed").removeClass('header-sticky');
+      }
+    });
+
+    $(document).scroll(function () {
+      $(this).scrollTop() > 400 ? $(".back-to-top").fadeIn() : $(".back-to-top").fadeOut()
+    });
+
+    $(document).on("click", '.toggle-icon-main', function (e) {
+      e.preventDefault();
+      $(".dash-wrapper").toggleClass("toggled-custom-class");
+    });
+
+    $(document).on("click", '.header-user-profile-inner-cust', function (e) {
+      $(this).toggleClass("active");
+      e.stopPropagation();
+    });
+    $(document).on("click", function (e) {
+      if ($(e.target).closest(".header-user-profile-inner-cust").length > 0)
+        return;
+      if ($(e.target).is(".header-user-profile-inner-cust") === false) {
+        $(".header-user-profile-inner-cust").removeClass("active");
+      }
+    })
+
+    $(document).mouseup((e) => {
+      if (!$(".calc-main").is(e.target) && $(".calc-main").has(e.target).length === 0) {
+        $(".calc-main").removeClass("active");
+      }
+    });
+
+    $(document).on("click", ".calc-click", function (e) {
+      e.preventDefault();
+      if ($(".calc-main").hasClass("active")) {
+        $(".calc-main").removeClass("active");
+      } else {
+        $(".calc-main").addClass("active");
+      }
+    });
+
+    $(document).on("click", ".hdr-top-box-inr-icon", function (e) {
+      if ($(".search-form-wrapper").hasClass("active")) {
+        $(".search-form-wrapper").removeClass("active");
+      } else {
+        $(".search-form-wrapper").addClass("active");
+      }
+    });
+
+    $(document).on("click", ".hdr-top-box i", function (e) {
+      if ($(".responsive-view-menu").hasClass("active")) {
+        $(".responsive-view-menu").removeClass("active");
+      } else {
+        $(".responsive-view-menu").addClass("active");
+      }
+    });
+
+    $(document).on("click", ".hdr-top-box i", function (e) {
+      $(".search-form-wrapper").removeClass("active")
+    });
+
+    $(document).on("click", ".hdr-top-box-inr-icon", function (e) {
+      $(".responsive-view-menu").removeClass("active")
+    });
+
+    //$('.sidebar-main-section-inner').perfectScrollbar();
+    //$('.filter-src-inner').perfectScrollbar();
+
+    $(document).on('click', '.main-ui .nav-link', function (e) {
+      if ($('.main-ui .nav-link').hasClass('active')) {
+        $('.main-ui .nav-link').removeClass('active')
+        $(this).addClass('active')
+      }
+    })
+
+    $(document).on('click', '.sub-ui .nav-link', function (e) {
+      if ($('.sub-ui .nav-link').hasClass('active')) {
+        $('.sub-ui .nav-link').removeClass('active')
+        $(this).addClass('active')
+      }
+    })
+
+    /*$(document).ready(function () {
+      $(document).on('click', '.minus', function () {
+        var $input = $(this).parent().find('input');
+        // var count = parseFloat($input.val()) - 1;
+        // count = count < 1 ? 1 : count;
+        $input.val(parseFloat($input.val()) - 1);
+        $input.change();
+        return false;
+      });
+      $(document).on('click', '.plus', function () {
+        var $input = $(this).parent().find('input');
+        $input.val(parseFloat($input.val()) + 1);
+        $input.change();
+        return false;
+      });
+    });*/
+  });
+
+
+  $(function () {
+    //var current = location.pathname.substring(location.pathname.lastIndexOf('/') + 1);
+    // $('.sidebar-main-inner-menu li a').each(function(){
+    //   var $this = $(this);
+    //   alert($this.attr('href'))
+    //   if($this.attr('href').indexOf(current) !== -1){
+    //     $this.addClass('active');
+    //   }
+    // });
+    $(document).mouseup((e) => {
+      if (!$(".notification-custom-main").is(e.target) && $(".notification-custom-main").has(e.target).length === 0) {
+        $(".notification-custom-main").removeClass("active");
+      }
+    });
+    $(document).on("click", ".notification-click", () => {
+      if ($(".notification-custom-main").hasClass("active")) {
+        $(".notification-custom-main").removeClass("active")
+      } else {
+        $(".notification-custom-main").addClass("active")
+      }
+    });
+  });
+
+
+  // $(document).on("click",".filter-Btn",function (e) {
+  //   $('body').addClass('filter-pop-open');
+  //   e.stopPropagation();
+  //   $("body").after('<div class="filter-src-backdroup"></div');
+  // });
+  // $(document).on("click",".filter-src-close",function (e) {
+  //   $('body').removeClass('filter-pop-open');
+  //   $('.filter-src-backdroup').remove()
+  // });
+  // $(document).on("click", function (e) {
+  //   if ($(e.target).closest(".filter-src-main").length > 0)
+  //     return;
+  //   $('.filter-src-backdroup').remove()
+  //   if ($(e.target).is("body") === false) {
+  //     $('body').removeClass('filter-pop-open');
+  //   }
+  // });
+
+  $(document).on("click", ".btn-list", function (e) {
+    $(".btn-list , .news-section-tabs .col-xl-3").addClass("active");
+    $(".btn-list , .cust-width-col").addClass("active");
+  });
+
+  $(document).on("click", ".btn-grid", function (e) {
+    $(".news-section-tabs .col-xl-3").removeClass("active");
+    $(".cust-width-col").removeClass("active");
+  });
+
+  $(document).on("click", ".btn-list", function (e) {
+    $(".btn-grid").removeClass("active");
+  });
+
+  $(document).on("click", ".btn-grid", function (e) {
+    $(".btn-list").removeClass("active");
+  });
+
+  $(document).on("click", ".btn-grid", function (e) {
+    $(this).addClass("active");
+  });
+
+  $(document).on("click", ".menu-togle-new", function (e) {
+    $('.header-menu-links-inr').toggleClass("mbl-menu-open-cust");
+    if ($(".header-menu-links-inr").hasClass('mbl-menu-open-cust')) {
+      $(this).append('<div class="menu-derk-bg-new"></div>');
+    } else {
+      $("div.menu-derk-bg-new").remove();
+      $('.hamburger').removeClass("is-active");
+    }
+    e.stopPropagation();
+  });
+
+  $(document).on("click", function (e) {
+    if ($(e.target).closest(".header-menu-links-inr").length > 0)
+      return;
+    if ($(e.target).is(".header-menu-links-inr") === false) {
+      $(".header-menu-links-inr").removeClass("mbl-menu-open-cust");
+      $("div.menu-derk-bg-new").remove();
+    }
+  });
+
+  $(document).on("click", function (e) {
+    if ($(e.target).closest(".hamburger-menu-cust").length > 0)
+      return;
+    if ($(e.target).is(".hamburger-menu-cust") === false) {
+    }
+  });
+
+  $(document).on("click", ".back-to-top", function (e) {
+    return $("html, body").animate({
+      scrollTop: 0
+    }, 1500), !1
+  });
+
+  $(document).on("click", ".hamburger", function (e) {
+    $(this).addClass("is-active");
+  });
+
+
+  $('#loader-main').fadeOut('slow');
+</script>
+<script src="runtime.775783fd725b4466173d.js" defer></script><script src="polyfills.107941d342bb6bb39281.js" defer></script><script src="scripts.993f5c5747cba6508562.js" defer></script><script src="main.f73abb660db4097813a9.js" defer></script></body>
+</html>

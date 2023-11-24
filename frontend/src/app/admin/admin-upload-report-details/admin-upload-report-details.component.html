@@ -1,0 +1,41 @@
+<div class="dash-wrapper admin-panel-content">
+  <app-admin-header></app-admin-header>
+  <app-admin-sidebar></app-admin-sidebar>
+  <main class="content-wrapper-section">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-12">
+          <div class="inr-title-comn">
+            <h3>{{folderName}}</h3>
+          </div>
+        </div>
+        <div class="col-12">
+          <div class="dash-box-white">
+            <div class="customer-inr-sec">
+              <div class="row mt-4">
+                <div class="col-md-12 form-group">
+                  <div class="row" *ngIf="images.length>0">
+                    <div class="col-12">
+                      <ul class="pdf-list-file">
+                        <li *ngFor='let img of images;let indexOfelement=index;'>
+                          <a href="javascript:void(0)" class="image-area d-flex align-items-center position-relative">
+                            <img src="assets/images/icon/pdf-file.svg" alt="">
+                            <span class="mx-2">{{img}}</span>
+                            <div class="close-top-icon" (click)="removefiles(img)">
+                              <img src="assets/images/icon/close-icon.svg" alt="">
+                            </div>
+                          </a>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="overlay toggle-icon-main"></div>
+  </main>
+</div>

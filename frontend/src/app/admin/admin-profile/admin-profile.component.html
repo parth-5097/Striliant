@@ -1,0 +1,56 @@
+<div class="dash-wrapper admin-panel-content">
+  <app-admin-header></app-admin-header>
+  <app-admin-sidebar></app-admin-sidebar>
+  <main class="content-wrapper-section">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-12">
+          <div class="profile-section-main">
+            <div class="profile-section-imgs"
+                 style="background: url('{{banner}}'); background-repeat: no-repeat; background-size: cover;"></div>
+            <div class="profile-section-btm">
+              <img src="{{profile}}" alt=""/>
+              <div class="profile-section-btm-text">
+                <h4>{{firstname}} {{lastname}}</h4>
+                <p>Admin</p>
+              </div>
+            </div>
+            <div class="profile-section-btns profile-edit">
+              <a routerLink="/admin/edit-profile">
+                <img src="assets/images/icon/pro-edit-icon.svg" class="mr-1"/>
+                <span>Edit Profile</span>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="col-12">
+          <div class="profile-section-main-inner">
+            <div class="profile-section-main-inner-hdr">
+              <h2>Profile Details</h2>
+            </div>
+            <div class="profile-section-main-inner-body py-3">
+              <div class="row m-0">
+                <div class="col-md-4 form-group" *ngIf="firstname">
+                  <label class="dash-label">First Name : {{firstname}}</label>
+                </div>
+                <div class="col-md-4 form-group" *ngIf="lastname">
+                  <label class="dash-label">Last Name : {{lastname}}</label>
+                </div>
+                <div class="col-md-4 form-group" *ngIf="email">
+                  <label class="dash-label">Email : {{email}}</label>
+                </div>
+                <div class="col-md-4 form-group" *ngIf="mobileno">
+                  <label class="dash-label">Mobile No. : {{mobileno}}</label>
+                </div>
+                <div class="col-12 mb-3" *ngIf="about">
+                  <label class="dash-label">{{about}}</label>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="overlay toggle-icon-main"></div>
+  </main>
+</div>

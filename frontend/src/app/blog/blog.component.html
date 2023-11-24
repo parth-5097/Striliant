@@ -1,0 +1,40 @@
+<div class="container-fluid front-section">
+  <app-front-header></app-front-header>
+  <div class="row row-space-class">
+    <div class="col-12 p-0">
+      <div class="comn-hdr-bg-top text-center">
+        <h1>blog</h1>
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb justify-content-center">
+            <li class="breadcrumb-item"><a routerLink="/home">Home</a></li>
+            <li class="breadcrumb-item active" aria-current="page">blog</li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+  </div>
+  <div class="row inr-row-space">
+    <div class="container">
+      <div class="row" *ngIf="BlogList">
+        <div class="col-lg-4 col-md-6 mb-5" *ngFor="let blog of BlogList">
+          <div class="blog-section-inr">
+            <img src="{{backend +''+ blog.image}}" alt="" />
+            <span>{{blog.created_at | date}}</span>
+            <h3>{{blog.title}}</h3>
+            <p>{{blog.description}}</p>
+            <a [routerLink]="['/blog-details',blog.blogId]" class="d-inline-flex align-items-center">
+              Read More
+              <img src="assets/images/icon/more-arrow.svg" alt="" />
+            </a>
+          </div>
+        </div>
+<!--        <div class="col-12">-->
+<!--          <div class="btn-comn-div pt-5 text-center">-->
+<!--            <button type="submit" class="btn-comn"><span>Load More</span></button>-->
+<!--          </div>-->
+<!--        </div>-->
+      </div>
+    </div>
+  </div>
+  <app-front-footer></app-front-footer>
+</div>

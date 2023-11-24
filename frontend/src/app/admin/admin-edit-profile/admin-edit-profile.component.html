@@ -1,0 +1,191 @@
+<div class="dash-wrapper admin-panel-content">
+  <app-admin-header></app-admin-header>
+  <app-admin-sidebar></app-admin-sidebar>
+  <main class="content-wrapper-section">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-12">
+          <div class="profile-section-main">
+            <div class="profile-section-imgs" style="background: url({{banner}}); background-position: center bottom; background-repeat: no-repeat; background-size: cover;">
+            </div>
+            <div class="profile-section-btm">
+              <img src="{{profile}}" alt="" />
+              <div class="profile-section-btm-text">
+                <h4>{{firstname}} {{lastname}}</h4>
+                <p>Admin</p>
+              </div>
+            </div>
+            <div class="profile-section-btns profile-edit">
+              <a href="javascript:void(0)" (click)="open_model1()">
+                <img src="assets/images/icon/camera-icon.svg" class="mr-1" />
+                <span>Edit Picture</span>
+              </a>
+            </div>
+            <div class="profile-section-btns">
+              <a href="javascript:void(0)" (click)="open_model()">
+                <span>Change Password</span>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-8 m-auto">
+          <div class="profile-section-main-inner">
+            <div class="profile-section-main-inner-hdr">
+              <h2>Edit Profile</h2>
+            </div>
+            <div class="profile-section-main-inner-body py-3">
+              <form class="row m-0" [formGroup]="AddForm" (ngSubmit)="onSubmit()">
+                <div class="col-md-6 form-group">
+                  <input type="text" formControlName="firstname" class="form-control input-style-admin" placeholder="First Name" [ngClass]="{ 'is-invalid': submitted && fval.firstname.errors }"/>
+                  <div *ngIf="submitted && fval.firstname.errors" class="invalid-feedback">
+                    <div *ngIf="fval.firstname.errors.required">
+                      First Name is required
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6 form-group">
+                  <input type="text" formControlName="lastname" class="form-control input-style-admin" placeholder="Last Name" [ngClass]="{ 'is-invalid': submitted && fval.lastname.errors }"/>
+                  <div *ngIf="submitted && fval.lastname.errors" class="invalid-feedback">
+                    <div *ngIf="fval.lastname.errors.required">
+                      Last Name is required
+                    </div>
+                  </div>
+                </div>
+                <div class="col-12 form-group">
+                  <input type="text" formControlName="mobileno" class="form-control input-style-admin" placeholder="Mobile No." [ngClass]="{ 'is-invalid': submitted && fval.mobileno.errors }"/>
+                  <div *ngIf="submitted && fval.mobileno.errors" class="invalid-feedback">
+                    <div *ngIf="fval.mobileno.errors.minlength">
+                      Mobile No is Minimum 10 Digit
+                    </div>
+                    <div *ngIf="fval.mobileno.errors.maxlength">
+                      Mobile No is Maximum 10 Digit
+                    </div>
+                  </div>
+                </div>
+                <div class="col-12 form-group">
+                  <textarea
+                    class="form-control input-style-admin h-auto"
+                    rows="6"
+                    formControlName="about"
+                    placeholder="About us"
+                  >{{about}}</textarea>
+                </div>
+                <div class="col-12">
+                  <div class="btn-btm-inr-tabs text-center my-3">
+                    <button type="submit" class="btn btn-inr-top mr-sm-2">Submit</button>
+                    <button type="button" class="btn btn-reset" routerLink="/admin/profile">Cancel</button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="overlay toggle-icon-main"></div>
+  </main>
+
+  <div class="modal fade" id="password-change-modal" tabindex="-1" aria-labelledby="password-change-modal" aria-hidden="true" style="opacity: 0" [ngStyle]="{'display': show_model ? 'block' : 'none','opacity': 1,'background':'#0000004f'}">
+    <div class="modal-dialog modal-dialog-centered modal-cust-small">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Change Password</h5>
+          <button (click)="close_model()" type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <img src="assets/images/icon/modal-close-icon.svg" alt="" />
+          </button>
+        </div>
+        <div class="modal-body">
+          <form class="row comn-form" [formGroup]="PasswordForm" (ngSubmit)="onSubmitPassword()">
+            <div class="col-12 form-group">
+              <input type="password" formControlName="old_password" class="form-control input-style-admin" placeholder="Old Password" [ngClass]="{ 'is-invalid': password_submitted && f.old_password.errors }" autocomplete="off"/>
+              <div *ngIf="password_submitted && f.old_password.errors" class="invalid-feedback">
+                <div *ngIf="f.old_password.errors.required">Old Password is required</div>
+                <div *ngIf="f.old_password.errors.minlength">Old Password must be at least 6 characters</div>
+              </div>
+            </div>
+            <div class="col-12 form-group">
+              <input type="password" formControlName="password" class="form-control input-style-admin" placeholder="New Password" [ngClass]="{ 'is-invalid': password_submitted && f.password.errors }" autocomplete="off"/>
+              <div *ngIf="password_submitted && f.password.errors" class="invalid-feedback">
+                <div *ngIf="f.password.errors.required">New Password is required</div>
+                <div *ngIf="f.password.errors.minlength">New Password must be at least 6 characters</div>
+              </div>
+            </div>
+            <div class="col-12 form-group">
+              <input type="password" formControlName="confirm_password" class="form-control input-style-admin" placeholder="Confirm Password" [ngClass]="{ 'is-invalid': password_submitted && f.confirm_password.errors }" autocomplete="off"/>
+              <div *ngIf="password_submitted && f.confirm_password.errors" class="invalid-feedback">
+                <div *ngIf="f.confirm_password.errors.required">Confirm Password is required</div>
+                <div *ngIf="f.confirm_password.errors.minlength">Confirm Password must be at least 6 characters</div>
+                <div *ngIf="f.confirm_password.errors.mustMatch">Confirm Passwords must match</div>
+              </div>
+            </div>
+            <div class="col-12">
+              <div class="btn-btm-inr-tabs text-center my-3">
+                <button type="submit" class="btn btn-inr-top">Change Password</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" [ngClass]="{'show': show_model1}" id="edit-picture-modal" tabindex="-1" aria-labelledby="edit-picture-modal" aria-hidden="true" style="opacity: 0" [ngStyle]="{'display': show_model1 ? 'block' : 'none','opacity': 1,'background':'#0000004f'}">
+    <div class="modal-dialog modal-dialog-centered modal-cust-small modal-dialog-scrollable">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Edit Picture</h5>
+          <button (click)="close_model1()" type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <img src="assets/images/icon/modal-close-icon.svg" alt="" />
+          </button>
+        </div>
+        <div class="modal-body">
+          <form class="row comn-form" [formGroup]="PictureForm" (ngSubmit)="onSubmitPicture()">
+<!--            <div class="col-12 form-group">-->
+<!--              <label class="dash-label">Profile Image</label>-->
+<!--              <input type="file" (change)="upload_photo($event)" class="form-control input-style-admin" placeholder="" accept=".png, .jpg, .jpeg" formControlName="profile" [ngClass]="{ 'is-invalid': picture_submitted && f1.profile.errors }"/>-->
+<!--              <div *ngIf="picture_submitted && f1.profile.errors" class="invalid-feedback">-->
+<!--                <div *ngIf="f1.profile.errors.required">Profile Image is required</div>-->
+<!--              </div>-->
+<!--            </div>-->
+            <div class="col-12 form-group">
+              <label class="dash-label">Profile Image</label>
+              <input type="file" (change)="fileChangeEvent($event)" class="form-control input-style-admin" placeholder="" accept=".png, .jpg, .jpeg" formControlName="profile" [ngClass]="{ 'is-invalid': picture_submitted && f1.profile.errors }"/>
+              <div *ngIf="picture_submitted && f1.profile.errors" class="invalid-feedback">
+                <div *ngIf="f1.profile.errors.required">Profile Image is required</div>
+              </div>
+            </div>
+            <div class="col-12 form-group">
+              <image-cropper
+                class="image-file-box"
+                [imageChangedEvent]="imageChangedEvent"
+                [maintainAspectRatio]="true"
+                [aspectRatio]="3 / 3"
+                format="png"
+                [style.display]="showCropper ? null : 'none'"
+                (imageCropped)="imageCropped($event)"
+                (imageLoaded)="imageLoaded()"
+                (cropperReady)="cropperReady($event)"
+                (loadImageFailed)="loadImageFailed()"
+              ></image-cropper>
+            </div>
+            <div class="col-12 form-group text-center" *ngIf="croppedImage">
+              <img [src]="croppedImage" width="80px" height="80px" />
+            </div>
+            <div class="col-12 form-group">
+              <label class="dash-label">Background Image</label>
+              <input type="file" (change)="upload_banner($event)" class="form-control input-style-admin" placeholder="" accept=".png, .jpg, .jpeg" formControlName="banner" [ngClass]="{ 'is-invalid': picture_submitted && f1.banner.errors }"/>
+              <div *ngIf="picture_submitted && f1.banner.errors" class="invalid-feedback">
+                <div *ngIf="f1.banner.errors.required">Background Image is required</div>
+              </div>
+            </div>
+            <div class="col-12">
+              <div class="btn-btm-inr-tabs text-center my-3">
+                <button type="submit" class="btn btn-inr-top">Save</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

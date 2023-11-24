@@ -1,0 +1,34 @@
+.customer-inr-sec h4 img {
+  margin-right: 10px;
+  width: 14px;
+  margin-top: -2px;
+}
+
+.customer-inr-sec h4 {
+  color: var(--thm-color);
+  margin-bottom: 0;
+  font-weight: 500;
+  font-size: 18px;
+  margin-top: 10px;
+}
+
+.photo-section-new img {
+  max-width: 100%;
+  height: 180px;
+  object-fit: contain;
+  object-position: center;
+}
+
+.photo-section-new-fix {
+  max-width: 270px;
+}
+
+@media (max-width: 575px) {
+  .photo-section-new img {
+    width: 100%;
+  }
+
+  .photo-section-new-fix {
+    max-width: 100%;
+  }
+}

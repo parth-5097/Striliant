@@ -1,0 +1,98 @@
+<div class="dash-wrapper admin-panel-content">
+  <app-admin-header></app-admin-header>
+  <app-admin-sidebar></app-admin-sidebar>
+  <main class="content-wrapper-section">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-12">
+          <div class="inr-title-comn">
+            <h3>{{title}} Admin</h3>
+          </div>
+        </div>
+        <div class="col-12">
+          <div class="dash-box-white">
+            <form class="row" [formGroup]="AddForm" (ngSubmit)="onSubmit()">
+              <div class="col-md-6 form-group">
+                <input type="text" formControlName="firstname" class="form-control input-style-admin" placeholder="First Name" [ngClass]="{ 'is-invalid': submitted && fval.firstname.errors }"/>
+                <div *ngIf="submitted && fval.firstname.errors" class="invalid-feedback">
+                  <div *ngIf="fval.firstname.errors.required">
+                    First Name is required
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6 form-group">
+                <input type="text" formControlName="lastname" class="form-control input-style-admin" placeholder="Last Name" [ngClass]="{ 'is-invalid': submitted && fval.lastname.errors }"/>
+                <div *ngIf="submitted && fval.lastname.errors" class="invalid-feedback">
+                  <div *ngIf="fval.lastname.errors.required">
+                    Last Name is required
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6 form-group">
+                <input type="email" formControlName="email" class="form-control input-style-admin" placeholder="Email Address" [ngClass]="{ 'is-invalid': submitted && fval.email.errors }" />
+                <div *ngIf="submitted && fval.email.errors" class="invalid-feedback">
+                  <div *ngIf="fval.email.errors.required">
+                    Email Address is required
+                  </div>
+                  <div *ngIf="fval.email.errors.email">Email Address must be a valid email address</div>
+                </div>
+              </div>
+              <div class="col-md-6 form-group">
+                <input type="text" formControlName="username" class="form-control input-style-admin" placeholder="Username" [ngClass]="{ 'is-invalid': submitted && fval.username.errors }"/>
+                <div *ngIf="submitted && fval.username.errors" class="invalid-feedback">
+                  <div *ngIf="fval.username.errors.required">
+                    Username is required
+                  </div>
+                  <div *ngIf="fval.username.errors.pattern">
+                    Space not included in Username
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6 form-group">
+                <input type="text" (keypress)="numberOnly($event)" formControlName="mobileno" class="form-control input-style-admin" placeholder="Mobile No." [ngClass]="{ 'is-invalid': submitted && fval.mobileno.errors }"/>
+                <div *ngIf="submitted && fval.mobileno.errors" class="invalid-feedback">
+                  <div *ngIf="fval.mobileno.errors.required">
+                    Mobile No is required
+                  </div>
+                  <div *ngIf="fval.mobileno.errors.minlength">
+                    Mobile No is Minimum 10 Digit
+                  </div>
+                  <div *ngIf="fval.mobileno.errors.maxlength">
+                    Mobile No is Maximum 10 Digit
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6 input-group form-group">
+                <input type="file" (change)="upload_photo($event)" id="file" class="inputfile form-control input-style-admin" accept=".png, .jpg, .jpeg" formControlName="profile" [ngClass]="{ 'is-invalid': submitted && fval.profile.errors }"/>
+                <label for="file">
+                  <span class="archive-name"></span>
+                  <span class="btn-inputfile">
+                    <img src="assets/images/icon/upload-image-icon.svg" alt="" /> Upload Profile
+                  </span>
+                </label>
+              </div>
+              <div class="col-12 form-group">
+                  <textarea
+                    class="form-control input-style-admin h-auto"
+                    rows="6"
+                    formControlName="about"
+                    placeholder="About us"
+                  ></textarea>
+              </div>
+              <div class="col-12 form-group">
+                <img src="{{this.photo_proof}}" class="img-fluid fix-image-class-admin" alt=""/>
+              </div>
+              <div class="col-12">
+                <div class="btn-btm-inr-tabs text-center mt-sm-5 mt-3">
+                  <button type="submit" class="btn btn-inr-top mr-sm-4 mr-2">Submit</button>
+                  <button type="button" class="btn btn-reset" routerLink="/admin/subadmin">Cancel</button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="overlay toggle-icon-main"></div>
+  </main>
+</div>

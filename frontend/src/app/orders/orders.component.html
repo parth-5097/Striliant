@@ -1,0 +1,83 @@
+<div class="dash-wrapper">
+  <app-header></app-header>
+  <app-sidebar></app-sidebar>
+  <main class="content-wrapper-section">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-12">
+          <div class="inr-title-comn d-flex align-items-center justify-content-between">
+            <h3>Orders</h3>
+            <div class="inr-title-btn d-flex align-items-center">
+              <div class="dropdown">
+                <button (click)="export_csv()" type="button" class="btn-inr-top">Export</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-12">
+          <nav>
+            <div class="nav nav-tabs border-bottom-0" id="nav-tab" role="tablist">
+              <a class="nav-item nav-link active" id="nav-all-tab" (click)="openorderstatus(0)" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">All</a>
+              <a class="nav-item nav-link" id="nav-unfullfilled-tab" (click)="openorderstatus(1)" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Pending</a>
+              <a class="nav-item nav-link" id="nav-unpaid-tab" (click)="openorderstatus(2)" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Completed</a>
+              <a class="nav-item nav-link" id="nav-open-tab" (click)="openorderstatus(3)" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Cancelled</a>
+              <a class="nav-item nav-link" id="nav-closed-tab" (click)="openorderstatus(4)" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Deleted</a>
+            </div>
+          </nav>
+          <div class="dash-box-white">
+            <div class="comn-white-box-table">
+              <table datatable [dtOptions]='dtOptions' class="display">
+                <thead>
+                <tr>
+                  <th>Order Number</th>
+                  <th>Date & Time</th>
+                  <th>Status</th>
+                  <th>Pieces</th>
+                  <th>Cts</th>
+                  <th>Avg Disc</th>
+                  <th>Total Ct/Pr</th>
+                  <th class="no-search-filter">Total Amount</th>
+                  <th class="no-search-filter">Action</th>
+                </tr>
+                </thead>
+                <tbody *ngIf="orderList?.length>0">
+                <tr *ngFor="let item of orderList">
+                  <td>
+                    <a [routerLink]="['/orders/order-details',item.order_id]">#{{item['order_number']}}</a>
+                  </td>
+                  <td>{{item['created_at'] | date:'MMM dd, YYYY HH:mm:ss'}}</td>
+                  <td>
+                    <span class="status-pending status-label" *ngIf="item['status'] == 1">Pending</span>
+                    <span class="status-completed status-label" *ngIf="item['status'] == 2">Completed</span>
+                    <span class="status-cancel status-label" *ngIf="item['status'] == 3">Cancel</span>
+                    <span class="status-label status-cancel" *ngIf="item['status'] == 4">Deleted</span>
+                  </td>
+                  <td>{{item['pieces']}}</td>
+                  <td>{{item['cts']}}</td>
+                  <td>{{item['avg_disc']+'%'}}</td>
+                  <td>{{item['total_cr'] | currency}}</td>
+                  <td>{{item['total_price'] | currency}}</td>
+                  <td>
+                    <a href="javascript:void(0)" ngxClipboard [cbContent]="copyHtml(item)" (click)="chatMessage()">
+                      <img src="assets/images/icon/chat-icon.svg" class="mx-2 table-img-inr" alt="" />
+                    </a>
+                    <a (click)="delete_order(item)">
+                      <img src="assets/images/icon/delete-icon.svg" class="mx-2 table-img-inr" alt="" />
+                    </a>
+                  </td>
+                </tr>
+                </tbody>
+                <tbody *ngIf="orderList?.length == 0">
+                <tr>
+                  <td colspan="9" class="no-data-available">No order available!</td>
+                </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="overlay toggle-icon-main"></div>
+  </main>
+</div>

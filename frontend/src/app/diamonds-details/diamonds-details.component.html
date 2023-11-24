@@ -1,0 +1,456 @@
+<div class="dash-wrapper">
+  <app-header></app-header>
+  <app-sidebar></app-sidebar>
+  <main class="content-wrapper-section">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-12">
+          <div class="inr-title-comn d-md-flex align-items-center justify-content-between">
+            <div class="d-flex align-items-center">
+              <a routerLink="/diamonds" (click)="sessionBack()" class="bk-icon d-inline-flex align-items-center">
+                <img src="assets/images/icon/back-icon.svg" alt="">
+              </a>
+              <h3>Diamond Details</h3>
+            </div>
+            <div class="sprt-menu-top">
+              <ul class="nav nav-pills justify-content-center" role="tablist">
+                <li class="nav-item" role="presentation">
+                  <a class="nav-link active" id="pills-Diamond-detail-tab" data-toggle="pill"
+                     href="#pills-Diamond-detail" role="tab" aria-controls="pills-Diamond-detail" aria-selected="true">Diamond
+                    Details</a>
+                </li>
+                <li class="nav-item" role="presentation">
+                  <a class="nav-link" id="pills-View-Diamond-tab" data-toggle="pill" href="#pills-View-Diamond"
+                     role="tab" aria-controls="pills-View-Diamond" aria-selected="false">
+                    View Diamond
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="col-12">
+          <div class="dash-box-white">
+            <div class="tab-content" id="pills-tabContent">
+              <div class="tab-pane fade active show" id="pills-Diamond-detail" role="tabpanel"
+                   aria-labelledby="pills-Diamond-detail-tab">
+                <div class="row">
+                  <div class="col-12">
+                    <div class="customer-inr-sec">
+                      <h4 class="d-flex align-items-center">
+                        <img src="assets/images/icon/list-type2.svg" alt=""/>
+                        Basic Info
+                      </h4>
+                      <div class="row bdr-row m-0">
+                        <div class="col-lg-4 col-md-6">
+                          <div class="dash-dtls-inr">
+                            <p>stock number</p>
+                            <span>{{ DiamondDetails['stock_number'] ? DiamondDetails['stock_number'] : "-"}}</span>
+                          </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6">
+                          <div class="dash-dtls-inr">
+                            <p>shape</p>
+                            <span>{{ DiamondDetails['shape'] ? DiamondDetails['shape'] : "-"}}</span>
+                          </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6">
+                          <div class="dash-dtls-inr">
+                            <p>carats</p>
+                            <span>{{ DiamondDetails['size'] ? DiamondDetails['size']+'CT' : "-"}}</span>
+                          </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6">
+                          <div class="dash-dtls-inr">
+                            <p>color</p>
+                            <span>{{ DiamondDetails['color'] ? DiamondDetails['color'] : "-"}}</span>
+                          </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6">
+                          <div class="dash-dtls-inr">
+                            <p>cut</p>
+                            <span>{{ DiamondDetails['cut'] ? DiamondDetails['cut'] : "-"}}</span>
+                          </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6">
+                          <div class="dash-dtls-inr">
+                            <p>polish</p>
+                            <span>{{ DiamondDetails['polish'] ? DiamondDetails['polish'] : "-"}}</span>
+                          </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6">
+                          <div class="dash-dtls-inr">
+                            <p>Symmetry</p>
+                            <span>{{ DiamondDetails['symmetry'] ? DiamondDetails['symmetry'] : "-"}}</span>
+                          </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6">
+                          <div class="dash-dtls-inr">
+                            <p>Clarity</p>
+                            <span>{{ DiamondDetails['clarity'] ? DiamondDetails['clarity'] : "-"}}</span>
+                          </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6">
+                          <div class="dash-dtls-inr">
+                            <p>availability</p>
+                            <span
+                              [ngClass]="{ 'row-color-red' : DiamondDetails['availability'] == 'NA', 'row-color-blue' : DiamondDetails['availability'] == 'M', 'row-color-yellow' : DiamondDetails['availability'] == 'STPS' }">{{ DiamondDetails['availability'] ? DiamondDetails['availability'] == "NA"? "Not Available": DiamondDetails['availability'] == "GA" ? "Guaranteed Availability" : DiamondDetails['availability'] == "M" ? "Out on Memo" : DiamondDetails['availability'] == "STPS" ? "Subject to Prior Sale" : DiamondDetails['availability']  : "-"}}</span>
+                          </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6">
+                          <div class="dash-dtls-inr">
+                            <p>Rap Price</p>
+                            <span class="font-weight-bold">{{ DiamondDetails['rap_price'] | currency}}</span>
+                          </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6">
+                          <div class="dash-dtls-inr">
+                            <p>Sale Back</p>
+                            <span class="font-weight-bold">{{ DiamondDetails['sale_back'] ? DiamondDetails['sale_back']+'%' : "-"}}</span>
+                          </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6">
+                          <div class="dash-dtls-inr">
+                            <p>Sale Price Back</p>
+                            <span class="font-weight-bold">{{ DiamondDetails['sale_price_back'] | currency}}</span>
+                          </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6">
+                          <div class="dash-dtls-inr">
+                            <p>Sale Subtotal</p>
+                            <span class="font-weight-bold">{{ DiamondDetails['sale_subtotal'] | currency}}</span>
+                          </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6">
+                          <div class="dash-dtls-inr">
+                            <p>Country</p>
+                            <span>{{ DiamondDetails['country'] ? DiamondDetails['country'] : "-"}}</span>
+                          </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6">
+                          <div class="dash-dtls-inr">
+                            <p>State</p>
+                            <span>{{ DiamondDetails['state'] ? DiamondDetails['state'] : "-"}}</span>
+                          </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6">
+                          <div class="dash-dtls-inr">
+                            <p>City</p>
+                            <span>{{ DiamondDetails['city'] ? DiamondDetails['city'] : "-"}}</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="customer-inr-sec">
+                      <h4 class="d-flex align-items-center">
+                        <img src="assets/images/icon/list-type2.svg" alt=""/>
+                        Inclusion Details
+                      </h4>
+                      <div class="row bdr-row m-0">
+                        <div class="col-lg-4 col-md-6">
+                          <div class="dash-dtls-inr">
+                            <p>Black Table</p>
+                            <span>{{ DiamondDetails['black_inclusions'] ? DiamondDetails['black_inclusions'] : "-"}}</span>
+                          </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6">
+                          <div class="dash-dtls-inr">
+                            <p>Open Table</p>
+                            <span>{{ DiamondDetails['open_inclusions'] ? DiamondDetails['open_inclusions'] : "-"}}</span>
+                          </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6">
+                          <div class="dash-dtls-inr">
+                            <p>White Table</p>
+                            <span>{{ DiamondDetails['white_inclusions'] ? DiamondDetails['white_inclusions'] : "-"}}</span>
+                          </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6">
+                          <div class="dash-dtls-inr">
+                            <p>Milky</p>
+                            <span>{{ DiamondDetails['milky'] ? DiamondDetails['milky'] : "-"}}</span>
+                          </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6">
+                          <div class="dash-dtls-inr">
+                            <p>Treatment</p>
+                            <span>{{ DiamondDetails['treatment'] ? DiamondDetails['treatment'] : "-"}}</span>
+                          </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6">
+                          <div class="dash-dtls-inr">
+                            <p>Color Shade</p>
+                            <span>{{ DiamondDetails['shade'] ? DiamondDetails['shade'] : "-"}}</span>
+                          </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6">
+                          <div class="dash-dtls-inr">
+                            <p>Eye Clean</p>
+                            <span>{{ DiamondDetails['eye_clean'] ? DiamondDetails['eye_clean'] : "-"}}</span>
+                          </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6">
+                          <div class="dash-dtls-inr">
+                            <p>Seller Specification</p>
+                            <span>{{ DiamondDetails['seller_spec'] ? DiamondDetails['seller_spec'] : "-"}}</span>
+                          </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6">
+                          <div class="dash-dtls-inr">
+                            <p>Fluorescence Intensity</p>
+                            <span>{{ DiamondDetails['fluor_intensity'] ? DiamondDetails['fluor_intensity'] : "-"}}</span>
+                          </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6">
+                          <div class="dash-dtls-inr">
+                            <p>Fluorescence Color</p>
+                            <span>{{ DiamondDetails['fluor_color'] ? DiamondDetails['fluor_color'] : "-"}}</span>
+                          </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6">
+                          <div class="dash-dtls-inr">
+                            <p>Length</p>
+                            <span>{{ DiamondDetails['meas_length'] ? DiamondDetails['meas_length']+'mm' : "-"}}</span>
+                          </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6">
+                          <div class="dash-dtls-inr">
+                            <p>Width</p>
+                            <span>{{ DiamondDetails['meas_width'] ? DiamondDetails['meas_width']+'mm' : "-"}}</span>
+                          </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6">
+                          <div class="dash-dtls-inr">
+                            <p>Depth</p>
+                            <span>{{ DiamondDetails['meas_depth'] ? DiamondDetails['meas_depth']+'mm' : "-"}}</span>
+                          </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6">
+                          <div class="dash-dtls-inr">
+                            <p>Fancy Color Intensity</p>
+                            <span>{{ DiamondDetails['fancy_color_intensity'] ? DiamondDetails['fancy_color_intensity'] : "-"}}</span>
+                          </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6">
+                          <div class="dash-dtls-inr">
+                            <p>Fancy Color Overtone</p>
+                            <span>{{ DiamondDetails['fancy_color_overtone'] ? DiamondDetails['fancy_color_overtone'] : "-"}}</span>
+                          </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6">
+                          <div class="dash-dtls-inr">
+                            <p>Fancy Dominant Color</p>
+                            <span>{{ DiamondDetails['fancy_color_dominant_color'] ? DiamondDetails['fancy_color_dominant_color'] : "-"}}</span>
+                          </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6">
+                          <div class="dash-dtls-inr">
+                            <p>Fancy Secondary Color</p>
+                            <span>{{ DiamondDetails['fancy_color_secondary_color'] ? DiamondDetails['fancy_color_secondary_color'] : "-"}}</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="customer-inr-sec">
+                      <h4 class="d-flex align-items-center">
+                        <img src="assets/images/icon/list-type2.svg" alt=""/>
+                        Additional Info
+                      </h4>
+                      <div class="row bdr-row m-0">
+                        <div class="col-lg-4 col-md-6">
+                          <div class="dash-dtls-inr">
+                            <p>Certificate</p>
+                            <span>{{ DiamondDetails['report_number'] ? DiamondDetails['report_number'] : "-"}}</span>
+                          </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6">
+                          <div class="dash-dtls-inr">
+                            <p>Lab</p>
+                            <span>{{ DiamondDetails['lab'] ? DiamondDetails['lab'] : "-"}}</span>
+                          </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6">
+                          <div class="dash-dtls-inr">
+                            <p>Lab Location</p>
+                            <span>{{ DiamondDetails['lab_location'] ? DiamondDetails['lab_location'] : "-"}}</span>
+                          </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6">
+                          <div class="dash-dtls-inr">
+                            <p>Laser Inscription</p>
+                            <span>{{ DiamondDetails['laser_inscription'] ? DiamondDetails['laser_inscription'] : "-"}}</span>
+                          </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6">
+                          <div class="dash-dtls-inr">
+                            <p>Table %</p>
+                            <span>{{ DiamondDetails['table_percent'] ? DiamondDetails['table_percent']+'%' : "-"}}</span>
+                          </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6">
+                          <div class="dash-dtls-inr">
+                            <p>Girdle %</p>
+                            <span>{{ DiamondDetails['girdle_per'] ? DiamondDetails['girdle_per']+'%' : "-"}}</span>
+                          </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6">
+                          <div class="dash-dtls-inr">
+                            <p>Girdle Condition</p>
+                            <span>{{ DiamondDetails['girdle_condition'] ? DiamondDetails['girdle_condition'] : "-"}}</span>
+                          </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6">
+                          <div class="dash-dtls-inr">
+                            <p>Girdle</p>
+                            <span>{{ DiamondDetails['girdle_min'] ? DiamondDetails['girdle_min']+'-'+DiamondDetails['girdle_max'] : "-"}}</span>
+                          </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6">
+                          <div class="dash-dtls-inr">
+                            <p>Total Depth %</p>
+                            <span>{{ DiamondDetails['depth_percent'] ? DiamondDetails['depth_percent']+'%' : "-"}}</span>
+                          </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6">
+                          <div class="dash-dtls-inr">
+                            <p>Crown Angle °</p>
+                            <span>{{ DiamondDetails['crown_angle'] ? DiamondDetails['crown_angle']+'°' : "-"}}</span>
+                          </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6">
+                          <div class="dash-dtls-inr">
+                            <p>Crown Height %</p>
+                            <span>{{ DiamondDetails['crown_height'] ? DiamondDetails['crown_height']+'%' : "-"}}</span>
+                          </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6">
+                          <div class="dash-dtls-inr">
+                            <p>Pavilion Angle °</p>
+                            <span>{{ DiamondDetails['pavillion_angle'] ? DiamondDetails['pavillion_angle']+'°' : "-"}}</span>
+                          </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6">
+                          <div class="dash-dtls-inr">
+                            <p>Pavilion Depth %</p>
+                            <span>{{ DiamondDetails['pavillion_depth'] ? DiamondDetails['pavillion_depth']+'%' : "-"}}</span>
+                          </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6">
+                          <div class="dash-dtls-inr">
+                            <p>Culet Condition</p>
+                            <span>{{ DiamondDetails['culet_condition'] ? DiamondDetails['culet_condition'] : "-"}}</span>
+                          </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6">
+                          <div class="dash-dtls-inr">
+                            <p>Culet Size</p>
+                            <span>{{ DiamondDetails['culet_size'] ? DiamondDetails['culet_size'] : "-"}}</span>
+                          </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6">
+                          <div class="dash-dtls-inr">
+                            <p>Key to symbol</p>
+                            <span>{{ DiamondDetails['symbols'] ? DiamondDetails['symbols'] : "-"}}</span>
+                          </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6">
+                          <div class="dash-dtls-inr">
+                            <p>Star Length</p>
+                            <span>{{ DiamondDetails['star_length'] ? DiamondDetails['star_length'] : "-"}}</span>
+                          </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6">
+                          <div class="dash-dtls-inr">
+                            <p>Lab Comment</p>
+                            <span>{{ DiamondDetails['report_comment'] ? DiamondDetails['report_comment'] : "-"}}</span>
+                          </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6">
+                          <div class="dash-dtls-inr">
+                            <p>Report Date</p>
+                            <span>{{ DiamondDetails['report_date'] != '0000-00-00'  ? DiamondDetails['report_date'] : "-"}}</span>
+                          </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6">
+                          <div class="dash-dtls-inr">
+                            <p>Loupe</p>
+                            <span>{{ DiamondDetails['sarine_loupe'] ? DiamondDetails['sarine_loupe'] : "-"}}</span>
+                          </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6">
+                          <div class="dash-dtls-inr">
+                            <p>Brands</p>
+                            <span>{{ DiamondDetails['brands'] ? DiamondDetails['brands'] : "-"}}</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="tab-pane fade" id="pills-View-Diamond" role="tabpanel"
+                   aria-labelledby="pills-View-Diamond-tab">
+                <div class="row">
+                  <div class="col-xl-10 m-auto">
+                    <div class="news-section-tabs-new">
+                      <ul class="nav nav-pills mb-5 justify-content-center" role="tablist">
+                        <li class="nav-item" role="presentation">
+                          <a class="nav-link active" id="pills-Image-tab" data-toggle="pill" href="#pills-Image"
+                             role="tab" aria-controls="pills-Image" aria-selected="true">Image</a>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                          <a class="nav-link border-left" id="pills-Video-tab" data-toggle="pill" href="#pills-Video"
+                             role="tab" aria-controls="pills-Video" aria-selected="false">
+                            Video
+                          </a>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                          <a class="nav-link border-left" id="pills-GIA-tab" data-toggle="pill" href="#pills-GIA"
+                             role="tab" aria-controls="pills-GIA" aria-selected="false">
+                            certificate
+                          </a>
+                        </li>
+                      </ul>
+                      <div class="tab-content">
+                        <div class="tab-pane fade active show" id="pills-Image" role="tabpanel"
+                             aria-labelledby="pills-Image-tab">
+                          <div class="image-video-section text-center">
+                            <iframe [src]="photoURL(DiamondDetails['diamond_img'])"
+                                    *ngIf="DiamondDetails['diamond_img']" height="600px" width="100%"
+                                    frameborder="0"></iframe>
+                            <div class="btn-btm-inr-tabs text-center mt-5">
+                              <a (click)="download(fullURL(DiamondDetails['diamond_img']))"
+                                 class="btn btn-reset mr-sm-4 d-inline-flex align-items-center justify-content-center">
+                                <img src="assets/images/icon/download-icon-admin.svg" alt=""/>
+                                <span class="ml-2">Download Image</span>
+                              </a>
+                              <button type="button" (click)="clipcopy()" ngxClipboard [cbContent]="fullURL(DiamondDetails['diamond_img'])"
+                                      class="btn btn-inr-top d-inline-flex align-items-center justify-content-center">
+                                <img src="assets/images/icon/copy-link-icon.svg" alt=""/>
+                                <span class="ml-2">Copy Link</span>
+                              </button>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="tab-pane fade" id="pills-Video" role="tabpanel" aria-labelledby="pills-Video-tab">
+                          <iframe [src]="photoURL(DiamondDetails['video_link'])" *ngIf="DiamondDetails['video_link']"
+                                  height="600px" width="100%" frameborder="0" allowfullscreen></iframe>
+                        </div>
+                        <div class="tab-pane fade" id="pills-GIA" role="tabpanel" aria-labelledby="pills-GIA-tab">
+                          <iframe [src]="photoURL(DiamondDetails['report_file'])" *ngIf="DiamondDetails['report_file']"
+                                  height="600px" width="100%" frameborder="0" allowfullscreen></iframe>
+                          <iframe width="560" height="315" src="https://www.youtube.com/embed/4qe1Ueifekg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="overlay toggle-icon-main"></div>
+  </main>
+</div>

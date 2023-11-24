@@ -1,0 +1,39 @@
+<div class="dash-wrapper">
+  <app-header></app-header>
+  <app-sidebar></app-sidebar>
+  <main class="content-wrapper-section">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-12">
+          <div class="inr-title-comn d-flex align-items-center">
+            <h3>news details</h3>
+            <div class="ml-auto">
+              <a routerLink="/news" class="btn-span">
+                <img src="assets/images/icon/arrow-left.svg" alt="" />
+                <span class="ml-2">back</span>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="col-12">
+          <div class="dash-box-white">
+            <div class="add-card-box news-bx-dtls">
+<!--              <div class="add-card-box-img p-3">-->
+<!--                <img src="{{imageURL}}" class="img-fluid" alt="" />-->
+<!--              </div>-->
+              <div class="add-card-box-text">
+                <div class="d-flex align-items-center pb-3">
+                  <h6>{{majorTopicTitle}}</h6>
+                  <span class="ml-5">{{datePosted | date}}</span>
+                </div>
+                <h4>{{title}}</h4>
+                <div [innerHTML]="description"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="overlay toggle-icon-main"></div>
+  </main>
+</div>

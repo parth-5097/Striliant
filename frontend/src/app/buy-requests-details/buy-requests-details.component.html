@@ -1,0 +1,286 @@
+<div class="dash-wrapper">
+  <app-header></app-header>
+  <app-sidebar></app-sidebar>
+  <main class="content-wrapper-section">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-12">
+          <div class="inr-title-comn d-md-flex align-items-center justify-content-between">
+            <h3>Requests Details</h3>
+          </div>
+        </div>
+        <div class="col-12">
+          <div class="dash-box-white">
+            <div class="tab-content" id="pills-tabContent">
+              <div class="tab-pane fade active show" id="pills-Diamond-detail" role="tabpanel" aria-labelledby="pills-Diamond-detail-tab">
+                <div class="row">
+                  <div class="col-12">
+                    <div class="customer-inr-sec">
+                      <h4 class="d-flex align-items-center">
+                        <img src="assets/images/icon/list-type2.svg" alt="" />
+                        Basic Info
+                      </h4>
+                      <div class="row bdr-row m-0">
+                        <div class="col-lg-4 col-md-6">
+                          <div class="dash-dtls-inr">
+                            <p>shape</p>
+                            <span>{{ RequestsDetails['shape_advanced'] ? RequestsDetails['shape_advanced'] : "-"}}</span>
+                          </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6">
+                          <div class="dash-dtls-inr">
+                            <p>carats</p>
+                            <span>{{ RequestsDetails['size_general_from'] ? RequestsDetails['size_general_from']+'-'+RequestsDetails['size_general_to']+' CT' : "-"}}</span>
+                          </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6">
+                          <div class="dash-dtls-inr">
+                            <p>color</p>
+                            <span>{{ RequestsDetails['color_fancy'] ? RequestsDetails['color_fancy'] : "-"}}</span>
+                          </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6">
+                          <div class="dash-dtls-inr">
+                            <p>cut</p>
+                            <span>{{ RequestsDetails['finish_general_cut_from'] ? RequestsDetails['finish_general_cut_from']+'-'+RequestsDetails['finish_general_cut_to'] : "-"}}</span>
+                          </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6">
+                          <div class="dash-dtls-inr">
+                            <p>polish</p>
+                            <span>{{ RequestsDetails['finish_general_polish_from'] ? RequestsDetails['finish_general_polish_from']+'-'+RequestsDetails['finish_general_polish_to'] : "-"}}</span>
+                          </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6">
+                          <div class="dash-dtls-inr">
+                            <p>Symmetry</p>
+                            <span>{{ RequestsDetails['finish_general_symmetry_from'] ? RequestsDetails['finish_general_symmetry_from']+'-'+RequestsDetails['finish_general_symmetry_to'] : "-"}}</span>
+                          </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6">
+                          <div class="dash-dtls-inr">
+                            <p>Clarity</p>
+                            <span>{{ RequestsDetails['clarity'] ? RequestsDetails['clarity'] : "-"}}</span>
+                          </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6">
+                          <div class="dash-dtls-inr">
+                            <p>availability</p>
+                            <span>{{ RequestsDetails['show_only'] ? RequestsDetails['show_only'] : "-"}}</span>
+                          </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6">
+                          <div class="dash-dtls-inr">
+                            <p>Location</p>
+                            <span>{{ RequestsDetails['location'] ? RequestsDetails['location'] : "-"}}</span>
+                          </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6">
+                          <div class="dash-dtls-inr">
+                            <p>rap Price</p>
+                            <span>{{ RequestsDetails['price_ct_from'] | currency }} - {{ RequestsDetails['price_ct_to'] | currency}}</span>
+                          </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6">
+                          <div class="dash-dtls-inr">
+                            <p>Sale Subtotal</p>
+                            <span>{{ RequestsDetails['price_total_from'] | currency }} - {{ RequestsDetails['price_total_to'] | currency}}</span>
+                          </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6">
+                          <div class="dash-dtls-inr">
+                            <p>Sale back</p>
+                            <span>{{ RequestsDetails['price_rap_from'] ? RequestsDetails['price_rap_from']+'%-'+RequestsDetails['price_rap_to']+'%' : "-"}}</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="customer-inr-sec">
+                      <h4 class="d-flex align-items-center">
+                        <img src="assets/images/icon/list-type2.svg" alt="" />
+                        Inclusion Details
+                      </h4>
+                      <div class="row bdr-row m-0">
+                        <div class="col-lg-4 col-md-6">
+                          <div class="dash-dtls-inr">
+                            <p>Black Table</p>
+                            <span>{{ RequestsDetails['black_inclusions'] ? RequestsDetails['black_inclusions'] : "-"}}</span>
+                          </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6">
+                          <div class="dash-dtls-inr">
+                            <p>Open Table</p>
+                            <span>{{ RequestsDetails['open_inclusions'] ? RequestsDetails['open_inclusions'] : "-"}}</span>
+                          </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6">
+                          <div class="dash-dtls-inr">
+                            <p>White Table</p>
+                            <span>{{ RequestsDetails['white_inclusions'] ? RequestsDetails['white_inclusions'] : "-"}}</span>
+                          </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6">
+                          <div class="dash-dtls-inr">
+                            <p>Milky</p>
+                            <span>{{ RequestsDetails['inclusions_milky_from'] ? RequestsDetails['inclusions_milky_from']+' '+RequestsDetails['inclusions_milky_to'] : "-"}}</span>
+                          </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6">
+                          <div class="dash-dtls-inr">
+                            <p>Specification</p>
+                            <span>{{ RequestsDetails['specification'] ? RequestsDetails['specification'] : "-"}}</span>
+                          </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6">
+                          <div class="dash-dtls-inr">
+                            <p>Treatment</p>
+                            <span>{{ RequestsDetails['treatment'] ? RequestsDetails['treatment'] : "-"}}</span>
+                          </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6">
+                          <div class="dash-dtls-inr">
+                            <p>Color Shade</p>
+                            <span>{{ RequestsDetails['shades'] ? RequestsDetails['shades'] : "-"}}</span>
+                          </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6">
+                          <div class="dash-dtls-inr">
+                            <p>Eye Clean</p>
+                            <span>{{ RequestsDetails['inclusions_eye_clean'] ? RequestsDetails['inclusions_eye_clean'] : "-"}}</span>
+                          </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6">
+                          <div class="dash-dtls-inr">
+                            <p>Fluorescence Intensity</p>
+                            <span>{{ RequestsDetails['fluorescence_intensity'] ? RequestsDetails['fluorescence_intensity'] : "-"}}</span>
+                          </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6">
+                          <div class="dash-dtls-inr">
+                            <p>Length</p>
+                            <span>{{ RequestsDetails['metric_length_from'] ? RequestsDetails['metric_length_from']+'mm-'+RequestsDetails['metric_length_to']+'mm' : "-"}}</span>
+                          </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6">
+                          <div class="dash-dtls-inr">
+                            <p>Width</p>
+                            <span>{{ RequestsDetails['metric_width_from'] ? RequestsDetails['metric_width_from']+'mm-'+RequestsDetails['metric_width_to']+'mm' : "-"}}</span>
+                          </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6">
+                          <div class="dash-dtls-inr">
+                            <p>Depth</p>
+                            <span>{{ RequestsDetails['metric_depth_from'] ? RequestsDetails['metric_depth_from']+'mm-'+RequestsDetails['metric_depth_to']+'mm' : "-"}}</span>
+                          </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6">
+                          <div class="dash-dtls-inr">
+                            <p>Fancy Color Intensity</p>
+                            <span>{{ RequestsDetails['color_white_intensity_from'] ? RequestsDetails['color_white_intensity_from']+' '+ RequestsDetails['color_white_intensity_to']: "-"}}</span>
+                          </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6">
+                          <div class="dash-dtls-inr">
+                            <p>Fancy Color Overtone</p>
+                            <span>{{ RequestsDetails['color_white_overtone'] ? RequestsDetails['color_white_overtone'] : "-"}}</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="customer-inr-sec">
+                      <h4 class="d-flex align-items-center">
+                        <img src="assets/images/icon/list-type2.svg" alt="" />
+                        Additional Info
+                      </h4>
+                      <div class="row bdr-row m-0">
+                        <div class="col-lg-4 col-md-6">
+                          <div class="dash-dtls-inr">
+                            <p>Report</p>
+                            <span>{{ RequestsDetails['grading_report'] ? RequestsDetails['grading_report'] : "-"}}</span>
+                          </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6">
+                          <div class="dash-dtls-inr">
+                            <p>Depth %</p>
+                            <span>{{ RequestsDetails['per_depth_from'] ? RequestsDetails['per_depth_from']+'%-'+RequestsDetails['per_depth_to']+'%' : "-"}}</span>
+                          </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6">
+                          <div class="dash-dtls-inr">
+                            <p>Table %</p>
+                            <span>{{ RequestsDetails['per_table_from'] ? RequestsDetails['per_table_from']+'%-'+RequestsDetails['per_table_to']+'%' : "-"}}</span>
+                          </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6">
+                          <div class="dash-dtls-inr">
+                            <p>Girdle</p>
+                            <span>{{ RequestsDetails['girdle'] ? RequestsDetails['girdle']+'%' : "-"}}</span>
+                          </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6">
+                          <div class="dash-dtls-inr">
+                            <p>Crown Angle °</p>
+                            <span>{{ RequestsDetails['crown_angle_from'] ? RequestsDetails['crown_angle_from']+'°-'+RequestsDetails['crown_angle_to']+'°' : "-"}}</span>
+                          </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6">
+                          <div class="dash-dtls-inr">
+                            <p>Crown Height %</p>
+                            <span>{{ RequestsDetails['crown_height_from'] ? RequestsDetails['crown_height_from']+'%-'+RequestsDetails['crown_height_to']+'%' : "-"}}</span>
+                          </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6">
+                          <div class="dash-dtls-inr">
+                            <p>Pavilion Angle °</p>
+                            <span>{{ RequestsDetails['pavilion_angle_from'] ? RequestsDetails['pavilion_angle_from']+'°-'+RequestsDetails['pavilion_angle_to']+'°' : "-"}}</span>
+                          </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6">
+                          <div class="dash-dtls-inr">
+                            <p>Pavilion Depth %</p>
+                            <span>{{ RequestsDetails['pavilion_depth_from'] ? RequestsDetails['pavilion_depth_from']+'%-'+RequestsDetails['pavilion_depth_to']+'%' : "-"}}</span>
+                          </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6">
+                          <div class="dash-dtls-inr">
+                            <p>Culet Condition</p>
+                            <span>{{ RequestsDetails['culet_condition'] ? RequestsDetails['culet_condition'] : "-"}}</span>
+                          </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6">
+                          <div class="dash-dtls-inr">
+                            <p>Culet Size</p>
+                            <span>{{ RequestsDetails['culet_size'] ? RequestsDetails['culet_size'] : "-"}}</span>
+                          </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6">
+                          <div class="dash-dtls-inr">
+                            <p>Key to symbol</p>
+                            <span>{{ RequestsDetails['symbols'] ? RequestsDetails['symbols'] : "-"}}</span>
+                          </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6">
+                          <div class="dash-dtls-inr">
+                            <p>Comment</p>
+                            <span>{{ RequestsDetails['comment'] ? RequestsDetails['comment'] : "-"}}</span>
+                          </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6">
+                          <div class="dash-dtls-inr">
+                            <p>Expiration Date</p>
+                            <span>{{ RequestsDetails['expiration_date'] != '0000-00-00'  ? RequestsDetails['expiration_date'] : "-"}}</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="overlay toggle-icon-main"></div>
+  </main>
+</div>

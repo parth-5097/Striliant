@@ -1,0 +1,243 @@
+.blog-dtl-main-inr p {
+  letter-spacing: 0.06em;
+  font-size: 15px;
+  color: var(--color-dark);
+  line-height: 28px;
+}
+
+.blog-dtl-main-inr ul li img {
+  margin-right: 10px;
+  width: 12px;
+  margin-top: 5px;
+}
+
+.blog-dtl-main-inr h2 {
+  letter-spacing: 0.0066em;
+  text-transform: capitalize;
+  color: var(--thm-color);
+  font-weight: bold;
+  font-size: 26px;
+  margin-bottom: 20px;
+  font-family: Philosopher;
+}
+
+.blog-dtl-main .blog-section-inr p {
+  overflow: unset;
+  display: block;
+  -webkit-line-clamp: unset;
+  -webkit-box-orient: unset;
+  min-height: unset;
+  margin-bottom: 1rem;
+}
+
+.blog-dtl-main .blog-section-inr img {
+  height: auto;
+  max-width: 100%;
+  object-fit: unset;
+  object-position: unset;
+}
+
+.blog-section-inr h2 {
+  letter-spacing: 0.0066em;
+  text-transform: capitalize;
+  color: var(--thm-color);
+  font-weight: bold;
+  font-family: Philosopher;
+  font-size: 26px;
+}
+
+.ctr-blog-dtl-main-inr {
+  display: flex;
+}
+
+.ctr-blog-dtl-main-inr span {
+  color: var(--thm-color);
+  font-weight: bold;
+  font-family: Philosopher;
+  min-width: 150px;
+  font-size: 18px;
+}
+
+.ctr-blog-dtl-main-inr p {
+  letter-spacing: 0.035em;
+  font-size: 14px;
+  line-height: 28px;
+  color: var(--color-dark);
+}
+
+.bg-shap-row h2 {
+  letter-spacing: 0.0066em;
+  text-transform: capitalize;
+  color: var(--thm-color);
+  font-weight: bold;
+  font-size: 26px;
+  font-family: Philosopher;
+}
+
+.bg-shap-row p {
+  letter-spacing: 0.06em;
+  font-size: 15px;
+  color: var(--color-dark);
+  line-height: 28px;
+  margin-bottom: 0;
+}
+
+.bg-row-main {
+  background: rgba(219, 241, 220, 0.5);
+  margin-bottom: 55px;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.bg-shap-row {
+  max-width: 950px;
+  margin: 40px auto;
+  padding: 0 15px;
+}
+
+.grp-fix-img img {
+  width: 200px;
+}
+
+.fix-btm {
+  min-width: 200px;
+  text-align: right;
+  padding: 25px;
+}
+
+.socl-icon-fix {
+  position: fixed;
+  top: 45%;
+  left: 15px;
+  z-index: 1;
+}
+
+.socl-icon-fix ul li a {
+  width: 40px;
+  height: 40px;
+  background-color: var(--thm-color);
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s;
+  -webkit-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  -o-transition: all 0.3s;
+  -ms-transition: all 0.3s;
+  border: 1px solid #dbf1dc;
+}
+
+.socl-icon-fix ul li a:hover {
+  background-color: var(--thm-color-light);
+}
+
+.socl-icon-fix ul li a img {
+  transition: all 0.3s;
+  -webkit-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  -o-transition: all 0.3s;
+  -ms-transition: all 0.3s;
+  filter: brightness(0) invert(1);
+  -webkit-filter: brightness(0) invert(1);
+  -moz-filter: brightness(0) invert(1);
+}
+
+.socl-icon-fix ul li a:hover img {
+  filter: brightness(1) invert(0);
+  -webkit-filter: brightness(1) invert(0);
+  -moz-filter: brightness(1) invert(0);
+}
+
+.socl-icon-fix ul li {
+  margin: 15px 0;
+}
+
+.grp-fix-img {
+  margin-top: -35px;
+}
+
+.fix-btm-div {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+}
+
+.fix-btm-div img {
+  width: 170px;
+}
+
+@media (max-width: 1199px) {
+  .grp-fix-img {
+    margin-top: -60px;
+  }
+}
+
+@media (max-width: 991px) {
+  .bg-row-main {
+    display: block;
+    padding: 25px;
+  }
+
+  .grp-fix-img {
+    text-align: center;
+    margin-top: 0;
+  }
+
+  .bg-shap-row {
+    max-width: 100%;
+    padding: 15px 0;
+    margin: 15px 0;
+  }
+
+  .fix-btm {
+    min-width: 100%;
+    text-align: center;
+    padding: 0;
+  }
+}
+
+@media (max-width: 767px) {
+  .blog-dtl-main-inr h2 {
+    font-size: 22px;
+  }
+
+  .blog-dtl-main-inr p {
+    font-size: 14px;
+    line-height: 24px;
+  }
+
+  .blog-section-inr h2 {
+    font-size: 25px;
+  }
+
+  .bg-shap-row h2 {
+    font-size: 25px;
+  }
+
+  .ctr-blog-dtl-main-inr p {
+    line-height: 24px;
+  }
+
+  .ctr-blog-dtl-main-inr {
+    display: block;
+  }
+
+  .ctr-blog-dtl-main-inr span {
+    display: block;
+    min-width: 100%;
+  }
+
+  .socl-icon-fix {
+    display: none;
+  }
+
+  .bg-row-main {
+    padding: 25px 15px;
+  }
+
+  .fix-btm-div {
+    display: none;
+  }
+}

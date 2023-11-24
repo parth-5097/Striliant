@@ -1,0 +1,157 @@
+<div class="sidebar-main-section">
+  <div class="brand-title">
+    <a routerLink="/admin/dashboard">
+      <img src="assets/images/logo/logo-kukadia.svg" alt="">
+    </a>
+  </div>
+  <div class="sidebar-main-section-inner">
+    <ul class="sidebar-main-inner-menu">
+      <li>
+        <a routerLink="/admin/dashboard" routerLinkActive="active">
+          <img src="assets/images/icon/dash-sidebar-icon-1.svg" alt="">
+          <span>Dashboard</span>
+        </a>
+      </li>
+      <li>
+        <a routerLink="/admin/diamonds" routerLinkActive="active">
+          <img src="assets/images/icon/dash-sidebar-icon-2.svg" alt="">
+          <span>Diamonds</span>
+        </a>
+      </li>
+<!--      <li>-->
+<!--        <a href="#Orders" data-toggle="collapse">-->
+<!--          <img src="assets/images/icon/order-icon.svg" alt="">-->
+<!--          <span>Orders</span>-->
+<!--        </a>-->
+<!--        <div class="collapse submenu-sidebar" id="Orders">-->
+<!--          <ul>-->
+<!--            <li>-->
+<!--              <a routerLink="/admin/orders" routerLinkActive="active">-->
+<!--                <p>Orders</p>-->
+<!--              </a>-->
+<!--            </li>-->
+<!--            <li>-->
+<!--            <li>-->
+<!--              <a routerLink="/admin/drafts" routerLinkActive="active">-->
+<!--                <p>Drafts</p>-->
+<!--              </a>-->
+<!--            </li>-->
+<!--            <li>-->
+<!--              <a routerLink="/admin/abandoned-checkouts" routerLinkActive="active">-->
+<!--                <p>Abandoned checkouts</p>-->
+<!--              </a>-->
+<!--            </li>-->
+<!--          </ul>-->
+<!--        </div>-->
+<!--      </li>-->
+      <li>
+        <a routerLink="/admin/orders" routerLinkActive="active">
+          <img src="assets/images/icon/order-icon.svg" alt="">
+          <span>Orders</span>
+        </a>
+      </li>
+      <li>
+        <a routerLink="/admin/customers" routerLinkActive="active">
+          <img src="assets/images/icon/customers-icon.svg" alt="">
+          <span>Customers</span>
+        </a>
+      </li>
+      <li>
+        <a routerLink="/admin/subadmin" routerLinkActive="active">
+          <img src="assets/images/icon/admin-icon.svg" alt="">
+          <span>Admin</span>
+        </a>
+      </li>
+      <li>
+        <a routerLink="/admin/buy-requests" routerLinkActive="active">
+          <img src="assets/images/icon/dash-sidebar-icon-5.svg" alt="">
+          <span>Requests</span>
+        </a>
+      </li>
+      <li>
+        <a href="#Analytics" data-toggle="collapse" [ngClass]="(CurrentUrl == '/admin/analytics/overview-dashboard' || CurrentUrl == '/admin/analytics/report' || CurrentUrl == '/admin/analytics/live-view') ? 'active' : ''">
+          <img src="assets/images/icon/analytics-icon.svg" alt="">
+          <span>Analytics</span>
+        </a>
+        <div class="collapse submenu-sidebar" [ngClass]="(CurrentUrl == '/admin/analytics/live-view' || CurrentUrl == '/admin/analytics/report' || CurrentUrl == '/admin/analytics/overview-dashboard') ? 'show' : ''" id="Analytics">
+          <ul>
+            <li>
+              <a routerLink="/admin/analytics/overview-dashboard" routerLinkActive="active">
+                <p>Dashboards</p>
+              </a>
+            </li>
+            <li>
+              <a routerLink="/admin/analytics/report" routerLinkActive="active">
+                <p>Reports</p>
+              </a>
+            </li>
+            <li>
+              <a routerLink="/admin/analytics/live-view" routerLinkActive="active">
+                <p>Live View</p>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </li>
+      <li>
+        <a href="#theme" data-toggle="collapse" [ngClass]="(CurrentUrl == '/admin/blog' || CurrentUrl == '/admin/testimonials' || CurrentUrl == '/admin/homepage-settings' || CurrentUrl == '/admin/milestones' || CurrentUrl == '/admin/brands' || CurrentUrl == '/admin/email-templates' || CurrentUrl == '/admin/upload-reports') ? 'active' : ''">
+          <img src="assets/images/icon/settings.svg" alt="">
+          <span>Theme Settings</span>
+        </a>
+        <div class="collapse submenu-sidebar" [ngClass]="(CurrentUrl == '/admin/blog' || CurrentUrl == '/admin/testimonials' || CurrentUrl == '/admin/homepage-settings' || CurrentUrl == '/admin/milestones' || CurrentUrl == '/admin/brands' || CurrentUrl == '/admin/email-templates' || CurrentUrl == '/admin/upload-reports') ? 'show' : ''" id="theme">
+          <ul>
+            <li>
+              <a routerLink="/admin/blog" routerLinkActive="active">
+                <p>Blog</p>
+              </a>
+            </li>
+            <li>
+              <a routerLink="/admin/testimonials" routerLinkActive="active">
+                <p>Testimonials</p>
+              </a>
+            </li>
+            <li>
+              <a routerLink="/admin/homepage-settings" routerLinkActive="active">
+                <p>Home Page Settings</p>
+              </a>
+            </li>
+            <li>
+              <a routerLink="/admin/milestones" routerLinkActive="active">
+                <p>Milestones</p>
+              </a>
+            </li>
+            <li>
+              <a routerLink="/admin/brands" routerLinkActive="active">
+                <p>Brands</p>
+              </a>
+            </li>
+            <li>
+              <a routerLink="/admin/email-templates" routerLinkActive="active">
+                <p>Email Templates</p>
+              </a>
+            </li>
+            <li>
+              <a routerLink="/admin/upload-reports" routerLinkActive="active">
+                <p>Upload Reports</p>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </li>
+      <li>
+        <a routerLink="/admin/profile" routerLinkActive="active">
+          <img src="assets/images/icon/profile-icon.svg" alt="">
+          <span>Profile</span>
+        </a>
+      </li>
+    </ul>
+    <ul class="sidebar-main-inner-menu menu-btm-fix">
+      <li>
+        <a (click)="logout()">
+          <span>LOGOUT</span>
+          <div class="menu-btm-fix-right"><img src="assets/images/icon/logout-icon.svg" alt=""></div>
+        </a>
+      </li>
+    </ul>
+  </div>
+</div>

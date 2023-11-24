@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="15" height="6" viewBox="0 0 15 6">
+  <defs>
+    <clipPath id="clip-path">
+      <path id="Triangle_2" data-name="Triangle 2" d="M7.5,0,15,6H0Z" transform="translate(15 6) rotate(180)" fill="#d8d8d8"/>
+    </clipPath>
+  </defs>
+  <g id="Mask_Group_7" data-name="Mask Group 7" clip-path="url(#clip-path)">
+    <g id="_Icon_Color" data-name="🎨 Icon Color" transform="translate(0 -4.5)">
+      <rect id="Rectangle" width="15" height="15" fill="#2d3538"/>
+    </g>
+  </g>
+</svg>

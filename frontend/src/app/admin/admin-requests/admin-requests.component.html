@@ -1,0 +1,76 @@
+<div class="dash-wrapper admin-panel-content">
+  <app-admin-header></app-admin-header>
+  <app-admin-sidebar></app-admin-sidebar>
+  <main class="content-wrapper-section">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-12">
+          <div class="inr-title-comn d-flex align-items-center justify-content-between">
+            <h3>Requests</h3>
+          </div>
+        </div>
+        <div class="col-12">
+          <div class="dash-box-white">
+            <table datatable [dtOptions]='dtOptions' class="display">
+              <thead>
+              <tr>
+                <th>Buyer</th>
+                <th>Shape</th>
+                <th>Size</th>
+                <th>Color</th>
+                <th>Clarity</th>
+                <th>Price</th>
+                <th>Buyer Location</th>
+                <th>Created</th>
+                <th>Expires</th>
+                <th>Status</th>
+                <th>Stance</th>
+              </tr>
+              </thead>
+              <tbody *ngIf="searchlist?.length>0">
+              <tr *ngFor="let item of searchlist">
+                <td>
+                  <a [routerLink]="['/admin/buy-requests/view-requests',item.buy_requests_id]">{{item.firstname.toUpperCase()}} {{item.lastname.toUpperCase()}}</a>
+                </td>
+                <td>
+                  <div *ngIf="item.shape_advanced != ''">{{item.shape_advanced}}</div>
+                  <div *ngIf="item.shape_advanced == ''">{{item.shape_basic}}</div>
+                </td>
+                <td>
+                  <div *ngIf="item.size_specific != ''">{{item.size_specific}}</div>
+                  <div *ngIf="item.size_specific == ''">{{item.size_general_from}}-{{item.size_general_to}}</div>
+                </td>
+                <td>{{ item['color_fancy'] ? item['color_fancy'] : "-"}}</td>
+                <td>{{ item['clarity'] ? item['clarity'] : "-"}}</td>
+                <td>{{item.price_total_from}}-{{item.price_total_to}}</td>
+                <td>{{ item['location'] ? item['location'] : "-"}}</td>
+                <td>{{item.created_at | date}}</td>
+                <td>
+                  <div *ngIf="item['expiration_date']">{{item.expiration_date | date}}</div>
+                  <div *ngIf="item['expiration_date'] == null">-</div>
+                </td>
+                <td>
+                  <div *ngIf="item.status == 1">Active</div>
+                  <div *ngIf="item.status == 0">Deactive</div>
+                </td>
+                <td>
+                  <div *ngIf="item['stance'] == 1">Viewed</div>
+                  <div *ngIf="item['stance'] == 2">In Review</div>
+                  <div *ngIf="item['stance'] == 3">Accepted</div>
+                  <div *ngIf="item['stance'] == 4">Rejected</div>
+                  <div *ngIf="item['stance'] == 0">Open</div>
+                </td>
+              </tr>
+              </tbody>
+              <tbody *ngIf="searchlist?.length == 0">
+              <tr>
+                <td colspan="10" class="no-data-available">No data!</td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>

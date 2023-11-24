@@ -1,0 +1,40 @@
+.btn-span {
+  background: var(--thm-color);
+  color: var(--color-white) !important;
+  border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  text-transform: capitalize;
+  font-weight: 600;
+  padding: 11px 30px 11px 30px;
+  border: 0;
+  outline: none;
+  box-shadow: none;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.news-bx-dtls .add-card-box-img img {
+  width: auto;
+  height: auto;
+  border-radius: 6px;
+  -webkit-border-radius: 6px;
+  -moz-border-radius: 6px;
+}
+
+.news-bx-dtls .add-card-box-text p {
+  overflow: unset;
+  display: block;
+  -webkit-line-clamp: unset;
+  -webkit-box-orient: unset;
+  min-height: unset;
+  margin-bottom: 1rem;
+}
+
+.add-card-box-text span img {
+  max-width: 100%;
+  height: auto;
+}

@@ -1,0 +1,362 @@
+<header class="header-fix-top-cust">
+  <nav class="navbar fixed-top">
+    <ul
+      class="d-flex align-items-center mr-auto align-items-center hdr-top-box"
+    >
+      <li class="nav-item">
+        <div class="hdr-top-box-inr">
+          <div class="toggle-icon-main toggle-icon-main-sec d-xl-none d-block">
+            <img src="assets/images/icon/toggle-icon.svg" alt="" />
+          </div>
+          <div class="d-xl-none d-block responsive-view-logo">
+            <a routerLink="/dashboard">
+              <img src="assets/images/logo/logo.svg" alt="" />
+            </a>
+          </div>
+          <!--<div class="d-md-none">
+            <div class="hdr-top-box-inr-icon">
+              <img src="assets/images/icon/search-icon.svg" alt="">
+            </div>
+          </div>
+          <div class="d-md-block d-none">
+            <div class="hdr-top-box-inr-icon">
+              <img src="assets/images/icon/search-icon.svg" alt="">
+            </div>
+            <input type="text" class="form-control" placeholder="Search">
+          </div>-->
+        </div>
+      </li>
+      <li class="nav-item">
+        <i class="fa fa-ellipsis-v d-md-none d-block" aria-hidden="true"></i>
+      </li>
+    </ul>
+    <ul
+      class="d-flex align-items-center align-items-center ml-auto responsive-view-menu"
+    >
+      <li class="nav-item right-nav-link-new">
+        <a routerLink="/message">
+          <img src="assets/images/icon/chat-icon.svg" alt="" />
+        </a>
+      </li>
+      <li class="nav-item right-nav-link-new calc-main">
+        <a href="javascript:void(0)">
+          <img
+            src="assets/images/icon/cal-icon.svg"
+            class="calc-click"
+            (click)="pricelist()"
+            alt=""
+          />
+        </a>
+        <div class="calc-section">
+          <form [formGroup]="calc">
+            <h6>Your Diamond</h6>
+            <div class="calc-inr-top">
+              <div class="row mr-0">
+                <div class="col-2 pr-0">
+                  <h5>Size</h5>
+                  <input
+                    type="text"
+                    value=""
+                    #size
+                    class="form-control input-style"
+                    placeholder=""
+                    (keyup)="setParam()"
+                    (ngModelChange)="setParam()"
+                    (click)="getID($event)"
+                    formControlName="size"
+                  />
+                </div>
+                <div class="col-4 pr-0">
+                  <h5>Shape</h5>
+                  <select
+                    class="custom-select form-control input-style"
+                    (change)="setParam()"
+                    formControlName="shape"
+                  >
+                    <option selected value="Round">Round</option>
+                    <option value="Pear">Pear</option>
+                    <option value="Emerald">Emerald</option>
+                    <option value="Square Emerald">Square Emerald</option>
+                    <option value="Princess">Princess</option>
+                    <option value="Marquise">Marquise</option>
+                    <option value="Asscher">Asscher</option>
+                    <option value="Baguette">Baguette</option>
+                    <option value="Tapered Baguette">Tapered Baguette</option>
+                    <option value="Tapered Bullet">Tapered Bullet</option>
+                    <option value="Briolette">Briolette</option>
+                    <option value="Bullets">Bullets</option>
+                    <option value="Cushion Brilliant">Cushion Brilliant</option>
+                    <option value="Cushion Modified">Cushion Modified</option>
+                    <option value="EuropeanCut">EuropeanCut</option>
+                    <option value="Flanders">Flanders</option>
+                    <option value="Half Moon">Half Moon</option>
+                    <option value="Heart">Heart</option>
+                    <option value="Hexagonal">Hexagonal</option>
+                    <option value="Kite">Kite</option>
+                    <option value="Lozenge">Lozenge</option>
+                    <option value="Octagonal">Octagonal</option>
+                    <option value="Old Miner">Old Miner</option>
+                    <option value="Oval">Oval</option>
+                    <option value="Pentagonal">Pentagonal</option>
+                    <option value="Radiant">Radiant</option>
+                    <option value="Square Radiant">Square Radiant</option>
+                    <option value="Rose">Rose</option>
+                    <option value="Shield">Shield</option>
+                    <option value="Square">Square</option>
+                    <option value="Star">Star</option>
+                    <option value="Trapezoid">Trapezoid</option>
+                    <option value="Triangle">Triangle</option>
+                    <option value="Trilliant">Trilliant</option>
+                  </select>
+                </div>
+                <div class="col-3 pr-0">
+                  <h5>Color</h5>
+                  <select
+                    class="custom-select form-control input-style"
+                    (change)="setParam()"
+                    formControlName="color"
+                  >
+                    <option selected value="D">D</option>
+                    <option value="E">E</option>
+                    <option value="F">F</option>
+                    <option value="G">G</option>
+                    <option value="H">H</option>
+                    <option value="I">I</option>
+                    <option value="J">J</option>
+                    <option value="K">K</option>
+                    <option value="L">L</option>
+                    <option value="M">M</option>
+                    <option value="N">N</option>
+                    <option value="O">O</option>
+                    <option value="P">P</option>
+                    <option value="Q">Q</option>
+                    <option value="R">R</option>
+                    <option value="S">S</option>
+                    <option value="T">T</option>
+                    <option value="U">U</option>
+                    <option value="V">V</option>
+                    <option value="W">W</option>
+                    <option value="X">X</option>
+                    <option value="Y">Y</option>
+                    <option value="Z">Z</option>
+                  </select>
+                </div>
+                <div class="col-3 pr-0">
+                  <h5>Clarity</h5>
+                  <select
+                    class="custom-select form-control input-style"
+                    (change)="setParam()"
+                    formControlName="clarity"
+                  >
+                    <!--<option selected value="FL">FL</option>-->
+                    <option selected value="IF">IF</option>
+                    <option value="VVS1">VVS1</option>
+                    <option value="VVS2">VVS2</option>
+                    <option value="VS1">VS1</option>
+                    <option value="VS2">VS2</option>
+                    <option value="SI1">SI1</option>
+                    <option value="SI2">SI2</option>
+                    <option value="SI3">SI3</option>
+                    <option value="I1">I1</option>
+                    <option value="I2">I2</option>
+                    <option value="I3">I3</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div class="calc-inr-ctr my-2">
+              <div class="row mr-0">
+                <div class="col-12 pr-0">
+                  <label>List Price</label>
+                </div>
+                <div class="col-6 pr-0">
+                  <div class="form-group mb-0">
+                    <h5>$/CT</h5>
+                    <h4>{{ price }}</h4>
+                  </div>
+                </div>
+                <div class="col-6 pr-0">
+                  <div class="form-group mb-0">
+                    <h5>$TOTAL</h5>
+                    <h4>{{ mulPrice }}</h4>
+                  </div>
+                </div>
+              </div>
+              <div class="row mt-3">
+                <div class="col-12">
+                  <label>Your Price</label>
+                </div>
+                <div class="row m-0">
+                  <div class="col">
+                    <p>$/CT</p>
+                    <input
+                      type="text"
+                      value="{{
+                        price + (price / 100) * (this.percentageDefault - 0)
+                      }}"
+                      (input)="prPercent = $event.target.value"
+                      (ngModelChange)="typePriceValue($event.target.value)"
+                      (change)="typePriceValue($event.target.value)"
+                      (keyup)="typePriceValue($event.target.value)"
+                      (click)="getID($event)"
+                      [readOnly]="fval.size.invalid"
+                      #prPerCent
+                      formControlName="prPerCent"
+                      placeholder=""
+                      class="form-control input-style"
+                    />
+                  </div>
+                  <div class="col">
+                    <p>$TOTAL</p>
+                    <input
+                      type="text"
+                      value="{{
+                        mulPrice +
+                          (mulPrice / 100) * (this.percentageDefault - 0)
+                      }}"
+                      (ngModelChange)="typeTotalValue($event.target.value)"
+                      (keyup)="typeTotalValue($event.target.value)"
+                      (click)="getID($event)"
+                      class="form-control input-style"
+                      #total
+                      formControlName="total"
+                      [readOnly]="fval.size.invalid"
+                      placeholder=""
+                    />
+                  </div>
+                  <div class="col-12">
+                    <div class="number text-center mt-3">
+                      <p>Rap%</p>
+                      <span
+                        class="minus"
+                        (click)="size.value > 0 ? setPercent(-1) : false"
+                        >-</span
+                      >
+                      <input
+                        type="text"
+                        class="form-control input-style"
+                        #percentage
+                        formControlName="percentage"
+                        id="rap"
+                        value="{{ percentageDefault }}"
+                        (ngModelChange)="typePercent($event.target.value)"
+                        (change)="typePercent($event.target.value)"
+                        (keyup)="typePercent($event.target.value)"
+                        (click)="getID($event)"
+                        [readOnly]="fval.size.invalid"
+                        placeholder=""
+                      />
+                      <span
+                        class="plus"
+                        (click)="size.value > 0 ? setPercent(1) : false"
+                        >+</span
+                      >
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="calc-inr-btm">
+              <div class="calc-inr-btm-inr" (mousedown)="pressKey(7)">
+                <button type="button" class="btn">7</button>
+              </div>
+              <div class="calc-inr-btm-inr" (mousedown)="pressKey(8)">
+                <button type="button" class="btn">8</button>
+              </div>
+              <div class="calc-inr-btm-inr" (mousedown)="pressKey(9)">
+                <button type="button" class="btn">9</button>
+              </div>
+              <div class="calc-inr-btm-inr" (mousedown)="pressKey(4)">
+                <button type="button" class="btn">4</button>
+              </div>
+              <div class="calc-inr-btm-inr" (mousedown)="pressKey(5)">
+                <button type="button" class="btn">5</button>
+              </div>
+              <div class="calc-inr-btm-inr" (mousedown)="pressKey(6)">
+                <button type="button" class="btn">6</button>
+              </div>
+              <div class="calc-inr-btm-inr" (mousedown)="pressKey(1)">
+                <button type="button" class="btn">1</button>
+              </div>
+              <div class="calc-inr-btm-inr" (mousedown)="pressKey(2)">
+                <button type="button" class="btn">2</button>
+              </div>
+              <div class="calc-inr-btm-inr" (mousedown)="pressKey(3)">
+                <button type="button" class="btn">3</button>
+              </div>
+              <div class="calc-inr-btm-inr" (mousedown)="invSign()">
+                <button type="button" class="btn">+/-</button>
+              </div>
+              <div class="calc-inr-btm-inr">
+                <button type="button" class="btn" (mousedown)="pressKey(0)">
+                  0
+                </button>
+              </div>
+              <div class="calc-inr-btm-inr">
+                <button
+                  type="button"
+                  class="btn last-btn"
+                  (mousedown)="removedata()"
+                >
+                  <span
+                    ><i class="fa fa-times-circle" aria-hidden="true"></i
+                  ></span>
+                </button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </li>
+      <li class="nav-item right-nav-link-new notification-custom-main">
+        <a routerLink="/cart">
+          <img
+            src="assets/images/icon/add-cart-icon.svg"
+            class="notification-click"
+            alt=""
+          />
+          <span class="cart-value" *ngIf="CountCartItem > 0">{{
+            CountCartItem
+          }}</span>
+        </a>
+      </li>
+      <li>
+        <div class="header-user-profile-inner-cust">
+          <div class="pro-sec-cust">
+            <img src="{{ company_logo }}" class="" />
+            <div>
+              <h6 style="text-transform: capitalize">
+                {{ firstname }} {{ lastname }}
+              </h6>
+            </div>
+          </div>
+          <div class="profile-inner-cust">
+            <ul>
+              <li>
+                <a routerLink="/profile"
+                  ><i class="fa fa-user"></i> My Profile</a
+                >
+              </li>
+              <li>
+                <a routerLink="/edit-profile"
+                  ><i class="fa fa-edit"></i> edit profile</a
+                >
+              </li>
+              <li>
+                <a (click)="logout()" class="border-0"
+                  ><i class="fa fa-sign-out"></i> Logout</a
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+      </li>
+    </ul>
+    <div class="d-md-none">
+      <div class="search-form-wrapper">
+        <div class="search-bar">
+          <input type="text" class="form-control" placeholder="Search" />
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>

@@ -1,0 +1,6 @@
+.tabs-section-text p{
+  letter-spacing: 0.035em;
+  font-size: 15px;
+  color: var(--color-dark);
+  line-height: 24px;
+}

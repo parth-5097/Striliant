@@ -1,0 +1,87 @@
+<div class="container-fluid h-100">
+  <div class="row align-items-center h-100">
+    <div class="col-md-6 p-0">
+      <div class="log-left-section d-flex align-items-center justify-content-center">
+        <div class="log-left-mdl text-center">
+          <img src="assets/images/logo/logo-kukadia.svg" alt="" />
+          <div class="">
+            <p>Warm Regards!</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="log-right-section d-flex align-items-start justify-content-center vh-100">
+        <div class="row w-100">
+          <div class="col-12">
+            <div class="log-right-top-section pb-md-5 pb-3 d-flex align-items-center justify-content-end">
+              <div class="ftr-lang">
+                <select class="custom-select form-control">
+                  <option selected="">ENG</option>
+                  <option value="1">GUJ</option>
+                  <option value="3">HIN</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class="col-12">
+            <div class="log-right-fix">
+              <div class="log-right-top">
+                <h1>Admin Verify Account</h1>
+                <p>Welcome back ! Please Verify to your Account</p>
+              </div>
+              <div class="log-right-btm">
+                <form class="row" [formGroup]="AddForm" (ngSubmit)="onSubmit()">
+                  <div class="col-12">
+                    <div class="form-group">
+                      <label>Password<span>*</span></label>
+                      <input type="password" formControlName="password" class="form-control input-style" placeholder="Enter your password" [ngClass]="{ 'is-invalid': submitted && fval.password.errors }"/>
+                      <div *ngIf="submitted && fval.password.errors" class="invalid-feedback">
+                        <div *ngIf="fval.password.errors.required">
+                          Password is required
+                        </div>
+                        <div *ngIf="fval.password.errors.minlength">Password must be at least 6 characters</div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-12">
+                    <div class="form-group">
+                      <label>Confirm Password<span>*</span></label>
+                      <input type="password" formControlName="confirm_password" class="form-control input-style" placeholder="Enter your confirm password" [ngClass]="{ 'is-invalid': submitted && fval.confirm_password.errors }"/>
+                      <div *ngIf="submitted && fval.confirm_password.errors" class="invalid-feedback">
+                        <div *ngIf="fval.confirm_password.errors.required">
+                          Confirm Password is required
+                        </div>
+                        <div *ngIf="fval.confirm_password.errors.mustMatch">Passwords and Confirm Password not must match</div>
+                        <div *ngIf="fval.confirm_password.errors.minlength">Confirm Password must be at least 6 characters</div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-12">
+                    <label>Captcha<span>*</span></label>
+                    <div class="input-group mb-3">
+                      <input type="text" formControlName="captcha" class="form-control input-style" placeholder="Enter captcha" [ngClass]="{ 'is-invalid': submitted && fval.captcha.errors }" />
+                      <div class="input-group-append">
+                        <span class="input-group-text">{{randomcaptcha}}</span>
+                      </div>
+                      <div *ngIf="submitted && fval.captcha.errors" class="invalid-feedback">
+                        <div *ngIf="fval.captcha.errors.required">
+                          Captcha is required
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-12">
+                    <div class="btn-class text-center py-md-5 py-3">
+                      <button type="submit" class="btn btn-dash">Verify Account</button>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

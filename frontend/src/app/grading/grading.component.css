@@ -1,0 +1,5 @@
+.infa-image img{
+  filter: grayscale(1);
+  -webkit-filter: grayscale(1);
+  -moz-filter: grayscale(1);
+}

@@ -1,0 +1,92 @@
+<div class="dash-wrapper admin-panel-content">
+  <app-admin-header></app-admin-header>
+  <app-admin-sidebar></app-admin-sidebar>
+  <main class="content-wrapper-section">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-12">
+          <div class="inr-title-comn d-lg-flex align-items-center">
+            <h3>Abandoned Checkouts</h3>
+          </div>
+        </div>
+        <div class="col-12">
+          <div class="dash-box-white">
+            <div class="mb-4 mt-2 d-lg-flex justify-content-center">
+              <div class="filter-row d-sm-flex">
+                <p>Pieces: <span>{{Pieces}}</span></p>
+                <p>Cts: <span></span>{{Cts}}</p>
+                <p>Avg Disc: <span>{{Avg_Disc+'%'}}</span></p>
+                <p>Total Ct/Pr: <span>{{Total_Cr | currency}}</span></p>
+                <p>Amount: <span>{{Amount | currency}}</span></p>
+              </div>
+            </div>
+            <div class="table-cust-main mt-3">
+              <table datatable [dtOptions]='dtOptions' class="display">
+                <thead>
+                <tr>
+                  <th class="no-search-filter">Media</th>
+                  <th>Vendor ID</th>
+                  <th>Stock No</th>
+                  <th>Shape</th>
+                  <th>Cts</th>
+                  <th>Color</th>
+                  <th>Cut</th>
+                  <th>Polish</th>
+                  <th>Symmetry</th>
+                  <th>Rap Price</th>
+                  <th>Vendor Back</th>
+                  <th>Vendor Price W Back</th>
+                  <th>Vendor Subtotal</th>
+                  <th>Sale Back</th>
+                  <th>Sales Price W Back</th>
+                  <th>Sale Subtotal</th>
+                  <th>Date</th>
+                </tr>
+                </thead>
+                <tbody *ngIf="searchlist?.length>0">
+                <tr *ngFor="let item of searchlist">
+                  <td>
+                    <a [href]="photoURL(item['report_file'])" target="_blank">
+                      <img src="assets/images/icon/certificate-icon.svg" class="mr-2 table-img-inr" alt="" />
+                    </a>
+                    <a [href]="photoURL(item['diamond_img'])" target="_blank">
+                      <img src="assets/images/icon/image-icon.svg" class="mr-2 table-img-inr" alt="" />
+                    </a>
+                    <a [href]="photoURL(item['video_link'])" target="_blank">
+                      <img src="assets/images/icon/video-icon.svg" class="table-img-inr" alt="" />
+                    </a>
+                  </td>
+                  <td>{{ item.vendor_id}}</td>
+                  <td>
+                    <a [routerLink]="['/admin/diamonds/view-diamonds',item.diamond_id]">{{ item.stock_number}}</a>
+                  </td>
+                  <td>{{ item['shape'] ? item['shape'] : "-"}}</td>
+                  <td>{{ item['size'] ? item['size']+' Ct' : "-"}}</td>
+                  <td>{{ item['color'] ? item['color'] : "-"}}</td>
+                  <td>{{ item['cut'] ? item['cut'] : "-"}}</td>
+                  <td>{{ item['polish'] ? item['polish'] : "-"}}</td>
+                  <td>{{ item['symmetry'] ? item['symmetry'] : "-"}}</td>
+                  <td>{{ item['rap_price'] | currency }}</td>
+                  <td>{{ item['vendor_back'] ? item['vendor_back']+'%' : "-"}}</td>
+                  <td>{{ item['vendor_price_back'] | currency}}</td>
+                  <td>{{ item['vendor_subtotal'] | currency}}</td>
+                  <td>{{ item['sale_back'] ? item['sale_back']+'%' : "-"}}</td>
+                  <td>{{ item['sale_price_back'] | currency}}</td>
+                  <td>{{ item['sale_subtotal'] | currency}}</td>
+                  <td>{{ item.created_at | date}}</td>
+                </tr>
+                </tbody>
+                <tbody *ngIf="searchlist?.length == 0">
+                <tr>
+                  <td colspan="17" class="no-data-available">No data!</td>
+                </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="overlay toggle-icon-main"></div>
+  </main>
+</div>

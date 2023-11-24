@@ -1,0 +1,54 @@
+<div class="dash-wrapper admin-panel-content">
+  <app-admin-header></app-admin-header>
+  <app-admin-sidebar></app-admin-sidebar>
+  <main class="content-wrapper-section">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-12">
+          <div class="inr-title-comn d-flex align-items-center">
+            <h3>Email Templates</h3>
+            <div class="inr-title-btn ml-auto mt-0">
+              <a routerLink="/admin/email-templates/add-template" class="btn btn-inr-top m-0">Add Template</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-12">
+          <div class="dash-box-white">
+            <div class="table-responsive">
+              <table datatable [dtOptions]='dtOptions' class="display">
+                <thead>
+                <tr>
+                  <th>Title</th>
+                  <th>Subject</th>
+                  <th>Content</th>
+                  <th>Date</th>
+                  <th class="no-search-filter">Action</th>
+                </tr>
+                </thead>
+                <tbody *ngIf="getlist?.length>0">
+                <tr *ngFor="let item of getlist">
+                  <td>{{item.email_name}}</td>
+                  <td>{{item.email_subject}}</td>
+                  <td class="fix-wdth-dis">{{item.email_content}}</td>
+                  <td>{{item.created_at | date}}</td>
+                  <td>
+                    <a [routerLink]="['/admin/email-templates/edit-template',item.templateId]">
+                      <img src="assets/images/icon/edit-icon-table.svg" class="mx-2 table-img-inr" alt="" />
+                    </a>
+                  </td>
+                </tr>
+                </tbody>
+                <tbody *ngIf="getlist?.length == 0">
+                <tr>
+                  <td colspan="5" class="no-data-available">No data!</td>
+                </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="overlay toggle-icon-main"></div>
+  </main>
+</div>

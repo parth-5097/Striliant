@@ -1,0 +1,1075 @@
+<div class="dash-wrapper admin-panel-content">
+  <app-admin-header></app-admin-header>
+  <app-admin-sidebar></app-admin-sidebar>
+  <main class="content-wrapper-section">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-12">
+          <div class="inr-title-comn">
+            <div class="d-flex align-items-center">
+              <a routerLink="/admin/diamonds" class="bk-icon d-inline-flex align-items-center">
+                <img src="assets/images/icon/back-icon.svg" alt="">
+              </a>
+            <h3>{{title}} Diamonds</h3>
+            </div>
+          </div>
+        </div>
+        <div class="col-12">
+          <div class="dash-box-white">
+            <form [formGroup]="uploadForm" (ngSubmit)="onSubmitUpload()">
+              <div class="row tabs-space-ty">
+                <div class="col-12">
+                  <div class="inr-input-div">
+                    <h6>General</h6>
+                    <div class="row">
+                      <div class="col-md-3 form-group">
+                        <label class="dash-label">Vendor Name</label>
+                        <input type="text" formControlName="vendor_name" class="form-control input-style" [ngClass]="{ 'is-invalid': upload_submitted && fval.vendor_name.errors }" />
+                        <div *ngIf="upload_submitted && fval.vendor_name.errors" class="invalid-feedback">
+                          <div *ngIf="fval.vendor_name.errors.required">
+                            Vendor Name is required
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-3 form-group">
+                        <label class="dash-label">Vendor Id</label>
+                        <input type="text" formControlName="vendor_id" class="form-control input-style" [ngClass]="{ 'is-invalid': upload_submitted && fval.vendor_id.errors }" />
+                        <div *ngIf="upload_submitted && fval.vendor_id.errors" class="invalid-feedback">
+                          <div *ngIf="fval.vendor_id.errors.required">
+                            Vendor Id is required
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-3 form-group">
+                        <label class="dash-label">Vendor Email</label>
+                        <input type="email" formControlName="vendor_email" class="form-control input-style" [ngClass]="{ 'is-invalid': upload_submitted && fval.vendor_email.errors }" />
+                        <div *ngIf="upload_submitted && fval.vendor_email.errors" class="invalid-feedback">
+                          <div *ngIf="fval.vendor_email.errors.required">
+                            Vendor Email is required
+                          </div>
+                          <div *ngIf="fval.vendor_email.errors.email">Email Address must be a valid email address</div>
+                        </div>
+                      </div>
+                      <div class="col-md-3 form-group">
+                        <label class="dash-label">Vendor Stock Id</label>
+                        <input type="text" formControlName="vendor_stock_id" class="form-control input-style" [ngClass]="{ 'is-invalid': upload_submitted && fval.vendor_stock_id.errors }" />
+                        <div *ngIf="upload_submitted && fval.vendor_stock_id.errors" class="invalid-feedback">
+                          <div *ngIf="fval.vendor_stock_id.errors.required">
+                            Vendor Stock Id is required
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-4 form-group">
+                        <label class="dash-label">Stock #</label>
+                        <input type="text" formControlName="stock_number" class="form-control input-style" [ngClass]="{ 'is-invalid': upload_submitted && fval.stock_number.errors }" />
+                        <div *ngIf="upload_submitted && fval.stock_number.errors" class="invalid-feedback">
+                          <div *ngIf="fval.stock_number.errors.required">
+                            Stock is required
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-4 form-group">
+                        <label class="dash-label">Diamond Type</label>
+                        <select class="custom-select form-control input-style" formControlName="diamond_type" [ngClass]="{ 'is-invalid': upload_submitted && fval.diamond_type.errors }">
+                          <option value="Natural">Natural</option>
+                          <option value="Lab Grown">Lab Grown</option>
+                        </select>
+                        <div *ngIf="upload_submitted && fval.diamond_type.errors" class="invalid-feedback">
+                          <div *ngIf="fval.diamond_type.errors.required">
+                            Diamond Type is required
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-4 form-group">
+                        <label class="dash-label">Availability</label>
+                        <select class="custom-select form-control input-style" formControlName="availability" [ngClass]="{ 'is-invalid': upload_submitted && fval.availability.errors }">
+                          <option value="GA">Guaranteed Availability</option>
+                          <option value="M">Out on Memo</option>
+                          <option value="STPS">Subject to Prior Sale</option>
+                          <option value="NA">Not Available</option>
+                        </select>
+                        <div *ngIf="upload_submitted && fval.availability.errors" class="invalid-feedback">
+                          <div *ngIf="fval.availability.errors.required">
+                            Availability is required
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-12">
+                  <div class="inr-input-div">
+                    <h6>Price</h6>
+                    <div class="row">
+                      <div class="col-md-4 form-group">
+                        <label class="dash-label">Rap Price($)</label>
+                        <input type="text" (keypress)="isNumberKey($event)" formControlName="rap_price" class="form-control input-style" [ngClass]="{ 'is-invalid': upload_submitted && fval.rap_price.errors }" />
+                        <div *ngIf="upload_submitted && fval.rap_price.errors" class="invalid-feedback">
+                          <div *ngIf="fval.rap_price.errors.required">
+                            Rap Price is required
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-4 form-group">
+                        <label class="dash-label">Vendor Back(%)</label>
+                        <input type="text" formControlName="vendor_back" class="form-control input-style" placeholder="" [ngClass]="{ 'is-invalid': upload_submitted && fval.vendor_back.errors }" />
+                        <div *ngIf="upload_submitted && fval.vendor_back.errors" class="invalid-feedback">
+                          <div *ngIf="fval.vendor_back.errors.required">
+                            Vendor Back is required
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-4 form-group">
+                        <label class="dash-label">Sale Back(%)</label>
+                        <input type="text" formControlName="sale_back" class="form-control input-style" placeholder="" [ngClass]="{ 'is-invalid': upload_submitted && fval.sale_back.errors }" />
+                        <div *ngIf="upload_submitted && fval.sale_back.errors" class="invalid-feedback">
+                          <div *ngIf="fval.sale_back.errors.required">
+                            Sale Back is required
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-12">
+                  <div class="inr-input-div">
+                    <h6>Location</h6>
+                    <div class="row">
+                      <div class="col-md-4 form-group">
+                        <label class="dash-label">Country</label>
+                        <select class="custom-select form-control input-style" formControlName="country" [ngClass]="{ 'is-invalid': upload_submitted && fval.country.errors }" >
+                          <option selected="" value="">Select......</option>
+                          <option value="US">USA</option>
+                          <option value="LA">Los Angeles</option>
+                          <option value="CH">Chicago</option>
+                          <option value="IN">India</option>
+                          <option value="NY">New York</option>
+                          <option value="HK">Hong kong</option>
+                          <option value="BE">Belgium</option>
+                          <option value="EU">Europe</option>
+                          <option value="CH">China</option>
+                          <option value="JA">Japan</option>
+                        </select>
+                        <div *ngIf="upload_submitted && fval.country.errors" class="invalid-feedback">
+                          <div *ngIf="fval.country.errors.required">
+                            Country is required
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-4 form-group">
+                        <label class="dash-label">State</label>
+                        <input type="text" formControlName="state" class="form-control input-style" placeholder="" [ngClass]="{ 'is-invalid': upload_submitted && fval.state.errors }" />
+                        <div *ngIf="upload_submitted && fval.state.errors" class="invalid-feedback">
+                          <div *ngIf="fval.state.errors.required">
+                            State is required
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-4 form-group">
+                        <label class="dash-label">City</label>
+                        <input type="text" formControlName="city" class="form-control input-style" placeholder="" [ngClass]="{ 'is-invalid': upload_submitted && fval.city.errors }" />
+                        <div *ngIf="upload_submitted && fval.city.errors" class="invalid-feedback">
+                          <div *ngIf="fval.city.errors.required">
+                            City is required
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-12">
+                  <div class="inr-input-div">
+                    <h6>Report Information</h6>
+                    <div class="row">
+                      <div class="col-md-3 form-group">
+                        <label class="dash-label">Shape</label>
+                        <select class="custom-select form-control input-style" formControlName="shape" [ngClass]="{ 'is-invalid': upload_submitted && fval.shape.errors }">
+                          <option selected="" value="">Select......</option>
+                          <option value="RD">Round</option>
+                          <option value="PR">Pear</option>
+                          <option value="CU">Cushion</option>
+                          <option value="AC">Asscher</option>
+                          <option value="MQ">Marquise</option>
+                          <option value="EM">Emerald</option>
+                          <option value="HT">Heart</option>
+                          <option value="PS">Princess</option>
+                          <option value="RA">Radiant</option>
+                          <option value="OV">Oval</option>
+                          <option value="EU">European Cut</option>
+                        </select>
+                        <div *ngIf="upload_submitted && fval.shape.errors" class="invalid-feedback">
+                          <div *ngIf="fval.shape.errors.required">
+                            Shape is required
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-3 form-group">
+                        <label class="dash-label">Cts</label>
+                        <input type="text" (keypress)="isNumberKey($event)" formControlName="size" class="form-control input-style" placeholder="" [ngClass]="{ 'is-invalid': upload_submitted && fval.size.errors }" />
+                        <div *ngIf="upload_submitted && fval.size.errors" class="invalid-feedback">
+                          <div *ngIf="fval.size.errors.required">
+                            Carat is required
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-3 form-group">
+                        <label class="dash-label">Color</label>
+                        <select class="custom-select form-control input-style" formControlName="color" [ngClass]="{ 'is-invalid': upload_submitted && fval.color.errors }">
+                          <option selected="" value="">Select......</option>
+                          <option value="D">D</option>
+                          <option value="E">E</option>
+                          <option value="F">F</option>
+                          <option value="G">G</option>
+                          <option value="H">H</option>
+                          <option value="I">I</option>
+                          <option value="J">J</option>
+                          <option value="K">K</option>
+                          <option value="L">L</option>
+                          <option value="M">M</option>
+                          <option value="N">N</option>
+                          <option value="O">O</option>
+                          <option value="P">P</option>
+                          <option value="Q">Q</option>
+                          <option value="R">R</option>
+                          <option value="S">S</option>
+                          <option value="T">T</option>
+                          <option value="U">U</option>
+                          <option value="V">V</option>
+                          <option value="W">W</option>
+                          <option value="X">X</option>
+                          <option value="Y">Y</option>
+                          <option value="Z">Z</option>
+                        </select>
+                        <div *ngIf="upload_submitted && fval.color.errors" class="invalid-feedback">
+                          <div *ngIf="fval.color.errors.required">
+                            Color is required
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-3 form-group">
+                        <label class="dash-label">Clarity</label>
+                        <select class="custom-select form-control input-style" formControlName="clarity" [ngClass]="{ 'is-invalid': upload_submitted && fval.clarity.errors }">
+                          <option selected="" value="">Select......</option>
+                          <option value="FL">FL</option>
+                          <option value="IF">IF</option>
+                          <option value="VVS1">VVS1</option>
+                          <option value="VVS2">VVS2</option>
+                          <option value="VS1">VS1</option>
+                          <option value="VS2">VS2</option>
+                          <option value="SI1">SI1</option>
+                          <option value="SI2">SI2</option>
+                          <option value="SI3">SI3</option>
+                          <option value="I1">I1</option>
+                          <option value="I2">I2</option>
+                          <option value="I3">I3</option>
+                        </select>
+                        <div *ngIf="upload_submitted && fval.clarity.errors" class="invalid-feedback">
+                          <div *ngIf="fval.clarity.errors.required">
+                            Clarity is required
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-12">
+                  <div class="inr-input-div">
+                    <h6>Finish</h6>
+                    <div class="row">
+                      <div class="col-md-4 form-group">
+                        <label class="dash-label">Cut</label>
+                        <select class="custom-select form-control input-style" formControlName="cut" [ngClass]="{ 'is-invalid': upload_submitted && fval.cut.errors }">
+                          <option selected="" value="">Select......</option>
+                          <option value="ID">Ideal</option>
+                          <option value="EX">Excellent</option>
+                          <option value="VG">Very Good</option>
+                          <option value="GD">Good</option>
+                          <option value="FA">Fair</option>
+                          <option value="PO">Poor</option>
+                        </select>
+                        <div *ngIf="upload_submitted && fval.cut.errors" class="invalid-feedback">
+                          <div *ngIf="fval.cut.errors.required">
+                            Cut is required
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-4 form-group">
+                        <label class="dash-label">Polish</label>
+                        <select class="custom-select form-control input-style" formControlName="polish" [ngClass]="{ 'is-invalid': upload_submitted && fval.polish.errors }">
+                          <option selected="" value="">Select......</option>
+                          <option value="ID">Ideal</option>
+                          <option value="EX">Excellent</option>
+                          <option value="VG">Very Good</option>
+                          <option value="GD">Good</option>
+                          <option value="FA">Fair</option>
+                          <option value="PO">Poor</option>
+                        </select>
+                        <div *ngIf="upload_submitted && fval.polish.errors" class="invalid-feedback">
+                          <div *ngIf="fval.polish.errors.required">
+                            Polish is required
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-4 form-group">
+                        <label class="dash-label">Symmetry</label>
+                        <select class="custom-select form-control input-style" formControlName="symmetry" [ngClass]="{ 'is-invalid': upload_submitted && fval.symmetry.errors }">
+                          <option selected="" value="">Select......</option>
+                          <option value="ID">Ideal</option>
+                          <option value="EX">Excellent</option>
+                          <option value="VG">Very Good</option>
+                          <option value="GD">Good</option>
+                          <option value="FA">Fair</option>
+                          <option value="PO">Poor</option>
+                        </select>
+                        <div *ngIf="upload_submitted && fval.symmetry.errors" class="invalid-feedback">
+                          <div *ngIf="fval.symmetry.errors.required">
+                            Symmetry is required
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-12">
+                  <div class="inr-input-div">
+                    <h6>Fluorescence</h6>
+                    <div class="row">
+                      <div class="col-md-4 form-group">
+                        <label class="dash-label">Intensity</label>
+                        <select class="custom-select form-control input-style" formControlName="fluor_intensity" [ngClass]="{ 'is-invalid': upload_submitted && fval.fluor_intensity.errors }">
+                          <option selected="" value="NON">None</option>
+                          <option value="VSL">Very Slight</option>
+                          <option value="FA">Faint</option>
+                          <option value="SL">Slight</option>
+                          <option value="ME">Medium</option>
+                          <option value="ST">Strong</option>
+                          <option value="VST">Very Strong</option>
+                        </select>
+                        <div *ngIf="upload_submitted && fval.fluor_intensity.errors" class="invalid-feedback">
+                          <div *ngIf="fval.fluor_intensity.errors.required">
+                            Intensity is required
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-4 form-group">
+                        <label class="dash-label">Color</label>
+                        <select class="custom-select form-control input-style" formControlName="fluor_color" [ngClass]="{ 'is-invalid': upload_submitted && fval.fluor_color.errors }">
+                          <option selected="" value="NON">None</option>
+                          <option value="BLUE">Blue</option>
+                          <option value="YELLOW">Yellow</option>
+                          <option value="GREEN">Green</option>
+                          <option value="RED">Red</option>
+                          <option value="ORANGE">Orange</option>
+                          <option value="WHIT">White</option>
+                        </select>
+                        <div *ngIf="upload_submitted && fval.fluor_color.errors" class="invalid-feedback">
+                          <div *ngIf="fval.fluor_color.errors.required">
+                            Color is required
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-12">
+                  <div class="inr-input-div">
+                    <h6>Measurements</h6>
+                    <div class="row">
+                      <div class="col-md-4 form-group">
+                        <label class="dash-label">Length(mm)</label>
+                        <input type="text" (keypress)="isNumberKey($event)" formControlName="meas_length" class="form-control input-style" placeholder="" [ngClass]="{ 'is-invalid': upload_submitted && fval.meas_length.errors }" />
+                        <div *ngIf="upload_submitted && fval.meas_length.errors" class="invalid-feedback">
+                          <div *ngIf="fval.meas_length.errors.required">
+                            Length is required
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-4 form-group">
+                        <label class="dash-label">Width(mm)</label>
+                        <input type="text" (keypress)="isNumberKey($event)" formControlName="meas_width" class="form-control input-style" placeholder="" [ngClass]="{ 'is-invalid': upload_submitted && fval.meas_width.errors }" />
+                        <div *ngIf="upload_submitted && fval.meas_width.errors" class="invalid-feedback">
+                          <div *ngIf="fval.meas_width.errors.required">
+                            Width is required
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-4 form-group">
+                        <label class="dash-label">Depth(mm)</label>
+                        <input type="text" (keypress)="isNumberKey($event)" formControlName="meas_depth" class="form-control input-style" placeholder="" [ngClass]="{ 'is-invalid': upload_submitted && fval.meas_depth.errors }" />
+                        <div *ngIf="upload_submitted && fval.meas_depth.errors" class="invalid-feedback">
+                          <div *ngIf="fval.meas_depth.errors.required">
+                            Depth is required
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-12">
+                  <div class="inr-input-div">
+                    <h6>Depth</h6>
+                    <div class="row">
+                      <div class="col-md-4 form-group">
+                        <label class="dash-label">Depth %</label>
+                        <input type="text" (keypress)="isNumberKey($event)" formControlName="depth_percent" class="form-control input-style" placeholder="" [ngClass]="{ 'is-invalid': upload_submitted && fval.depth_percent.errors }" />
+                        <div *ngIf="upload_submitted && fval.depth_percent.errors" class="invalid-feedback">
+                          <div *ngIf="fval.depth_percent.errors.required">
+                            Depth % is required
+                          </div>
+                          <div *ngIf="fval.depth_percent.errors.min">
+                            Depth % is Minimum 0%
+                          </div>
+                          <div *ngIf="fval.depth_percent.errors.max">
+                            Depth % is Maximum 100%
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-4 form-group">
+                        <label class="dash-label">Table %</label>
+                        <input type="text" (keypress)="isNumberKey($event)" formControlName="table_percent" class="form-control input-style" placeholder="" [ngClass]="{ 'is-invalid': upload_submitted && fval.table_percent.errors }" />
+                        <div *ngIf="upload_submitted && fval.table_percent.errors" class="invalid-feedback">
+                          <div *ngIf="fval.table_percent.errors.required">
+                            Table % is required
+                          </div>
+                          <div *ngIf="fval.table_percent.errors.min">
+                            Table % is Minimum 0%
+                          </div>
+                          <div *ngIf="fval.table_percent.errors.max">
+                            Table % is Maximum 100%
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-12">
+                  <div class="inr-input-div">
+                    <h6>Crown</h6>
+                    <div class="row">
+                      <div class="col-md-4 form-group">
+                        <label class="dash-label">Angle(^)</label>
+                        <input type="text" (keypress)="isNumberKey($event)" formControlName="crown_angle" class="form-control input-style" placeholder="" [ngClass]="{ 'is-invalid': upload_submitted && fval.crown_angle.errors }" />
+                        <div *ngIf="upload_submitted && fval.crown_angle.errors" class="invalid-feedback">
+                          <div *ngIf="fval.crown_angle.errors.required">
+                            Angle is required
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-4 form-group">
+                        <label class="dash-label">Height %</label>
+                        <input type="text" (keypress)="isNumberKey($event)" formControlName="crown_height" class="form-control input-style" placeholder="" [ngClass]="{ 'is-invalid': upload_submitted && fval.crown_height.errors }" />
+                        <div *ngIf="upload_submitted && fval.crown_height.errors" class="invalid-feedback">
+                          <div *ngIf="fval.crown_height.errors.required">
+                            Height is required
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-12">
+                  <div class="inr-input-div">
+                    <h6>Pavillion</h6>
+                    <div class="row">
+                      <div class="col-md-4 form-group">
+                        <label class="dash-label">Angle(^)</label>
+                        <input type="text" (keypress)="isNumberKey($event)" formControlName="pavillion_angle" class="form-control input-style" placeholder="" [ngClass]="{ 'is-invalid': upload_submitted && fval.pavillion_angle.errors }" />
+                        <div *ngIf="upload_submitted && fval.pavillion_angle.errors" class="invalid-feedback">
+                          <div *ngIf="fval.pavillion_angle.errors.required">
+                            Angle is required
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-4 form-group">
+                        <label class="dash-label">Depth %</label>
+                        <input type="text" (keypress)="isNumberKey($event)" formControlName="pavillion_depth" class="form-control input-style" placeholder="" [ngClass]="{ 'is-invalid': upload_submitted && fval.pavillion_depth.errors }" />
+                        <div *ngIf="upload_submitted && fval.pavillion_depth.errors" class="invalid-feedback">
+                          <div *ngIf="fval.pavillion_depth.errors.required">
+                            Depth is required
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-12">
+                  <div class="inr-input-div">
+                    <h6>Girdle</h6>
+                    <div class="row">
+                      <div class="col-md-3 form-group">
+                        <label class="dash-label">Condition</label>
+                        <select class="custom-select form-control input-style" formControlName="girdle_condition" [ngClass]="{ 'is-invalid': upload_submitted && fval.girdle_condition.errors }">
+                          <option selected="" value="NON">None</option>
+                          <option value="Polished">Polished</option>
+                          <option value="Faceted">Faceted</option>
+                          <option value="Bruted">Bruted</option>
+                        </select>
+                        <div *ngIf="upload_submitted && fval.girdle_condition.errors" class="invalid-feedback">
+                          <div *ngIf="fval.girdle_condition.errors.required">
+                            Condition is required
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-3 form-group">
+                        <label class="dash-label">Min</label>
+                        <select class="custom-select form-control input-style" formControlName="girdle_min" [ngClass]="{ 'is-invalid': upload_submitted && fval.girdle_min.errors }">
+                          <option selected="" value="NON">None</option>
+                          <option value="ETN">Extr. Thin</option>
+                          <option value="VTN">Very Thin</option>
+                          <option value="THN">Thin</option>
+                          <option value="STN">Slightly Thin</option>
+                          <option value="MED">Medium</option>
+                          <option value="STK">Slightly Thick</option>
+                          <option value="THK">Thick</option>
+                          <option value="VTK">Very Thick</option>
+                          <option value="ETK">Extr. Thick</option>
+                        </select>
+                        <div *ngIf="upload_submitted && fval.girdle_min.errors" class="invalid-feedback">
+                          <div *ngIf="fval.girdle_min.errors.required">
+                            Min is required
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-3 form-group">
+                        <label class="dash-label">Max</label>
+                        <select class="custom-select form-control input-style" formControlName="girdle_max" [ngClass]="{ 'is-invalid': upload_submitted && fval.girdle_max.errors }">
+                          <option selected="" value="NON">None</option>
+                          <option value="ETN">Extr. Thin</option>
+                          <option value="VTN">Very Thin</option>
+                          <option value="THN">Thin</option>
+                          <option value="STN">Slightly Thin</option>
+                          <option value="MED">Medium</option>
+                          <option value="STK">Slightly Thick</option>
+                          <option value="THK">Thick</option>
+                          <option value="VTK">Very Thick</option>
+                          <option value="ETK">Extr. Thick</option>
+                        </select>
+                        <div *ngIf="upload_submitted && fval.girdle_max.errors" class="invalid-feedback">
+                          <div *ngIf="fval.girdle_max.errors.required">
+                            Max is required
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-3 form-group">
+                        <label class="dash-label">Girdle %</label>
+                        <input type="text" (keypress)="isNumberKey($event)" formControlName="girdle_per" class="form-control input-style" placeholder="" [ngClass]="{ 'is-invalid': upload_submitted && fval.girdle_per.errors }" />
+                        <div *ngIf="upload_submitted && fval.girdle_per.errors" class="invalid-feedback">
+                          <div *ngIf="fval.girdle_per.errors.required">
+                            Girdle % is required
+                          </div>
+                          <div *ngIf="fval.girdle_per.errors.min">
+                            Girdle Value is Minimum 0%
+                          </div>
+                          <div *ngIf="fval.girdle_per.errors.max">
+                            Girdle Value is Maximum 100%
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-12">
+                  <div class="inr-input-div">
+                    <h6>Culet</h6>
+                    <div class="row">
+                      <div class="col-md-4 form-group">
+                        <label class="dash-label">Condition</label>
+                        <select class="custom-select form-control input-style" formControlName="culet_condition" [ngClass]="{ 'is-invalid': upload_submitted && fval.culet_condition.errors }">
+                          <option selected="" value="NON">None</option>
+                          <option value="Pointed">Pointed</option>
+                          <option value="Abraded">Abraded</option>
+                          <option value="Chipped">Chipped</option>
+                        </select>
+                        <div *ngIf="upload_submitted && fval.culet_condition.errors" class="invalid-feedback">
+                          <div *ngIf="fval.culet_condition.errors.required">
+                            Condition is required
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-4 form-group">
+                        <label class="dash-label">Size</label>
+                        <select class="custom-select form-control input-style" formControlName="girdle_max" [ngClass]="{ 'is-invalid': upload_submitted && fval.girdle_max.errors }">
+                          <option selected="" value="NON">None</option>
+                          <option value="ETN">Extr. Thin</option>
+                          <option value="VTN">Very Thin</option>
+                          <option value="THN">Thin</option>
+                          <option value="STN">Slightly Thin</option>
+                          <option value="MED">Medium</option>
+                          <option value="STK">Slightly Thick</option>
+                          <option value="THK">Thick</option>
+                          <option value="VTK">Very Thick</option>
+                          <option value="ETK">Extr. Thick</option>
+                        </select>
+                        <div *ngIf="upload_submitted && fval.culet_size.errors" class="invalid-feedback">
+                          <div *ngIf="fval.culet_size.errors.required">
+                            Size is required
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-12">
+                  <div class="inr-input-div">
+                    <h6>Treatment</h6>
+                    <div class="row">
+                      <div class="col-md-4 form-group">
+                        <label class="dash-label">Treatment</label>
+                        <select class="custom-select form-control input-style" formControlName="treatment" [ngClass]="{ 'is-invalid': upload_submitted && fval.treatment.errors }">
+                          <option selected="" value="no-treatment">No treatment</option>
+                          <option value="only-treated">Show only treated</option>
+                          <option value="include-treated">Include treated diamonds in results</option>
+                        </select>
+                        <div *ngIf="upload_submitted && fval.treatment.errors" class="invalid-feedback">
+                          <div *ngIf="fval.treatment.errors.required">
+                            Treatment is required
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-4 form-group">
+                        <label class="dash-label">Angle</label>
+                        <input type="text" class="form-control input-style" formControlName="laser_inscription" [ngClass]="{ 'is-invalid': upload_submitted && fval.laser_inscription.errors }" />
+                        <div *ngIf="upload_submitted && fval.laser_inscription.errors" class="invalid-feedback">
+                          <div *ngIf="fval.laser_inscription.errors.required">
+                            Laser Inscription is required
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-12">
+                  <div class="inr-input-div">
+                    <div class="row">
+                      <div class="col-md-3 form-group">
+                        <label class="dash-label">Star Length</label>
+                        <input type="text" (keypress)="isNumberKey($event)" class="form-control input-style" formControlName="star_length" [ngClass]="{ 'is-invalid': upload_submitted && fval.star_length.errors }" />
+                        <div *ngIf="upload_submitted && fval.star_length.errors" class="invalid-feedback">
+                          <div *ngIf="fval.star_length.errors.required">
+                            Star Length is required
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-3 form-group">
+                        <label class="dash-label">Lab</label>
+                        <select class="custom-select form-control input-style" formControlName="lab" [ngClass]="{ 'is-invalid': upload_submitted && fval.lab.errors }">
+                          <option selected="" value="NON">None</option>
+                          <option value="GIA">GIA</option>
+                          <option value="AGS">AGS</option>
+                          <option value="CGL">CGL</option>
+                          <option value="DCLA">DCLA</option>
+                          <option value="GCAL">GCAL</option>
+                          <option value="GSI">GSI</option>
+                          <option value="HRD">HRD</option>
+                          <option value="IGI">IGI</option>
+                          <option value="NGTC">NGTC</option>
+                          <option value="PGS">PGS</option>
+                          <option value="VGR">VGR</option>
+                          <option value="RDC">RDC</option>
+                          <option value="RDR">RDR</option>
+                          <option value="GHI">GHI</option>
+                          <option value="DBGIS">DBGIS</option>
+                          <option value="SGL">SGL</option>
+                          <option value="Other">Other</option>
+                        </select>
+                        <div *ngIf="upload_submitted && fval.lab.errors" class="invalid-feedback">
+                          <div *ngIf="fval.lab.errors.required">
+                            Lab is required
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-3 form-group">
+                        <label class="dash-label">Report Number</label>
+                        <input type="text" (keypress)="isNumberKey($event)" class="form-control input-style" formControlName="report_number" [ngClass]="{ 'is-invalid': upload_submitted && fval.report_number.errors }" />
+                        <div *ngIf="upload_submitted && fval.report_number.errors" class="invalid-feedback">
+                          <div *ngIf="fval.report_number.errors.required">
+                            Report Number is required
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-3 form-group request-div-setting-inr">
+                        <label class="dash-label mt-3 mt-xl-0">Report Date</label>
+                        <mat-form-field appearance="fill" class="mtrl-cust-datepicker">
+                          <input placeholder="Select....." matInput [matDatepicker]="picker" formControlName="report_date" [ngClass]="{ 'is-invalid': upload_submitted && fval.report_date.errors }">
+                          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                          <mat-datepicker #picker></mat-datepicker>
+                          <mat-error *ngIf="upload_submitted && fval.report_date.errors">Report Date is required</mat-error>
+                        </mat-form-field>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-12">
+                  <div class="inr-input-div">
+                    <div class="row">
+                      <div class="col-md-4 form-group">
+                        <label class="dash-label mt-3 mt-xl-0">Lab Location</label>
+                        <input type="text" class="form-control input-style" formControlName="lab_location" [ngClass]="{ 'is-invalid': upload_submitted && fval.lab_location.errors }" />
+                        <div *ngIf="upload_submitted && fval.lab_location.errors" class="invalid-feedback">
+                          <div *ngIf="fval.lab_location.errors.required">
+                            Lab Location is required
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-4 form-group">
+                        <label class="dash-label">Report Comment</label>
+                        <input type="text" class="form-control input-style" formControlName="report_comment" [ngClass]="{ 'is-invalid': upload_submitted && fval.report_comment.errors }"/>
+                        <div *ngIf="upload_submitted && fval.report_comment.errors" class="invalid-feedback">
+                          <div *ngIf="fval.report_comment.errors.required">
+                            Report Comment is required
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-4 form-group">
+                        <label class="dash-label">Key to Symbols</label>
+                        <ng-select2 class="cust-input-stl" formControlName="symbols" [data]="Symbols" [options]="options" [ngClass]="{ 'is-invalid': upload_submitted && fval.symbols.errors }" [value]="SelectedSymbols"></ng-select2>
+                        <div *ngIf="upload_submitted && fval.symbols.errors" class="invalid-feedback">
+                          <div *ngIf="fval.symbols.errors.required">
+                            Key to Symbols is required
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-12">
+                  <div class="inr-input-div">
+                    <h6>Fancy Color</h6>
+                    <div class="row">
+                      <div class="col-md-3 form-group">
+                        <label class="dash-label">Intensity</label>
+                        <select class="custom-select form-control input-style" formControlName="fancy_color_intensity">
+                          <option selected="" value="NON">None</option>
+                          <option value="F">Faint</option>
+                          <option value="VL">Very Light</option>
+                          <option value="L">Light</option>
+                          <option value="FL">Fancy Light</option>
+                          <option value="FC">Fancy</option>
+                          <option value="FCD">Fancy Dark</option>
+                          <option value="I">Fancy Intense</option>
+                          <option value="FV">Fancy Vivid</option>
+                          <option value="D">Fancy Deep</option>
+                        </select>
+                      </div>
+                      <div class="col-md-3 form-group">
+                        <label class="dash-label">Overtones</label>
+                        <select class="custom-select form-control input-style" formControlName="fancy_color_overtone">
+                          <option selected="" value="NON">None</option>
+                          <option value="Brownish">Brownish</option>
+                          <option value="Greenish">Greenish</option>
+                          <option value="Yellowish">Yellowish</option>
+                          <option value="Pinkish">Pinkish</option>
+                          <option value="Purplish">Purplish</option>
+                          <option value="Bluelish">Bluelish</option>
+                        </select>
+                      </div>
+                      <div class="col-md-3 form-group">
+                        <label class="dash-label">Color 1</label>
+                        <select class="custom-select form-control input-style" formControlName="fancy_color_dominant_color">
+                          <option selected="" value="NON">None</option>
+                          <option value="Y">Yellow</option>
+                          <option value="R">Red</option>
+                          <option value="G">Green</option>
+                          <option value="B">Blue</option>
+                          <option value="W">White</option>
+                          <option value="O">Orange</option>
+                        </select>
+                      </div>
+                      <div class="col-md-3 form-group">
+                        <label class="dash-label">Color 2</label>
+                        <select class="custom-select form-control input-style" formControlName="fancy_color_secondary_color">
+                          <option selected="" value="NON">None</option>
+                          <option value="Y">Yellow</option>
+                          <option value="R">Red</option>
+                          <option value="G">Green</option>
+                          <option value="B">Blue</option>
+                          <option value="W">White</option>
+                          <option value="O">Orange</option>
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-12">
+                  <div class="inr-input-div">
+                    <h6>Images and Report Scans</h6>
+                    <div class="row">
+                      <div class="col-md-4 form-group">
+                        <label class="dash-label">Report File</label>
+                        <ul class="row align-items-center">
+                          <li class="col mb-2">
+                            <span class="btn-file"> Browse <input type="file" (change)="report_upload($event)" /> </span>
+                          </li>
+                          <li>
+                            Or
+                          </li>
+                          <li class="col mb-2">
+                            <span class="">
+                                <button (click)="open_upload_link()" type="button" class="btn-file-btn">Upload Link</button>
+                            </span>
+                          </li>
+                        </ul>
+                        <div class="pt-1 fx-height" *ngIf="Report_img">
+                          {{Report_img}}
+                        </div>
+                        <div class="pt-1 fx-height" *ngIf="report_upload_link">
+                          {{report_upload_link}}
+                        </div>
+                      </div>
+                      <div class="col-md-4 form-group">
+                        <label class="dash-label">Diamond Image</label>
+                        <ul class="row align-items-center">
+                          <li class="col mb-2">
+                            <span class="btn-file"> Browse <input type="file" (change)="diamond_upload($event)" accept=".png,.jpg,.jpeg"/></span>
+                          </li>
+                          <li>
+                            Or
+                          </li>
+                          <li class="col mb-2">
+                            <span class="">
+                                <button (click)="open_upload_link1()" type="button" class="btn-file-btn">Upload Link</button>
+                            </span>
+                          </li>
+                        </ul>
+                        <div class="pt-1 fx-height" *ngIf="Diamond_img">
+                          {{Diamond_img}}
+                        </div>
+                        <div class="pt-1 fx-height" *ngIf="diamond_upload_link">
+                          {{diamond_upload_link}}
+                        </div>
+                      </div>
+                      <div class="col-md-4 form-group">
+                        <label class="dash-label">Video File</label>
+                        <ul class="row align-items-center">
+                          <li class="col mb-2">
+                            <span class="btn-file"> Browse <input type="file" (change)="video_upload($event)" /> </span>
+                          </li>
+                          <li>
+                            Or
+                          </li>
+                          <li class="col mb-2">
+                            <span class="">
+                                <button (click)="open_upload_link2()" type="button" class="btn-file-btn">Upload Link</button>
+                            </span>
+                          </li>
+                        </ul>
+                        <div class="pt-1 fx-height" *ngIf="Video_img">
+                          {{Video_img}}
+                        </div>
+                        <div class="pt-1 fx-height" *ngIf="video_link">
+                          {{video_link}}
+                        </div>
+                      </div>
+                      <div class="col-md-12 form-group">
+                        <label class="dash-label">Sarine Loupe</label>
+                        <input type="text" formControlName="sarine_loupe" class="form-control input-style" placeholder="" />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-12">
+                  <div class="inr-input-div">
+                    <h6>Additional Information</h6>
+                    <div class="row">
+                      <div class="col-md-4 form-group">
+                        <label class="dash-label">Seller Spec</label>
+                        <input type="text" class="form-control input-style" formControlName="seller_spec" placeholder="" />
+                      </div>
+                      <div class="col-md-4 form-group">
+                        <label class="dash-label">Shade</label>
+                        <select class="custom-select form-control input-style" formControlName="shade">
+                          <option selected="" value="NON">None</option>
+                          <option value="White">White</option>
+                          <option value="Yellow">Yellow</option>
+                          <option value="Brown">Brown</option>
+                          <option value="Green">Green</option>
+                          <option value="Grey">Grey</option>
+                          <option value="Black">Black</option>
+                          <option value="Pink">Pink</option>
+                          <option value="Blue">Blue</option>
+                          <option value="Mixed">Mixed</option>
+                          <option value="Faint Brown">Faint Brown</option>
+                          <option value="Faint Green">Faint Green</option>
+                          <option value="Other">Other</option>
+                        </select>
+                      </div>
+                      <div class="col-md-4 form-group">
+                        <label class="dash-label">Milky</label>
+                        <select class="custom-select form-control input-style" formControlName="milky">
+                          <option selected="" value="NON">None</option>
+                          <option value="M1">Light</option>
+                          <option value="M2">Medium</option>
+                          <option value="M3">Heavy</option>
+                        </select>
+                      </div>
+                      <div class="col-md-4 form-group">
+                        <label class="dash-label d-flex align-items-center">
+                          Eye Clean
+                          <a href="javascript(void);" data-toggle="modal" data-target="#eye-modal">
+                            <img src="assets/images/icon/question.svg" class="ml-2" alt="" />
+                          </a>
+                        </label>
+                        <select class="custom-select form-control input-style" formControlName="eye_clean">
+                          <option selected="" value="">Select.....</option>
+                          <option value="Yes">Yes</option>
+                          <option value="No">No</option>
+                          <option value="Boderline">Boderline</option>
+                        </select>
+                      </div>
+                      <div class="col-md-4 form-group">
+                        <label class="dash-label">Open Inclusions</label>
+                        <ng-select2 class="cust-input-stl" formControlName="open_inclusions" [data]="Open_Inclusions" [options]="options" [ngClass]="{ 'is-invalid': upload_submitted && fval.open_inclusions.errors }" [value]="SelectedOpen"></ng-select2>
+                      </div>
+                      <div class="col-md-4 form-group">
+                        <label class="dash-label">Black Inclusions</label>
+                        <ng-select2 class="cust-input-stl" formControlName="black_inclusions" [data]="Black_Inclusions" [options]="options" [ngClass]="{ 'is-invalid': upload_submitted && fval.black_inclusions.errors }" [value]="SelectedBlack"></ng-select2>
+                      </div>
+                      <div class="col-md-4 form-group">
+                        <label class="dash-label">White Inclusions</label>
+                        <ng-select2 class="cust-input-stl" formControlName="white_inclusions" [data]="White_Inclusions" [options]="options" [ngClass]="{ 'is-invalid': upload_submitted && fval.white_inclusions.errors }" [value]="SelectedWhite"></ng-select2>
+                      </div>
+                      <div class="col-md-4 form-group">
+                        <label class="dash-label">Brands</label>
+                        <ng-select2 class="cust-input-stl" formControlName="brands" [data]="Brands" [options]="options" [ngClass]="{ 'is-invalid': upload_submitted && fval.brands.errors }" [value]="SelectedBrands"></ng-select2>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-12">
+                  <div class="btn-btm-inr-tabs text-center mt-5">
+                    <button type="submit" class="btn btn-inr-top mr-sm-4">SAVE</button>
+                    <button (click)="cancel()" type="button" class="btn btn-reset">CANCEL</button>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="overlay toggle-icon-main"></div>
+  </main>
+  <div class="modal fade" id="eye-modal" tabindex="-1" aria-labelledby="eye-modal" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header align-items-center">
+          <h5 class="modal-title">Eye Clean</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="lrn-more-mdl-left">
+            <p><b>”Eye Clean” means that:</b></p>
+            <p>
+              No inclusions (black, white, red or any other color) can be seen by a non-expert grader when viewing the diamond from a face-up position (looking at the table) with the naked eye.
+            </p>
+            <p>Eye clean does not include looking at the diamond under any magnification (loupe, microscope etc…) or instrumentation.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="Upload-link-modal" tabindex="-1" aria-labelledby="Upload-link-modal" aria-hidden="true" style="opacity: 0" [ngStyle]="{'display': show_model ? 'block' : 'none','opacity': 1,'background':'#0000004f'}">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header align-items-center">
+          <h5 class="modal-title">Report File Link</h5>
+          <button (click)="close_model()" type="button" class="close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="lrn-more-mdl-left upload-tabs-new">
+            <form class="row" [formGroup]="FileForm" (ngSubmit)="OnSubmitUpload()">
+              <div class="col-12">
+                <div class="form-group">
+                  <input type="text" class="form-control input-style" formControlName="report_upload_link" placeholder="Type Link Here" [ngClass]="{ 'is-invalid': file_submitted && fval1.report_upload_link.errors }"/>
+                  <div *ngIf="file_submitted && fval1.report_upload_link.errors" class="invalid-feedback">
+                    <div *ngIf="fval1.report_upload_link.errors.required">
+                      Report File link is required
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-12">
+                <div class="btn-btm-inr-tabs text-center mt-2">
+                  <button type="submit" class="btn btn-inr-top">Upload Link</button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="Upload-link-modal-1" tabindex="-1" aria-labelledby="Upload-link-modal-1" aria-hidden="true" style="opacity: 0" [ngStyle]="{'display': show_model1 ? 'block' : 'none','opacity': 1,'background':'#0000004f'}">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header align-items-center">
+          <h5 class="modal-title">Upload Link</h5>
+          <button (click)="close_model1()" type="button" class="close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="lrn-more-mdl-left upload-tabs-new">
+            <form class="row" [formGroup]="FileForm1" (ngSubmit)="OnSubmitUpload1()">
+              <div class="col-12">
+                <div class="form-group">
+                  <input type="text" class="form-control input-style" formControlName="diamond_upload_link" placeholder="Type Link Here" [ngClass]="{ 'is-invalid': file_submitted1 && fval2.diamond_upload_link.errors }"/>
+                  <div *ngIf="file_submitted1 && fval2.diamond_upload_link.errors" class="invalid-feedback">
+                    <div *ngIf="fval2.diamond_upload_link.errors.required">
+                      Upload link is required
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-12">
+                <div class="btn-btm-inr-tabs text-center mt-2">
+                  <button type="submit" class="btn btn-inr-top">Upload Link</button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="Upload-link-modal-2" tabindex="-1" aria-labelledby="Upload-link-modal-2" aria-hidden="true" style="opacity: 0" [ngStyle]="{'display': show_model2 ? 'block' : 'none','opacity': 1,'background':'#0000004f'}">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header align-items-center">
+          <h5 class="modal-title">Upload Link</h5>
+          <button (click)="close_model2()" type="button" class="close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="lrn-more-mdl-left upload-tabs-new">
+            <form class="row" [formGroup]="FileForm2" (ngSubmit)="OnSubmitUpload2()">
+              <div class="col-12">
+                <div class="form-group">
+                  <input type="text" class="form-control input-style" formControlName="video_link" placeholder="Type Link Here" [ngClass]="{ 'is-invalid': file_submitted2 && fval3.video_link.errors }"/>
+                  <div *ngIf="file_submitted2 && fval3.video_link.errors" class="invalid-feedback">
+                    <div *ngIf="fval3.video_link.errors.required">
+                      Video link is required
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-12">
+                <div class="btn-btm-inr-tabs text-center mt-2">
+                  <button type="submit" class="btn btn-inr-top">Upload Link</button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,40 @@
+.filter-div img {
+  width: 55px;
+  cursor: pointer;
+}
+
+.filter-div-dropdown {
+  position: absolute;
+  right: 0;
+  top: 100%;
+  padding: 10px 15px;
+  width: 200px;
+  background: var(--color-white);
+  -webkit-box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
+  -moz-box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
+  -webkit-transition: all 0.15s linear;
+  -moz-transition: all 0.15s linear;
+  -ms-transition: all 0.15s linear;
+  -o-transition: all 0.15s linear;
+  transition: all 0.15s linear;
+  -webkit-border-radius: 9px;
+  -moz-border-radius: 9px;
+  border-radius: 9px;
+  z-index: 1;
+  display: none;
+  margin-top: 20px;
+}
+
+.filter-div-dropdown:before {
+  content: "";
+  background: url(../../../assets/images/droupdown-arrow.png);
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 0 12px 12px 12px;
+  border-color: transparent transparent #a4a4a4 transparent;
+  position: absolute;
+  top: -11px;
+  right: 20px;
+}
